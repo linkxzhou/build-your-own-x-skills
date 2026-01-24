@@ -20,6 +20,11 @@ build-your-own-x-skills/
 2. Run `init.sh` script to symlink skill directories to `./skills`
 3. Start using skills
 
+## Progress
+![Progress](https://img.shields.io/badge/Progress-1%25-red?style=flat-square)
+
+▓░░░░░░░░░░░░░░░░░░░ 1%
+
 ## build-your-own-x Projects
 
 #### Build your own `3D Renderer`

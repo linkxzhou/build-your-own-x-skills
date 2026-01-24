@@ -7,7 +7,8 @@ build-your-own-x-skills/
 ├── .claude/skills/          # Claude Code 技能目录，软链到 skills/，提供给 Claude Code 使用
 ├── .codebuddy/skills/       # CodeBuddy 技能目录，软链到 skills/，提供给 Codebuddy IDE 使用
 ├── .trae/skills/            # TRAE 技能目录，软链到 skills/，提供给 TRAE IDE 使用
-|── .skills/                 # 技能目录，软链到 skills/，提供给 Codex-Cli 使用
+├── .gemini/skills/          # gemini 技能目录，软链到 skills/，提供给 Gemini-Cli 使用
+|── skills/                  # 技能目录，提供给 Codex-Cli 使用，可以在当前目录修改或者添加
 ├── examples/                # 示例项目
 └── tests/                   # 技能测试
 ├── README.md                # 项目 README  
@@ -19,6 +20,11 @@ build-your-own-x-skills/
 1. 克隆项目到本地
 2. 运行 `init.sh` 脚本，将技能目录软链到 `./skills` 目录
 3. 开始使用技能
+
+## 完成进度
+![Progress](https://img.shields.io/badge/进度-1%25-red?style=flat-square)
+
+▓░░░░░░░░░░░░░░░░░░░ 1%
 
 ## build-your-own-x 项目列表
 
@@ -455,4 +461,4 @@ build-your-own-x-skills/
 - [ ] [**Rust**: _WebGL + Rust：基础水面教程_](https://www.chinedufn.com/3d-webgl-basic-water-tutorial/)
 - [ ] [**TypeScript**: _Tiny Package Manager：学习 npm / Yarn 的工作方式_](https://github.com/g-plane/tiny-package-manager)
 - [X] [生成 manim 视频](https://github.com/ManimCommunity/Manim)
-    - skills：./codebuddy/skills/manim-composer
+    - skills：./skills/manim-composer
