@@ -1,6 +1,25 @@
 # Background
 The goal of this project is to gradually convert all projects from `https://github.com/codecrafters-io/build-your-own-x` into skills, enabling every developer to quickly learn various skills through AI technology.
 
+## Directory Structure
+```
+build-your-own-x-skills/
+├── .claude/skills/          # Claude Code skills directory, symlinked to skills/, for Claude Code
+├── .codebuddy/skills/       # CodeBuddy skills directory, symlinked to skills/, for Codebuddy IDE
+├── .trae/skills/            # TRAE skills directory, symlinked to skills/, for TRAE IDE
+├── .skills/                 # Skills directory, symlinked to skills/, for Codex-Cli
+├── examples/                # Example projects
+└── tests/                   # Skills tests
+├── README.md                # Project README  
+├── init.sh                  # Initialization script for symlinking skills directories across platforms
+└── README_PROMPT.md         # Test prompts for each skill
+```
+
+## Installation
+1. Clone the project locally
+2. Run `init.sh` script to symlink skill directories to `./skills`
+3. Start using skills
+
 ## build-your-own-x Projects
 
 #### Build your own `3D Renderer`

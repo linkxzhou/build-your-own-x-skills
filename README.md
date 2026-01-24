@@ -4,11 +4,21 @@
 ## 目录结构
 ```
 build-your-own-x-skills/
-├── .claude/skills/          # Claude Code 技能目录
-├── .codebuddy/skills/       # CodeBuddy 技能目录
+├── .claude/skills/          # Claude Code 技能目录，软链到 skills/，提供给 Claude Code 使用
+├── .codebuddy/skills/       # CodeBuddy 技能目录，软链到 skills/，提供给 Codebuddy IDE 使用
+├── .trae/skills/            # TRAE 技能目录，软链到 skills/，提供给 TRAE IDE 使用
+|── .skills/                 # 技能目录，软链到 skills/，提供给 Codex-Cli 使用
 ├── examples/                # 示例项目
 └── tests/                   # 技能测试
+├── README.md                # 项目 README  
+├── init.sh                  # 初始化技能脚本，用于各个平台的 skills 的目录软链，如果存在则不操作
+└── REDME_PROMPT.md          # 每个 skills 的测试提示词
 ```
+
+## 安装
+1. 克隆项目到本地
+2. 运行 `init.sh` 脚本，将技能目录软链到 `./skills` 目录
+3. 开始使用技能
 
 ## build-your-own-x 项目列表
 
