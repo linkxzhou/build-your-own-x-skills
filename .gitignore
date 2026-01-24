@@ -1,6 +1,6 @@
 **/__pycache__
 **/media
-# .claude/skills
-# .gemini/skills
-# .trae/skills
-# .codebuddy/skills
+.claude/skills
+.gemini/skills
+.trae/skills
+.codebuddy/skills
