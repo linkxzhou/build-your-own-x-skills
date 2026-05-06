@@ -1,0 +1,23 @@
+{
+  "skill_name": "game-js-html-css",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想从零开始用 JavaScript 学习并实现「像程序员一样思考：只用 JS/HTML/CSS 做贪吃蛇」，请先帮我规划里程碑并创建最小项目骨架。",
+      "expected_output": "Produces a staged learning plan and minimal scaffold guidance without dumping a full final implementation.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我已经做到「像程序员一样思考：只用 JS/HTML/CSS 做贪吃蛇」的一半，但测试失败了。请根据项目文件定位问题，解释原因，并做最小修复。",
+      "expected_output": "Inspects existing files, diagnoses the current milestone, applies a minimal fix, and suggests a regression test.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "基于 https://medium.freecodecamp.org/think-like-a-programmer-how-to-build-snake-using-only-javascript-html-and-css-7b1479c3339e，把这个教程转换成 Claude Code 可执行的学习任务清单。",
+      "expected_output": "Maps the source tutorial into milestones with deliverables, commands, and verification criteria.",
+      "files": []
+    }
+  ]
+}

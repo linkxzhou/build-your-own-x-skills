@@ -1,0 +1,23 @@
+{
+  "skill_name": "game-v2-0",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想从零开始用 C++ 学习并实现「入门游戏编程 v2.0」，请先帮我规划里程碑并创建最小项目骨架。",
+      "expected_output": "Produces a staged learning plan and minimal scaffold guidance without dumping a full final implementation.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我已经做到「入门游戏编程 v2.0」的一半，但测试失败了。请根据项目文件定位问题，解释原因，并做最小修复。",
+      "expected_output": "Inspects existing files, diagnoses the current milestone, applies a minimal fix, and suggests a regression test.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "基于 http://lazyfoo.net/tutorials/SDL/，把这个教程转换成 Claude Code 可执行的学习任务清单。",
+      "expected_output": "Maps the source tutorial into milestones with deliverables, commands, and verification criteria.",
+      "files": []
+    }
+  ]
+}

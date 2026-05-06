@@ -1,0 +1,141 @@
+{
+  "category_count": 27,
+  "project_count": 351,
+  "categories": [
+    {
+      "name": "3D 渲染器",
+      "slug": "3d-renderer",
+      "count": 11
+    },
+    {
+      "name": "增强现实（AR）",
+      "slug": "augmented-reality",
+      "count": 6
+    },
+    {
+      "name": "BitTorrent 客户端",
+      "slug": "bittorrent-client",
+      "count": 5
+    },
+    {
+      "name": "区块链 / 加密货币",
+      "slug": "blockchain-cryptocurrency",
+      "count": 22
+    },
+    {
+      "name": "机器人（Bot）",
+      "slug": "bot",
+      "count": 15
+    },
+    {
+      "name": "命令行工具",
+      "slug": "command-line-tool",
+      "count": 9
+    },
+    {
+      "name": "数据库",
+      "slug": "database",
+      "count": 13
+    },
+    {
+      "name": "Docker",
+      "slug": "docker",
+      "count": 6
+    },
+    {
+      "name": "模拟器 / 虚拟机",
+      "slug": "emulator-virtual-machine",
+      "count": 13
+    },
+    {
+      "name": "前端框架 / 库",
+      "slug": "frontend-framework-library",
+      "count": 14
+    },
+    {
+      "name": "游戏",
+      "slug": "game",
+      "count": 34
+    },
+    {
+      "name": "Git",
+      "slug": "git",
+      "count": 7
+    },
+    {
+      "name": "网络协议栈",
+      "slug": "network-stack",
+      "count": 4
+    },
+    {
+      "name": "神经网络",
+      "slug": "neural-network",
+      "count": 14
+    },
+    {
+      "name": "操作系统",
+      "slug": "operating-system",
+      "count": 19
+    },
+    {
+      "name": "物理引擎",
+      "slug": "physics-engine",
+      "count": 7
+    },
+    {
+      "name": "编程语言",
+      "slug": "programming-language",
+      "count": 41
+    },
+    {
+      "name": "正则表达式引擎",
+      "slug": "regex-engine",
+      "count": 9
+    },
+    {
+      "name": "搜索引擎",
+      "slug": "search-engine",
+      "count": 6
+    },
+    {
+      "name": "Shell",
+      "slug": "shell",
+      "count": 7
+    },
+    {
+      "name": "模板引擎",
+      "slug": "template-engine",
+      "count": 5
+    },
+    {
+      "name": "文本编辑器",
+      "slug": "text-editor",
+      "count": 6
+    },
+    {
+      "name": "视觉识别系统",
+      "slug": "visual-recognition-system",
+      "count": 2
+    },
+    {
+      "name": "体素引擎（Voxel Engine）",
+      "slug": "voxel-engine",
+      "count": 1
+    },
+    {
+      "name": "网页浏览器",
+      "slug": "web-browser",
+      "count": 2
+    },
+    {
+      "name": "Web 服务器",
+      "slug": "web-server",
+      "count": 11
+    },
+    {
+      "name": "未分类",
+      "slug": "misc",
+      "count": 62
+    }
+  ]
+}

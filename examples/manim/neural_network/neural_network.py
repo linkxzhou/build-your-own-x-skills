@@ -313,10 +313,10 @@ class NeuralNetworkTutorial(Scene):
         
         # 解释各部分
         explanations = VGroup(
-            MathTex(r"x_i", r"\text{ - 输入}", font_size=24),
-            MathTex(r"w_i", r"\text{ - 权重}", font_size=24),
-            MathTex(r"b", r"\text{ - 偏置}", font_size=24),
-            MathTex(r"f", r"\text{ - 激活函数}", font_size=24),
+            VGroup(MathTex(r"x_i", font_size=24), Text(" - Input", font_size=18)).arrange(RIGHT, buff=0.1),
+            VGroup(MathTex(r"w_i", font_size=24), Text(" - Weight", font_size=18)).arrange(RIGHT, buff=0.1),
+            VGroup(MathTex(r"b", font_size=24), Text(" - Bias", font_size=18)).arrange(RIGHT, buff=0.1),
+            VGroup(MathTex(r"f", font_size=24), Text(" - Activation", font_size=18)).arrange(RIGHT, buff=0.1),
         )
         explanations.arrange(DOWN, aligned_edge=LEFT, buff=0.2)
         explanations.next_to(formula, DOWN, buff=0.5)
@@ -335,7 +335,7 @@ class NeuralNetworkTutorial(Scene):
         
         # AND 门真值表
         table_data = [
-            ["x₁", "x₂", "输出"],
+            ["x1", "x2", "输出"],
             ["0", "0", "0"],
             ["0", "1", "0"],
             ["1", "0", "0"],
@@ -361,7 +361,7 @@ class NeuralNetworkTutorial(Scene):
         
         # 输入节点
         inputs = VGroup()
-        input_labels = ["x₁", "x₂", "x₃"]
+        input_labels = ["x_1", "x_2", "x_3"]
         for i, label in enumerate(input_labels):
             node = Circle(radius=0.3, color=INPUT_COLOR, fill_opacity=0.7)
             node.move_to([-3, (1-i)*1.2, 0])
@@ -388,7 +388,7 @@ class NeuralNetworkTutorial(Scene):
         perceptron.add(output_node, output_text)
         
         # 连接线和权重
-        weights = ["w₁", "w₂", "w₃"]
+        weights = ["w_1", "w_2", "w_3"]
         for i, (inp, w) in enumerate(zip(inputs, weights)):
             line = Arrow(
                 inp[0].get_right(), sum_node.get_left() + UP*(1-i)*0.3,
