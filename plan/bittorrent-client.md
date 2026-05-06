@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：C#
 - **原始资源**：https://www.seanjoflynn.com/research/bittorrent.html
-- **建议 skill 名称**：`bittorrent-client-c-bittorrent`
+- **建议 skill 名称**：`bittorrent-client-bittorrent`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `BitTorrent 客户端` 相关项目，尤其提到“bittorrent-client”、`用 C# 从零构建 BitTorrent 客户端`、`C#` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://blog.jse.li/posts/torrent/
-- **建议 skill 名称**：`bittorrent-client-go-bittorrent`
+- **建议 skill 名称**：`bittorrent-client-bittorrent-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `BitTorrent 客户端` 相关项目，尤其提到“bittorrent-client”、`用 Go 从底层开始构建 BitTorrent 客户端`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -60,6 +62,7 @@
 - **原始资源**：https://xmonader.github.io/nimdays/day02_bencode.html
 - **建议 skill 名称**：`bittorrent-client-bencode`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `BitTorrent 客户端` 相关项目，尤其提到“bittorrent-client”、`编写一个 Bencode 解析器`、`Nim` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：Node.js
 - **原始资源**：https://allenkim67.github.io/programming/2016/05/04/how-to-make-your-own-bittorrent-client.html
-- **建议 skill 名称**：`bittorrent-client-bittorrent`
+- **建议 skill 名称**：`bittorrent-client-bittorrent-nodejs`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `BitTorrent 客户端` 相关项目，尤其提到“bittorrent-client”、`自己写一个 BitTorrent 客户端`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -102,8 +106,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://markuseliasson.se/article/bittorrent-in-python/
-- **建议 skill 名称**：`bittorrent-client-python-3-5-bittorrent`
+- **建议 skill 名称**：`bittorrent-client-bittorrent-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `BitTorrent 客户端` 相关项目，尤其提到“bittorrent-client”、`Python 3.5 的 BitTorrent 客户端`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

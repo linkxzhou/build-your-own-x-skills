@@ -1,21 +1,15 @@
 # 游戏 examples
 
-本目录收集 `游戏` 大类型下的 skill 使用示例。
-
-## 使用方式
-
-进入任一子目录，复制 `README.md` 中的推荐 Prompt 到支持 skills 的 AI 编程工具中执行。
-
-## 示例列表
-
 | Skill | 技术栈 | 原始项目 |
 |---|---|---|
 | [`game-8`](./game-8/) | JavaScript | 从零构建你自己的 8 号球台球游戏 |
 | [`game-breakout`](./game-breakout/) | C++ | Breakout |
+| [`game-brennan-2015-06-12`](./game-brennan-2015-06-12/) | C | 关于俄罗斯方块与重实现 |
 | [`game-bytepath`](./game-bytepath/) | Lua | BYTEPATH |
 | [`game-c`](./game-c/) | C | 用 C 写国际象棋引擎 |
 | [`game-c-c`](./game-c-c/) | C | 用 C 学习游戏编程 |
 | [`game-c-rogue-nethack-rpg`](./game-c-rogue-nethack-rpg/) | C | 用 C 编写 Rogue/Nethack RPG |
+| [`game-c-youtube`](./game-c-youtube/) | C | 用 C 编写数独求解器 |
 | [`game-cave-story`](./game-cave-story/) | C++ | 重构 Cave Story |
 | [`game-cpp`](./game-cpp/) | C++ | 面向初学者、平台无关、专注逻辑的 C++ 俄罗斯方块教程 |
 | [`game-cpp-cavestory`](./game-cpp-cavestory/) | C++ | 用 C++ 重制 Cavestory |

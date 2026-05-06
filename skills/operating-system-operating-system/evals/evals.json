@@ -1,0 +1,23 @@
+{
+  "skill_name": "operating-system-operating-system",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想用 C 从零实现「操作系统开发小书」，请规划里程碑并只完成第一阶段。",
+      "expected_output": "Staged plan plus first milestone guidance.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我在实现「操作系统开发小书」时测试失败，请阅读项目并做最小修复。",
+      "expected_output": "Diagnosis, minimal fix, and verification.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "请基于 https://littleosbook.github.io/ 转换成 Claude Code 学习任务清单。",
+      "expected_output": "Milestone task list with deliverables and checks.",
+      "files": []
+    }
+  ]
+}

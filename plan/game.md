@@ -16,6 +16,7 @@
 - **原始资源**：https://handmadehero.org/
 - **建议 skill 名称**：`game-handmade-hero`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`Handmade Hero`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://nesdoug.com/
-- **建议 skill 名称**：`game-c-nes`
+- **建议 skill 名称**：`game-nes`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 C 编写 NES 游戏`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -60,6 +62,7 @@
 - **原始资源**：https://www.youtube.com/playlist?list=PLZ1QII7yudbc-Ky058TEaOstZHVbT-2hg
 - **建议 skill 名称**：`game-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 C 写国际象棋引擎`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -83,6 +86,7 @@
 - **原始资源**：https://www.youtube.com/playlist?list=PLSkJey49cOgTSj465v2KbLZ7LMn10bCF9
 - **建议 skill 名称**：`game-let-s-make-dangerous-dave`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`Let's Make: Dangerous Dave`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -104,8 +108,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://www.youtube.com/playlist?list=PLT6WFYYZE6uLMcPGS3qfpYm7T_gViYMMt
-- **建议 skill 名称**：`game-c`
+- **建议 skill 名称**：`game-c-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 C 学习游戏编程`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -127,8 +132,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://www.youtube.com/playlist?list=PLkTXsX7igf8edTYU92nU-f5Ntzuf-RKvW
-- **建议 skill 名称**：`game-c`
+- **建议 skill 名称**：`game-c-youtube`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 C 编写数独求解器`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -152,6 +158,7 @@
 - **原始资源**：https://www.youtube.com/playlist?list=PLkTXsX7igf8erbWGYT4iSAhpnJLJ0Nk5G
 - **建议 skill 名称**：`game-c-rogue-nethack-rpg`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 C 编写 Rogue/Nethack RPG`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -173,8 +180,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://brennan.io/2015/06/12/tetris-reimplementation/
-- **建议 skill 名称**：`game`
+- **建议 skill 名称**：`game-brennan-2015-06-12`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`关于俄罗斯方块与重实现`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -197,6 +205,7 @@
 - **原始资源**：https://learnopengl.com/In-Practice/2D-Game/Breakout
 - **建议 skill 名称**：`game-breakout`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`Breakout`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -219,6 +228,7 @@
 - **原始资源**：http://lazyfoo.net/tutorials/SDL/
 - **建议 skill 名称**：`game-v2-0`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`入门游戏编程 v2.0`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -239,8 +249,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：http://javilop.com/gamedev/tetris-tutorial-in-c-platform-independent-focused-in-game-logic-for-beginners/
-- **建议 skill 名称**：`game-c`
+- **建议 skill 名称**：`game-cpp`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`面向初学者、平台无关、专注逻辑的 C++ 俄罗斯方块教程`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -261,8 +272,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：https://www.youtube.com/watch?v=ETvApbD5xRo&list=PLNOBk_id22bw6LXhrGfhVwqQIa-M2MsLa
-- **建议 skill 名称**：`game-c-cavestory`
+- **建议 skill 名称**：`game-cpp-cavestory`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 C++ 重制 Cavestory`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -286,6 +298,7 @@
 - **原始资源**：https://www.youtube.com/playlist?list=PL006xsVEsbKjSKBmLu1clo85yLrwjY67X
 - **建议 skill 名称**：`game-cave-story`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`重构 Cave Story`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -309,6 +322,7 @@
 - **原始资源**：http://nicktasios.nl/posts/space-invaders-from-scratch-part-1.html
 - **建议 skill 名称**：`game-space-invaders`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`从零做 Space Invaders`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -329,8 +343,9 @@
 
 - **原始语言/技术栈**：C#
 - **原始资源**：http://scottlilly.com/learn-c-by-building-a-simple-rpg-index/
-- **建议 skill 名称**：`game-rpg-c`
+- **建议 skill 名称**：`game-rpg-csharp`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`通过构建一个简单 RPG 学习 C#`、`C#` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -351,8 +366,9 @@
 
 - **原始语言/技术栈**：C#
 - **原始资源**：https://roguesharp.wordpress.com/
-- **建议 skill 名称**：`game-c-roguelike`
+- **建议 skill 名称**：`game-csharp-roguelike`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 C# 创建 Roguelike 游戏`、`C#` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -373,8 +389,9 @@
 
 - **原始语言/技术栈**：C#
 - **原始资源**：https://scottlilly.com/build-a-cwpf-rpg/
-- **建议 skill 名称**：`game-c-wpf-rpg`
+- **建议 skill 名称**：`game-csharp-wpf-rpg`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`构建一个 C#/WPF RPG`、`C#` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -397,6 +414,7 @@
 - **原始资源**：https://www.youtube.com/playlist?list=PLDZujg-VgQlZUy1iCqBbe5faZLMkA3g2x
 - **建议 skill 名称**：`game-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 Go 做游戏`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -420,6 +438,7 @@
 - **原始资源**：https://www.youtube.com/watch?v=025QFeZfeyM
 - **建议 skill 名称**：`game-java-2d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 Java 写 2D 游戏引擎（完整入门课）`、`Java` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -443,6 +462,7 @@
 - **原始资源**：https://lwjglgamedev.gitbooks.io/3d-game-development-with-lwjgl/content/
 - **建议 skill 名称**：`game-lwjgl-3-3d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`LWJGL 3 的 3D 游戏开发`、`Java` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -465,6 +485,7 @@
 - **原始资源**：https://developer.mozilla.org/en-US/docs/Games/Tutorials/2D_breakout_game_Phaser
 - **建议 skill 名称**：`game-phaser-2d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 Phaser 制作 2D 打砖块`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -487,6 +508,7 @@
 - **原始资源**：http://www.lessmilk.com/tutorial/flappy-bird-phaser-1
 - **建议 skill 名称**：`game-phaser-html5-flappy-bird`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 Phaser 在 HTML5 中做 Flappy Bird`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -507,8 +529,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://auth0.com/blog/developing-games-with-react-redux-and-svg-part-1/
-- **建议 skill 名称**：`game-react-redux-svg`
+- **建议 skill 名称**：`game-react-redux`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 React、Redux 与 SVG 开发游戏`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -531,6 +554,7 @@
 - **原始资源**：https://www.youtube.com/watch?v=aXwCrtAo4Wc
 - **建议 skill 名称**：`game-8`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`从零构建你自己的 8 号球台球游戏`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -554,6 +578,7 @@
 - **原始资源**：https://gamedevelopment.tutsplus.com/tutorials/how-to-make-your-first-roguelike--gamedev-13677
 - **建议 skill 名称**：`game-roguelike`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`如何制作你的第一个 Roguelike`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -576,6 +601,7 @@
 - **原始资源**：https://medium.freecodecamp.org/think-like-a-programmer-how-to-build-snake-using-only-javascript-html-and-css-7b1479c3339e
 - **建议 skill 名称**：`game-js-html-css`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`像程序员一样思考：只用 JS/HTML/CSS 做贪吃蛇`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -598,6 +624,7 @@
 - **原始资源**：https://github.com/SSYGEN/blog/issues/30
 - **建议 skill 名称**：`game-bytepath`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`BYTEPATH`、`Lua` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -620,6 +647,7 @@
 - **原始资源**：https://pythonprogramming.net/pygame-python-3-part-1-intro/
 - **建议 skill 名称**：`game-pygame`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 PyGame 开发游戏`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -642,6 +670,7 @@
 - **原始资源**：https://inventwithpython.com/makinggames.pdf
 - **建议 skill 名称**：`game-python-pygame`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 Python 与 Pygame 制作游戏`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -663,8 +692,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://rogueliketutorials.com/
-- **建议 skill 名称**：`game-roguelike`
+- **建议 skill 名称**：`game-roguelike-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`Roguelike 教程（修订版）`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -687,6 +717,7 @@
 - **原始资源**：https://leanpub.com/developing-games-with-ruby/read
 - **建议 skill 名称**：`game-ruby`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`用 Ruby 开发游戏`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -707,8 +738,9 @@
 
 - **原始语言/技术栈**：Ruby
 - **原始资源**：https://www.diatomenterprises.com/gamedev-on-ruby-why-not/
-- **建议 skill 名称**：`game-ruby`
+- **建议 skill 名称**：`game-ruby-ruby`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`Ruby 贪吃蛇`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -731,6 +763,7 @@
 - **原始资源**：https://a5huynh.github.io/posts/2018/adventures-in-rust/
 - **建议 skill 名称**：`game-rust-2d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`Rust 冒险：一个基础 2D 游戏`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -753,6 +786,7 @@
 - **原始资源**：https://tomassedovic.github.io/roguelike-tutorial/
 - **建议 skill 名称**：`game-rust-tcod-roguelike`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `游戏` 相关项目，尤其提到“game”、`Rust + tcod 的 Roguelike 教程`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

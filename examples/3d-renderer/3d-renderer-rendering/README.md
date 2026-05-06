@@ -1,0 +1,17 @@
+# 基于物理的渲染：从理论到实现
+
+> Example for skill: `3d-renderer-rendering`
+
+## 推荐 Prompt
+
+```text
+[使用Skills: 3d-renderer-rendering]
+我想用 C++ 从零实现「基于物理的渲染：从理论到实现」。
+请先检查当前目录是否为空，然后给我一个 4-8 个里程碑的学习计划。
+从第一个最小可运行版本开始，只实现第一阶段，并提供验证命令。
+```
+
+## 原始资源
+
+- 技术栈：`C++`
+- 链接：http://www.pbr-book.org/

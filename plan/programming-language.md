@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：(any)
 - **原始资源**：https://github.com/kanaka/mal#mal---make-a-lisp
-- **建议 skill 名称**：`programming-language-mal-make-a-lisp`
+- **建议 skill 名称**：`programming-language-lisp`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`mal - Make a Lisp`、`(any)` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：Assembly
 - **原始资源**：https://github.com/nornagon/jonesforth/blob/master/jonesforth.S
-- **建议 skill 名称**：`programming-language-jonesforth`
+- **建议 skill 名称**：`programming-language-nes`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`Jonesforth`、`Assembly` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-journal-stuffwithstuff-2013-12`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`宝宝的第一个垃圾回收器`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：http://www.buildyourownlisp.com/
-- **建议 skill 名称**：`programming-language-lisp-1000-c`
+- **建议 skill 名称**：`programming-language-lisp-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`构建你自己的 Lisp：用 1000 行代码学习 C 并写出语言`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -104,6 +108,7 @@
 - **原始资源**：http://maplant.com/gc.html
 - **建议 skill 名称**：`programming-language-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`用 C 编写一个简单垃圾回收器`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -124,8 +129,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://github.com/lotabout/write-a-C-interpreter
-- **建议 skill 名称**：`programming-language-c`
+- **建议 skill 名称**：`programming-language-interpreter`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`能解释自身的 C 解释器`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -146,8 +152,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://github.com/lotabout/Let-s-build-a-compiler
-- **建议 skill 名称**：`programming-language-jack-crenshaw-let-s-build-a-compiler-c-x86`
+- **建议 skill 名称**：`programming-language-compiler`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`Jack Crenshaw《Let’s Build a Compiler》的 C/x86 版本`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -168,8 +175,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://github.com/DoctorWkt/acwj
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-compiler-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`一段从零构建编译器的旅程`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -190,8 +198,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：https://gnuu.org/2009/09/18/writing-your-own-toy-compiler/
-- **建议 skill 名称**：`programming-language-flex`
+- **建议 skill 名称**：`programming-language-compiler-cpp`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`用 Flex 编写你自己的玩具编译器`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -212,8 +221,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：https://www.youtube.com/watch?v=eF9qWbuQLuw
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-compiler-youtube`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`如何创建一个编译器`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -237,6 +247,7 @@
 - **原始资源**：https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html
 - **建议 skill 名称**：`programming-language-kaleidoscope-llvm`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`Kaleidoscope：用 LLVM 实现一门语言`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -257,8 +268,9 @@
 
 - **原始语言/技术栈**：F#
 - **原始资源**：https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-fsharpforfunandprofit-understanding-parser-combinators`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`理解解析器组合子`、`F#` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -279,8 +291,9 @@
 
 - **原始语言/技术栈**：Elixir
 - **原始资源**：https://www.youtube.com/watch?v=zMJYoYwOCd4
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-compiler-elixir`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`通过自己写一个编译器来破除迷思`、`Elixir` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -302,8 +315,9 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://github.com/hazbo/the-super-tiny-compiler
-- **建议 skill 名称**：`programming-language-the-super-tiny-compiler`
+- **建议 skill 名称**：`programming-language-compiler-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`超小编译器（The Super Tiny Compiler）`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -326,6 +340,7 @@
 - **原始资源**：https://www.youtube.com/watch?v=HxaD_trXwRE
 - **建议 skill 名称**：`programming-language-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`Go 词法扫描`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -347,8 +362,9 @@
 
 - **原始语言/技术栈**：Haskell
 - **原始资源**：https://g-ford.github.io/cradle/
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-compiler-haskell`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`让我们构建一个编译器`、`Haskell` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -371,6 +387,7 @@
 - **原始资源**：http://dev.stephendiehl.com/fun/
 - **建议 skill 名称**：`programming-language-write-you-a-haskell`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`Write You a Haskell`、`Haskell` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -391,8 +408,9 @@
 
 - **原始语言/技术栈**：Haskell
 - **原始资源**：https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours
-- **建议 skill 名称**：`programming-language-48-scheme`
+- **建议 skill 名称**：`programming-language-scheme`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`48 小时写一个 Scheme`、`Haskell` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -413,8 +431,9 @@
 
 - **原始语言/技术栈**：Haskell
 - **原始资源**：https://www.wespiser.com/writings/wyas/home.html
-- **建议 skill 名称**：`programming-language-write-you-a-scheme`
+- **建议 skill 名称**：`programming-language-scheme-haskell`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`Write You A Scheme`、`Haskell` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -437,6 +456,7 @@
 - **原始资源**：http://www.craftinginterpreters.com/
 - **建议 skill 名称**：`programming-language-crafting-interpreters`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`《Crafting Interpreters》：制作编程语言的手册`、`Java` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -459,6 +479,7 @@
 - **原始资源**：http://jakubdziworski.github.io/categories.html#Enkel-ref
 - **建议 skill 名称**：`programming-language-jvm`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`创建 JVM 语言`、`Java` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -479,8 +500,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://github.com/jamiebuilds/the-super-tiny-compiler
-- **建议 skill 名称**：`programming-language-the-super-tiny-compiler`
+- **建议 skill 名称**：`programming-language-compiler-javascript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`超小编译器（The Super Tiny Compiler）`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -501,8 +523,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://github.com/keyanzhang/the-super-tiny-interpreter
-- **建议 skill 名称**：`programming-language-the-super-tiny-interpreter`
+- **建议 skill 名称**：`programming-language-interpreter-javascript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`超小解释器（The Super Tiny Interpreter）`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -523,8 +546,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://maryrosecook.com/blog/post/little-lisp-interpreter
-- **建议 skill 名称**：`programming-language-lisp`
+- **建议 skill 名称**：`programming-language-lisp-interpreter`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`小型 Lisp 解释器`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -547,6 +571,7 @@
 - **原始资源**：http://lisperator.net/pltut/
 - **建议 skill 名称**：`programming-language-javascript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`如何用 JavaScript 实现一门编程语言`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -567,8 +592,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://idiocy.org/lets-go-write-a-lisp/part-1.html
-- **建议 skill 名称**：`programming-language-lisp`
+- **建议 skill 名称**：`programming-language-lisp-javascript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`让我们写一个 Lisp`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -589,8 +615,9 @@
 
 - **原始语言/技术栈**：OCaml
 - **原始资源**：https://norasandler.com/2017/11/29/Write-a-Compiler.html
-- **建议 skill 名称**：`programming-language-c`
+- **建议 skill 名称**：`programming-language-compiler-ocaml`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`编写一个 C 编译器`、`OCaml` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -611,8 +638,9 @@
 
 - **原始语言/技术栈**：OCaml
 - **原始资源**：https://bernsteinbear.com/blog/lisp/
-- **建议 skill 名称**：`programming-language-lisp`
+- **建议 skill 名称**：`programming-language-lisp-ocaml`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`写 Lisp 系列`、`OCaml` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -633,8 +661,9 @@
 
 - **原始语言/技术栈**：Pascal
 - **原始资源**：https://compilers.iecc.com/crenshaw/
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-compiler-pascal`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`让我们构建一个编译器`、`Pascal` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -655,8 +684,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://aosabook.org/en/500L/a-python-interpreter-written-in-python.html
-- **建议 skill 名称**：`programming-language-python-python`
+- **建议 skill 名称**：`programming-language-interpreter-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`用 Python 写的 Python 解释器`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -677,8 +707,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://khamidou.com/compilers/lisp.py/
-- **建议 skill 名称**：`programming-language-lisp-py-lisp`
+- **建议 skill 名称**：`programming-language-lisp-interpreter-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`lisp.py：做你自己的 Lisp 解释器`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -699,8 +730,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://norvig.com/lispy.html
-- **建议 skill 名称**：`programming-language-python-lisp`
+- **建议 skill 名称**：`programming-language-lisp-interpreter-norvig-lispy`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`如何用 Python 写 Lisp 解释器`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -721,8 +753,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://ruslanspivak.com/lsbasi-part1/
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-interpreter-ruslanspivak-lsbasi-part1`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`让我们构建一个简单解释器`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -743,8 +776,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://www.youtube.com/watch?v=dj9CBS3ikGA&list=PLZQftyCk7_SdoVexSmwy_tBgs7P0b97yD&index=1
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-youtube`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`制作你自己的简单解释型编程语言`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -766,8 +800,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://build-your-own.org/compiler/
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-compiler-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`从源代码到机器码：从零构建你自己的编译器`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -790,6 +825,7 @@
 - **原始资源**：https://beautifulracket.com/
 - **建议 skill 名称**：`programming-language-beautiful-racket-racket`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`Beautiful Racket：如何用 Racket 制作自己的编程语言`、`Racket` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -810,8 +846,9 @@
 
 - **原始语言/技术栈**：Ruby
 - **原始资源**：https://www.destroyallsoftware.com/screencasts/catalog/a-compiler-from-scratch
-- **建议 skill 名称**：`programming-language`
+- **建议 skill 名称**：`programming-language-compiler-ruby`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`从零构建编译器`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -832,8 +869,9 @@
 
 - **原始语言/技术栈**：Ruby
 - **原始资源**：https://blog.beezwax.net/2017/07/07/writing-a-markdown-compiler/
-- **建议 skill 名称**：`programming-language-ruby-markdown`
+- **建议 skill 名称**：`programming-language-compiler-beezwax-2017-07-07`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`用 Ruby 从零写 Markdown 编译器`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -856,6 +894,7 @@
 - **原始资源**：https://bodil.lol/parser-combinators/
 - **建议 skill 名称**：`programming-language-rust`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`用 Rust 学习解析器组合子`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -876,8 +915,9 @@
 
 - **原始语言/技术栈**：Swift
 - **原始资源**：https://www.uraimo.com/2017/02/05/building-a-lisp-from-scratch-with-swift/
-- **建议 skill 名称**：`programming-language-swift-lisp`
+- **建议 skill 名称**：`programming-language-lisp-swift`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`用 Swift 从零构建 Lisp`、`Swift` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -898,8 +938,9 @@
 
 - **原始语言/技术栈**：TypeScript
 - **原始资源**：https://blog.scottlogic.com/2019/05/17/webassembly-compiler.html
-- **建议 skill 名称**：`programming-language-webassembly`
+- **建议 skill 名称**：`programming-language-compiler-typescript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`构建你自己的 WebAssembly 编译器`、`TypeScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

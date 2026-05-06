@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work
-- **建议 skill 名称**：`3d-renderer-3d`
+- **建议 skill 名称**：`3d-renderer-ray-tracing`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`光线追踪导论：一种创建 3D 图像的简单方法`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -38,6 +39,7 @@
 - **原始资源**：https://github.com/ssloy/tinyrenderer/wiki
 - **建议 skill 名称**：`3d-renderer-opengl-500`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`OpenGL 如何工作：500 行代码实现软件渲染`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -60,6 +62,7 @@
 - **原始资源**：http://lodev.org/cgtutor/raycasting.html
 - **建议 skill 名称**：`3d-renderer-3d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`《德军总部 3D》射线投射引擎`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：http://www.pbr-book.org/
-- **建议 skill 名称**：`3d-renderer`
+- **建议 skill 名称**：`3d-renderer-rendering`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`基于物理的渲染：从理论到实现`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -102,8 +106,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：https://raytracing.github.io/books/RayTracingInOneWeekend.html
-- **建议 skill 名称**：`3d-renderer-ray-tracing-in-one-weekend`
+- **建议 skill 名称**：`3d-renderer-ray-tracing-cpp`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`周末搞定光线追踪（Ray Tracing in One Weekend）`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -124,8 +129,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：https://www.scratchapixel.com/lessons/3d-basic-rendering/rasterization-practical-implementation/overview-rasterization-algorithm
-- **建议 skill 名称**：`3d-renderer`
+- **建议 skill 名称**：`3d-renderer-rasterization`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`光栅化：一次实用实现`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -146,8 +152,9 @@
 
 - **原始语言/技术栈**：C# / TypeScript / JavaScript
 - **原始资源**：https://www.davrous.com/2013/06/13/tutorial-series-learning-how-to-write-a-3d-soft-engine-from-scratch-in-c-typescript-or-javascript/
-- **建议 skill 名称**：`3d-renderer-c-typescript-javascript-3d`
+- **建议 skill 名称**：`3d-renderer-csharp-typescript-javascript-3d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`从零学习用 C#、TypeScript 或 JavaScript 编写 3D 软渲染引擎`、`C# / TypeScript / JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -168,8 +175,9 @@
 
 - **原始语言/技术栈**：Java / JavaScript
 - **原始资源**：https://avik-das.github.io/build-your-own-raytracer/
-- **建议 skill 名称**：`3d-renderer-3d`
+- **建议 skill 名称**：`3d-renderer-3d-java-javascript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`构建你自己的 3D 渲染器`、`Java / JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -192,6 +200,7 @@
 - **原始资源**：http://blog.rogach.org/2015/08/how-to-create-your-own-simple-3d-render.html
 - **建议 skill 名称**：`3d-renderer-java-3d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`如何用纯 Java 创建一个简单的 3D 渲染引擎`、`Java` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -212,8 +221,9 @@
 
 - **原始语言/技术栈**：JavaScript / Pseudocode
 - **原始资源**：http://www.gabrielgambetta.com/computer-graphics-from-scratch/introduction.html
-- **建议 skill 名称**：`3d-renderer`
+- **建议 skill 名称**：`3d-renderer-computer-graphics`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`从零开始的计算机图形学`、`JavaScript / Pseudocode` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -234,8 +244,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://aosabook.org/en/500L/a-3d-modeller.html
-- **建议 skill 名称**：`3d-renderer-3d`
+- **建议 skill 名称**：`3d-renderer-3d-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `3D 渲染器` 相关项目，尤其提到“3d-renderer”、`一个 3D 建模器`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

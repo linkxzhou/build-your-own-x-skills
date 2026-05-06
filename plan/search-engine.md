@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：CSS
 - **原始资源**：https://stories.algolia.com/a-search-engine-in-css-b5ec4e902e97
-- **建议 skill 名称**：`search-engine-css`
+- **建议 skill 名称**：`search-engine-search`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `搜索引擎` 相关项目，尤其提到“search-engine”、`用 CSS 做一个搜索引擎`、`CSS` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://www.dr-josiah.com/2010/07/building-search-engine-using-redis-and.html
-- **建议 skill 名称**：`search-engine-redis-redis-py`
+- **建议 skill 名称**：`search-engine-redis-search`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `搜索引擎` 相关项目，尤其提到“search-engine”、`用 Redis 与 redis-py 构建搜索引擎`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://boyter.org/2010/08/build-vector-space-search-engine-python/
-- **建议 skill 名称**：`search-engine-python`
+- **建议 skill 名称**：`search-engine-search-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `搜索引擎` 相关项目，尤其提到“search-engine”、`用 Python 构建向量空间索引搜索引擎`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://www.youtube.com/watch?v=cY7pE7vX6MU
-- **建议 skill 名称**：`search-engine-python`
+- **建议 skill 名称**：`search-engine-search-youtube`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `搜索引擎` 相关项目，尤其提到“search-engine”、`构建基于 Python 的搜索引擎`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -103,8 +107,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://medium.com/filament-ai/making-text-search-learn-from-feedback-4fe210fd87b0
-- **建议 skill 名称**：`search-engine`
+- **建议 skill 名称**：`search-engine-search-text-editor`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `搜索引擎` 相关项目，尤其提到“search-engine”、`让文本搜索从反馈中学习`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -127,6 +132,7 @@
 - **原始资源**：https://stevenloria.com/tf-idf/
 - **建议 skill 名称**：`search-engine-tf-idf`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `搜索引擎` 相关项目，尤其提到“search-engine”、`使用 TF-IDF 从文本中找出重要词`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://cstack.github.io/db_tutorial/
-- **建议 skill 名称**：`database`
+- **建议 skill 名称**：`database-database`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`来构建一个简单数据库`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -38,6 +39,7 @@
 - **原始资源**：https://build-your-own.org/redis
 - **建议 skill 名称**：`database-redis`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`从零构建你自己的 Redis`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：C#
 - **原始资源**：https://www.codeproject.com/Articles/1029838/Build-Your-Own-Database
-- **建议 skill 名称**：`database`
+- **建议 skill 名称**：`database-database-csharp`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`构建你自己的数据库`、`C#` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：Clojure
 - **原始资源**：http://aosabook.org/en/500L/an-archaeology-inspired-database.html
-- **建议 skill 名称**：`database`
+- **建议 skill 名称**：`database-database-clojure`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`考古学启发的数据库`、`Clojure` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -102,8 +106,9 @@
 
 - **原始语言/技术栈**：Crystal
 - **原始资源**：https://medium.com/@marceloboeira/why-you-should-build-your-own-nosql-database-9bbba42039f5
-- **建议 skill 名称**：`database-nosql`
+- **建议 skill 名称**：`database-nosql-sql`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`为什么你应该构建自己的 NoSQL 数据库`、`Crystal` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -124,8 +129,9 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://build-your-own.org/database/
-- **建议 skill 名称**：`database-b-tree-sql-3000`
+- **建议 skill 名称**：`database-sql-btree`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`从零构建数据库：从 B+Tree 到 SQL，3000 行实现`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -148,6 +154,7 @@
 - **原始资源**：https://trialofcode.org/database/
 - **建议 skill 名称**：`database-45-tdd`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`45 步写数据库：一系列以 TDD 为主的小型编码谜题`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -168,8 +175,9 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://www.build-redis-from-scratch.dev/
-- **建议 skill 名称**：`database-redis`
+- **建议 skill 名称**：`database-redis-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`从零构建你自己的 Redis`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -192,6 +200,7 @@
 - **原始资源**：http://aosabook.org/en/500L/dagoba-an-in-memory-graph-database.html
 - **建议 skill 名称**：`database-dagoba`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`Dagoba：内存图数据库`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -214,6 +223,7 @@
 - **原始资源**：http://aosabook.org/en/500L/dbdb-dog-bed-database.html
 - **建议 skill 名称**：`database-dbdb`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`DBDB：狗窝数据库`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -234,8 +244,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://charlesleifer.com/blog/building-a-simple-redis-server-with-python/
-- **建议 skill 名称**：`database-python-redis`
+- **建议 skill 名称**：`database-redis-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`用 Python 写一个迷你 Redis`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -258,6 +269,7 @@
 - **原始资源**：https://dineshgowda.com/posts/build-your-own-persistent-kv-store/
 - **建议 skill 名称**：`database-ruby-kv`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`用 Ruby 构建快速、持久化的 KV 存储`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -278,8 +290,9 @@
 
 - **原始语言/技术栈**：Rust
 - **原始资源**：https://tokio.rs/tokio/tutorial/setup
-- **建议 skill 名称**：`database-redis`
+- **建议 skill 名称**：`database-redis-rust`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `数据库` 相关项目，尤其提到“database”、`构建你自己的 Redis 客户端与服务端`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

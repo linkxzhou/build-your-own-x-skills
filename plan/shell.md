@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://brennan.io/2015/01/16/write-a-shell-in-c/
-- **建议 skill 名称**：`shell-c-shell`
+- **建议 skill 名称**：`shell-shell`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Shell` 相关项目，尤其提到“shell”、`教程：用 C 写一个 Shell`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://github.com/kamalmarhubi/shell-workshop
-- **建议 skill 名称**：`shell-shell`
+- **建议 skill 名称**：`shell-shell-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Shell` 相关项目，尤其提到“shell”、`让我们构建一个 Shell！`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://indradhanush.github.io/blog/writing-a-unix-shell-part-1/
-- **建议 skill 名称**：`shell-unix-shell`
+- **建议 skill 名称**：`shell-shell-indradhanush-writing-a-unix`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Shell` 相关项目，尤其提到“shell”、`编写 UNIX Shell`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://github.com/tokenrove/build-your-own-shell
-- **建议 skill 名称**：`shell-shell`
+- **建议 skill 名称**：`shell-shell-tokenrove-shell`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Shell` 相关项目，尤其提到“shell”、`构建你自己的 Shell`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -102,8 +106,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://danishpraka.sh/posts/write-a-shell/
-- **建议 skill 名称**：`shell-c-shell`
+- **建议 skill 名称**：`shell-shell-danishpraka-sh-write-a`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Shell` 相关项目，尤其提到“shell”、`用 C 写一个 Shell`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -124,8 +129,9 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://sj14.gitlab.io/post/2018-07-01-go-unix-shell/
-- **建议 skill 名称**：`shell-go-shell`
+- **建议 skill 名称**：`shell-shell-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Shell` 相关项目，尤其提到“shell”、`用 Go 写一个简单 Shell`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -146,8 +152,9 @@
 
 - **原始语言/技术栈**：Rust
 - **原始资源**：https://www.joshmcguigan.com/blog/build-your-own-shell-rust/
-- **建议 skill 名称**：`shell-rust-shell`
+- **建议 skill 名称**：`shell-shell-rust`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Shell` 相关项目，尤其提到“shell”、`使用 Rust 构建你自己的 Shell`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

@@ -16,6 +16,7 @@
 - **原始资源**：https://medium.com/devcenter/developing-a-license-plate-recognition-system-with-machine-learning-in-python-787833569ccd
 - **建议 skill 名称**：`visual-recognition-system-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `视觉识别系统` 相关项目，尤其提到“visual-recognition-system”、`用 Python 机器学习开发车牌识别系统`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -38,6 +39,7 @@
 - **原始资源**：https://hackernoon.com/building-a-facial-recognition-pipeline-with-deep-learning-in-tensorflow-66e7645015b8
 - **建议 skill 名称**：`visual-recognition-system-tensorflow`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `视觉识别系统` 相关项目，尤其提到“visual-recognition-system”、`用 Tensorflow 深度学习构建人脸识别流水线`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

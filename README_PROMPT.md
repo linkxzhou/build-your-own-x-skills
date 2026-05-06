@@ -2,6 +2,64 @@
 
 ## build-your-own-x skills 使用模板
 
+当前仓库已保留 `351` 个 build-your-own-x 相关 skill，并为每个 skill 生成了一个 example。示例入口见 [`examples/README.md`](./examples/README.md)。
+
+### 通用学习 Prompt
+
+```text
+[使用Skills: <skill-name>]
+我想从零实现「<项目名称>」。
+请先检查当前目录是否为空，然后给我一个 4-8 个里程碑的学习计划。
+从第一个最小可运行版本开始，只实现第一阶段，并提供验证命令。
+```
+
+### 通用调试 Prompt
+
+```text
+[使用Skills: <skill-name>]
+我已经做到一半，但测试失败了。
+请先阅读项目文件，定位当前处于哪个里程碑，再做最小修复并解释原因。
+```
+
+### 通用教程转换 Prompt
+
+```text
+[使用Skills: <skill-name>]
+请基于原始教程资源，把它整理成 Claude Code 可执行的学习任务清单。
+每个任务都要包含交付物、关键概念、待修改文件和验收命令。
+```
+
+### 具体示例
+
+```text
+[使用Skills: database-redis]
+我想用 C++ 从零实现「从零构建你自己的 Redis」。
+请先检查当前目录是否为空，然后给我一个 4-8 个里程碑的学习计划。
+从第一个最小可运行版本开始，只实现第一阶段，并提供验证命令。
+```
+
+```text
+[使用Skills: programming-language-lisp]
+我想实现一个 Lisp 解释器。请用测试驱动方式带我完成第一个可运行版本，不要一次性生成完整答案。
+```
+
+```text
+[使用Skills: web-server-webserver]
+我想从零实现一个 Web Server。请先规划 HTTP 请求解析、响应生成、连接处理和测试方式。
+```
+
+## examples 生成规则
+
+- examples 按大类型分组，如 `examples/database/`、`examples/programming-language/`。
+- 每个 skill 对应一个 `examples/<category>/<skill-name>/README.md`。
+- 每个 example 包含推荐 Prompt、预期交互、学习目标、原始资源和变体测试 Prompt。
+
+---
+
+# Prompt 模板与测试提示词
+
+## build-your-own-x skills 使用模板
+
 当前仓库已保留 `263` 个 build-your-own-x 相关 skill，并为每个 skill 生成了一个 example。示例入口见 [`examples/README.md`](./examples/README.md)，转换计划见 [`plan/README.md`](./plan/README.md)。
 
 ### 通用学习 Prompt

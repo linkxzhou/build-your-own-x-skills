@@ -16,6 +16,7 @@
 - **原始资源**：http://nand2tetris.org/
 - **建议 skill 名称**：`misc-nand`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`从 NAND 到俄罗斯方块：从第一性原理构建现代计算机`、`(any)` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：(any)
 - **原始资源**：https://github.com/inFaaa/build-your-own-x-vibe-coding
-- **建议 skill 名称**：`misc-any-x-vibe-coding-vibe-coding-byo`
+- **建议 skill 名称**：`misc-any-x-vibe`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`**(any)**: _build-your-own-x-vibe-coding：面向“vibe coding”改编的 BYOX 风格教程_`、`(any)` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：Alloy
 - **原始资源**：http://aosabook.org/en/500L/the-same-origin-policy.html
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-aosabook-en-500l-same`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`同源策略`、`Alloy` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -82,6 +85,7 @@
 - **原始资源**：http://dranger.com/ffmpeg/ffmpeg.html
 - **建议 skill 名称**：`misc-1000`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`如何用不到 1000 行代码写一个视频播放器`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -104,6 +108,7 @@
 - **原始资源**：https://github.com/jamesroutley/write-a-hash-table
 - **建议 skill 名称**：`misc-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`学习如何用 C 写哈希表`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -124,8 +129,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://www.uninformativ.de/blog/postings/2018-02-24/0/POSTING-en.html
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-uninformativ-de-postings-2018`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`终端模拟器的基础知识`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -146,8 +152,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://brennan.io/2016/11/14/kernel-dev-ep3/
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-brennan-2016-11-14`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`编写一个系统调用`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -170,6 +177,7 @@
 - **原始资源**：https://codepr.github.io/posts/sol-mqtt-broker
 - **建议 skill 名称**：`misc-sol-mqtt-broker`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`Sol：从零实现 MQTT Broker`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -192,6 +200,7 @@
 - **原始资源**：https://github.com/relativty/Relativ
 - **建议 skill 名称**：`misc-200-vr`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 200 美元构建你自己的 VR 头显`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -214,6 +223,7 @@
 - **原始资源**：https://seasonofcode.com/posts/how-x-window-managers-work-and-how-to-write-one-part-i.html
 - **建议 skill 名称**：`misc-x-window-manager`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`X Window Manager 如何工作，以及如何编写一个`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -236,6 +246,7 @@
 - **原始资源**：https://blog.tartanllama.xyz/writing-a-linux-debugger-setup/
 - **建议 skill 名称**：`misc-linux`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`编写 Linux 调试器`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -258,6 +269,7 @@
 - **原始资源**：http://www.lofibucket.com/articles/64k_intro.html
 - **建议 skill 名称**：`misc-64k-intro`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`一个 64k intro 是如何制作的`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -278,8 +290,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：https://www.youtube.com/playlist?list=PLlrATfBNZ98dC-V-N3m0Go4deliWHPFwT
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-youtube`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`自己做一个游戏引擎`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -300,8 +313,9 @@
 
 - **原始语言/技术栈**：C#
 - **原始资源**：https://16bpp.net/tutorials/csharp-networking
-- **建议 skill 名称**：`misc-c-tcp-tcp-udp-pong`
+- **建议 skill 名称**：`misc-csharp-tcp-tcp-udp-pong`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`C# 网络编程：TCP 聊天服务端、TCP 游戏、UDP Pong 等`、`C#` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -322,8 +336,9 @@
 
 - **原始语言/技术栈**：C#
 - **原始资源**：https://www.seanjoflynn.com/research/skeletal-animation.html
-- **建议 skill 名称**：`misc-c-glsl-3d`
+- **建议 skill 名称**：`misc-csharp-glsl-3d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`在 C# 与 GLSL 中从零加载并渲染 3D 骨骼动画`、`C#` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -344,8 +359,9 @@
 
 - **原始语言/技术栈**：Clojure
 - **原始资源**：https://bernhardwenzel.com/articles/clojure-spellchecker/
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-bernhardwenzel-clojure-spellchecker`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`构建一个拼写检查器`、`Clojure` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -368,6 +384,7 @@
 - **原始资源**：https://ishuah.com/2021/03/10/build-a-terminal-emulator-in-100-lines-of-go/
 - **建议 skill 名称**：`misc-100-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`100 行 Go 构建简单终端模拟器`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -388,8 +405,9 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://kasvith.me/posts/lets-create-a-simple-lb-go/
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-load-balancer`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`让我们创建一个简单负载均衡器`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -410,8 +428,9 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://github.com/kevmo314/codec-from-scratch
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-kevmo314-codec`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`从零进行视频编码`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -434,6 +453,7 @@
 - **原始资源**：https://www.youtube.com/playlist?list=PLgCYzUzKIBE9HUJU-upNvl3TRVAo9W47y
 - **建议 skill 名称**：`misc-android-reddit`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`如何构建一个 Android Reddit 应用`、`Java` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -457,6 +477,7 @@
 - **原始资源**：https://github.com/ronami/minipack
 - **建议 skill 名称**：`misc-minipack`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`构建你自己的模块打包器：Minipack`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -479,6 +500,7 @@
 - **原始资源**：https://levelup.gitconnected.com/understand-javascript-promises-by-building-a-promise-from-scratch-84c0fd855720
 - **建议 skill 名称**：`misc-promise-javascript-promise`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`通过自己实现 Promise 来理解 JavaScript Promise`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -501,6 +523,7 @@
 - **原始资源**：https://www.mauriciopoppe.com/notes/computer-science/computation/promises/
 - **建议 skill 名称**：`misc-promise-tdd`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`从零实现 Promise（TDD 风格）`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -523,6 +546,7 @@
 - **原始资源**：https://blog.usejournal.com/implement-your-own-call-apply-and-bind-method-in-javascript-42cc85dba1b
 - **建议 skill 名称**：`misc-javascript-call-apply-bind`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`自己实现 JavaScript 的 call() / apply() / bind()`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -545,6 +569,7 @@
 - **原始资源**：https://github.com/trekhleb/javascript-algorithms
 - **建议 skill 名称**：`misc-javascript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`JavaScript 算法与数据结构`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -565,8 +590,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://pusher.com/tutorials/ride-hailing-react-native
-- **建议 skill 名称**：`misc-react-native`
+- **建议 skill 名称**：`misc-react`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 React Native 构建网约车应用`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -589,6 +615,7 @@
 - **原始资源**：https://levelup.gitconnected.com/building-your-own-adblocker-in-literally-10-minutes-1eec093b04cd
 - **建议 skill 名称**：`misc-10-adblocker`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`（真的）10 分钟写出你自己的 AdBlocker`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -609,8 +636,9 @@
 
 - **原始语言/技术栈**：Kotlin
 - **原始资源**：https://github.com/kezhenxu94/cache-lite
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-cache`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`构建你自己的缓存`、`Kotlin` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -633,6 +661,7 @@
 - **原始资源**：https://github.com/leandromoreira/cdn-up-and-running
 - **建议 skill 名称**：`misc-cdn-cdn`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`从零构建 CDN 来学习 CDN`、`Lua` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -655,6 +684,7 @@
 - **原始资源**：https://xmonader.github.io/nimdays/day12_resp.html
 - **建议 skill 名称**：`misc-redis`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`编写 Redis 协议解析器`、`Nim` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -675,8 +705,9 @@
 
 - **原始语言/技术栈**：Nim
 - **原始资源**：https://xmonader.github.io/nimdays/day11_buildsystem.html
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-xmonader-nimdays-day11-buildsystem`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`编写构建系统`、`Nim` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -699,6 +730,7 @@
 - **原始资源**：https://xmonader.github.io/nimdays/day08_minitest.html
 - **建议 skill 名称**：`misc-minitest`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`编写 MiniTest 测试框架`、`Nim` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -721,6 +753,7 @@
 - **原始资源**：https://xmonader.github.io/nimdays/day01_dmidecode.html
 - **建议 skill 名称**：`misc-dmidecode`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`编写 DMIDecode 解析器`、`Nim` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -743,6 +776,7 @@
 - **原始资源**：https://xmonader.github.io/nimdays/day05_iniparser.html
 - **建议 skill 名称**：`misc-ini`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`编写 INI 解析器`、`Nim` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -763,8 +797,9 @@
 
 - **原始语言/技术栈**：Nim
 - **原始资源**：https://xmonader.github.io/nimdays/day04_asynclinkschecker.html
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-xmonader-nimdays-day04-asynclinkschecker`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`编写链接检查器`、`Nim` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -787,6 +822,7 @@
 - **原始资源**：https://xmonader.github.io/nimdays/day07_shorturl.html
 - **建议 skill 名称**：`misc-url`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`编写 URL 短链接服务`、`Nim` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -807,8 +843,9 @@
 
 - **原始语言/技术栈**：Node.js
 - **原始资源**：https://www.webdevdrops.com/en/build-static-site-generator-nodejs-8969ebe34b22/
-- **建议 skill 名称**：`misc-node-js-40`
+- **建议 skill 名称**：`misc-nodejs-40`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 Node.js 用 40 行写静态站点生成器`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -829,8 +866,9 @@
 
 - **原始语言/技术栈**：Node.js
 - **原始资源**：https://codeburst.io/building-a-simple-single-sign-on-sso-server-and-solution-from-scratch-in-node-js-ea6ee5fdf340
-- **建议 skill 名称**：`misc-node-js-sso`
+- **建议 skill 名称**：`misc-nodejs-sso`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 Node.js 从零构建一个简单 SSO 服务与方案`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -853,6 +891,7 @@
 - **原始资源**：https://medium.freecodecamp.org/how-to-create-a-real-world-node-cli-app-with-node-391b727bbed3
 - **建议 skill 名称**：`misc-node-node-cli`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`如何用 Node 创建一个真实世界的 Node CLI 应用`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -873,8 +912,9 @@
 
 - **原始语言/技术栈**：Node.js
 - **原始资源**：https://engineerhead.github.io/dns-server/
-- **建议 skill 名称**：`misc-node-js-dns`
+- **建议 skill 名称**：`misc-nodejs-dns`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 Node.js 构建 DNS 服务器`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -897,6 +937,7 @@
 - **原始资源**：https://chaitya62.github.io/2018/04/29/Writing-your-own-MVC-from-Scratch-in-PHP.html
 - **建议 skill 名称**：`misc-php-php-mvc`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`**PHP**: _用 PHP 从零编写 MVC_`、`General` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -917,8 +958,9 @@
 
 - **原始语言/技术栈**：PHP
 - **原始资源**：https://ilovephp.jondh.me.uk/en/tutorial/make-your-own-blog
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-ilovephp-jondh-me-uk`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`自己做一个博客`、`PHP` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -941,6 +983,7 @@
 - **原始资源**：https://kevinsmith.io/modern-php-without-a-framework
 - **建议 skill 名称**：`misc-php`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`没有框架的现代 PHP`、`PHP` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -961,8 +1004,9 @@
 
 - **原始语言/技术栈**：PHP
 - **原始资源**：https://boyter.org/2013/01/code-for-a-search-engine-in-php-part-1/
-- **建议 skill 名称**：`misc-php-web`
+- **建议 skill 名称**：`misc-search`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 PHP 编写 Web 搜索引擎`、`PHP` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -983,8 +1027,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://www.youtube.com/watch?v=o64FV-ez6Gw
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-youtube-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`构建深度学习库`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1008,6 +1053,7 @@
 - **原始资源**：https://www.pyimagesearch.com/2014/09/01/build-kick-ass-mobile-document-scanner-just-5-minutes/
 - **建议 skill 名称**：`misc-5`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`5 分钟构建一个超棒的移动文档扫描器`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1028,8 +1074,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://aosabook.org/en/500L/a-continuous-integration-system.html
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-aosabook-en-500l-a`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`持续集成系统`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1052,6 +1099,7 @@
 - **原始资源**：https://www.datacamp.com/community/tutorials/recommender-systems-python
 - **建议 skill 名称**：`misc-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`Python 推荐系统：入门教程`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1074,6 +1122,7 @@
 - **原始资源**：https://medium.com/@kopilov.vlad/detect-sms-spam-in-kaggle-with-scikit-learn-5f6afa7a3ca2
 - **建议 skill 名称**：`misc-scikit-learn`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 Scikit-learn 写短信垃圾检测器`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1094,8 +1143,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://blog.untrod.com/2016/06/simple-similar-products-recommendation-engine-in-python.html
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-untrod-2016-06-simple`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`一个简单的基于内容的推荐引擎`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1118,6 +1168,7 @@
 - **原始资源**：https://www.datacamp.com/community/tutorials/lstm-python-stock-market
 - **建议 skill 名称**：`misc-lstm`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 LSTM 预测股市`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1140,6 +1191,7 @@
 - **原始资源**：https://blog.paperspace.com/implementing-gans-in-tensorflow/
 - **建议 skill 名称**：`misc-tensorflow-gan`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 Tensorflow 构建一个简单 GAN`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1160,8 +1212,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://lethalbrains.com/learn-ml-algorithms-by-coding-decision-trees-439ac503c9a4
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-lethalbrains-learn-ml-algorithms`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`通过编码学习机器学习算法：决策树`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1184,6 +1237,7 @@
 - **原始资源**：https://github.com/cheery/json-algorithm
 - **建议 skill 名称**：`misc-json`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`JSON 解码算法`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1204,8 +1258,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://joshburns-xyz.vercel.app/posts/build-your-own-git-plugin
-- **建议 skill 名称**：`misc-python-git`
+- **建议 skill 名称**：`misc-git`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 Python 构建你自己的 Git 插件`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1226,8 +1281,9 @@
 
 - **原始语言/技术栈**：Ruby
 - **原始资源**：http://aosabook.org/en/500L/a-pedometer-in-the-real-world.html
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-aosabook-en-500l-a-ruby`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`现实世界里的计步器`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1250,6 +1306,7 @@
 - **原始资源**：https://iridakos.com/tutorials/2018/01/25/creating-a-gtk-todo-application-with-ruby
 - **建议 skill 名称**：`misc-ruby-linux`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 Ruby 创建 Linux 桌面应用`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1272,6 +1329,7 @@
 - **原始资源**：https://github.com/EmilHernvall/dnsguide/blob/master/README.md
 - **建议 skill 名称**：`misc-rust-dns`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`用 Rust 构建 DNS 服务器`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1292,8 +1350,9 @@
 
 - **原始语言/技术栈**：Rust
 - **原始资源**：https://nbaksalyar.github.io/2015/07/10/writing-chat-in-rust.html
-- **建议 skill 名称**：`misc`
+- **建议 skill 名称**：`misc-nbaksalyar-2015-07-10`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`从零编写可扩展聊天服务`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1316,6 +1375,7 @@
 - **原始资源**：https://www.chinedufn.com/3d-webgl-basic-water-tutorial/
 - **建议 skill 名称**：`misc-webgl-rust`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`WebGL + Rust：基础水面教程`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1338,6 +1398,7 @@
 - **原始资源**：https://github.com/g-plane/tiny-package-manager
 - **建议 skill 名称**：`misc-tiny-package-manager-npm-yarn`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`Tiny Package Manager：学习 npm / Yarn 的工作方式`、`TypeScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -1360,6 +1421,7 @@
 - **原始资源**：https://github.com/ManimCommunity/Manim
 - **建议 skill 名称**：`misc-manim`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `未分类` 相关项目，尤其提到“misc”、`生成 manim 视频`、`General` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

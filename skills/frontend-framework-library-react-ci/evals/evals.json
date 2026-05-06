@@ -1,0 +1,23 @@
+{
+  "skill_name": "frontend-framework-library-react-ci",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想用 JavaScript 从零实现「通过构建轻量 React DOM 来理解 React Reconciler 如何工作」，请规划里程碑并只完成第一阶段。",
+      "expected_output": "Staged plan plus first milestone guidance.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我在实现「通过构建轻量 React DOM 来理解 React Reconciler 如何工作」时测试失败，请阅读项目并做最小修复。",
+      "expected_output": "Diagnosis, minimal fix, and verification.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "请基于 https://hackernoon.com/learn-you-some-custom-react-renderers-aed7164a4199 转换成 Claude Code 学习任务清单。",
+      "expected_output": "Milestone task list with deliverables and checks.",
+      "files": []
+    }
+  ]
+}

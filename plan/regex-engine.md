@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html
-- **建议 skill 名称**：`regex-engine`
+- **建议 skill 名称**：`regex-engine-regex`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `正则表达式引擎` 相关项目，尤其提到“regex-engine”、`正则表达式匹配器`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://swtch.com/~rsc/regexp/regexp1.html
-- **建议 skill 名称**：`regex-engine`
+- **建议 skill 名称**：`regex-engine-regex-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `正则表达式引擎` 相关项目，尤其提到“regex-engine”、`正则匹配可以既简单又快速`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://rhaeguard.github.io/posts/regex
-- **建议 skill 名称**：`regex-engine`
+- **建议 skill 名称**：`regex-engine-regex-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `正则表达式引擎` 相关项目，尤其提到“regex-engine”、`如何从零构建正则引擎`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://nickdrane.com/build-your-own-regex/
-- **建议 skill 名称**：`regex-engine-40`
+- **建议 skill 名称**：`regex-engine-regex-javascript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `正则表达式引擎` 相关项目，尤其提到“regex-engine”、`用不到 40 行代码构建正则引擎`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -102,8 +106,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：http://dpk.io/dregs/toydregs
-- **建议 skill 名称**：`regex-engine-javascript`
+- **建议 skill 名称**：`regex-engine-regex-dpk-dregs-toydregs`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `正则表达式引擎` 相关项目，尤其提到“regex-engine”、`用函数式 JavaScript 通过导数法实现正则`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -124,8 +129,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://deniskyashif.com/2019/02/17/implementing-a-regular-expression-engine/
-- **建议 skill 名称**：`regex-engine`
+- **建议 skill 名称**：`regex-engine-regex-deniskyashif-2019-02-17`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `正则表达式引擎` 相关项目，尤其提到“regex-engine”、`实现一个正则表达式引擎`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -146,8 +152,9 @@
 
 - **原始语言/技术栈**：Perl
 - **原始资源**：https://perl.plover.com/Regex/article.html
-- **建议 skill 名称**：`regex-engine`
+- **建议 skill 名称**：`regex-engine-regex-perl`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `正则表达式引擎` 相关项目，尤其提到“regex-engine”、`正则是如何工作的`、`Perl` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -168,8 +175,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://build-your-own.org/b2a/r0_intro
-- **建议 skill 名称**：`regex-engine-nfa-dfa`
+- **建议 skill 名称**：`regex-engine-regex-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `正则表达式引擎` 相关项目，尤其提到“regex-engine”、`构建你自己的正则引擎：回溯、NFA、DFA`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -190,8 +198,9 @@
 
 - **原始语言/技术栈**：Scala
 - **原始资源**：https://rcoh.svbtle.com/no-magic-regular-expressions
-- **建议 skill 名称**：`regex-engine`
+- **建议 skill 名称**：`regex-engine-regex-scala`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `正则表达式引擎` 相关项目，尤其提到“regex-engine”、`没有魔法：正则表达式`、`Scala` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

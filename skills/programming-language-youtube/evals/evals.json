@@ -1,0 +1,23 @@
+{
+  "skill_name": "programming-language-youtube",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想用 Python 从零实现「制作你自己的简单解释型编程语言」，请规划里程碑并只完成第一阶段。",
+      "expected_output": "Staged plan plus first milestone guidance.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我在实现「制作你自己的简单解释型编程语言」时测试失败，请阅读项目并做最小修复。",
+      "expected_output": "Diagnosis, minimal fix, and verification.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "请基于 https://www.youtube.com/watch?v=dj9CBS3ikGA&list=PLZQftyCk7_SdoVexSmwy_tBgs7P0b97yD&index=1 转换成 Claude Code 学习任务清单。",
+      "expected_output": "Milestone task list with deliverables and checks.",
+      "files": []
+    }
+  ]
+}

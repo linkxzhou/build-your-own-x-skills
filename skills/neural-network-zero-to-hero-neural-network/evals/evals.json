@@ -1,0 +1,23 @@
+{
+  "skill_name": "neural-network-zero-to-hero-neural-network",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想用 Python 从零实现「神经网络：从零到英雄（Zero to Hero）」，请规划里程碑并只完成第一阶段。",
+      "expected_output": "Staged plan plus first milestone guidance.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我在实现「神经网络：从零到英雄（Zero to Hero）」时测试失败，请阅读项目并做最小修复。",
+      "expected_output": "Diagnosis, minimal fix, and verification.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "请基于 https://www.youtube.com/playlist?list=PLAqhIrjkxbuWI23v9cThsA9GvCAUhRvKZ 转换成 Claude Code 学习任务清单。",
+      "expected_output": "Milestone task list with deliverables and checks.",
+      "files": []
+    }
+  ]
+}

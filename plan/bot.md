@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：Haskell
 - **原始资源**：https://wiki.haskell.org/Roll_your_own_IRC_bot
-- **建议 skill 名称**：`bot-irc`
+- **建议 skill 名称**：`bot-bot`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`自己做一个 IRC 机器人`、`Haskell` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：Node.js
 - **原始资源**：https://tutorials.botsfloor.com/creating-a-simple-facebook-messenger-ai-bot-with-api-ai-in-node-js-50ae2fa5c80d
-- **建议 skill 名称**：`bot-node-js-api-ai-facebook-messenger-ai`
+- **建议 skill 名称**：`bot-bot-nodejs`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`用 Node.js 与 API.ai 创建一个简单的 Facebook Messenger AI 机器人`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：Node.js
 - **原始资源**：https://www.sohamkamani.com/blog/2016/09/21/making-a-telegram-bot/
-- **建议 skill 名称**：`bot-telegram`
+- **建议 skill 名称**：`bot-telegram-bot`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`如何制作一个响应式的 Telegram 机器人`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：Node.js
 - **原始资源**：https://discordjs.guide/
-- **建议 skill 名称**：`bot-discord`
+- **建议 skill 名称**：`bot-discord-bot`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`创建一个 Discord 机器人`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -102,8 +106,9 @@
 
 - **原始语言/技术栈**：Node.js
 - **原始资源**：https://blog.scottlogic.com/2017/05/22/gifbot-github-integration.html
-- **建议 skill 名称**：`bot-gifbot-github-app`
+- **建议 skill 名称**：`bot-git-bot`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`gifbot：构建一个 GitHub App`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -124,8 +129,9 @@
 
 - **原始语言/技术栈**：Node.js
 - **原始资源**：https://www.smashingmagazine.com/2017/08/ai-chatbot-web-speech-api-node-js/
-- **建议 skill 名称**：`bot-web-speech-api-node-js-ai`
+- **建议 skill 名称**：`bot-bot-smashingmagazine-2017-08-ai`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`用 Web Speech API 与 Node.js 构建一个简单的 AI 聊天机器人`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -146,8 +152,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://www.fullstackpython.com/blog/build-first-slack-bot-python.html
-- **建议 skill 名称**：`bot-python-slack`
+- **建议 skill 名称**：`bot-bot-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`如何用 Python 构建你的第一个 Slack 机器人`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -168,8 +175,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://medium.com/freehunch/how-to-build-a-slack-bot-with-python-using-slack-events-api-django-under-20-minute-code-included-269c3a9bf64e
-- **建议 skill 名称**：`bot-python-slack-events-api-django-20-slack`
+- **建议 skill 名称**：`bot-slack-bot`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`用 Python + Slack Events API + Django 在 20 分钟内构建 Slack 机器人`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -190,8 +198,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://pythonforengineers.com/build-a-reddit-bot-part-1/
-- **建议 skill 名称**：`bot-reddit`
+- **建议 skill 名称**：`bot-reddit-bot`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`构建一个 Reddit 机器人`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -212,8 +221,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://www.youtube.com/watch?v=krTUf7BpTc0
-- **建议 skill 名称**：`bot-reddit`
+- **建议 skill 名称**：`bot-reddit-bot-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`如何制作 Reddit 机器人`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -235,8 +245,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://www.freecodecamp.org/news/how-to-create-a-telegram-bot-using-python/
-- **建议 skill 名称**：`bot-python-telegram`
+- **建议 skill 名称**：`bot-telegram-bot-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`如何用 Python 创建 Telegram 机器人`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -257,8 +268,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://medium.freecodecamp.org/creating-a-twitter-bot-in-python-with-tweepy-ac524157a607
-- **建议 skill 名称**：`bot-tweepy-python-twitter`
+- **建议 skill 名称**：`bot-twitter-bot`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`使用 Tweepy 用 Python 创建 Twitter 机器人`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -279,8 +291,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://www.youtube.com/playlist?list=PLIFBTFgFpoJ9vmYYlfxRFV6U_XhG-4fpP
-- **建议 skill 名称**：`bot-python-praw-reddit`
+- **建议 skill 名称**：`bot-reddit-bot-youtube`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`用 Python 与 PRAW 创建 Reddit 机器人`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -302,8 +315,9 @@
 
 - **原始语言/技术栈**：R
 - **原始资源**：https://towardsdatascience.com/build-a-cryptocurrency-trading-bot-with-r-1445c429e1b1
-- **建议 skill 名称**：`bot-r`
+- **建议 skill 名称**：`bot-bot-r`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`用 R 构建一个加密货币交易机器人`、`R` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -324,8 +338,9 @@
 
 - **原始语言/技术栈**：Rust
 - **原始资源**：https://habr.com/en/post/436254/
-- **建议 skill 名称**：`bot-rust-c`
+- **建议 skill 名称**：`bot-bot-rust`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `机器人（Bot）` 相关项目，尤其提到“bot”、`用 Rust（或 C 等）为《星际争霸》写一个机器人`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

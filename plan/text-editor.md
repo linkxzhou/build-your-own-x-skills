@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://viewsourcecode.org/snaptoken/kilo/
-- **建议 skill 名称**：`text-editor`
+- **建议 skill 名称**：`text-editor-text-editor`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `文本编辑器` 相关项目，尤其提到“text-editor”、`构建你自己的文本编辑器`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：http://www.fltk.org/doc-1.1/editor.html
-- **建议 skill 名称**：`text-editor`
+- **建议 skill 名称**：`text-editor-text-editor-cpp`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `文本编辑器` 相关项目，尤其提到“text-editor”、`设计一个简单文本编辑器`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://www.youtube.com/watch?v=xqDonHEYPgA
-- **建议 skill 名称**：`text-editor-python`
+- **建议 skill 名称**：`text-editor-text-editor-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `文本编辑器` 相关项目，尤其提到“text-editor”、`Python 教程：制作你自己的文本编辑器`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -81,8 +84,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://www.instructables.com/id/Create-a-Simple-Python-Text-Editor/
-- **建议 skill 名称**：`text-editor-python`
+- **建议 skill 名称**：`text-editor-text-editor-instructables-id-create-a`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `文本编辑器` 相关项目，尤其提到“text-editor”、`创建一个简单的 Python 文本编辑器！`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -103,8 +107,9 @@
 
 - **原始语言/技术栈**：Ruby
 - **原始资源**：https://blog.aha.io/text-editor/
-- **建议 skill 名称**：`text-editor-rails`
+- **建议 skill 名称**：`text-editor-text-editor-ruby`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `文本编辑器` 相关项目，尤其提到“text-editor”、`用 Rails 构建协作式文本编辑器`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -125,8 +130,9 @@
 
 - **原始语言/技术栈**：General
 - **原始资源**：https://www.flenker.blog/hecto/
-- **建议 skill 名称**：`text-editor-rust-hecto-rust`
+- **建议 skill 名称**：`text-editor-text-editor-general`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `文本编辑器` 相关项目，尤其提到“text-editor”、`**Rust**: _Hecto：用 Rust 构建你自己的文本编辑器_`、`General` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

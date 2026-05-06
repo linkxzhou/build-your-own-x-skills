@@ -1,0 +1,23 @@
+{
+  "skill_name": "misc-xmonader-nimdays-day11-buildsystem",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "我想用 Nim 从零实现「编写构建系统」，请规划里程碑并只完成第一阶段。",
+      "expected_output": "Staged plan plus first milestone guidance.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "我在实现「编写构建系统」时测试失败，请阅读项目并做最小修复。",
+      "expected_output": "Diagnosis, minimal fix, and verification.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "请基于 https://xmonader.github.io/nimdays/day11_buildsystem.html 转换成 Claude Code 学习任务清单。",
+      "expected_output": "Milestone task list with deliverables and checks.",
+      "files": []
+    }
+  ]
+}

@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://flaviocopes.com/go-git-contributions/
-- **建议 skill 名称**：`command-line-tool-go-git`
+- **建议 skill 名称**：`command-line-tool-git`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `命令行工具` 相关项目，尤其提到“command-line-tool”、`用 Go 可视化本地 Git 贡献`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -38,6 +39,7 @@
 - **原始资源**：https://flaviocopes.com/go-tutorial-lolcat/
 - **建议 skill 名称**：`command-line-tool-go-lolcat`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `命令行工具` 相关项目，尤其提到“command-line-tool”、`用 Go 构建命令行应用：lolcat`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -60,6 +62,7 @@
 - **原始资源**：https://flaviocopes.com/go-tutorial-cowsay/
 - **建议 skill 名称**：`command-line-tool-go-cli-cowsay`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `命令行工具` 相关项目，尤其提到“command-line-tool”、`用 Go 构建 CLI 命令：cowsay`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -82,6 +85,7 @@
 - **原始资源**：https://flaviocopes.com/go-tutorial-fortune/
 - **建议 skill 名称**：`command-line-tool-go-cli-fortune`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `命令行工具` 相关项目，尤其提到“command-line-tool”、`Go CLI 教程：fortune 克隆`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -104,6 +108,7 @@
 - **原始资源**：https://xmonader.github.io/nimdays/day06_nistow.html
 - **建议 skill 名称**：`command-line-tool-stow-dotfiles`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `命令行工具` 相关项目，尤其提到“command-line-tool”、`编写 stow 的替代方案来管理 dotfiles`、`Nim` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -126,6 +131,7 @@
 - **原始资源**：https://citw.dev/tutorial/create-your-own-cli-tool
 - **建议 skill 名称**：`command-line-tool-javascript-cli`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `命令行工具` 相关项目，尤其提到“command-line-tool”、`用 JavaScript 创建一个 CLI 工具`、`Node.js` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -148,6 +154,7 @@
 - **原始资源**：https://rust-cli.github.io/book/index.html
 - **建议 skill 名称**：`command-line-tool-rust`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `命令行工具` 相关项目，尤其提到“command-line-tool”、`Rust 中的命令行应用`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -168,8 +175,9 @@
 
 - **原始语言/技术栈**：Rust
 - **原始资源**：https://mattgathu.dev/2017/08/29/writing-cli-app-rust.html
-- **建议 skill 名称**：`command-line-tool-rust`
+- **建议 skill 名称**：`command-line-tool-rust-rust`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `命令行工具` 相关项目，尤其提到“command-line-tool”、`用 Rust 编写命令行工具`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -192,6 +200,7 @@
 - **原始资源**：https://rebuild-x.github.io/docs/#/./zig/terminal/cli
 - **建议 skill 名称**：`command-line-tool-zig-cli`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `命令行工具` 相关项目，尤其提到“command-line-tool”、`从零用 Zig 构建你的 CLI 应用`、`Zig` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

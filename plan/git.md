@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：Haskell
 - **原始资源**：http://stefan.saasen.me/articles/git-clone-in-haskell-from-the-bottom-up/
-- **建议 skill 名称**：`git-haskell-git-clone`
+- **建议 skill 名称**：`git-git`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Git` 相关项目，尤其提到“git”、`用 Haskell 从底层重实现 “git clone”`、`Haskell` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：http://gitlet.maryrosecook.com/docs/gitlet.html
-- **建议 skill 名称**：`git-gitlet`
+- **建议 skill 名称**：`git-git-javascript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Git` 相关项目，尤其提到“git”、`Gitlet`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://kushagra.dev/blog/build-git-learn-git/
-- **建议 skill 名称**：`git-build-git-learn-git`
+- **建议 skill 名称**：`git-git-kushagra-dev-git-learn`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Git` 相关项目，尤其提到“git”、`Build GIT - Learn GIT`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://benhoyt.com/writings/pygit/
-- **建议 skill 名称**：`git-git-github`
+- **建议 skill 名称**：`git-git-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Git` 相关项目，尤其提到“git”、`刚好够用的 Git 客户端：能创建仓库、提交并把自己推到 GitHub`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -102,8 +106,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://wyag.thb.lt/
-- **建议 skill 名称**：`git-git`
+- **建议 skill 名称**：`git-git-wyag-thb-lt`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Git` 相关项目，尤其提到“git”、`给自己写一个 Git！`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -124,8 +129,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://www.leshenko.net/p/ugit/
-- **建议 skill 名称**：`git-ugit-git-git`
+- **建议 skill 名称**：`git-git-leshenko-p-ugit`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Git` 相关项目，尤其提到“git”、`ugit：通过自己构建 Git 来学习 Git 内部原理`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -146,8 +152,9 @@
 
 - **原始语言/技术栈**：Ruby
 - **原始资源**：https://robots.thoughtbot.com/rebuilding-git-in-ruby
-- **建议 skill 名称**：`git-ruby-git`
+- **建议 skill 名称**：`git-git-ruby`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Git` 相关项目，尤其提到“git”、`用 Ruby 重建 Git`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

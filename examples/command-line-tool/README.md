@@ -1,13 +1,5 @@
 # 命令行工具 examples
 
-本目录收集 `命令行工具` 大类型下的 skill 使用示例。
-
-## 使用方式
-
-进入任一子目录，复制 `README.md` 中的推荐 Prompt 到支持 skills 的 AI 编程工具中执行。
-
-## 示例列表
-
 | Skill | 技术栈 | 原始项目 |
 |---|---|---|
 | [`command-line-tool-git`](./command-line-tool-git/) | Go | 用 Go 可视化本地 Git 贡献 |

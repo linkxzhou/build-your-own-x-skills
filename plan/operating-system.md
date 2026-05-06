@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：Assembly
 - **原始资源**：http://joebergeron.io/posts/post_two.html
-- **建议 skill 名称**：`operating-system-x86-bootloader`
+- **建议 skill 名称**：`operating-system-bootloader`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`编写一个微型 x86 引导程序（Bootloader）`、`Assembly` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：Assembly
 - **原始资源**：http://www.cl.cam.ac.uk/projects/raspberrypi/tutorials/os/index.html
-- **建议 skill 名称**：`operating-system-baking-pi`
+- **建议 skill 名称**：`operating-system-os`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`Baking Pi：操作系统开发`、`Assembly` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://www.youtube.com/watch?v=ZjwvMcP3Nf0&list=PLU94OURih-CiP4WxKSMt3UcwMSDM3aTtX
-- **建议 skill 名称**：`operating-system`
+- **建议 skill 名称**：`operating-system-youtube`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`从零构建简单计算机的软件/硬件栈`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -81,8 +84,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://tuhdo.github.io/os01/
-- **建议 skill 名称**：`operating-system-0-1`
+- **建议 skill 名称**：`operating-system-os-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`操作系统：从 0 到 1`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -103,8 +107,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://littleosbook.github.io/
-- **建议 skill 名称**：`operating-system`
+- **建议 skill 名称**：`operating-system-operating-system`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`操作系统开发小书`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -125,8 +130,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：http://jamesmolloy.co.uk/tutorial_html/
-- **建议 skill 名称**：`operating-system-unix`
+- **建议 skill 名称**：`operating-system-operating-system-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`自己做一个玩具 UNIX 克隆操作系统`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -147,8 +153,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://arjunsreedharan.org/post/82710718100/kernel-101-lets-write-a-kernel
-- **建议 skill 名称**：`operating-system-kernel-101`
+- **建议 skill 名称**：`operating-system-kernel`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`Kernel 101：让我们写一个内核`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -169,8 +176,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://arjunsreedharan.org/post/99370248137/kernel-201-lets-write-a-kernel-with-keyboard
-- **建议 skill 名称**：`operating-system-kernel-201`
+- **建议 skill 名称**：`operating-system-kernel-c`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`Kernel 201：写一个带键盘与屏幕支持的内核`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -191,8 +199,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://github.com/jserv/mini-arm-os
-- **建议 skill 名称**：`operating-system-arm`
+- **建议 skill 名称**：`operating-system-kernel-jserv-mini-arm-os`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`从零为 ARM 构建一个最小多任务内核`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -213,8 +222,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://github.com/cfenollosa/os-tutorial
-- **建议 skill 名称**：`operating-system-os`
+- **建议 skill 名称**：`operating-system-os-cfenollosa-os`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`如何从零创建一个 OS`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -237,6 +247,7 @@
 - **原始资源**：https://danluu.com/malloc-tutorial/
 - **建议 skill 名称**：`operating-system-malloc`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`malloc 教程`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -257,8 +268,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://blog.holbertonschool.com/hack-the-virtual-memory-c-strings-proc/
-- **建议 skill 名称**：`operating-system`
+- **建议 skill 名称**：`operating-system-holbertonschool-hack-virtual-memory`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`黑进虚拟内存`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -279,8 +291,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://github.com/s-matyukevich/raspberry-pi-os
-- **建议 skill 名称**：`operating-system-linux-os`
+- **建议 skill 名称**：`operating-system-os-kernel`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`用 Linux 内核与树莓派学习 OS 开发`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -301,8 +314,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://medium.com/@lduck11007/operating-systems-development-for-dummies-3d4d786e8ac
-- **建议 skill 名称**：`operating-system`
+- **建议 skill 名称**：`operating-system-operating-system-lduck11007-operating-systems-development`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`给小白的操作系统开发`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -323,8 +337,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：https://www.youtube.com/playlist?list=PLHh55M_Kq4OApWScZyPl5HhgsTJS9MZ6M
-- **建议 skill 名称**：`operating-system`
+- **建议 skill 名称**：`operating-system-os-cpp`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`写你自己的操作系统`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -346,8 +361,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：http://3zanders.co.uk/2017/10/13/writing-a-bootloader/
-- **建议 skill 名称**：`operating-system-bootloader`
+- **建议 skill 名称**：`operating-system-bootloader-cpp`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`编写 Bootloader`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -368,8 +384,9 @@
 
 - **原始语言/技术栈**：Rust
 - **原始资源**：https://os.phil-opp.com/
-- **建议 skill 名称**：`operating-system-rust`
+- **建议 skill 名称**：`operating-system-os-rust`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`用 Rust 写操作系统`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -390,8 +407,9 @@
 
 - **原始语言/技术栈**：Rust
 - **原始资源**：https://osblog.stephenmarz.com/
-- **建议 skill 名称**：`operating-system-risc-v-rust`
+- **建议 skill 名称**：`operating-system-operating-system-rust`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`RISC-V 的 Rust 操作系统教程`、`Rust` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -414,6 +432,7 @@
 - **原始资源**：https://linuxfromscratch.org/lfs
 - **建议 skill 名称**：`operating-system-linux-from-scratch`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `操作系统` 相关项目，尤其提到“operating-system”、`Linux From Scratch`、`(any)` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

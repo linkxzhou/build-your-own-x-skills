@@ -16,6 +16,7 @@
 - **原始资源**：https://blog.lizzie.io/linux-containers-in-500-loc.html
 - **建议 skill 名称**：`docker-500-linux`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Docker` 相关项目，尤其提到“docker”、`500 行代码实现 Linux 容器`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -38,6 +39,7 @@
 - **原始资源**：https://www.infoq.com/articles/build-a-container-golang
 - **建议 skill 名称**：`docker-100-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Docker` 相关项目，尤其提到“docker”、`用不到 100 行 Go 构建自己的容器`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -60,6 +62,7 @@
 - **原始资源**：https://www.youtube.com/watch?v=8fi7uSYlOdc
 - **建议 skill 名称**：`docker-go`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Docker` 相关项目，尤其提到“docker”、`用 Go 从零构建容器`、`Go` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -81,8 +84,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://github.com/Fewbytes/rubber-docker
-- **建议 skill 名称**：`docker-linux-docker`
+- **建议 skill 名称**：`docker-docker`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Docker` 相关项目，尤其提到“docker”、`Linux 容器工作坊：从零重建 Docker`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -103,8 +107,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://github.com/tonybaloney/mocker
-- **建议 skill 名称**：`docker-docker-100-python`
+- **建议 skill 名称**：`docker-docker-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Docker` 相关项目，尤其提到“docker”、`一个 Docker 的概念验证替代品（100% Python）`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -125,8 +130,9 @@
 
 - **原始语言/技术栈**：Shell
 - **原始资源**：https://github.com/p8952/bocker
-- **建议 skill 名称**：`docker-100-bash-docker`
+- **建议 skill 名称**：`docker-docker-shell`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `Docker` 相关项目，尤其提到“docker”、`用大约 100 行 bash 实现 Docker`、`Shell` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

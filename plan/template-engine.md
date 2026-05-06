@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：http://krasimirtsonev.com/blog/article/Javascript-template-engine-in-just-20-line
-- **建议 skill 名称**：`template-engine-20-javascript`
+- **建议 skill 名称**：`template-engine-template`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `模板引擎` 相关项目，尤其提到“template-engine”、`20 行实现 JavaScript 模板引擎`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -36,8 +37,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://medium.com/wdstack/understanding-javascript-micro-templating-f37a37b3b40e
-- **建议 skill 名称**：`template-engine-javascript-micro-templating`
+- **建议 skill 名称**：`template-engine-template-javascript`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `模板引擎` 相关项目，尤其提到“template-engine”、`理解 JavaScript 微模板（Micro-Templating）`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://alexmic.net/building-a-template-engine/
-- **建议 skill 名称**：`template-engine-python`
+- **建议 skill 名称**：`template-engine-template-python`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `模板引擎` 相关项目，尤其提到“template-engine”、`方法：用 Python 构建玩具模板引擎`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -80,8 +83,9 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：http://aosabook.org/en/500L/a-template-engine.html
-- **建议 skill 名称**：`template-engine`
+- **建议 skill 名称**：`template-engine-template-aosabook-en-500l-a`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `模板引擎` 相关项目，尤其提到“template-engine”、`一个模板引擎`、`Python` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -102,8 +106,9 @@
 
 - **原始语言/技术栈**：Ruby
 - **原始资源**：http://bits.citrusbyte.com/how-to-write-a-template-library/
-- **建议 skill 名称**：`template-engine-30`
+- **建议 skill 名称**：`template-engine-template-ruby`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `模板引擎` 相关项目，尤其提到“template-engine”、`如何在不到 30 行代码里写一个模板引擎`、`Ruby` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。

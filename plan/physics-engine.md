@@ -14,8 +14,9 @@
 
 - **原始语言/技术栈**：C
 - **原始资源**：https://www.toptal.com/game/video-game-physics-part-i-an-introduction-to-rigid-body-dynamics
-- **建议 skill 名称**：`physics-engine`
+- **建议 skill 名称**：`physics-engine-toptal-game-video-game`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `物理引擎` 相关项目，尤其提到“physics-engine”、`视频游戏物理教程`、`C` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -38,6 +39,7 @@
 - **原始资源**：http://allenchou.net/game-physics-series/
 - **建议 skill 名称**：`physics-engine-allen-chou`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `物理引擎` 相关项目，尤其提到“physics-engine”、`Allen Chou 的游戏物理系列`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -58,8 +60,9 @@
 
 - **原始语言/技术栈**：C++
 - **原始资源**：https://gamedevelopment.tutsplus.com/series/how-to-create-a-custom-physics-engine--gamedev-12715
-- **建议 skill 名称**：`physics-engine`
+- **建议 skill 名称**：`physics-engine-gamedevelopment-tutsplus-series-create`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `物理引擎` 相关项目，尤其提到“physics-engine”、`如何创建自定义物理引擎`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -82,6 +85,7 @@
 - **原始资源**：https://www.youtube.com/playlist?list=PLEETnX-uPtBXm1KEr_2zQ6K_0hoGH6JJ0
 - **建议 skill 名称**：`physics-engine-3d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `物理引擎` 相关项目，尤其提到“physics-engine”、`3D 物理引擎教程`、`C++` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -103,8 +107,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：http://buildnewgames.com/gamephysics/
-- **建议 skill 名称**：`physics-engine`
+- **建议 skill 名称**：`physics-engine-buildnewgames-gamephysics`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `物理引擎` 相关项目，尤其提到“physics-engine”、`物理引擎如何工作`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -125,8 +130,9 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：http://buildnewgames.com/broad-phase-collision-detection/
-- **建议 skill 名称**：`physics-engine`
+- **建议 skill 名称**：`physics-engine-buildnewgames-broad-phase-collision`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `物理引擎` 相关项目，尤其提到“physics-engine”、`使用空间划分的广义阶段碰撞检测`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
@@ -149,6 +155,7 @@
 - **原始资源**：https://developer.ibm.com/tutorials/wa-build2dphysicsengine/?mhsrc=ibmsearch_a&mhq=2dphysic
 - **建议 skill 名称**：`physics-engine-javascript-2d`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `物理引擎` 相关项目，尤其提到“physics-engine”、`为 JavaScript 游戏构建一个简单 2D 物理引擎`、`JavaScript` 实现时。
+- **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
 - **SKILL.md 规划**：
   - 说明适用人群、前置知识、环境依赖与推荐学习节奏。
