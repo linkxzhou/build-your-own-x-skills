@@ -19,7 +19,7 @@
 | [`programming-language-compiler-typescript`](./programming-language-compiler-typescript/) | TypeScript | 构建你自己的 WebAssembly 编译器 |
 | [`programming-language-compiler-youtube`](./programming-language-compiler-youtube/) | C++ | 如何创建一个编译器 |
 | [`programming-language-crafting-interpreters`](./programming-language-crafting-interpreters/) | Java | 《Crafting Interpreters》：制作编程语言的手册 |
-| [`programming-language-fsharpforfunandprofit-understanding-parser-combinators`](./programming-language-fsharpforfunandprofit-understanding-parser-combinators/) | F# | 理解解析器组合子 |
+| [`programming-language-fsharp-parser-combinators`](./programming-language-fsharp-parser-combinators/) | F# | 理解解析器组合子 |
 | [`programming-language-go`](./programming-language-go/) | Go | Go 词法扫描 |
 | [`programming-language-interpreter`](./programming-language-interpreter/) | C | 能解释自身的 C 解释器 |
 | [`programming-language-interpreter-javascript`](./programming-language-interpreter-javascript/) | JavaScript | 超小解释器（The Super Tiny Interpreter） |

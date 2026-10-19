@@ -12,7 +12,7 @@
 | [`operating-system-malloc`](./operating-system-malloc/) | C | malloc 教程 |
 | [`operating-system-operating-system`](./operating-system-operating-system/) | C | 操作系统开发小书 |
 | [`operating-system-operating-system-c`](./operating-system-operating-system-c/) | C | 自己做一个玩具 UNIX 克隆操作系统 |
-| [`operating-system-operating-system-lduck11007-operating-systems-development`](./operating-system-operating-system-lduck11007-operating-systems-development/) | C | 给小白的操作系统开发 |
+| [`operating-system-lduck11007-os-development`](./operating-system-lduck11007-os-development/) | C | 给小白的操作系统开发 |
 | [`operating-system-operating-system-rust`](./operating-system-operating-system-rust/) | Rust | RISC-V 的 Rust 操作系统教程 |
 | [`operating-system-os`](./operating-system-os/) | Assembly | Baking Pi：操作系统开发 |
 | [`operating-system-os-c`](./operating-system-os-c/) | C | 操作系统：从 0 到 1 |

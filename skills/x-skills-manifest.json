@@ -1,6 +1,6 @@
 {
-  "parsed_projects": 351,
-  "created_skills": 351,
+  "parsed_projects": 357,
+  "created_skills": 357,
   "skipped": [],
   "created": [
     {
@@ -2671,7 +2671,7 @@
       "title": "用不到 200 行 Go 写出你自己的区块链",
       "url": "https://medium.com/@mycoralhealth/code-your-own-blockchain-in-less-than-200-lines-of-go-e296282bcffc",
       "suffix": "",
-      "name": "blockchain-cryptocurrency-blockchain-mycoralhealth-code-blockchain-in"
+      "name": "blockchain-cryptocurrency-mycoralhealth-code-blockchain"
     },
     {
       "category": "区块链 / 加密货币",
@@ -2681,7 +2681,7 @@
       "title": "学习并构建一个 JavaScript 区块链",
       "url": "https://medium.com/digital-alchemy-holdings/learn-build-a-javascript-blockchain-part-1-ca61c285821e",
       "suffix": "",
-      "name": "blockchain-cryptocurrency-blockchain-digital-alchemy-holdings-learn"
+      "name": "blockchain-cryptocurrency-digital-alchemy-holdings-learn"
     },
     {
       "category": "区块链 / 加密货币",
@@ -2711,7 +2711,7 @@
       "title": "在 Node.js 中编写区块链",
       "url": "https://www.smashingmagazine.com/2020/02/cryptocurrency-blockchain-node-js/",
       "suffix": "",
-      "name": "blockchain-cryptocurrency-blockchain-smashingmagazine-2020-02-cryptocurrency"
+      "name": "blockchain-cryptocurrency-smashingmagazine-cryptocurrency"
     },
     {
       "category": "区块链 / 加密货币",
@@ -2741,7 +2741,7 @@
       "title": "来构建最小的区块链",
       "url": "https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b",
       "suffix": "",
-      "name": "blockchain-cryptocurrency-blockchain-crypto-currently-lets-tiniest"
+      "name": "blockchain-cryptocurrency-crypto-currently-lets-tiniest"
     },
     {
       "category": "机器人（Bot）",
@@ -3101,7 +3101,7 @@
       "title": "给小白的操作系统开发",
       "url": "https://medium.com/@lduck11007/operating-systems-development-for-dummies-3d4d786e8ac",
       "suffix": "",
-      "name": "operating-system-operating-system-lduck11007-operating-systems-development"
+      "name": "operating-system-lduck11007-os-development"
     },
     {
       "category": "操作系统",
@@ -3181,7 +3181,7 @@
       "title": "理解解析器组合子",
       "url": "https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/",
       "suffix": "",
-      "name": "programming-language-fsharpforfunandprofit-understanding-parser-combinators"
+      "name": "programming-language-fsharp-parser-combinators"
     },
     {
       "category": "编程语言",
@@ -3512,6 +3512,66 @@
       "url": "https://nbaksalyar.github.io/2015/07/10/writing-chat-in-rust.html",
       "suffix": "",
       "name": "misc-nbaksalyar-2015-07-10"
+    },
+    {
+      "name": "distributed-systems-kafka-java",
+      "category": "Distributed Systems",
+      "category_slug": "distributed-systems",
+      "done": false,
+      "language": "Java",
+      "title": "Building Your Own Kafka-like System From Scratch: A Step-by-Step Guide",
+      "url": "https://github.com/buildthingsuseful/build-your-own-kafka",
+      "suffix": ""
+    },
+    {
+      "name": "ai-model-llm-python",
+      "category": "AI Model",
+      "category_slug": "ai-model",
+      "done": false,
+      "language": "Python",
+      "title": "A Large Language Model (LLM)",
+      "url": "https://github.com/rasbt/LLMs-from-scratch",
+      "suffix": ""
+    },
+    {
+      "name": "ai-model-diffusion-python",
+      "category": "AI Model",
+      "category_slug": "ai-model",
+      "done": false,
+      "language": "Python",
+      "title": "Diffusion Models for Image Generation",
+      "url": "https://huggingface.co/learn/diffusion-course/en/unit1/3",
+      "suffix": ""
+    },
+    {
+      "name": "ai-model-rag-python",
+      "category": "AI Model",
+      "category_slug": "ai-model",
+      "done": false,
+      "language": "Python",
+      "title": "RAG for Document Search",
+      "url": "https://github.com/langchain-ai/rag-from-scratch",
+      "suffix": ""
+    },
+    {
+      "name": "memory-allocator-malloc-c",
+      "category": "Memory Allocator",
+      "category_slug": "memory-allocator",
+      "done": false,
+      "language": "C",
+      "title": "Malloc is not magic -- Implementing your own memory allocator",
+      "url": "https://medium.com/p/e0354e914402",
+      "suffix": ""
+    },
+    {
+      "name": "processor-riscv-verilog",
+      "category": "Processor",
+      "category_slug": "processor",
+      "done": false,
+      "language": "Verilog",
+      "title": "From Blinker to RISC-V",
+      "url": "https://github.com/BrunoLevy/learn-fpga/tree/master/FemtoRV/TUTORIALS/FROM_BLINKER_TO_RISCV",
+      "suffix": ""
     }
   ]
 }

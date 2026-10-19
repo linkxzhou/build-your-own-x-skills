@@ -5,23 +5,24 @@
 
 仓库根目录现在本身就是一个 skill：`build-your-own-x`。根目录的 [SKILL.md](SKILL.md) 是路由入口，帮开发者选主题、语言和教程，再交给 `skills/` 下的子 skill。子 skill 分两类：
 
-- **主线 skill**（按大类的导师，有里程碑，每步都有可运行的检查点）：[`git`](skills/git/SKILL.md)、[`database`](skills/database/SKILL.md)（Redis / KV / B+ 树 / SQL）、[`shell`](skills/shell/SKILL.md)、[`docker`](skills/docker/SKILL.md)、[`programming-language`](skills/programming-language/SKILL.md)。
+- **主线 skill**（每个分类一个导师 skill，6–7 个里程碑，每步都有可运行的检查点）：上游全部 31 个分类均已完成，位于 `skills/<分类>/`，例如 [`git`](skills/git/SKILL.md)、[`database`](skills/database/SKILL.md)、[`operating-system`](skills/operating-system/SKILL.md)、[`ai-model`](skills/ai-model/SKILL.md)。
 - **单教程 skill**（`skills/<分类>-<教程>`）：每个对应上游的一篇教程。
 
-上游全部 31 个分类的状态（主线已完成 / 仅单教程 / 计划中）见 [references/catalog.md](references/catalog.md)。skill 以带教为主：概念 → 骨架 → 学习者写代码 → 测试，不直接给完整答案。
+各分类状态与上游链接见 [references/catalog.md](references/catalog.md)。skill 以带教为主：概念 → 骨架 → 学习者写代码 → 测试，不直接给完整答案。
 
 安装：`npx skills add linkxzhou/build-your-own-x-skills`，或克隆仓库后运行 `./init.sh`。
 
-路线图：下一批主线为 operating-system、emulator-virtual-machine、web-server、regex-engine、text-editor；之后补上游新增的 4 类（distributed-systems、ai-model、memory-allocator、processor）。
+评测：见 [benchmarks/REPORT.md](benchmarks/REPORT.md)（quick_validate、链接核对、31 个主线 skill 的冒烟测试、路由触发测试）。
 
 致谢：主题与链接来自 [codecrafters-io/build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)（CC0 1.0），详见 [ATTRIBUTION.md](ATTRIBUTION.md)。
 
 ## 当前状态
 
-- 原始 build-your-own-x 条目数：`351`
-- 已保留可用 skills：`351`
-- 已生成 examples：`351`
-- 分类数：`27`
+- 上游 build-your-own-x（2026-10-19 快照）：`31` 个分类、`359` 个教程链接
+- 主线 skill（按分类）：`31`
+- 单教程 skill：`357`（原 351 个 + 新增 4 个分类的 6 个）
+- 已生成 examples：`351`（新增 6 个单教程 skill 暂无 example）
+- 总入口：根目录 `SKILL.md`
 - 转换计划：`plan/`
 - skill 清单：`skills/x-skills-manifest.json`
 - example 清单：`examples/examples-manifest.json`

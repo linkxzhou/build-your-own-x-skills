@@ -106,7 +106,7 @@
 
 - **原始语言/技术栈**：Go
 - **原始资源**：https://medium.com/@mycoralhealth/code-your-own-blockchain-in-less-than-200-lines-of-go-e296282bcffc
-- **建议 skill 名称**：`blockchain-cryptocurrency-blockchain-mycoralhealth-code-blockchain-in`
+- **建议 skill 名称**：`blockchain-cryptocurrency-mycoralhealth-code-blockchain`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `区块链 / 加密货币` 相关项目，尤其提到“blockchain-cryptocurrency”、`用不到 200 行 Go 写出你自己的区块链`、`Go` 实现时。
 - **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
@@ -198,7 +198,7 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://medium.com/digital-alchemy-holdings/learn-build-a-javascript-blockchain-part-1-ca61c285821e
-- **建议 skill 名称**：`blockchain-cryptocurrency-blockchain-digital-alchemy-holdings-learn`
+- **建议 skill 名称**：`blockchain-cryptocurrency-digital-alchemy-holdings-learn`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `区块链 / 加密货币` 相关项目，尤其提到“blockchain-cryptocurrency”、`学习并构建一个 JavaScript 区块链`、`JavaScript` 实现时。
 - **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
@@ -267,7 +267,7 @@
 
 - **原始语言/技术栈**：JavaScript
 - **原始资源**：https://www.smashingmagazine.com/2020/02/cryptocurrency-blockchain-node-js/
-- **建议 skill 名称**：`blockchain-cryptocurrency-blockchain-smashingmagazine-2020-02-cryptocurrency`
+- **建议 skill 名称**：`blockchain-cryptocurrency-smashingmagazine-cryptocurrency`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `区块链 / 加密货币` 相关项目，尤其提到“blockchain-cryptocurrency”、`在 Node.js 中编写区块链`、`JavaScript` 实现时。
 - **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。
@@ -382,7 +382,7 @@
 
 - **原始语言/技术栈**：Python
 - **原始资源**：https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b
-- **建议 skill 名称**：`blockchain-cryptocurrency-blockchain-crypto-currently-lets-tiniest`
+- **建议 skill 名称**：`blockchain-cryptocurrency-crypto-currently-lets-tiniest`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `区块链 / 加密货币` 相关项目，尤其提到“blockchain-cryptocurrency”、`来构建最小的区块链`、`Python` 实现时。
 - **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。

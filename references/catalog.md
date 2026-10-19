@@ -7,42 +7,40 @@ Columns:
 - **Per-tutorial skills:** existing `skills/<category>-*` folders. Each one coaches a single upstream tutorial; list them with `ls skills | grep '^<slug>-'`.
 - **Status:**
   - *track skill ready*: a category-level tutor, `skills/<slug>/SKILL.md`, exists. Prefer it as the entry point.
-  - *per-tutorial skills only*: there is no track skill yet, so pick one of the per-tutorial skills.
-  - *planned*: the category is new upstream and no skill exists yet. Coach from the upstream links below, using the generic milestone method in the root SKILL.md.
 
 | Upstream category | Slug | Upstream tutorials | Per-tutorial skills | Status |
 |---|---|---|---|---|
-| Distributed Systems | `distributed-systems` | 1 | 0 | planned |
-| 3D Renderer | `3d-renderer` | 11 | 11 | per-tutorial skills only |
-| AI Model | `ai-model` | 3 | 0 | planned |
-| Augmented Reality | `augmented-reality` | 6 | 6 | per-tutorial skills only |
-| BitTorrent Client | `bittorrent-client` | 5 | 5 | per-tutorial skills only |
-| Blockchain / Cryptocurrency | `blockchain-cryptocurrency` | 21 | 22 | per-tutorial skills only |
-| Bot | `bot` | 15 | 15 | per-tutorial skills only |
-| Command-Line Tool | `command-line-tool` | 9 | 9 | per-tutorial skills only |
+| Distributed Systems | `distributed-systems` | 1 | 1 | track skill ready (`skills/distributed-systems`) |
+| 3D Renderer | `3d-renderer` | 11 | 11 | track skill ready (`skills/3d-renderer`) |
+| AI Model | `ai-model` | 3 | 3 | track skill ready (`skills/ai-model`) |
+| Augmented Reality | `augmented-reality` | 6 | 6 | track skill ready (`skills/augmented-reality`) |
+| BitTorrent Client | `bittorrent-client` | 5 | 5 | track skill ready (`skills/bittorrent-client`) |
+| Blockchain / Cryptocurrency | `blockchain-cryptocurrency` | 21 | 22 | track skill ready (`skills/blockchain-cryptocurrency`) |
+| Bot | `bot` | 15 | 15 | track skill ready (`skills/bot`) |
+| Command-Line Tool | `command-line-tool` | 9 | 9 | track skill ready (`skills/command-line-tool`) |
 | Database | `database` | 13 | 13 | track skill ready (`skills/database`) |
 | Docker | `docker` | 6 | 6 | track skill ready (`skills/docker`) |
-| Emulator / Virtual Machine | `emulator-virtual-machine` | 13 | 13 | per-tutorial skills only |
-| Front-end Framework / Library | `frontend-framework-library` | 14 | 14 | per-tutorial skills only |
-| Game | `game` | 34 | 34 | per-tutorial skills only |
+| Emulator / Virtual Machine | `emulator-virtual-machine` | 13 | 13 | track skill ready (`skills/emulator-virtual-machine`) |
+| Front-end Framework / Library | `frontend-framework-library` | 14 | 14 | track skill ready (`skills/frontend-framework-library`) |
+| Game | `game` | 34 | 34 | track skill ready (`skills/game`) |
 | Git | `git` | 7 | 7 | track skill ready (`skills/git`) |
-| Memory Allocator | `memory-allocator` | 1 | 0 | planned |
-| Network Stack | `network-stack` | 4 | 4 | per-tutorial skills only |
-| Neural Network | `neural-network` | 17 | 14 | per-tutorial skills only |
-| Operating System | `operating-system` | 19 | 19 | per-tutorial skills only |
-| Physics Engine | `physics-engine` | 7 | 7 | per-tutorial skills only |
-| Processor | `processor` | 1 | 0 | planned |
+| Memory Allocator | `memory-allocator` | 1 | 1 | track skill ready (`skills/memory-allocator`) |
+| Network Stack | `network-stack` | 4 | 4 | track skill ready (`skills/network-stack`) |
+| Neural Network | `neural-network` | 17 | 14 | track skill ready (`skills/neural-network`) |
+| Operating System | `operating-system` | 19 | 19 | track skill ready (`skills/operating-system`) |
+| Physics Engine | `physics-engine` | 7 | 7 | track skill ready (`skills/physics-engine`) |
+| Processor | `processor` | 1 | 1 | track skill ready (`skills/processor`) |
 | Programming Language | `programming-language` | 41 | 41 | track skill ready (`skills/programming-language`) |
-| Regex Engine | `regex-engine` | 9 | 9 | per-tutorial skills only |
-| Search Engine | `search-engine` | 6 | 6 | per-tutorial skills only |
+| Regex Engine | `regex-engine` | 9 | 9 | track skill ready (`skills/regex-engine`) |
+| Search Engine | `search-engine` | 6 | 6 | track skill ready (`skills/search-engine`) |
 | Shell | `shell` | 7 | 7 | track skill ready (`skills/shell`) |
-| Template Engine | `template-engine` | 5 | 5 | per-tutorial skills only |
-| Text Editor | `text-editor` | 6 | 6 | per-tutorial skills only |
-| Visual Recognition System | `visual-recognition-system` | 2 | 2 | per-tutorial skills only |
-| Voxel Engine | `voxel-engine` | 1 | 1 | per-tutorial skills only |
-| Web Browser | `web-browser` | 2 | 2 | per-tutorial skills only |
-| Web Server | `web-server` | 11 | 11 | per-tutorial skills only |
-| Uncategorized | `misc` | 62 | 61 | per-tutorial skills only |
+| Template Engine | `template-engine` | 5 | 5 | track skill ready (`skills/template-engine`) |
+| Text Editor | `text-editor` | 6 | 6 | track skill ready (`skills/text-editor`) |
+| Visual Recognition System | `visual-recognition-system` | 2 | 2 | track skill ready (`skills/visual-recognition-system`) |
+| Voxel Engine | `voxel-engine` | 1 | 1 | track skill ready (`skills/voxel-engine`) |
+| Web Browser | `web-browser` | 2 | 2 | track skill ready (`skills/web-browser`) |
+| Web Server | `web-server` | 11 | 11 | track skill ready (`skills/web-server`) |
+| Uncategorized | `misc` | 62 | 61 | track skill ready (`skills/misc`) |
 
 ## Upstream links by category (verbatim)
 

@@ -1,6 +1,6 @@
 # Upstream tutorials: Build your own Shell
 
-Copied verbatim from [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x#build-your-own-shell) (CC0 1.0), snapshot 2026-10-19. Each link also has a per-tutorial coaching skill under `skills/shell-*`.
+Copied verbatim from [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x#build-your-own-shell) (CC0 1.0), snapshot 2026-10-19. Most links also have a per-tutorial coaching skill under `skills/shell-*`.
 
 * [**C**: _Tutorial - Write a Shell in C_](https://brennan.io/2015/01/16/write-a-shell-in-c/)
 * [**C**: _Let's build a shell!_](https://github.com/kamalmarhubi/shell-workshop)

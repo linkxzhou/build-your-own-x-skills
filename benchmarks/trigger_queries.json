@@ -1,0 +1,122 @@
+[
+ {
+  "q": "我想自己从零写一个 Redis 来学习数据库原理",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "build my own git from scratch in python",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "Recommend a hands-on project to learn how operating systems work by building one",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "手写一个 Lisp 解释器，带我做",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "I want to implement a TCP/IP stack myself to learn networking",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "有没有适合练手的造轮子项目？我想通过做项目学底层原理",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "write my own docker in go so I understand containers",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "从零实现一个 GPT 小模型，理解 transformer",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "I want to build a CHIP-8 emulator as a learning project",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "自己实现一个 malloc",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "Build your own regex engine — teach me step by step",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "教我自己写一个 Web 服务器，从 socket 开始",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "I want to create my own programming language, where do I start?",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "我想做一个类似 Minecraft 的体素引擎来学图形学",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "Coach me through building a BitTorrent client",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "用 Verilog 设计一个自己的 RISC-V CPU",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "I want to build a toy search engine with an inverted index to learn IR",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "自己写一个终端文本编辑器（类似 kilo）",
+  "expect": "build-your-own-x"
+ },
+ {
+  "q": "How does git rebase differ from merge?",
+  "expect": "none"
+ },
+ {
+  "q": "我的 Redis 连接报 ECONNREFUSED，帮我排查",
+  "expect": "none"
+ },
+ {
+  "q": "Write a docker-compose.yml for my Django + Postgres app",
+  "expect": "none"
+ },
+ {
+  "q": "把这段英文翻译成中文：The quick brown fox jumps over the lazy dog.",
+  "expect": "andrew-translate"
+ },
+ {
+  "q": "Refactor this Python module into smaller files",
+  "expect": "code-refactor"
+ },
+ {
+  "q": "解释一下 TCP 三次握手",
+  "expect": "none"
+ },
+ {
+  "q": "What is the time complexity of quicksort?",
+  "expect": "none"
+ },
+ {
+  "q": "帮我优化这个 SQL 查询的性能：SELECT * FROM orders WHERE user_id = 5",
+  "expect": "none"
+ },
+ {
+  "q": "Design a landing page for my coffee shop",
+  "expect": "design-taste"
+ },
+ {
+  "q": "Fix the failing unit test in my React app",
+  "expect": "none"
+ },
+ {
+  "q": "推荐几本学习操作系统的书",
+  "expect": "none"
+ },
+ {
+  "q": "Summarize the main ideas of the Raft paper",
+  "expect": "none"
+ }
+]

@@ -6,23 +6,24 @@ The goal of this project is to gradually convert projects from `https://github.c
 
 The repository root is now a single skill, `build-your-own-x`. The root [SKILL.md](SKILL.md) is a router: it helps a developer pick a topic, a language and a tutorial, then hands off to a sub-skill under `skills/`. There are two kinds of sub-skill:
 
-- **Track skills** (category-level tutors with milestones and a runnable checkpoint for each): [`git`](skills/git/SKILL.md), [`database`](skills/database/SKILL.md) (Redis / KV / B+tree / SQL), [`shell`](skills/shell/SKILL.md), [`docker`](skills/docker/SKILL.md) and [`programming-language`](skills/programming-language/SKILL.md).
+- **Track skills** (one category-level tutor per category, 6–7 milestones, each with a runnable checkpoint): all 31 upstream categories are done, under `skills/<category>/`, e.g. [`git`](skills/git/SKILL.md), [`database`](skills/database/SKILL.md), [`operating-system`](skills/operating-system/SKILL.md), [`ai-model`](skills/ai-model/SKILL.md).
 - **Per-tutorial skills** (`skills/<category>-<tutorial>`): each one coaches a single upstream tutorial.
 
-The status of all 31 upstream categories (track skill ready / per-tutorial only / planned) is in [references/catalog.md](references/catalog.md). The skills coach rather than hand over full solutions: concept → skeleton → the learner writes code → test.
+Category status and upstream links are in [references/catalog.md](references/catalog.md). The skills coach rather than hand over full solutions: concept → skeleton → the learner writes code → test.
 
 Install: `npx skills add linkxzhou/build-your-own-x-skills`, or clone the repo and run `./init.sh`.
 
-Roadmap: add track skills for operating-system, emulator-virtual-machine, web-server, regex-engine and text-editor next, then the 4 categories that are new upstream (distributed-systems, ai-model, memory-allocator, processor).
+Evaluation: see [benchmarks/REPORT.md](benchmarks/REPORT.md) (quick_validate, link fidelity, smoke tests of all 31 track skills, router trigger test).
 
 Credits: topics and links come from [codecrafters-io/build-your-own-x](https://github.com/codecrafters-io/build-your-own-x) (CC0 1.0). See [ATTRIBUTION.md](ATTRIBUTION.md).
 
 ## Current Status
 
-- Original build-your-own-x entries: `351`
-- Available generated skills kept: `351`
-- Generated examples: `351`
-- Categories: `27`
+- Upstream build-your-own-x (snapshot 2026-10-19): `31` categories, `359` tutorial links
+- Track skills (one per category): `31`
+- Per-tutorial skills: `357` (the original 351 + 6 for the 4 new categories)
+- Generated examples: `351` (the 6 new per-tutorial skills have none yet)
+- Umbrella entry point: root `SKILL.md`
 - Conversion plans: `plan/`
 - Skill manifest: `skills/x-skills-manifest.json`
 - Example manifest: `examples/examples-manifest.json`

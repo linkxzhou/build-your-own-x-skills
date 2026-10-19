@@ -1,0 +1,24 @@
+{
+ "track_lines": 718,
+ "track_bad": [],
+ "catalog_bad": [],
+ "pertut_urls": 357,
+ "pertut_notup": [
+  [
+   "neural-network-neural-network-f",
+   "https://towardsdatascience.com/building-neural-networks-in-f-part-1-a2832ae972e6"
+  ],
+  [
+   "misc-manim",
+   "https://github.com/ManimCommunity/Manim"
+  ],
+  [
+   "blockchain-cryptocurrency-blockchain-csharp",
+   "https://programmingblockchain.gitbooks.io/programmingblockchain/"
+  ],
+  [
+   "bot-reddit-bot",
+   "http://pythonforengineers.com/build-a-reddit-bot-part-1/"
+  ]
+ ]
+}

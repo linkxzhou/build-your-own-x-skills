@@ -1,6 +1,6 @@
 # Upstream tutorials: Build your own Programming Language
 
-Copied verbatim from [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x#build-your-own-programming-language) (CC0 1.0), snapshot 2026-10-19. Each link also has a per-tutorial coaching skill under `skills/programming-language-*`.
+Copied verbatim from [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x#build-your-own-programming-language) (CC0 1.0), snapshot 2026-10-19. Most links also have a per-tutorial coaching skill under `skills/programming-language-*`.
 
 * [**(any)**: _mal - Make a Lisp_](https://github.com/kanaka/mal#mal---make-a-lisp)
 * [**Assembly**: _Jonesforth_](https://github.com/nornagon/jonesforth/blob/master/jonesforth.S)

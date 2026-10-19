@@ -1,6 +1,6 @@
 # Upstream tutorials: Build your own Git
 
-Copied verbatim from [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x#build-your-own-git) (CC0 1.0), snapshot 2026-10-19. Each link also has a per-tutorial coaching skill under `skills/git-*`.
+Copied verbatim from [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x#build-your-own-git) (CC0 1.0), snapshot 2026-10-19. Most links also have a per-tutorial coaching skill under `skills/git-*`.
 
 * [**Haskell**: _Reimplementing “git clone” in Haskell from the bottom up_](http://stefan.saasen.me/articles/git-clone-in-haskell-from-the-bottom-up/)
 * [**JavaScript**: _Gitlet_](http://gitlet.maryrosecook.com/docs/gitlet.html)

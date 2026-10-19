@@ -268,7 +268,7 @@
 
 - **原始语言/技术栈**：F#
 - **原始资源**：https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/
-- **建议 skill 名称**：`programming-language-fsharpforfunandprofit-understanding-parser-combinators`
+- **建议 skill 名称**：`programming-language-fsharp-parser-combinators`
 - **触发场景**：用户想从零实现、学习、调试或扩展 `编程语言` 相关项目，尤其提到“programming-language”、`理解解析器组合子`、`F#` 实现时。
 - **当前状态**：已完成 skill 与 example 生成。
 - **转换目标**：把教程转化为 Claude Code 可执行的项目教练技能，能够分阶段引导用户理解原理、搭建工程、实现核心模块、运行测试并迭代改进。

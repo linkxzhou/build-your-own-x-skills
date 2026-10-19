@@ -1,0 +1,375 @@
+{
+ "summary": {
+  "n": 30,
+  "accuracy": 1.0,
+  "build-your-own-x": {
+   "recall": "18/18",
+   "false_triggers": 0
+  },
+  "andrew-translate": {
+   "recall": "1/1",
+   "false_triggers": 0
+  },
+  "design-taste": {
+   "recall": "1/1",
+   "false_triggers": 0
+  },
+  "simplify-code": {
+   "recall": "0/0",
+   "false_triggers": 0
+  },
+  "code-refactor": {
+   "recall": "1/1",
+   "false_triggers": 0
+  },
+  "none": {
+   "recall": "9/9",
+   "false_triggers": 0
+  },
+  "misses": []
+ },
+ "results": [
+  {
+   "i": 0,
+   "q": "我想自己从零写一个 Redis 来学习数据库原理",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 30.2
+  },
+  {
+   "i": 1,
+   "q": "build my own git from scratch in python",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 29.9
+  },
+  {
+   "i": 2,
+   "q": "Recommend a hands-on project to learn how operating systems work by building one",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 29.7
+  },
+  {
+   "i": 3,
+   "q": "手写一个 Lisp 解释器，带我做",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 26.4
+  },
+  {
+   "i": 4,
+   "q": "I want to implement a TCP/IP stack myself to learn networking",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 31.4
+  },
+  {
+   "i": 5,
+   "q": "有没有适合练手的造轮子项目？我想通过做项目学底层原理",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 0,
+   "secs": 66.2
+  },
+  {
+   "i": 6,
+   "q": "write my own docker in go so I understand containers",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 24.9
+  },
+  {
+   "i": 7,
+   "q": "从零实现一个 GPT 小模型，理解 transformer",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 29.8
+  },
+  {
+   "i": 8,
+   "q": "I want to build a CHIP-8 emulator as a learning project",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 27.4
+  },
+  {
+   "i": 9,
+   "q": "自己实现一个 malloc",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 27.8
+  },
+  {
+   "i": 10,
+   "q": "Build your own regex engine — teach me step by step",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 27.3
+  },
+  {
+   "i": 11,
+   "q": "教我自己写一个 Web 服务器，从 socket 开始",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 25.9
+  },
+  {
+   "i": 12,
+   "q": "I want to create my own programming language, where do I start?",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 30.4
+  },
+  {
+   "i": 13,
+   "q": "我想做一个类似 Minecraft 的体素引擎来学图形学",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 25.6
+  },
+  {
+   "i": 14,
+   "q": "Coach me through building a BitTorrent client",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 23.9
+  },
+  {
+   "i": 15,
+   "q": "用 Verilog 设计一个自己的 RISC-V CPU",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 26.6
+  },
+  {
+   "i": 16,
+   "q": "I want to build a toy search engine with an inverted index to learn IR",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 28.1
+  },
+  {
+   "i": 17,
+   "q": "自己写一个终端文本编辑器（类似 kilo）",
+   "expect": "build-your-own-x",
+   "got": "build-your-own-x",
+   "all_read": [
+    "build-your-own-x"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 24.9
+  },
+  {
+   "i": 18,
+   "q": "How does git rebase differ from merge?",
+   "expect": "none",
+   "got": "none",
+   "all_read": [],
+   "correct": true,
+   "rc": 0,
+   "secs": 22.6
+  },
+  {
+   "i": 19,
+   "q": "我的 Redis 连接报 ECONNREFUSED，帮我排查",
+   "expect": "none",
+   "got": "none",
+   "all_read": [],
+   "correct": true,
+   "rc": 1,
+   "secs": 102.2
+  },
+  {
+   "i": 20,
+   "q": "Write a docker-compose.yml for my Django + Postgres app",
+   "expect": "none",
+   "got": "none",
+   "all_read": [],
+   "correct": true,
+   "rc": 1,
+   "secs": 70.0
+  },
+  {
+   "i": 21,
+   "q": "把这段英文翻译成中文：The quick brown fox jumps over the lazy dog.",
+   "expect": "andrew-translate",
+   "got": "andrew-translate",
+   "all_read": [
+    "andrew-translate"
+   ],
+   "correct": true,
+   "rc": 0,
+   "secs": 17.5
+  },
+  {
+   "i": 22,
+   "q": "Refactor this Python module into smaller files",
+   "expect": "code-refactor",
+   "got": "code-refactor",
+   "all_read": [
+    "code-refactor"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 175.7
+  },
+  {
+   "i": 23,
+   "q": "解释一下 TCP 三次握手",
+   "expect": "none",
+   "got": "none",
+   "all_read": [],
+   "correct": true,
+   "rc": 0,
+   "secs": 15.1
+  },
+  {
+   "i": 24,
+   "q": "What is the time complexity of quicksort?",
+   "expect": "none",
+   "got": "none",
+   "all_read": [],
+   "correct": true,
+   "rc": 0,
+   "secs": 9.6
+  },
+  {
+   "i": 25,
+   "q": "帮我优化这个 SQL 查询的性能：SELECT * FROM orders WHERE user_id = 5",
+   "expect": "none",
+   "got": "none",
+   "all_read": [],
+   "correct": true,
+   "rc": 1,
+   "secs": 83.5
+  },
+  {
+   "i": 26,
+   "q": "Design a landing page for my coffee shop",
+   "expect": "design-taste",
+   "got": "design-taste",
+   "all_read": [
+    "design-taste"
+   ],
+   "correct": true,
+   "rc": 1,
+   "secs": 23.7
+  },
+  {
+   "i": 27,
+   "q": "Fix the failing unit test in my React app",
+   "expect": "none",
+   "got": "none",
+   "all_read": [],
+   "correct": true,
+   "rc": 0,
+   "secs": 46.2
+  },
+  {
+   "i": 28,
+   "q": "推荐几本学习操作系统的书",
+   "expect": "none",
+   "got": "none",
+   "all_read": [],
+   "correct": true,
+   "rc": 0,
+   "secs": 24.1
+  },
+  {
+   "i": 29,
+   "q": "Summarize the main ideas of the Raft paper",
+   "expect": "none",
+   "got": "none",
+   "all_read": [],
+   "correct": true,
+   "rc": 0,
+   "secs": 32.5
+  }
+ ]
+}

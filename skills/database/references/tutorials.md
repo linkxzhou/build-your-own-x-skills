@@ -1,6 +1,6 @@
 # Upstream tutorials: Build your own Database
 
-Copied verbatim from [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x#build-your-own-database) (CC0 1.0), snapshot 2026-10-19. Each link also has a per-tutorial coaching skill under `skills/database-*`.
+Copied verbatim from [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x#build-your-own-database) (CC0 1.0), snapshot 2026-10-19. Most links also have a per-tutorial coaching skill under `skills/database-*`.
 
 * [**C**: _Let's Build a Simple Database_](https://cstack.github.io/db_tutorial/)
 * [**C++**: _Build Your Own Redis from Scratch_](https://build-your-own.org/redis)
