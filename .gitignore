@@ -4,4 +4,5 @@
 .gemini/skills
 .trae/skills
 .codebuddy/skills
-output
+output.DS_Store
+**/.DS_Store
