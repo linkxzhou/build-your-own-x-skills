@@ -10,7 +10,7 @@
 
 上游全部 31 个分类的状态（主线已完成 / 仅单教程 / 计划中）见 [references/catalog.md](references/catalog.md)。skill 以带教为主：概念 → 骨架 → 学习者写代码 → 测试，不直接给完整答案。
 
-安装（计划，发布后可用）：`npx skills add linkxzhou/build-your-own-x-skills`。目前请克隆仓库后运行 `./init.sh`。
+安装：`npx skills add linkxzhou/build-your-own-x-skills`，或克隆仓库后运行 `./init.sh`。
 
 路线图：下一批主线为 operating-system、emulator-virtual-machine、web-server、regex-engine、text-editor；之后补上游新增的 4 类（distributed-systems、ai-model、memory-allocator、processor）。
 

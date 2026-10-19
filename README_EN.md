@@ -11,7 +11,7 @@ The repository root is now a single skill, `build-your-own-x`. The root [SKILL.m
 
 The status of all 31 upstream categories (track skill ready / per-tutorial only / planned) is in [references/catalog.md](references/catalog.md). The skills coach rather than hand over full solutions: concept → skeleton → the learner writes code → test.
 
-Install (planned, once published): `npx skills add linkxzhou/build-your-own-x-skills`. For now, clone the repo and run `./init.sh`.
+Install: `npx skills add linkxzhou/build-your-own-x-skills`, or clone the repo and run `./init.sh`.
 
 Roadmap: add track skills for operating-system, emulator-virtual-machine, web-server, regex-engine and text-editor next, then the 4 categories that are new upstream (distributed-systems, ai-model, memory-allocator, processor).
 
