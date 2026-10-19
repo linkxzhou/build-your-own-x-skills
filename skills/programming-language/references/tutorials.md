@@ -1,0 +1,45 @@
+# Upstream tutorials: Build your own Programming Language
+
+Copied verbatim from [build-your-own-x](https://github.com/codecrafters-io/build-your-own-x#build-your-own-programming-language) (CC0 1.0), snapshot 2026-10-19. Each link also has a per-tutorial coaching skill under `skills/programming-language-*`.
+
+* [**(any)**: _mal - Make a Lisp_](https://github.com/kanaka/mal#mal---make-a-lisp)
+* [**Assembly**: _Jonesforth_](https://github.com/nornagon/jonesforth/blob/master/jonesforth.S)
+* [**C**: _Baby's First Garbage Collector_](http://journal.stuffwithstuff.com/2013/12/08/babys-first-garbage-collector/)
+* [**C**: _Build Your Own Lisp: Learn C and build your own programming language in 1000 lines of code_](http://www.buildyourownlisp.com/)
+* [**C**: _Writing a Simple Garbage Collector in C_](http://maplant.com/gc.html)
+* [**C**: _C interpreter that interprets itself._](https://github.com/lotabout/write-a-C-interpreter)
+* [**C**: _A C & x86 version of the "Let's Build a Compiler" by Jack Crenshaw_](https://github.com/lotabout/Let-s-build-a-compiler)
+* [**C**: _A journey explaining how to build a compiler from scratch_](https://github.com/DoctorWkt/acwj)
+* [**C++**: _Writing Your Own Toy Compiler Using Flex_](https://gnuu.org/2009/09/18/writing-your-own-toy-compiler/)
+* [**C++**: _How to Create a Compiler_](https://www.youtube.com/watch?v=eF9qWbuQLuw) [video]
+* [**C++**: _Kaleidoscope: Implementing a Language with LLVM_](https://llvm.org/docs/tutorial/MyFirstLanguageFrontend/index.html)
+* [**F#**: _Understanding Parser Combinators_](https://fsharpforfunandprofit.com/posts/understanding-parser-combinators/)
+* [**Elixir**: _Demystifying compilers by writing your own_](https://www.youtube.com/watch?v=zMJYoYwOCd4) [video]
+* [**Go**: _The Super Tiny Compiler_](https://github.com/hazbo/the-super-tiny-compiler)
+* [**Go**: _Lexical Scanning in Go_](https://www.youtube.com/watch?v=HxaD_trXwRE) [video]
+* [**Haskell**: _Let's Build a Compiler_](https://g-ford.github.io/cradle/)
+* [**Haskell**: _Write You a Haskell_](http://dev.stephendiehl.com/fun/)
+* [**Haskell**: _Write Yourself a Scheme in 48 Hours_](https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours)
+* [**Haskell**: _Write You A Scheme_](https://www.wespiser.com/writings/wyas/home.html)
+* [**Java**: _Crafting interpreters: A handbook for making programming languages_](http://www.craftinginterpreters.com/)
+* [**Java**: _Creating JVM Language_](http://jakubdziworski.github.io/categories.html#Enkel-ref)
+* [**JavaScript**: _The Super Tiny Compiler_](https://github.com/jamiebuilds/the-super-tiny-compiler)
+* [**JavaScript**: _The Super Tiny Interpreter_](https://github.com/keyanzhang/the-super-tiny-interpreter)
+* [**JavaScript**: _Little Lisp interpreter_](https://maryrosecook.com/blog/post/little-lisp-interpreter)
+* [**JavaScript**: _How to implement a programming language in JavaScript_](http://lisperator.net/pltut/)
+* [**JavaScript**: _Let’s go write a Lisp_](https://idiocy.org/lets-go-write-a-lisp/part-1.html)
+* [**OCaml**: _Writing a C Compiler_](https://norasandler.com/2017/11/29/Write-a-Compiler.html)
+* [**OCaml**: _Writing a Lisp, the series_](https://bernsteinbear.com/blog/lisp/)
+* [**Pascal**: _Let's Build a Compiler_](https://compilers.iecc.com/crenshaw/)
+* [**Python**: _A Python Interpreter Written in Python_](http://aosabook.org/en/500L/a-python-interpreter-written-in-python.html)
+* [**Python**: _lisp.py: Make your own Lisp interpreter_](http://khamidou.com/compilers/lisp.py/)
+* [**Python**: _How to Write a Lisp Interpreter in Python_](http://norvig.com/lispy.html)
+* [**Python**: _Let’s Build A Simple Interpreter_](https://ruslanspivak.com/lsbasi-part1/)
+* [**Python**: _Make Your Own Simple Interpreted Programming Language_](https://www.youtube.com/watch?v=dj9CBS3ikGA&list=PLZQftyCk7_SdoVexSmwy_tBgs7P0b97yD&index=1) [video]
+* [**Python**: _From Source Code To Machine Code: Build Your Own Compiler From Scratch_](https://build-your-own.org/compiler/)
+* [**Racket**: _Beautiful Racket: How to make your own programming languages with Racket_](https://beautifulracket.com/)
+* [**Ruby**: _A Compiler From Scratch_](https://www.destroyallsoftware.com/screencasts/catalog/a-compiler-from-scratch)
+* [**Ruby**: _Markdown compiler from scratch in Ruby_](https://blog.beezwax.net/2017/07/07/writing-a-markdown-compiler/)
+* [**Rust**: _Learning Parser Combinators With Rust_](https://bodil.lol/parser-combinators/)
+* [**Swift**: _Building a LISP from scratch with Swift_](https://www.uraimo.com/2017/02/05/building-a-lisp-from-scratch-with-swift/)
+* [**TypeScript**: _Build your own WebAssembly Compiler_](https://blog.scottlogic.com/2019/05/17/webassembly-compiler.html)

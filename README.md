@@ -1,6 +1,21 @@
 # 背景
 本项目的目标是将 `https://github.com/codecrafters-io/build-your-own-x` 中的项目逐步转换为 skills，让每个开发者都能通过 AI 技术，快速学习各种工程实践技能。
 
+## 总入口 skill（新增）
+
+仓库根目录现在本身就是一个 skill：`build-your-own-x`。根目录的 [SKILL.md](SKILL.md) 是路由入口，帮开发者选主题、语言和教程，再交给 `skills/` 下的子 skill。子 skill 分两类：
+
+- **主线 skill**（按大类的导师，有里程碑，每步都有可运行的检查点）：[`git`](skills/git/SKILL.md)、[`database`](skills/database/SKILL.md)（Redis / KV / B+ 树 / SQL）、[`shell`](skills/shell/SKILL.md)、[`docker`](skills/docker/SKILL.md)、[`programming-language`](skills/programming-language/SKILL.md)。
+- **单教程 skill**（`skills/<分类>-<教程>`）：每个对应上游的一篇教程。
+
+上游全部 31 个分类的状态（主线已完成 / 仅单教程 / 计划中）见 [references/catalog.md](references/catalog.md)。skill 以带教为主：概念 → 骨架 → 学习者写代码 → 测试，不直接给完整答案。
+
+安装（计划，发布后可用）：`npx skills add linkxzhou/build-your-own-x-skills`。目前请克隆仓库后运行 `./init.sh`。
+
+路线图：下一批主线为 operating-system、emulator-virtual-machine、web-server、regex-engine、text-editor；之后补上游新增的 4 类（distributed-systems、ai-model、memory-allocator、processor）。
+
+致谢：主题与链接来自 [codecrafters-io/build-your-own-x](https://github.com/codecrafters-io/build-your-own-x)（CC0 1.0），详见 [ATTRIBUTION.md](ATTRIBUTION.md)。
+
 ## 当前状态
 
 - 原始 build-your-own-x 条目数：`351`

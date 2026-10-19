@@ -2,6 +2,21 @@
 
 The goal of this project is to gradually convert projects from `https://github.com/codecrafters-io/build-your-own-x` into skills, enabling developers to learn engineering topics quickly with AI-assisted, project-based workflows.
 
+## Umbrella skill (new)
+
+The repository root is now a single skill, `build-your-own-x`. The root [SKILL.md](SKILL.md) is a router: it helps a developer pick a topic, a language and a tutorial, then hands off to a sub-skill under `skills/`. There are two kinds of sub-skill:
+
+- **Track skills** (category-level tutors with milestones and a runnable checkpoint for each): [`git`](skills/git/SKILL.md), [`database`](skills/database/SKILL.md) (Redis / KV / B+tree / SQL), [`shell`](skills/shell/SKILL.md), [`docker`](skills/docker/SKILL.md) and [`programming-language`](skills/programming-language/SKILL.md).
+- **Per-tutorial skills** (`skills/<category>-<tutorial>`): each one coaches a single upstream tutorial.
+
+The status of all 31 upstream categories (track skill ready / per-tutorial only / planned) is in [references/catalog.md](references/catalog.md). The skills coach rather than hand over full solutions: concept → skeleton → the learner writes code → test.
+
+Install (planned, once published): `npx skills add linkxzhou/build-your-own-x-skills`. For now, clone the repo and run `./init.sh`.
+
+Roadmap: add track skills for operating-system, emulator-virtual-machine, web-server, regex-engine and text-editor next, then the 4 categories that are new upstream (distributed-systems, ai-model, memory-allocator, processor).
+
+Credits: topics and links come from [codecrafters-io/build-your-own-x](https://github.com/codecrafters-io/build-your-own-x) (CC0 1.0). See [ATTRIBUTION.md](ATTRIBUTION.md).
+
 ## Current Status
 
 - Original build-your-own-x entries: `351`
