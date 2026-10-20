@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the crash: 'IRQ0 arrives at vector 8 — which is #DF (Double Fault). You have no handler there... and you triple-fault.' Gives minimal fixes: 'Remap the PIC to 0x20–0x2F before sti' and 'Mask all IRQs... outb(0x21, 0xFF); outb(0xA1, 0xFF);'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete runnable checkpoint with expected output: 'qemu-system-x86_64 -d int -no-reboot' — 'The log shows the vector being delivered right before the shutdown. You'll see v=08 (unremapped PIC) or v=20+ (remapped, unhandled).' Also closing verification: 'Test with a bare int $3 before enabling interrupts — if that works, the IDT is fine and the crash is purely the unhandled IRQ path.'"
+  },
+  {
+   "text": "B3: Explains the timer interrupt fires without a handler (or PIC not remapped) → double/triple fault; add handlers / remap PIC / double-fault handler",
+   "passed": true,
+   "evidence": "'the PIC is still in its BIOS state: IRQ0 (timer) is unmasked and fires within ~10–50ms... IRQ0 arrives at vector 8 — which is #DF (Double Fault)... you triple-fault'; fixes include 'Remap the PIC to 0x20–0x2F', 'Install a catch-all handler for all 256 vectors', and 'Add a panic handler for exceptions 0–31'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0); SHELL COMMANDS RUN (0); only tool calls are two read-only globs ('**/*.{c,h,rs,asm,S,nasm,ld}', '**/Makefile*'). No install commands and no writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 57.3
+ },
+ "install_like_cmds": []
+}

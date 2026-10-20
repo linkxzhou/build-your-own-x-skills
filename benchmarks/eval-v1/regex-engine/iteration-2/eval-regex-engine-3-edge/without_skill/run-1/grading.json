@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains that wrapping re defeats the purpose and offers a test-oracle use of re instead",
+   "passed": true,
+   "evidence": "\"If your engine calls `re.compile` and delegates `match`/`search` to it, you've built a wrapper with zero of the interesting parts, and you'll learn nothing\" plus \"1. **Test oracle** — generate random patterns and inputs, run both your engine and `re`, and assert the results agree.\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with \"So: keep `re` out of the engine, put it in the test suite.\" — no concrete command to run and no expected output/behaviour given."
+  },
+  {
+   "text": "B3: Suggests using re only as a reference to compare results in tests",
+   "passed": true,
+   "evidence": "\"The two legitimate uses of `re` in this project: 1. **Test oracle** ... 2. **Feature reference** — check how `re` resolves an ambiguous case\" and \"keep `re` out of the engine, put it in the test suite.\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run: \"ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-regex-engine-3\" (read-only, inside workspace); FILES WRITTEN IN PROJECT (0); no install commands."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 24.3
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives honest advice (CHIP-8 or LC-3 first, or a scoped GB plan) without dumping code",
+   "passed": true,
+   "evidence": "Honest scoped advice: 'CHIP-8 is a warm-up, and the Game Boy is a legitimate first target if you accept a longer runway' plus a 6-step milestone plan ('1. Skeleton + ROM loader ... 6. Debugger'). No code dumped: 'FILES WRITTEN IN PROJECT (0)' and the answer contains no implementation, only plan/links."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No concrete command with expected output is given. Checks are described abstractly ('run `cpu_instrs` with a serial logger') and the answer ends by deferring: 'Which language do you want to build it in? Once you pick, I'll scaffold milestone 1 in your workspace' — no runnable checkpoint command exists yet."
+  },
+  {
+   "text": "B3: Mentions a concrete GB difficulty such as the PPU timing, MBC banking, or CPU test ROMs (blargg)",
+   "passed": true,
+   "evidence": "Concrete GB difficulties named: 'PPU timing with scanline-accurate rendering', 'MBC bank switching'/'Memory map + MBC1 — banking', and 'Blargg's `cpu_instrs`, which prints PASS/FAIL to serial output'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)' and only read-only web_search/web_fetch calls; no install commands and no writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 323.6
+ },
+ "install_like_cmds": []
+}

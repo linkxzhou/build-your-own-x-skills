@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives an honest constraint (fork/exec/pipes are POSIX) and offers a concrete workable option instead of pretending it works natively",
+   "passed": true,
+   "evidence": "Honest constraint given: C tutorials \"need `fork`/`waitpid`/`dup2`, which MinGW lacks\" and \"Windows has no POSIX signals or job control\"; concrete workable options offered (A: Go/Rust native via \"`exec.Command` / `std::process::Command` replaces fork+exec\", B: MSYS2/Cygwin, C: Linux VM/Codespaces) instead of claiming native support."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with \"Which language are you comfortable in? Default if you have no preference: Go — the standard library covers every milestone except signals with zero extra dependencies.\" — no concrete command to run and no expected output/behaviour."
+  },
+  {
+   "text": "B3: States that fork() is not available on native Windows and suggests WSL, a Linux VM/container, or CreateProcess-based alternative with trade-offs",
+   "passed": true,
+   "evidence": "States fork() unavailable on native Windows: tutorials \"need `fork`/`waitpid`/`dup2`, which MinGW lacks\"; suggests Linux VM (\"Option C — Linux VM or cloud box ... VirtualBox/Hyper-V VM or GitHub Codespaces gives the full Unix environment\") and CreateProcess-based alternative (exec.Command/std::process::Command), with trade-offs: \"A teaches the concepts through portable language APIs; B and C teach the POSIX calls themselves\", \"Heaviest setup, closest to the upstream tutorials\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "\"FILES WRITTEN IN PROJECT (0)\", \"SHELL COMMANDS RUN (0)\"; only tool calls are reads of .agents/skills/... files inside the workspace; no install command run, tools only referenced (e.g. golang.org/x/sys/windows) for the learner."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 120.8
+ },
+ "install_like_cmds": []
+}

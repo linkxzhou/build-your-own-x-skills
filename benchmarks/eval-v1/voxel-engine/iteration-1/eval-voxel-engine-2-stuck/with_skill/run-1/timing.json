@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-102457-ea98cb",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/voxel-engine/iteration-1/eval-voxel-engine-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 52.6,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

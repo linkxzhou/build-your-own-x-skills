@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-102018-d41e7f",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/template-engine/iteration-1/eval-template-engine-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 55.0,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

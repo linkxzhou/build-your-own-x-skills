@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "TASKS.md is a 9-milestone plan (M0–M8) with coaching rules: '给骨架：只给出当前里程碑的函数签名/框架代码', '你来写核心：学习者亲手实现', '不一次性给全部代码'. Content lists tasks like 'bocker_check <id>：用 btrfs subvolume list | grep -qw 判断存在性' as signatures/descriptions, no complete implementation written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a checkpoint: '$ ./bocker help' plus '期望输出：列出 pull init rm images ps run exec logs commit 全部子命令及用法；同时 ip addr show bridge0 显示 10.0.0.1/24'; each milestone also has a 验证 block, e.g. M1: './bocker init ./scratch/rootfs # Created: img_42150'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (docker-docker-shell): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror bocker's actual stages and code: real function names (bocker_init/bocker_check/bocker_images/bocker_pull), real details 'img_$(shuf -i 42002-42254 -n 1)', 'cp -rf --reflink=auto', 'img.source', '#HELP 注释即文档', 'set -o errexit -o nounset -o pipefail', 'unshare -fmuip --mount-proc', cgcreate/cgset/cgexec, veth+bridge+netns, and the accurate note that 'bocker pull 依赖已停服的 Docker Registry v1 API' with a 2025-usable replacement."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Only 2 shell commands ran: 'curl -sL https://raw.githubusercontent.com/p8952/bocker/master/bocker | sed -n ...' (read-only fetch) and 'ls -la'; other calls are read/web_fetch/glob/write of TASKS.md in project. No install commands executed; deps are delegated to learner: '依赖包：btrfs-progs curl iproute2 iptables libcgroup-tools util-linux coreutils' and 'Claude 不代装依赖（打印命令由你执行）'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 255.1
+ },
+ "install_like_cmds": []
+}

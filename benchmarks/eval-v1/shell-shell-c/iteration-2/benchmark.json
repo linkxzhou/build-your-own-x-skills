@@ -1,0 +1,139 @@
+{
+  "metadata": {
+    "skill_name": "shell-shell-c",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:53Z",
+    "evals_run": [
+      0
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 346.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged plan + scaffold, only current milestone implemented: TASKS.md lists 7 milestones each with '\u68c0\u67e5\u70b9\uff08\u901a\u8fc7\u540e\u624d\u8fdb\u5165\u4e0b\u4e00\u4e2a\uff09'; main.c implements only M1 echo REPL and defers the rest as comments: '\u540e\u7eed\u91cc\u7a0b\u7891 (\u89c1 ../TASKS.md\uff0c\u5148\u4e0d\u8981\u63d0\u524d\u5b9e\u73b0): M2: fork + execvp + waitpid\u2026M7: \u4fe1\u53f7\u4e0e\u540e\u53f0\u4f5c\u4e1a', plus 'TODO(learner) \u7ec3\u4e60 1 \u7684\u7b2c\u4e00\u6b65: \u7ed9\u4f60\u7684 shell \u8d77\u4e2a\u540d\u5b57\uff0c\u6539\u6389\u4e0b\u9762\u7684\u63d0\u793a\u7b26'. Final answer hands the next action to the learner: '\u4f60\u7684\u7b2c\u4e00\u6b65\uff1a\u7ed9 shell \u8d77\u540d\u2026\u6539 myshell/src/main.c:21 \u7684 PROMPT \u5b8f'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with a runnable checkpoint: 'make -C myshell; printf 'hi\\nls\\nexit\\n' | ./myshell/myshell; echo $?' with expected behaviour '# \u671f\u671b: \u4e09\u884c\u63d0\u793a\u7b26\u5404\u8ddf hi\u3001ls\uff0c\u7136\u540e\u9000\u51fa\u7801 0\uff1b\u4ea4\u4e92\u6a21\u5f0f\u4e0b\u6309 Ctrl-D \u4e5f\u5e94\u5e72\u51c0\u9000\u51fa', and '\u901a\u8fc7\u540e\u544a\u8bc9\u6211\uff0c\u6211\u4eec\u8fdb M2'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (shell-shell-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Tutorial-specific: cites upstream 'Let's build a shell!\uff08Kamal Marhubi, Strange Loop 2014 workshop\uff09https://github.com/kamalmarhubi/shell-workshop' and fetched its raw README to align milestones; stages match the workshop (M2 'fork + execvp + waitpid\uff1b\u4e3a\u4ec0\u4e48\u5fc5\u987b fork', M3 'cd/exit \u4e3a\u4ec0\u4e48\u5fc5\u987b\u5728 shell \u8fdb\u7a0b\u5185\u6267\u884c', M5 'open + dup2 \u5b9e\u73b0 > >> <', M6 'pipe()\u3001\u5173\u95ed fd'), with C-specific concepts like 'execvp \u4f1a\u66ff\u6362\u5f53\u524d\u8fdb\u7a0b\u6620\u50cf\u2014\u2014\u76f4\u63a5\u8c03\u7528\u5b83\uff0c\u4f60\u7684 shell \u5c31\u6d88\u5931\u4e86' and upstream detail '\u4e0a\u6e38\u4f5c\u8005\u7528\u7684\u662f \"heee> \"'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Only 2 shell commands ran: environment probe 'ls -la; which cc gcc clang make\u2026; uname -s' and 'make -C myshell && printf \u2026 | ./myshell/myshell; echo \"exit=$?\"' \u2014 no install commands; all 9 files written inside the project (TASKS.md, PROGRESS.md, myshell/{Makefile,README.md,.gitignore,src/main.c} plus in-project build artifacts myshell/myshell and myshell.dSYM); README notes requirements instead of installing: '\u9700\u8981 Unix-like \u73af\u5883\u2026\u548c\u4efb\u610f C \u7f16\u8bd1\u5668 + make'."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 549.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged scaffold, only current milestone implemented: README.md has milestone table M0\u2013M7 with only 'M0 \u2705' and 'M1 \u2705'; src/main.c says '\u5f53\u524d\u8fdb\u5ea6\uff1aM1\uff08Exercise 1\uff09\u2014 \u63d0\u793a\u7b26 + \u8bfb\u5165 + \u56de\u663e' and contains 'TODO(M2): \u7528 parse_command()\u2026execvp() \u6267\u884c / TODO(M3): \u5148 fork()\u2026 / TODO(M4)\u2026TODO(M6)' stubs; final answer ends '\u4e0b\u4e00\u6b65\u6253\u5f00 src/main.c:37\uff0c\u4ece M2 \u5f00\u59cb\u5b9e\u73b0'. No fork/exec/wait/builtin/pipe code exists; parse.c is framed as workshop-provided utility ('Rule 0\uff1a\u89e3\u6790\u4e0d\u662f\u672c\u8bfe\u7684\u91cd\u70b9\uff0c\u6b64\u6587\u4ef6\u89c6\u4e3a provided code'), matching the tutorial's own Rule 0."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer reports a verified runnable checkpoint: '\u9aa8\u67b6\u5df2\u5c31\u7eea\u5e76\u9a8c\u8bc1\u901a\u8fc7\uff08`make` \u96f6\u8b66\u544a\u3001`make test` \u7eff\u3001\u5df2\u63d0\u4ea4 `c4a6f2e`\uff09', and README.md gives concrete commands ('make # \u6784\u5efa ./mysh / make run / make test # \u5192\u70df\u6d4b\u8bd5') plus expected behaviour in the M1 acceptance criteria: '\u8f93\u5165\u4ec0\u4e48\u56de\u663e\u4ec0\u4e48\uff1bCtrl-D/EOF \u9000\u51fa' (tests/smoke.sh asserts the exact 'mysh> hello' echo output and 'EOF should exit with status 0')."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (shell-shell-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the actual tutorial stages, fetched from the real repo (ran 'curl -sL https://raw.githubusercontent.com/kamalmarhubi/shell-workshop/master/README.md'): M1 Ex1 getline echo \u2192 M2 Ex2 execvp \u2192 M3 Ex3 fork \u2192 M4 Ex4 wait \u2192 M5 Ex6 cd/exit (chdir) \u2192 M6 Ex7+Ex8 pipe/dup2 \u2192 M7 \u00a77 redirects/$VAR. Tutorial-specific teaching point included: 'M2 \u76f4\u63a5 `execvp` \u4f1a\u8ba9 shell \u81ea\u5df1\u88ab\u66ff\u6362\u9000\u51fa\u2014\u2014\u8fd9\u662f\u6559\u7a0b\u5b89\u6392\u7684\u987f\u609f\u65f6\u523b\uff0cM3 \u7684 `fork` \u5c31\u662f\u4e3a\u4e86\u89e3\u51b3\u5b83'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run (only curl/grep/sed/make/git), but a command wrote outside the project dir: 'curl -sL https://raw.githubusercontent.com/kamalmarhubi/shell-workshop/master/README.md -o /tmp/shell-workshop-README.md' creates /tmp/shell-workshop-README.md, then reads it twice ('sed -n 75,215p /tmp/shell-workshop-README.md', 'sed -n 146,240p /tmp/shell-workshop-README.md')."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 346.5,
+        "stddev": 0.0,
+        "min": 346.5,
+        "max": 346.5
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 549.1,
+        "stddev": 0.0,
+        "min": 549.1,
+        "max": 549.1
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.25",
+      "time_seconds": "-202.6",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Offers a workable path with static images or a video file instead of a webcam",
+   "passed": true,
+   "evidence": "\"Yes — a webcam is optional for this project. The Python + OpenCV track runs entirely on still images, and every milestone has a camera-free version\" — M1 loads images from disk, M2–5 are \"pure image processing, no camera involved\", M6 accepts \"a saved frame sequence\" via cv2.warpPerspective or phone photos; plus a \"Fully synthetic (zero hardware)\" route."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final reply ends: \"**How to check it:** `python ar-marker-demo/m1_input.py` → prints `reference: (200, 200, 3), scene: (...)` and opens two windows; any key closes them.\" Earlier: generate marker one-liner with \"(expected: `marker.png` exists, a black square with a white square inside)\"."
+  },
+  {
+   "text": "B3: Explains using a reference image plus scene images/video frames as input",
+   "passed": true,
+   "evidence": "\"Milestone 1 (input): load a reference marker image + a scene image from disk instead of grabbing frames\"; \"generate the marker yourself (draw it with OpenCV), then create 'scene' images by warping it onto photos\"; \"any phone photo of the printed marker + a few shots of it on a desk\"; \"Live video is just this pipeline run at 30 fps; the math is identical on one frame.\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "\"SHELL COMMANDS RUN (0)\"; only file written is ar-marker-demo/m1_input.py (inside project). Install left to learner: \"Then install what's missing (you run this, I don't): pip install opencv-python numpy\" and \"(you run installs, I don't)\"."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 299.2
+ },
+ "install_like_cmds": []
+}

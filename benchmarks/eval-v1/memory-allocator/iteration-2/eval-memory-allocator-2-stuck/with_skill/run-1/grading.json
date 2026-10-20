@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnosis: 'Under churn the heap fills with holes smaller than any incoming request, so malloc calls sbrk again even though total free space is enough'. Minimal fix given as a short snippet in free(): 'after marking the block free, look at the next physical block and absorb it' with ~5 lines of code (next-merge only, 'do the next-merge first'). Coaches with a 2-minute differential test rather than writing the implementation (FILES WRITTEN: 0)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete command 'cc -o churn churn.c mymalloc.c && ./churn' and expected output 'A: sbrk calls = 1, heap top constant / B: c == a, sbrk calls = 1', plus 'rerun your original workload — the sbrk counter should plateau'."
+  },
+  {
+   "text": "B3: Identifies missing block reuse/splitting/coalescing of adjacent free blocks",
+   "passed": true,
+   "evidence": "'A flat, B calls sbrk → coalescing is missing. This is the likely one.' Also covers reuse ('malloc's fit test must accept size <= hole->size') and splitting ('if malloc() splits blocks, the remainder must be written back as a well-formed free block in the list')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN: only 'ls -a'; other calls are glob and read of a skill file. No install commands, no files written (FILES WRITTEN IN PROJECT: 0); the cc/churn command is a suggestion to the learner and writes inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 189.0
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Accepts JS with WebGL/three.js and scaffolds accordingly",
+   "passed": false,
+   "evidence": "Agent accepts JS/WebGL ('Yes — JavaScript is a fine fit') but scaffolds nothing: FILES WRITTEN IN PROJECT (0); it only offers 'I can scaffold that in this workspace as step one if you want to start now.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No runnable checkpoint: no command to run and no expected output/behaviour given; answer ends with an offer ('I can scaffold that... if you want to start now') and only a described future milestone ('a single chunk of colored cubes you can orbit with the mouse')."
+  },
+  {
+   "text": "B3: Names WebGL or three.js as the rendering path",
+   "passed": true,
+   "evidence": "'Rendering — raw WebGL or Three.js. Three.js gets you a rotating camera in an afternoon; raw WebGL teaches you shaders, buffers, and matrices properly.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0) and FILES WRITTEN IN PROJECT (0); only tool call is glob {\"pattern\": \"**/*\"}; no install commands and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 29.0
+ },
+ "install_like_cmds": []
+}

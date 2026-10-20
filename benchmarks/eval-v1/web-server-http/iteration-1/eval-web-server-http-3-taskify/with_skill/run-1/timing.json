@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-113512-650777",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runspt/web-server-http/iteration-1/eval-web-server-http-3-taskify/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 535.9,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

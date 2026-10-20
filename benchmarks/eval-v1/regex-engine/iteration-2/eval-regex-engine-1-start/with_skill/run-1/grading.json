@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds literal/./^/$ matching with TODOs; not a full NFA engine",
+   "passed": true,
+   "evidence": "engine.py has three stubs with TODOs and 'raise NotImplementedError(\"TODO 1: search\")' / 'TODO 2: match_here' / 'TODO 3: match_one'; docstring scopes M1 to '字面量字符、`.`（任意单字符）、`^`（串首锚）、`$`（串尾锚）' and says '`*` `+` `?` 属于里程碑 2'; PROGRESS.md shows NFA as milestone 4 '未开始' — only the current milestone is scaffolded, learner implements the core ('三个 TODO 就是你要写的全部核心逻辑')"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with checkpoint: 'python3 -m myregex.tests' with '当前输出 `0/15 通过`' and '三个 TODO 填完后，预期输出 `15/15 通过`，退出码 0'; command was actually run per SHELL COMMANDS"
+  },
+  {
+   "text": "B3: Mentions Rob Pike's recursive matcher or an equivalent recursive approach for the first features",
+   "passed": true,
+   "evidence": "'M1 的算法原型是 Rob Pike 的 30 行 C 匹配器'; concept section: '整个引擎只有两个函数在互相递归…递归每层只处理一个字符，这就是 Pike 匹配器的全部'; engine.py: '参考原型：Rob Pike 的 30 行 C 匹配器'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN are only 'ls -la…', 'python3 --version', 'python3 -m myregex.tests' — no install commands; FILES WRITTEN are all inside project (PROGRESS.md, myregex/*.py, myregex/__pycache__/*.pyc)"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 608.7
+ },
+ "install_like_cmds": []
+}

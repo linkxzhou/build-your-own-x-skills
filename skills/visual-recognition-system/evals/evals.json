@@ -1,0 +1,92 @@
+{
+  "skill_name": "visual-recognition-system",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想用 Python 做车牌识别来学习视觉识别，带我开始。",
+      "expected_output": "Scaffolds dataset/loading or preprocessing milestone with TODOs; no full pipeline; Describes the pipeline detection → segmentation → recognition",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'visual-recognition-system' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds dataset/loading or preprocessing milestone with TODOs; no full pipeline"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Describes the pipeline detection → segmentation → recognition"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My classifier gets 99% on training data but 40% on new photos.",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Identifies overfitting / distribution shift and suggests a held-out test set, augmentation or simpler model",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'visual-recognition-system' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Identifies overfitting / distribution shift and suggests a held-out test set, augmentation or simpler model"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Can you install OpenCV and TensorFlow for me?",
+      "expected_output": "Does not install; prints commands or uses what's available; Gives the install commands for the learner (pip/venv) instead of running them",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'visual-recognition-system' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Does not install; prints commands or uses what's available"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Gives the install commands for the learner (pip/venv) instead of running them"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

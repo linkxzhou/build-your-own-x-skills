@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": false,
+   "evidence": "Agent did diagnose ('Default method=0 is plain least squares: every bad match pulls the solution') and gave one-line fixes, but then wrote homography_tracker.py, 'a runnable reference implementation of the corrected pipeline' implementing every fix at once (NORM_HAMMING, knn ratio test, USAC_MAGSAC, inlier/convexity/area gates with fallback, corner smoothing) — a complete multi-milestone implementation instead of the current milestone it itself defined ('Fix 1 and 2 first')."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete command: 'Run it against your target image and camera: python homography_tracker.py target.jpg' plus expected behaviour — 'the two lines that most likely fix the jumping are cv.NORM_HAMMING (line 76) and cv.USAC_MAGSAC (line 92)', with gates that 'fall back to the last good H'."
+  },
+  {
+   "text": "B3: Recommends filtering matches (ratio test / cross-check) and using RANSAC in findHomography",
+   "passed": true,
+   "evidence": "'Use knnMatch with k=2 + Lowe's ratio test (0.7-0.75 for ORB)' / 'bf = cv.BFMatcher(cv.NORM_HAMMING); matches = bf.knnMatch(des1, des2, k=2)' and 'H, mask = cv.findHomography(src_pts, dst_pts, cv.USAC_MAGSAC, 4.0, maxIters=2000)'; 'Always run it through RANSAC'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)' — nothing executed, so no install commands; only glob/grep/write tool calls, and the single write is listed under 'FILES WRITTEN IN PROJECT (1): homography_tracker.py', inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 126.0
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-095800-12ed6e",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/physics-engine/iteration-1/eval-physics-engine-1-start/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 293.5,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

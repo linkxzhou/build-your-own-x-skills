@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses three candidate bugs: 'IDF 缺失：排序只用了 TF（或 IDF 恒等于 1）', 'IDF 公式写反：写成了 log(df / N)', 'df 统计口径错误', and gives the correct formula 'tfidf(t, d) = tf(t, d) × log(N / df)' as a hint, then asks for the code file to apply the fix."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with '把你的排序代码文件路径发我（或直接贴出来），我帮你改。' — no concrete command to run and no expected output/behaviour is given."
+  },
+  {
+   "text": "B3: Explains IDF (log(N/df)) down-weights common terms and/or remove stopwords; checks the formula",
+   "passed": true,
+   "evidence": "Explains '正确形式是 log(N / df) —— df 越大权重应越低，写反后 the（df 最大）反而得分最高' and gives 'tfidf(t, d) = tf(t, d) × log(N / df)' plus smoothing variant 'log(N / (1 + df(t)))'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command is 'ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-search-engine-2' (read-only, project dir); other calls are glob/grep; FILES WRITTEN (0); no install command anywhere."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 54.5
+ },
+ "install_like_cmds": []
+}

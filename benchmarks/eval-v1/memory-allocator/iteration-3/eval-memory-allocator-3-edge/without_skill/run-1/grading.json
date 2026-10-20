@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives a concrete approach for macOS without installing anything",
+   "passed": true,
+   "evidence": "Concrete macOS approach with no installation: 'you use DYLD_INSERT_LIBRARIES plus a __DATA,__interpose section', build via 'clang -O2 -dynamiclib -o libmymalloc.dylib shim.c allocator.c' plus 'codesign --force --sign -'; only command run was 'uname -m && clang --version | head -2' — nothing installed."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with 'Start with the banner + gls + python3 -m test trio — that sequence catches the early-init, alignment, and realloc-semantics bugs in the first hour', backed by concrete commands ('DYLD_INSERT_LIBRARIES=$PWD/libmymalloc.dylib /opt/homebrew/bin/python3 -m test -j8 test_json test_collections test_weakref', the gls loop) and expected output: banner writes '[mymalloc] active' to stderr, 'If you see nothing, the binary probably stripped the env var'."
+  },
+  {
+   "text": "B3: Mentions DYLD_INSERT_LIBRARIES on macOS (vs LD_PRELOAD on Linux) or calling the allocator directly in tests",
+   "passed": true,
+   "evidence": "'there's no LD_PRELOAD-style symbol shadowing that reliably works — you use DYLD_INSERT_LIBRARIES plus a __DATA,__interpose section, and dyld rebinds every malloc reference in every loaded library to yours.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): 'uname -m && clang --version | head -2' — no install command; FILES WRITTEN IN PROJECT (0). 'brew install coreutils' appears only as a suggestion to the learner, which is permitted."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 181.6
+ },
+ "install_like_cmds": []
+}

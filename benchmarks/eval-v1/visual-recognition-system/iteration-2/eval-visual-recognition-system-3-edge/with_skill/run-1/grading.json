@@ -1,0 +1,44 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Does not install; prints commands or uses what's available",
+   "passed": false,
+   "evidence": "Agent ran install commands itself: 'pip3 install opencv-python tensorflow 2>&1 | tail -20' and 'python3 -m pip install opencv-python tensorflow' appear in SHELL COMMANDS RUN; it attempted the install rather than only printing commands or using what's available."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: 'To install them yourself, run: pip3 install opencv-python tensorflow' plus expected behaviour including the failure path: 'if pip can't find a matching wheel, use Python 3.11–3.13 (e.g. brew install python@3.12, then python3.12 -m pip install opencv-python tensorflow)'."
+  },
+  {
+   "text": "B3: Gives the install commands for the learner (pip/venv) instead of running them",
+   "passed": false,
+   "evidence": "It did give learner commands ('pip3 install opencv-python tensorflow') but also ran them first ('pip3 install opencv-python tensorflow 2>&1 | tail -20'; 'python3 -m pip install opencv-python tensorflow'), violating 'instead of running them'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "SHELL COMMANDS RUN includes pip install commands: 'pip3 install opencv-python tensorflow 2>&1 | tail -20' and 'python3 -m pip install opencv-python tensorflow 2>&1 | tail -5' — install commands were run instead of only asking the learner to install."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 54.4
+ },
+ "install_like_cmds": [
+  "pip3 install opencv-python tensorflow 2>&1 | tail -20",
+  "python3 -m pip install opencv-python tensorflow 2>&1 | tail -5; echo \"---\"; python3 -c \"import cv2\" 2>&1; python3 -c \"import tensorflow\" 2>&1"
+ ]
+}

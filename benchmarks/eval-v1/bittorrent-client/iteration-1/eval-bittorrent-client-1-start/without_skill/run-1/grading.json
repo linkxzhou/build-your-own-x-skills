@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds bencode parsing (or the first milestone) with TODOs; no full client",
+   "passed": true,
+   "evidence": "Scoped to first milestone only: 'Step 1: parse the `.torrent` file... the real first deliverable is a bencode decoder'; gives skeleton 'type Torrent struct {...}' and layout 'bencode.go (decoder), torrent.go (struct + parse + info hash)'; 0 files written, no full client implementation. No literal TODO markers, but nothing beyond milestone 1 was implemented."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Only 'Validate the decoder against a real `.torrent` file before moving on' — no concrete command (e.g. go run/build invocation) and no expected output/behaviour given."
+  },
+  {
+   "text": "B3: Describes bencode types: strings <len>:<data>, integers i<n>e, lists l...e, dicts d...e",
+   "passed": true,
+   "evidence": "Lists all four: 'integers — `i123e`', 'byte strings — `4:spam` (length-prefixed raw bytes)', 'lists — `l<item>...e`', 'dicts — `d<key><value>...e`'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)' and 'FILES WRITTEN IN PROJECT (0)'; only tool call was glob {\"pattern\": \"**/*\"}; no install commands, nothing outside workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 61.1
+ },
+ "install_like_cmds": []
+}

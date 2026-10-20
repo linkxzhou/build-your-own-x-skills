@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-102526-f5ed43",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/web-browser/iteration-1/eval-web-browser-1-start/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 185.8,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

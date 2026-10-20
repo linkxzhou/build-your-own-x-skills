@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint, not a full rewrite",
+   "passed": true,
+   "evidence": "Precise diagnosis ('the parent ... keeps the write end of the pipe open, so wc never sees EOF and blocks on read forever') with a minimal two-close fix ('parent: close(p[0]); close(p[1]); before any waitpid — this was your bug'). The learner's shell was not rewritten; pipe_hang_buggy.c/pipe_hang_fixed.c are a single-bug repro/demo of the current milestone, not a multi-milestone implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'Runnable check: rebuild with the closes above, run ./yourshell, then ls | wc -l — expected output is the file count followed immediately by your prompt returning, and echo $? inside the shell reports wc's status (0)'; answer ends with 'Re-run anytime with python3 -c \"...subprocess.run([./pipe_hang_fixed])\" — expected output is the file count followed by done'."
+  },
+  {
+   "text": "B3: Identifies that the parent (and/or children) must close unused pipe file descriptors, otherwise wc never sees EOF",
+   "passed": true,
+   "evidence": "'EOF only happens when all write-end descriptors are closed'; 'after dup2, close ALL copies of the pipe fds in parent and both children'; checklist: 'ls child: dup2(p[1],1); close(p[0]); close(p[1]); ... wc child: dup2(p[0],0); close(p[0]); close(p[1]); ... parent: close(p[0]); close(p[1]); before any waitpid — this was your bug'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only 3 commands run: two python3 heredocs (subprocess/pgrep demo) and 'ls -l /proc/self/fd ...; cat /proc/self/syscall' — no brew/apt/pip/cargo/rustup/npm/go/gem install anywhere; the 4 files written (pipe_hang_buggy, pipe_hang_buggy.c, pipe_hang_fixed, pipe_hang_fixed.c) are all inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 298.4
+ },
+ "install_like_cmds": []
+}

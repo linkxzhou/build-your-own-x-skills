@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only the M1 scaffold was written with the core left to the learner: rtl/blinker.v contains 'TODO(learner): advance `count` and toggle the LED', 'count <= count + 1'b1;  // placeholder: replace me' and 'assign led = 1'b0;  // placeholder: replace me', plus graded hints ('Hint 1... Hint 2... Hint 3'). M2–M7 exist only as plan rows ('| 2 | ALU | ... |'), no implementation files; final answer assigns the work: '你的第一个任务：打开 rtl/blinker.v，让 led 每 BLINK_PERIOD 个周期变化一次——大约 4 行代码'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete command with expected behaviour: README '运行检查点：make sim' and '预期输出最后一行是 PASS: ...，否则 make 会报 TEST FAILED'; Makefile enforces it: \"grep -q '^PASS:' sim/blinker.log || { echo \\\"TEST FAILED (no PASS line)\\\"; exit 1; }\"; final answer: '跑 make sim 看到 PASS 后，在 PROGRESS.md 勾掉 M1'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the cited tutorial's actual ladder (upstream link BrunoLevy/learn-fpga FemtoRV/TUTORIALS/FROM_BLINKER_TO_RISCV): M1 闪灯+testbench → M2 ALU → M3 寄存器堆+PC ('x0 恒为 0') → M4 单周期 RV32I 子集 ('译码、立即数、load/store、分支', checkpoint '1+2+…+10 = 55') → M5 存储器+I/O ('内存映射 LED/UART') → M6 riscv-tests 一致性 → M7 五级流水线+CPI. Language pinned to the toolchain: 'Verilog-2001（iverilog -g2001），暂不用 SystemVerilog'; agent read processor-riscv-verilog SKILL.md, tutorial-map.md, concepts.md and the minimal example before planning."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 9 shell commands are read-only or write inside the project (mkdir -p rtl tb sim docs; touch .gitkeep; make -n sim; python3 heredoc sim check); tool detection uses command -v only, no install executed. Install is delegated to the learner: '工具链需要你自己装（我这边没有 iverilog，也不代装）：brew install icarus-verilog gtkwave（Ubuntu 用 sudo apt install iverilog gtkwave）'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 883.3
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains that wrapping re defeats the purpose and offers a test-oracle use of re instead",
+   "passed": true,
+   "evidence": "Reply: 'Short answer: inside the matching code, no — the engine is the deliverable. If `match()` calls `re.search()`, the project has nothing left in it, and you'd skip every concept the milestones teach (backtracking, Thompson construction, NFA simulation).' Then offers: '1. **Test oracle.** Every checkpoint is defined as \"agrees with Python re\". Keep a test table where expected values come from `re`' with a code snippet comparing my_search to re.search."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The learner-facing reply ends with a question and a vague reference: 'Where are you in the milestones right now? If you're at milestone 1, the next concrete step is the recursive match loop for literals plus `.` `^` `$`, checked against that test table.' — no concrete command and no expected output/behaviour are delivered at the end. The command 'python3 oracle.py' and exit codes appear only inside the written oracle.py docstring and the agent's internal reasoning; the transcript truncates before any closing instruction to the learner, and the inline CASES snippet is not runnable (my_search undefined)."
+  },
+  {
+   "text": "B3: Suggests using re only as a reference to compare results in tests",
+   "passed": false,
+   "evidence": "The agent goes beyond test-only use: 'There are three legitimate uses of `re` in this project' including '3. **Explicit fallback for unimplemented syntax.** If you want the CLI to stay usable while only some syntax works, you may delegate to `re` behind a clearly marked flag (e.g. `--fallback`) and print a warning.' That is a suggested runtime use of re, violating 'only as a reference to compare results in tests', even though uses 1–2 (test oracle, differential testing) are test comparisons and the agent prefers raising 'unsupported syntax'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## SHELL COMMANDS RUN (0)'; OTHER TOOL CALLS are only two reads of skill files and one write of oracle.py inside the project. No install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) appear anywhere; the only command mentioned is 'python3 oracle.py', which the learner is asked to run."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 160.6
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives an honest constraint and a workable option (Linux VM, or utun with limits)",
+   "passed": true,
+   "evidence": "States the constraint honestly: 'Native TAP on macOS is basically dead (tuntaposx unmaintained, kext signing issues, Apple Silicon)' and gives workable options with limits: 'use utun for the TCP/IP part (IP/TCP/UDP), and if they specifically need Ethernet/ARP (layer 2), either emulate the wire with a Unix-socket \"virtual cable\" or run a Linux VM'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends mid-outline: '1. Direct answer: Native TAP on macOS: effectively no... 2. Route A: utun' — no closing runnable checkpoint; commands like 'ifconfig utunN 10.0.0.1 10.0.0.2 up' appear mid-text with no expected output/behaviour stated"
+  },
+  {
+   "text": "B3: States TAP/TUN as in the tutorial is Linux-specific and suggests a Linux VM/container",
+   "passed": true,
+   "evidence": "'On Linux, /dev/net/tun gives you TUN/TAP devices natively' plus macOS lacks native TAP, and suggests VM: 'VM-based: run Linux in QEMU/UTM/Multipass/Lima, use real TAP inside the VM. This is the most faithful \"TAP\" experience'; also 'or just develop in a Linux VM' and Docker-in-VM note"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## FILES WRITTEN IN PROJECT (0)' and '## SHELL COMMANDS RUN (0)'; only read-only tool calls (glob, grep) within the workspace; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install commands run or written outside the project"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 102.1
+ },
+ "install_like_cmds": []
+}

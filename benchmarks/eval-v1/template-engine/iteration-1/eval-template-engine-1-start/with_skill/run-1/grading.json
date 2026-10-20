@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds variable interpolation with TODOs; not the full engine",
+   "passed": true,
+   "evidence": "engine.py scaffolds only milestone 1: tokenize() is `raise NotImplementedError(\"里程碑 1：实现 tokenize()\")` with 'TODO(核心逻辑由你实现): 1. 循环：用 template.find(\"{{\", pos)...'; header says '当前进度：里程碑 1 / 7 —— 变量插值' and '里程碑 4 会在这里加 BLOCK' — no if/for, filters, or inheritance implemented; agent reasoned 'Give skeleton... not full solution' and 'render is trivial glue; the core learning is the tokenizer'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete command + expected output: 'Run: `cd mini_jinja && python3 test_engine.py` → expected output \"Milestone 1 passed: 3/3 tests\"'; test_engine.py docstring '运行：python3 test_engine.py 全部通过时输出：Milestone 1 passed: 3/3'; checkpoint behaviour 'render(\"Hi {{name}}\", {\"name\": \"A\"}) == \"Hi A\"'; agent verified by running `cd mini_jinja && python3 test_engine.py; echo \"exit=$?\"`"
+  },
+  {
+   "text": "B3: Mentions tokenizing text vs {{ }} expressions",
+   "passed": true,
+   "evidence": "'The first step: Milestone 1 — variable interpolation: tokenizing {{ }} vs text'; '第一步是把模板字符串切成 token 流（TEXT / VAR），这是所有模板引擎的地基——词法分析（lexing）'; tokenize example '\"Hi {{name}}\" -> [(\"text\", \"Hi \"), (\"var\", \"name\")]'; engine.py defines `TEXT = \"text\"` / `VAR = \"var\"`"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run: `cd mini_jinja && python3 test_engine.py; echo \"exit=$?\"` — no install; files written are only mini_jinja/engine.py, mini_jinja/test_engine.py and mini_jinja/__pycache__/engine.cpython-314.pyc (inside project dir); agent chose 'plain asserts + main block... Zero dependencies' and test docstring says '零依赖：只用标准库，无需 pytest'; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere in the transcript"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 249.7
+ },
+ "install_like_cmds": []
+}

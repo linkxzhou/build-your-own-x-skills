@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds dataset/loading or preprocessing milestone with TODOs; no full pipeline",
+   "passed": true,
+   "evidence": "Reply: 'implement the three TODOs in plate-rec/src/dataset.py (the only file you touch; src/generator.py is infrastructure)' listing load_image/load_split/class_counts; dataset.py written as 'Milestone 1 — YOUR CODE GOES HERE. Implement the three functions below'; PROGRESS.md shows milestones 2-7 all 'pending'; no preprocess/detect/segment/classify/pipeline files written; checkpoint currently red: 'Right now it exits with NotImplementedError — that's the red state.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Reply ends with '**How to check it:** cd plate-rec; python3 scripts/check_dataset.py' plus 'Expected when done: MILESTONE 1 CHECK — dataset + loading [PASS] load_image runs ... MILESTONE 1 CHECK PASSED — dataset + loading done.' and current behaviour 'Right now it exits with NotImplementedError — that's the red state.'"
+  },
+  {
+   "text": "B3: Describes the pipeline detection → segmentation → recognition",
+   "passed": true,
+   "evidence": "README.md roadmap describes the stages: '| 3 | Plate localisation (edges → contours → box) |', '| 4 | Char segmentation + HOG+SVM classifier |', '| 5 | Full pipeline | ... prints the plate text'; reply frames it as 'a 7-milestone license plate recognition build' and notes labels.csv boxes 'we'll use in milestone 3'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 8 shell commands are reads/checks (ls, python3 --version, importlib probe, font checks, PIL render test, make_dataset.py, check_dataset.py, csv sanity check) — no brew/apt/pip/cargo/rustup/npm -g/go install executed; all writes are under plate-rec/; agent asks the learner to install later: 'install them yourself when we get there: python3 -m pip install opencv-python scikit-learn matplotlib' and 'opencv / scikit-learn / matplotlib 缺失（你需要自行安装）'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 701.8
+ },
+ "install_like_cmds": []
+}

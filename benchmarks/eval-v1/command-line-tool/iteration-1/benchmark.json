@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "command-line-tool",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:50Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 290.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds hello CLI / arg parsing with TODOs; not the full tool",
+          "passed": true,
+          "evidence": "Wrote only a milestone-1 skeleton: main.rs has `// TODO(milestone 1): If args contains \"--version\" ... print cowsay {VERSION}` plus a placeholder `println!(\"moo (placeholder ...)\")`; agent says \"\u6838\u5fc3\u903b\u8f91\u7559\u7ed9\u4f60\" and \"\u4f60\u7684\u4efb\u52a1\uff1a\u6253\u5f00 cowsay/src/main.rs\uff0c\u628a TODO \u8865\u4e0a...\u7ea6 5 \u884c\u4ee3\u7801\" \u2014 no bubble/cow art/full tool implemented"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with checkpoint: \"\u68c0\u67e5\u547d\u4ee4\uff08\u901a\u8fc7\u540e\u6211\u4eec\u8fdb\u91cc\u7a0b\u7891 2\uff09\uff1a`cd cowsay && cargo run -- --version; echo $?` \u671f\u671b\u8f93\u51fa\u4e24\u884c\uff1a`cowsay 0.1.0` \u548c `0`\""
+        },
+        {
+          "text": "B3: Mentions exit codes or stdout vs stderr, or argument parsing (e.g. clap or std::env::args)",
+          "passed": true,
+          "evidence": "\"CLI \u7684\u7b2c\u4e00\u5757\u57fa\u77f3\u662f\u5165\u53e3\u70b9\u4e0e\u9000\u51fa\u7801\u3002`main` \u6b63\u5e38\u8fd4\u56de\u5373\u9000\u51fa\u7801 0\uff1b`std::env::args()` \u7ed9\u51fa\u547d\u4ee4\u884c\u53c2\u6570\uff0c\u7b2c\u4e00\u9879\u662f\u4e8c\u8fdb\u5236\u81ea\u8eab\u8def\u5f84\uff0c\u6240\u4ee5\u8981 `skip(1)`\"; TODO says \"exit with code 0\"; checkpoint uses `echo $?`"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command: `cargo new cowsay >/dev/null && ls cowsay cowsay/src; which cowsay || echo 'real cowsay: not installed'` \u2014 no install commands; files written are cowsay/Cargo.toml and cowsay/src/main.rs inside the project; toolchain already present (\"cargo 1.95.0 / rustc 1.95.0 available; no installs needed\")"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 41.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "\"Your program emits ANSI codes unconditionally; the terminal interprets them, a file just stores them. The fix is to detect whether stdout is a TTY and disable color when it's not.\" plus minimal snippet `var useColor = term.IsTerminal(int(os.Stdout.Fd()))`"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with advice (\"respect NO_COLOR ... check os.Stderr.Fd(), since `mycli 2>err.log` has the same problem\"). No concrete checkpoint command with expected output/behaviour; `mycli --color=always | less -R` and `mycli | tee out.log` are illustrative of the flag pattern, not a run-this-and-expect-that checkpoint."
+        },
+        {
+          "text": "B3: Recommends detecting whether stdout is a TTY and disabling ANSI colors when it is not (or a --no-color flag / NO_COLOR)",
+          "passed": true,
+          "evidence": "\"The fix is to detect whether stdout is a TTY and disable color when it's not\" with `term.IsTerminal(int(os.Stdout.Fd()))`, a `--color` auto|always|never flag, and \"respect `NO_COLOR` (set `useColor = false` when it's present and non-empty)\"."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only read-only glob/grep tool calls; no install commands anywhere in the answer."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 896.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Offers a staged path and gives at most the current milestone in full",
+          "passed": false,
+          "evidence": "Agent dumped the complete clone in one shot: todo 'Write lolcat.py (rainbow math, escape passthrough, CLI, animation, SIGPIPE safety)' completed; FILES WRITTEN shows lolcat.py (14068 chars) implementing the full surface \u2014 '1. Read from files given as args, or stdin... 3. Options: -p/--spread... -a/--animate... 7. Animation mode'. It explicitly chose dumping over coaching: 'the user's explicit request takes precedence \u2014 they asked for the whole thing written... delivering the complete implementation.' No staged milestones; the whole multi-feature tool was delivered instead of a first/current milestone."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The final answer ends mid-quote of upstream help text ('-s, --seed=<i') with no closing instruction to the learner; the only runnable examples ('$ echo \"hello world\" | python3 lolcat.py') live in the file docstring, and the verification commands (py_compile, rainbow asserts) were run by the agent itself, not handed over as a 'run this and expect X' checkpoint."
+        },
+        {
+          "text": "B3: Any colour logic described uses ANSI escape sequences (e.g. 24-bit \\x1b[38;2;r;g;bm) correctly",
+          "passed": true,
+          "evidence": "Colour logic uses ANSI correctly: \"normal \u2192 \\x1b[38;2;R;G;Bm, invert \u2192 \\x1b[48;2;R;G;Bm (background color)\", \"bold -b: \\x1b[1m prefix\", final reset \"print \\\"\\x1b[0m\\\"\", cursor control \"\\x1b[#{i}A\\x1b[0G\" for animation, and CSI passthrough 'consume until char in range 0x40\u20130x7E' / OSC 'until BEL (\\x07) or ST' \u2014 all valid SGR/CSI forms including 24-bit fg/bg."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "All 3 shell commands are local python3 only: 'python3 -m py_compile lolcat.py', heredoc asserts on rainbow(), 'python3 lolcat.py --help' \u2014 no brew/apt/pip/cargo/rustup/npm/go/gem install anywhere. FILES WRITTEN IN PROJECT (2) lists only lolcat.py and __pycache__/lolcat.cpython-314.pyc, both inside the project dir; web_search/web_fetch/api.github.com calls are read-only."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 306.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds hello CLI / arg parsing with TODOs; not the full tool",
+          "passed": false,
+          "evidence": "Agent wrote the complete tool, not a scaffold with TODOs: FILES WRITTEN shows moosay/src/main.rs (6789 chars) with full arg parsing ('-e, --eyes', '-T, --tongue', '-w, --wrap', '-d, --dead', '-h'), usage(), die(), stdin support ('MESSAGE comes from arguments, or from stdin'), wrap/bubble/cow implemented, plus unit tests; it then ran 'cargo run -q -- -d -e ^^ \"dead\"' and '-w 8 \"supercalifragilisticexpialidocious\"' and clippy \u2014 a finished multi-milestone implementation (plan itself listed 'v1 (bubble + cow), then flags, tests' and did all of it)."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The final answer ends mid-sentence with no runnable checkpoint: 'I'll implement tongue as a 2-char string placed before `||----w |` with the rest spaces: te' \u2014 no closing 'run this command, expect this output' instruction for the learner. The cargo run commands in SHELL COMMANDS RUN were executed by the agent, not presented as an end-of-answer checkpoint with expected output."
+        },
+        {
+          "text": "B3: Mentions exit codes or stdout vs stderr, or argument parsing (e.g. clap or std::env::args)",
+          "passed": true,
+          "evidence": "Argument parsing is central: '1. Parse args: collect message from positional args; flags: -e eyes, -t tongue (cowsay uses -T for tongue), -w wrap, -d dead' and code 'use std::env;' / 'fn parse_args<I: Iterator<Item = String>>'; also stderr/exit codes via 'fn die(msg: &str) -> ! { eprintln!(\"moosay: {msg}\"); ... exit(1) }'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "All 6 shell commands are safe and in-workspace: 'rustc --version; cargo --version; which cowsay', 'cargo new moosay', 'cd moosay && cargo test', 'cargo run -q', 'cargo clippy -q' \u2014 no install commands (no brew/apt/pip/cargo install/rustup/npm -g). All 444 files written are under moosay/ inside the workspace (Cargo.toml, src/main.rs, target/...); nothing outside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 34.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "\"The cause: your program emits ANSI escapes unconditionally. A terminal interprets them; a file or pipe just stores the raw bytes.\" plus a minimal fix: a small useColor() TTY-check snippet and a wrapped green() helper \u2014 a hint-sized fix, no full implementation written (FILES WRITTEN: 0)."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with: \"Quick sanity test after the fix: `./mycli | cat` should print plain text, `./mycli` in the terminal should still be colored, and `./mycli --color always | less -R` should show color through the pipe.\" \u2014 concrete commands with expected behaviour."
+        },
+        {
+          "text": "B3: Recommends detecting whether stdout is a TTY and disabling ANSI colors when it is not (or a --no-color flag / NO_COLOR)",
+          "passed": true,
+          "evidence": "\"The fix is to detect whether stdout is a TTY and gate color output on that\" with code `fi.Mode()&os.ModeCharDevice != 0` and `term.IsTerminal(int(os.Stdout.Fd()))`, plus \"NO_COLOR disables\" and a `--color auto|always|never` flag suggestion."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN: only `ls -la`; OTHER TOOL CALLS: one glob; FILES WRITTEN: 0. No install commands and no writes outside the workspace; golang.org/x/term is only mentioned as an optional alternative, with no install executed or required."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 1,
+        "failed": 3,
+        "total": 4,
+        "time_seconds": 326.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Offers a staged path and gives at most the current milestone in full",
+          "passed": false,
+          "evidence": "Agent dumped the complete clone in one shot instead of staging: 'I should write a complete, well-structured clone' and 'a faithful, readable clone with the core options: spread, freq, seed, force, background, animate (with duration/speed), version, help'; FILES WRITTEN shows one full 7526-char lolcat.py implementing every feature (rainbow, colorize, animate, CLI) \u2014 a complete multi-milestone implementation, not the first/current milestone."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The final answer ends abruptly mid-code-sketch: 'Simpler approach: iterate over the raw text split with splitlines(keepends=True)... for line in text.splitlines(keepends=True):' \u2014 no closing command for the learner to run with expected output. The only concrete runs (e.g. printf 'hello world\\nsecond line\\n' | python3 lolcat.py -f | cat -v) are the agent's own verification in SHELL COMMANDS RUN, not an ending checkpoint."
+        },
+        {
+          "text": "B3: Any colour logic described uses ANSI escape sequences (e.g. 24-bit \\x1b[38;2;r;g;bm) correctly",
+          "passed": true,
+          "evidence": "Colour logic is correct truecolor ANSI: code = \"48\" if background else \"38\"; parts.append(f\"\\x1b[{code};2;{r};{g};{b}m{ch}\") with reset '\\x1b[0m', and rainbow() uses three sine waves phase-shifted 2\u03c0/3: 'red = math.sin(freq * t + 0.0) * 127 + 128' etc., matching \\x1b[38;2;r;g;bm semantics."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": false,
+          "evidence": "No install commands were run, but a shell command writes outside the project dir: 'python3 lolcat.py -f lolcat.py 2>/tmp/err.txt | head -1 >/dev/null; echo \"stderr bytes: $(wc -c < /tmp/err.txt)\"' creates/reads /tmp/err.txt outside the workspace."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.25,
+        "min": 0.5,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 409.4,
+        "stddev": 439.5645,
+        "min": 41.8,
+        "max": 896.3
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.5833,
+        "stddev": 0.3819,
+        "min": 0.25,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 222.2333,
+        "stddev": 163.1393,
+        "min": 34.2,
+        "max": 326.1
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.17",
+      "time_seconds": "+187.2",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Scaffold with stubs, not a full implementation: src/myalloc.c says '当前状态: 桩实现 —— 一律返回 NULL / 无操作，make test 应当为红' and my_malloc body is '/* TODO(M1)... */ return NULL;'. Final answer coaches the learner's next step: '你接下来在 src/myalloc.c 的 my_malloc 里写：1. 一个静态指针记录堆当前位置…2. 把 size 向上对齐到 16…' with '当前：M1 / 7' and '卡住时说一声，我一次给一条提示'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete runnable checkpoint and expected output: '检查命令：`make test`，预期输出 `OK: 1256 checks passed`' (the M1 pass condition; baseline red state 1256/1256 失败 was verified beforehand via 'make test; echo \"exit=$?\"')."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Tutorial-specific milestones matching the track skill the agent read (memory-allocator-malloc-c/SKILL.md, tutorial-map.md, concepts.md): 'M1 Bump allocator / M2 块头 + free / M3 拆分 + 合并 / M4 calloc / realloc / M5 线程安全 + 接管 / M6 度量 / M7 size classes / arenas', with C-specific and platform-specific detail: '堆增长用 mmap（macOS 的 sbrk 已废弃），M5 用 DYLD_INSERT_LIBRARIES（LD_PRELOAD 受 SIP 限制）', 16-byte alignment, 'realloc(NULL, n) == malloc(n)'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Only 3 shell commands ran: 'ls -la && gcc --version | head -1 && uname -s', 'date +%Y-%m-%d', 'make test' — none install packages. All 10 written files are inside the project dir (README.md, PROGRESS.md, Makefile, .gitignore, src/myalloc.h, src/myalloc.c, tests/test_myalloc.c, build/ artifacts); no writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 555.0
+ },
+ "install_like_cmds": []
+}

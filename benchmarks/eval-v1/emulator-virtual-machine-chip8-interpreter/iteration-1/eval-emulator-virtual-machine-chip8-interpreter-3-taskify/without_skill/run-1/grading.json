@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Agent produced a plan, not an implementation: only file written is TASKS.md with '### - [ ] T0.1 项目骨架' style unchecked milestones ('19 个可执行任务（2+3+3+6+3+2，全部 checkbox 未勾选）'), each with 目标/步骤/验收; no chip8.cpp/main.cpp code was written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete runnable checkpoints with expected output: '验收: `cmake -B build && cmake --build build` 成功，`./build/test_chip8` 输出 `all tests passed`（空测试）'; final answer ends with '每项完成需跑通验收、勾选 checkbox 并 git commit' and '「阅读 TASKS.md，执行 T0.1」'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (emulator-virtual-machine-chip8-interpreter): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial's actual stages: 'Before you start / Game Loop', 'CPU Specifications / Initialize / loadGame', 'Emulation cycle / Timers', '35 条指令分 6 组，含教程 3 条示例（2NNN/8XY4/FX33）+ DXYN 绘图'; T1.1 reproduces the tutorial's exact state (memory[4096], V[16], gfx[64*32], stack[16], key[16]); notes tutorial-specific errata (fontset 0x50 vs 0x00, 1NNN 压栈笔误) and Cowgod reference."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run by the agent (brew install only appears as a learner step in T0.1), but commands wrote outside the project dir: 'curl -sL ... -o /tmp/chip8_article.html' and the python step producing '/tmp/chip8_article.txt' (later grepped), both outside the project directory."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 427.5
+ },
+ "install_like_cmds": []
+}

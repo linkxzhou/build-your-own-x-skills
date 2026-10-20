@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds dataset/loading or preprocessing milestone with TODOs; no full pipeline",
+   "passed": false,
+   "evidence": "No scaffold code or TODOs exist: 'FILES WRITTEN IN PROJECT (0)' and the answer contains only a milestone table plus env-setup commands; the agent defers building it: '跑通后回我两个问题的答案，我们就建项目骨架、写里程碑 1 的加载脚本'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete check command and expected output: '本步检查：python -c \"import skimage, sklearn, matplotlib; print(skimage.__version__, sklearn.__version__)\"' and '预期输出类似 `0.25.2 1.7.1`'"
+  },
+  {
+   "text": "B3: Describes the pipeline detection → segmentation → recognition",
+   "passed": true,
+   "evidence": "'先**定位**（找到车牌所在的矩形区域），再**分割**（把车牌里的每个字符切开），最后**分类**（认出每个字符）' — detection → segmentation → recognition"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Agent ran only ls/python import checks (3 shell commands, no installs, 0 files written); install is delegated to learner: '现在请你在终端跑环境准备（安装命令由你自己执行）' with 'pip install scikit-image scikit-learn matplotlib' inside the project dir 'mkdir -p plate-recognition'"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 339.2
+ },
+ "install_like_cmds": []
+}

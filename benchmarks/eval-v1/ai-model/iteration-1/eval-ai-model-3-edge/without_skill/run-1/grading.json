@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives an honest scoped plan for CPU (tiny model/data) without installing anything",
+   "passed": true,
+   "evidence": "Scoped CPU plan given: 'implement the tokenizer → transformer → training loop on CPU with a tiny model and a small dataset, get it generating text, then rent a GPU for a day to scale up 100x'; no installs run (0 shell commands, 0 files written), agent offers to scaffold rather than dumping a full build: 'Want me to scaffold that starter project here?'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with 'Want me to scaffold that starter project here?' — no concrete command to run and no expected output/behaviour is given anywhere."
+  },
+  {
+   "text": "B3: States a tiny model on small text is trainable on CPU and suggests small context/embedding sizes",
+   "passed": false,
+   "evidence": "Tiny-model-on-CPU is stated ('Trains on a laptop CPU in minutes-to-hours', '2–10 layer transformer, ~1–10M params'), but only layer count and total params are given; no small context length or embedding size is suggested — 'a tiny config' is too vague for this technical assertion."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0), FILES WRITTEN (0), only a glob tool call; answer contains no install commands — GPU options (Colab/Kaggle/vast.ai) are suggestions for the learner, not commands the agent ran."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 29.2
+ },
+ "install_like_cmds": []
+}

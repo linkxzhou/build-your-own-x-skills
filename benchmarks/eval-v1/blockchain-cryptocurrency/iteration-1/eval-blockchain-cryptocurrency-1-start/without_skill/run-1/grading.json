@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the block + hash milestone with TODOs; no full chain with PoW, transactions, P2P",
+   "passed": true,
+   "evidence": "Delivered only the first milestone per prompt '带我开始第一步': Block class with compute_hash(), genesis block, add_block (~40 lines, blockchain.py). No PoW, transactions, or P2P implemented anywhere; PoW only named as future step: '下一步自然是给区块加**工作量证明（PoW）**'. Not a multi-milestone dump."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint and expected behaviour: '运行后复制某个块的哈希，然后改它的 `data` 再跑一次——你会发现它的哈希变了，而且后面所有块的 `previous_hash` 都对不上'; command concretely demonstrated as 'python3 blockchain.py' and confirmed 'blockchain.py 已能运行'."
+  },
+  {
+   "text": "B3: Block hash covers index/timestamp/data/previous hash via SHA-256",
+   "passed": true,
+   "evidence": "compute_hash covers all four fields via SHA-256: 'content = f\"{self.index}{self.timestamp}{self.data}{self.previous_hash}\"' then 'hashlib.sha256(content.encode()).hexdigest()'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run was 'python3 blockchain.py' (SHELL COMMANDS RUN (1)); only file written is blockchain.py inside the project dir; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere; only stdlib hashlib/time used."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 74.4
+ },
+ "install_like_cmds": []
+}

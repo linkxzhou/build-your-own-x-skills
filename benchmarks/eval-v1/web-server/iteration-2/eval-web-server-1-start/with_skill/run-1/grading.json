@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds TCP listener milestone with TODOs; no full framework",
+   "passed": true,
+   "evidence": "Wrote only a milestone-1 skeleton http-server/server.py: 'TODO 1: setsockopt SO_REUSEADDR ... TODO 6: sendall(RESPONSE) on conn, then conn.close()' ending in 'raise NotImplementedError(\"fill in TODOs 1-6\")', with 'RESPONSE = b\"\"  # TODO' left for the learner; PROGRESS.md marks milestone 1 'in progress', 2-7 'pending' — no full framework or multi-milestone implementation dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'Checkpoint command: `curl -v localhost:8080` → expect `HTTP/1.1 200 OK` and `Hello, world!`. Also `python3 server.py` runs without error.' plus stated format rule 'how to check it (command + expected output — every reply ends with this)'."
+  },
+  {
+   "text": "B3: Mentions the request line + headers + CRLF format of an HTTP response",
+   "passed": true,
+   "evidence": "Written file comment: 'status line, Content-Type header, Content-Length header, blank line, body. Every line ends with \\r\\n (CRLF, the HTTP line ending), and Content-Length must equal the body's byte length.'; reasoning adds 'the blank line separates headers from body, and Content-Length must match the body byte count'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 3 shell commands are read-only inside the workspace (ls, find, python3 --version, cat of skill reference); only files written are http-server/server.py and http-server/PROGRESS.md; agent states 'Stay in workspace, never install anything. Python 3.14.7 is available — good, no installs needed.' No install commands anywhere."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 267.3
+ },
+ "install_like_cmds": []
+}

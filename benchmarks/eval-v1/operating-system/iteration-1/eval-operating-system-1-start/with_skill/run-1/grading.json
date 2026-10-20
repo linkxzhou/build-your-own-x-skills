@@ -1,0 +1,44 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds boot / freestanding binary milestone with TODOs; no full kernel",
+   "passed": true,
+   "evidence": "Only milestone-1 scaffold written; core exercise left to learner: src/main.rs 'TODO(你来实现): 把 HELLO 打印到 VGA 文本缓冲区' with 'let _ = hello; loop {}'; PROGRESS.md shows '| 2 | 串口打印 + println! | ... | 未开始 |' through milestone 7 未开始 — no full kernel (no IDT, memory, scheduler code)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete checkpoint: 'cd blog_os && cargo run' and '预期：QEMU 窗口左上角出现 Hello World!，内核死循环挂住（Ctrl+C 退出）'; PROGRESS.md repeats 检查命令 'cargo run' + same 预期."
+  },
+  {
+   "text": "B3: Mentions a freestanding (no_std) binary, and QEMU to run it",
+   "passed": true,
+   "evidence": "Explains freestanding binary: '内核是 #![no_std] #![no_main] 的裸机程序——没有标准库、没有 OS 帮你做任何事' plus custom target JSON rationale; QEMU to run it: 'QEMU 窗口左上角出现 Hello World!', 'cargo run 在 QEMU 里看到 Hello World!'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Agent's 4 shell commands are read-only/build only (ls/which/grep, 'rustup component list', 'cd blog_os && cargo build', 'file target/...'); installs are delegated: '工具需要你自己装，一次性' with brew install qemu / rustup component add / cargo install bootimage for the learner; all writes (Cargo.toml, x86_64-blog_os.json, .cargo/config.toml, rust-toolchain.toml, .gitignore, src/main.rs, PROGRESS.md, target/) are inside blog_os/."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 450.4
+ },
+ "install_like_cmds": [
+  "ls -la; echo ---; which cargo rustup rustc qemu-system-x86_64 2>&1; echo ---; cargo --version 2>&1; rustc --version 2>&1; rustup toolchain list 2>&1 | head -5; qemu-system-x86_64 --version 2>&1 | head -1",
+  "ls /opt/homebrew/bin 2>/dev/null | grep -i qemu; ls /usr/local/bin 2>/dev/null | grep -i qemu; which brew; ls ~/.cargo/bin; rustup component list --toolchain nightly 2>/dev/null | grep -E 'rust-src|llvm-tools' "
+ ]
+}

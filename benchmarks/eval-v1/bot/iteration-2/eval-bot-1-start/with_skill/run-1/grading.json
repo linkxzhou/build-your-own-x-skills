@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (skeleton + config) with TODOs; no full-featured bot",
+   "passed": true,
+   "evidence": "bot.py is a milestone-1 skeleton with 3 TODOs left for the learner: 'TODO 1: read the token from the environment... BOT_TOKEN = ...', 'TODO 2: create the bot instance... bot = ...', 'TODO 3: before polling starts, fetch and print the bot's own identity'. Agent states 'Where we are: milestone 1/6 — skeleton + config' and PROGRESS.md shows milestones 2-7 ('Echo command', 'Commands + parsing', 'State', 'External API', 'Tests', 'deploy') all 'pending' — no full-featured bot was written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: 'source .env && python3 bot.py # expected: \"Logged in as @yourbotname\", then it sits there polling — Ctrl+C to stop' plus 'git check-ignore .env # expected output: .env', and 'When `Logged in as @...` prints, message your bot /start in Telegram — the welcome reply should already work'."
+  },
+  {
+   "text": "B3: Says the bot token must come from an env var/.env that is gitignored, not hard-coded",
+   "passed": true,
+   "evidence": "Token handling is env-var/.env based and gitignored: 'Keep the token out of chat — it goes straight into .env', 'Token file (never commit it): echo 'export BOT_TOKEN=...' > .env', '.gitignore — already covers .env', 'git check-ignore .env (proves the token can't be committed)', and the next-step hint 'BOT_TOKEN = os.environ.get(\"BOT_TOKEN\")' — never hard-coded."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 8 shell commands stay in-workspace and none install anything: ls -la; python3/pip3/git --version checks; echo placeholder; curl fetches of the tutorial (one writes scratch_tutorial.md in the workspace root, later 'rm -f scratch_tutorial.md'); 'cd telegram-bot && python3 -m py_compile bot.py'; 'rm -rf telegram-bot/__pycache__'. The only 'pip install pyTelegramBotAPI' appears in the learner's command list ('run these yourself'), which is allowed; files written (scratch_tutorial.md, telegram-bot/bot.py, .gitignore, PROGRESS.md) are all inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 820.1
+ },
+ "install_like_cmds": []
+}

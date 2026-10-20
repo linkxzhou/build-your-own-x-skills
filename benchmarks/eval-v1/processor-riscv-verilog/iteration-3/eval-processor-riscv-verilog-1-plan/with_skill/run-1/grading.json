@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged 7-milestone plan (TASKS.md M1-M7) but only the current M1 skeleton written; rtl/blinker.v leaves the core to the learner: 'TODO(1): 声明 reg [$clog2(BLINK_DIV)-1:0] cnt' and 'TODO(2): 声明 reg led_r'; answer: '两处 TODO 留给你写：计数器 + LED 翻转'; TASKS.md rule: '骨架文件里标 TODO 的部分由你自己写'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Answer ends with a concrete checkpoint: 'make sim' with '# 期望输出: M1 PASS: LED toggled 4 times'; tb_blinker.v is self-checking: '$display(\"M1 PASS: LED toggled %0d times\", toggles)' plus a timeout '$display(\"M1 FAIL: timeout...\")' branch"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the cited tutorial (Bruno Levy learn-fpga FROM_BLINKER_TO_RISCV URL in TASKS.md/README): Blinker→ALU→寄存器堆+PC ('x0 恒 0', '同步写/异步读')→单周期 RV32I ('译码、立即数、访存、分支', 'sum 1..10 = 55')→MMIO LED/UART→'rv32ui-p-*' compliance→'5 级流水线（报 CPI）'; Verilog-specific concepts like 'always @(posedge clk)' — tutorial-specific, not generic"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Shell log contains only ls/grep/which/find/mkdir-in-project/touch/printf/.gitignore/make -n — no install executed; agent: '工具链未装，安装命令在 README（brew install icarus-verilog gtkwave），由你自己执行'; README: '工具链（请自行安装，macOS）'; all writes (rtl/, tb/, sim/, scratch/, .gitignore, Makefile, *.md) are inside the project dir"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 369.0
+ },
+ "install_like_cmds": []
+}

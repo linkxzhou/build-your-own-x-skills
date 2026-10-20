@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds dataset/loading or preprocessing milestone with TODOs; no full pipeline",
+   "passed": true,
+   "evidence": "Only the dataset milestone is built; README roadmap shows '- [x] **L1 造数据** — gen_data.py' with '- [ ] **L2 车牌定位**', '- [ ] **L3 字符分割**', '- [ ] **L4 模板匹配识别**' unchecked. Files written are only gen_data.py + data (20 plates + labels.txt) + README — no locate/segment/recognize code. Next milestone deferred to learner: '你随时说\"继续\"，我们就开始写 locate.py', plus exercises '改 gen_data.py 里的 PLATE_W/PLATE_H…重新生成'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README gives a concrete runnable command: '.venv/bin/python plate_rec/gen_data.py   # 生成合成车牌数据'. Expected output/behaviour stated: '20 张 440x140 车牌图 + labels.txt 标注' and verification step '打开 plate_rec/data/plates/plate_0000.png 肉眼看看，对照 labels.txt 第一行'; agent's own run confirmed '车牌渲染正确（能看到 7 个槽位的白色字符）'."
+  },
+  {
+   "text": "B3: Describes the pipeline detection → segmentation → recognition",
+   "passed": true,
+   "evidence": "Final answer: '车牌识别…完整覆盖一条视觉流水线：**定位目标 → 分割 → 识别**'. Roadmap orders L2 车牌定位 → L3 字符分割 → L4 模板匹配识别, and L2 preview details detection: '灰度 → Canny 边缘 → 形态学闭运算…findContours 找轮廓 → 用宽高比 ≈ 3.14 和面积过滤出车牌矩形'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "The single shell command run is a read-only PIL preview ('.venv/bin/python - <<EOF…from PIL import Image…print size/ASCII'), no install command anywhere in evidence. All written files are README.md and plate_rec/* inside the project. Environment reported as already ready without installing: '环境就绪（cv2 5.0 / numpy 2.5 / pillow 13）'."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 230.7
+ },
+ "install_like_cmds": []
+}

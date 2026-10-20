@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains and suggests a direction without rewriting the engine",
+   "passed": true,
+   "evidence": "Explains the cause ('Nested quantifiers over the same characters... the engine explores 2²⁹ ≈ 537 million partitions') and suggests directions ('Fixes, in order of preference: 1. Collapse the nesting... 2. Make the inner quantifier possessive/atomic... 3. Use a linear-time engine') without rewriting anything — 'FILES WRITTEN IN PROJECT (0)'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with the fixes list ('4. Bound the input — if this comes from user-supplied patterns (ReDoS), cap subject length or run matching in a worker with a timeout.') — no concrete command for the learner to run with expected output. The timing block ('n=20: 0.049s...') is the agent's own past measurement presented as evidence, with no accompanying runnable command or checkpoint instruction."
+  },
+  {
+   "text": "B3: Identifies catastrophic/exponential backtracking and suggests Thompson NFA simulation (linear time)",
+   "passed": true,
+   "evidence": "Explicitly identifies it: 'This is catastrophic backtracking, and it's the classic signature: two quantifiers that can consume the same text, plus a failing match at the end.' Suggests the automata-based linear-time approach: 'Use a linear-time engine — RE2 (Go, C++), Rust's regex, or Hyperscan. They use automata instead of backtracking, so this input is instant'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command is a python3 heredoc benchmark ('import re, time ... re.search(r'(a+)+b', s)') — no install commands (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and no writes outside the project ('FILES WRITTEN IN PROJECT (0)')."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 44.0
+ },
+ "install_like_cmds": []
+}

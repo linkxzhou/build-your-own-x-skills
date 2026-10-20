@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Adapts the plan to a compiler track in C without dumping a complete compiler",
+   "passed": true,
+   "evidence": "Adapted to compiler track in C: 'Yes — that's the classic route, and knowing C is exactly the right background' with pipeline 'source → lexer → parser → AST → codegen (emit .s text) → as → ld'. Scope stayed at the first milestone: minic.c is labeled 'the \"chapter 1\" skeleton: extend it with variables (stack slots at -8(%rbp)), if/while (cmp + labels), then functions', and the 5-step build order leaves variables/control flow/functions as future work for the learner."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'Build with `cc out.s -o out && ./out; echo $?` → prints 5.' and minic.c header: './minic \"1 + 2 * (3 - 1)\" > out.s' / 'cc out.s -o out && ./out; echo $?      # prints 5'; agent's own test commands annotate expected results '(want 5)', '(want 6)'."
+  },
+  {
+   "text": "B3: Mentions the compiler stages (parse → code generation to assembly) and an assembler/linker or emitted assembly to check output",
+   "passed": true,
+   "evidence": "'source → lexer → parser → AST → codegen (emit .s text) → as → ld → executable' names parse stages, codegen to assembly, and assembler/linker; emitted assembly is shown ('.globl _main ... movl $5, %eax ... ret') and out.s was actually produced with 'movq $7, %rax ... idivq %rcx'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only commands run: 'uname -m; cc -arch x86_64 out.s -o out 2>&1 && ./out' and './minic \"1 + 2 * (3 - 1)\" > out.s && cc -arch x86_64 out.s -o out && ./out' — no install commands (cc already present); all written files (minic.c, minic, out.s, out) are inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 243.9
+ },
+ "install_like_cmds": []
+}

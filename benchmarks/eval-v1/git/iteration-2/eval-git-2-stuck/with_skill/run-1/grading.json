@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses the bug and gives a minimal fix or hint, not a rewrite of the project",
+   "passed": true,
+   "evidence": "Diagnoses the bug precisely: 'they hash the raw data instead of the git object header \"blob <len>\\0\" + data. That's the classic mistake.' Gives a 'Minimal fix' of a single 3-line hash_object function for the current milestone only — no multi-milestone rewrite."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with 'How to check it:' giving concrete commands (printf 'hello' > scratch/hello.txt; python3 mygit.py hash-object scratch/hello.txt; git hash-object scratch/hello.txt) and expected output: 'both print b6fc4c620b67d95f953a5c1c1230aaab5db5a1b0', plus git cat-file -p b6fc4c62 'should print hello'."
+  },
+  {
+   "text": "B3: Explains that the hash must be computed over the header `blob <size>\\0` + content (not the raw data), before compression",
+   "passed": true,
+   "evidence": "'The SHA-1 input in git is the object header plus the content: `blob <byte-len>\\0` + raw data. Your code hashes the raw data alone' and 'git hashes the uncompressed bytes, then zlib-compresses that same payload for storage' — header+content before compression, explicitly."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run: 'printf 'hello' | git hash-object --stdin; python3 -c \"import hashlib; print(hashlib.sha1(b'blob 5\\x00hello').hexdigest())\"' — no install commands, no writes outside the project (0 files written; suggested scratch/hello.txt is inside the project; agent states 'Keep scratch files inside the project, never /tmp')."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 200.2
+ },
+ "install_like_cmds": []
+}

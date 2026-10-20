@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnosis: '\"Works for small tests, heap grows under churn\" is the classic signature of freed blocks never being reused' with three ranked causes; minimal fix hints: 'check that `free()` actually inserts the block into your free list, and that `malloc()`'s search runs *before* the `sbrk` fallback' and 'you need to merge with the next block when it's also free'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with '**Checkpoint:** ```gcc -o heap_test heap_test.c my_malloc.c && ./heap_test```' and 'Pass looks like: `A0`–`A4` print the identical address, and `big` prints an address inside the range of the earlier allocations.'"
+  },
+  {
+   "text": "B3: Identifies missing block reuse/splitting/coalescing of adjacent free blocks",
+   "passed": true,
+   "evidence": "'1. **malloc never searches the free list**', '2. **No coalescing** — adjacent free blocks stay separate', '3. **No splitting** — a freed 1 KB block can't serve a 100 B request'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): only 'ls -la'; FILES WRITTEN IN PROJECT (0); no install command run; gcc checkpoint is given for the learner to run, and the 20-line test is a diagnostic probe, not a multi-milestone implementation dump."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 108.9
+ },
+ "install_like_cmds": []
+}

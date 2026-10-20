@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Picks a matching upstream entry and scaffolds the first milestone; no full server",
+   "passed": true,
+   "evidence": "Picks a matching catalog entry: 'Tutorial: Building a DNS server in Rust (Emil Hernvall)' with link, chosen after grepping tutorials.md for DNS. First milestone is scaffolded as the immediate step ('1. Skeleton — cargo project, UDP socket on 127.0.0.1:5353, echoes packets back') while 'FILES WRITTEN IN PROJECT (0)' confirms no full multi-milestone server was dumped; agent stops at 'milestone 1/7 — pick + scope' and asks to confirm scope."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: 'Check (run this now): cargo --version && dig -v | head -1 — expect cargo 1.95.0 and a dig version line. If dig is missing, nslookup works too' — concrete command plus expected output and fallback behaviour."
+  },
+  {
+   "text": "B3: Mentions UDP port 53 (or a high test port) and the DNS message header/question format",
+   "passed": true,
+   "evidence": "Port: 'UDP socket on 127.0.0.1:5353' and 'dig @127.0.0.1 -p 5353' (high test port). Format: 'a 12-byte header (ID, flags, four section counts), a question section (name + type + class)', plus 'length-prefixed labels (example.test → \\x07example\\x04test\\x00)' and record fields 'name, type, TTL, length, data'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run was a read-only version probe: 'for t in cargo rustc node npm python3 go; do command -v $t ... --version ...' — no brew/apt/pip/cargo install/rustup/npm -g/go install/gem install. 'FILES WRITTEN IN PROJECT (0)' and all other calls are reads/globs/greps under .agents/skills; nothing written outside the project and no install needed (tools reported present: 'Rust 1.95, Node 25, and Python 3.14')."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 135.9
+ },
+ "install_like_cmds": []
+}

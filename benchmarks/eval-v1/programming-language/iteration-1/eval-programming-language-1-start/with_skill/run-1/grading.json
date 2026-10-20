@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the tokenizer (or first) milestone with TODOs and does not hand over parser+evaluator code",
+   "passed": true,
+   "evidence": "Only milestone-1 skeleton written: tiny/lexer.py has data model but core loop left as '# TODO(你来实现): 主循环 while i < n，每轮取 ch = source[i]，按情况分发' with 6 cases listed; final msg says '骨架已就绪，核心循环留给你写' and '你写什么：tiny/lexer.py:36 的主循环'. Files: lexer.py, tests/test_lexer.py, PROGRESS.md, __init__.py — no parser/evaluator code handed over."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with '**怎么验证**：' giving concrete commands 'python3 tests/test_lexer.py        # 目标: 6/6 通过' and \"echo 'let x = 1 + 2;' | python3 -m tiny.lexer\" plus full expected output 'LET('let')@1:1 … NUMBER('2')@1:13 … EOF('')@1:15'."
+  },
+  {
+   "text": "B3: Lists the pipeline tokenizer → parser/AST → evaluator in that order",
+   "passed": true,
+   "evidence": "PROGRESS.md table orders '| 1 | Tokenizer |' → '| 2 | Parser → AST |' → '| 3 | 求值 + REPL |'; final msg: '解释器的第一站是词法分析……之后的解析器和求值器只看 Token，永远不碰原始文本'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (3): 'python3 --version' and 'python3 tests/test_lexer.py; echo \"exit=$?\"' twice — no install commands; all writes inside project dir (tiny/, tests/, PROGRESS.md; __pycache__ generated in-project by running tests)."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 490.5
+ },
+ "install_like_cmds": []
+}

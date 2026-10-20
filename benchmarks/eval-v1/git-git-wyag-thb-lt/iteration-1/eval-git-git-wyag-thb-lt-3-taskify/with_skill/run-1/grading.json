@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged plan, not an implementation: '把 wyag 教程的 10 章压缩成 8 个 Milestone（0–7）+ 1 个选做进阶项，每个 Milestone 都带目标、核心概念、子任务 checklist'; file contains TODO checkboxes ('- [ ] 建 `wyag.py`，用 `argparse` 搭子命令分发框架') and coaching rules ('核心逻辑留空让我自己写', '不许直接重写整段代码'). No complete wyag code was written — only task descriptions."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Every milestone ends with a concrete 验收 command plus expected behaviour, e.g. M0: '`python wyag.py --help` 输出命令列表'; M1: 'git status # 真 git 能识别这个仓库（输出 On branch master / No commits yet）'; M2: 'git hash-object f.txt # 两者 sha 必须完全一致'; M7: 'git fsck 干净'. Final answer points to starting Milestone 0 under these rules."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (git-git-wyag-thb-lt): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones map 1:1 to wyag's actual chapters (§1–2 argparse skeleton, §3 init/repo_find, §4 objects, §5 log, §6 ls-tree/checkout, §7 refs, §8 index read-only, §9 rm/add/commit) and use exactly wyag's command set ('init、hash-object、cat-file、log、ls-tree、checkout、show-ref、tag、rev-parse、ls-files、check-ignore、status、rm、add、commit'). Tutorial-specific concepts: '对象格式 `<type> <size>\\0<data>`、SHA-1 寻址、zlib 压缩、`.git/objects/xx/yyyy…` 两级目录', '历史是 Merkle DAG', 'tree 排序、index stat 字段'; language matches tutorial ('语言默认 Python 3 标准库（wyag 原文即 Python，零依赖）'). Agent verified against fetched tutorial and per-tutorial skill (tutorial-map.md)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Agent's 4 shell commands are read-only ('ls .agents/skills/ | grep', 'wc -l wyag-claude-code-tasks.md && grep -c ...'); other calls are read/glob/web_fetch/explore plus one write to 'wyag-claude-code-tasks.md' inside the project. No install commands run; the plan explicitly forbids them ('不安装任何依赖，只用 Python 3 标准库'). The 'mkdir /tmp/t1' line appears only as a learner acceptance command in the task list, which is permitted."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 274.4
+ },
+ "install_like_cmds": []
+}

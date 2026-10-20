@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverables are planning docs (TASKS.md/PROGRESS.md), not implementation code; TASKS.md sets coach mode: '教练模式：Claude 先用 3–6 句讲概念，再给类/接口骨架，核心逻辑由你写；卡住时给最小修复，不整段重写' and T1 prompt says '核心代码留 TODO 由我写'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with concrete checkpoint: 'mvn clean package' + 'java -cp target/simple-kafka-1.0-SNAPSHOT.jar com.simplekafka.Main' and expected behaviour: '看到 BUILD SUCCESS 且第二条命令打印骨架启动信息，T1 即通过'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (distributed-systems-kafka-java): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial's 8 stages (T1骨架→T8端到端+杀leader/杀controller演练) with tutorial-specific details: Java+Maven+ZooKeeper stack, 'simple-kafka-1.0-SNAPSHOT.jar', package 'com.simplekafka', zk 2181 / brokers 9091/9092/9093, concepts like '临时节点、watch、controller 选举', '日志分段、顺序追加、offset 索引', and exact test names ProtocolTest/LogTest/BrokerIntegrationTest/MetadataDiscoveryTest/ProducerConsumerTest — not generic boilerplate."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)'; only files written are TASKS.md and PROGRESS.md inside the project; installs are delegated to learner: 'Claude Code 不代跑安装命令（brew/apt/sdkman 等），只打印命令由你执行'."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 246.1
+ },
+ "install_like_cmds": []
+}

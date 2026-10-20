@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Agent diagnoses the checksum failure and gives concrete fixes/hints per cause: '必须先 `icmp->checksum = 0`，再对整个 ICMP 报文（header + payload）求和，最后写回', '写回时 `checksum = htons(~sum)`', '奇数长度尾部…最后一个字节要按高位补零组成 16-bit word 再累加', plus a triage tip comparing Wireshark's 'should be 0xXXXX'. It coaches with a checklist and asks for the learner's code ('把相关代码贴出来…我可以直接定位') instead of dumping a full implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No runnable command with expected output is given. The closest is a passive observation: '抓包里 Wireshark 会显示 `checksum incorrect (should be 0xXXXX)`，把你算出来的值和 `should be` 对比' — no concrete command (e.g. ping/tcpdump invocation) to run, and the answer ends with '另外确认一下：reply 的 identifier、sequence number、data 必须原样从 request 拷贝回来'."
+  },
+  {
+   "text": "B3: Explains the Internet checksum: one's-complement sum of 16-bit words with the checksum field zeroed first",
+   "passed": true,
+   "evidence": "'必须先 `icmp->checksum = 0`，再对整个 ICMP 报文（header + payload）求和，最后写回' (checksum field zeroed first) and '求和按网络字节序的 16-bit word 累加，写回时 `checksum = htons(~sum)`' (16-bit word sum, one's-complement via ~sum), plus odd-length padding rule '最后一个字节要按高位补零组成 16-bit word 再累加'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## FILES WRITTEN IN PROJECT (0)' and '## SHELL COMMANDS RUN (0)'; only tool call is a read-only glob {\"pattern\": \"**/*\"}. No install commands and no writes outside the workspace; it only asks the learner to paste code."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 39.7
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "regex-engine-regex-c",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:53Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 900.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Only the M0 skeleton was written; the engine is a stub: src/regex.c contains `int re_search(...) { (void)pattern; (void)text; return RE_NOT_IMPLEMENTED; }` under the comment 'Milestone 1\uff1a\u8fd9\u91cc\u7531\u4f60\u6765\u5199 \u2026 \u5efa\u8bae\u7684\u7ed3\u6784\uff08TODO \u6e05\u5355\uff0c\u4e0d\u662f\u7b54\u6848\uff09'. Agent stated 'Project skeleton (minimal, milestone 0 only \u2014 do NOT dump full solution)'. Files are harness/scaffolding only (Makefile, CLI shell main.c, regex.h API, stub regex.c, test table data, run.sh, README, PROGRESS); no matcher/NFA code for M1-M5 is implemented."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Milestone plan gives concrete checks: 'Check: `make && ./regex 'a' a` prints match; `make test` runs a trivial test table'. README \u5feb\u901f\u5f00\u59cb specifies commands with expected behaviour: `./regex 'h.llo' hello` \u2192 'match at 0 / no match', `make test` \u2192 runs tests/cases.txt. PROGRESS.md M0 row records the verified checkpoint output: '`make test` | 0 passed, 0 failed, 19 skipped (of 19)\uff0crc=0\uff08stub \u9636\u6bb5\u7684\u9884\u671f\u72b6\u6001\uff09', and the agent ran `make; ./regex 'a' 'a'; make test` (shell log) to confirm."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror Russ Cox regexp1.html exactly, pinned as 'Tutorial: Russ Cox regexp1.html': 'M1: Recursive backtracking matcher (Pike style) for literals + . ^ $', 'M3: Proper parser \u2192 AST (concatenation, alternation |, groups (), precedence)', 'M4: Thompson construction \u2192 NFA, then simulation with two lists (addstate + step)', 'M5: Pathological benchmark: (a?){n}a{n} vs a{n} with n=25 \u2014 backtracker exponential, NFA linear', M6+ 'DFA subset construction / submatch captures' \u2014 all in C, with test semantics 'leftmost match \u2026 like re.search'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "All 10 shell commands are inspection/build only (ls, which, cat -A, sed, od, grep, iconv, xxd, a python3 heredoc that only reads tests/cases.txt to validate TSV format, make, ./regex) \u2014 no brew/apt/pip/cargo/rustup/npm/go/gem install anywhere. All writes are inside the project dir: Makefile, README.md, PROGRESS.md, src/{main.c,regex.c,regex.h}, tests/{cases.txt,run.sh} plus build artifacts (regex, *.o) in the project root."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 900.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverables are planning docs only (TASKS.md/PROGRESS.md/README.md; no src/ implementation written). TASKS.md stages M0\u2013M7 with '\u5b9e\u73b0\u4efb\u52a1 (concrete tasks with file/function names, interfaces)' and a session protocol: '\u4e0d\u503e\u5012\u6210\u54c1\uff1a\u53ea\u7ed9\u5f53\u524d\u91cc\u7a0b\u7891\u7684\u5b8c\u6574\u4ee3\u7801\uff0c\u4e14\u4ec5\u5728\u5b66\u4e60\u8005\u8981\u6c42\u6216\u5c1d\u8bd5\u4e4b\u540e\uff1b\u4fdd\u7559\u5b66\u4e60\u8005\u5df2\u5199\u7684\u4ee3\u7801' and '\u5b66\u4e60\u8005\u5199\u6838\u5fc3'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Every milestone has a runnable checkpoint with command + expected result, e.g. M0: 'make test prints a per-case table and summary; every case shows FAIL (expected, engine is a stub)'; M2: re2post table 'a(bb)+a \u2192 abb.+.a.'; M5: 'make bench N=25: backtracker time grows ~2x per +1 n'; PROGRESS.md requires pasting 'make test / make bench N=25 / make bench-dfa' output."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the article exactly (backtracker \u2192 re2post \u2192 post2nfa Thompson \u2192 NFA simulation \u2192 a?^n a^n benchmark \u2192 DFA cache \u2192 real-world extensions) with tutorial-specific detail: 'State struct {c, out, out1, lastlist}... Frag {start, out}, Ptrlist, list1/append/patch', 'DState *next[256]... sorted-list binary tree lookup', 'awk's 32-cache discontinuity at n=28', 'PCRE aborts at n=23', plus line refs into regexp1.txt (e.g. 'M6 ... 895\u20131114')."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands run, but a command wrote outside the project dir: 'curl -s https://swtch.com/~rsc/regexp/regexp1.html -o /tmp/regexp1.html && wc -c /tmp/regexp1.html' (also '/tmp/regexp1.txt' later copied via 'cp /tmp/regexp1.txt .learn/regexp1/')."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 280.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged plan M0\u2013M5 with acceptance criteria; src/regex.c is an M0 placeholder: 'M0 \u5360\u4f4d\uff1aM1 \u8d77\u9010\u91cc\u7a0b\u7891\u586b\u5145\u771f\u5b9e\u5b9e\u73b0' returning RE_ERR_UNIMPLEMENTED; answer ends '\u4e0b\u4e00\u6b65\u662f M1\uff1a\u5728 src/regex.c \u91cc\u5199\u9012\u5f52\u56de\u6eaf\u5339\u914d\u5668' \u2014 scaffold only, no final implementation."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "'\u91cc\u7a0b\u7891\u4e0e\u9aa8\u67b6\u5df2\u5c31\u7eea\uff0c`make && make test` \u96f6\u8b66\u544a\u901a\u8fc7' plus '\u5168\u6d41\u7a0b\u901a\u8fc7\uff1a\u6784\u5efa\u96f6\u8b66\u544a\u30012/2 \u6d4b\u8bd5\u901a\u8fc7\u3001CLI \u6b63\u786e\u8f93\u51fa\u5360\u4f4d\u9519\u8bef\u5e76\u8fd4\u56de\u975e\u96f6'; README gives concrete commands (make / make test / make clean, './regex <pattern> <text>') and verified run 'make && make test && ./regex a* aaaa'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the Russ Cox tutorial's actual stages: 'M1 \u9012\u5f52\u56de\u6eaf\u5339\u914d\u5668\u2026\u7406\u89e3\u56de\u6eaf\u4e3a\u4f55\u6700\u574f O(2^n)', 'M3 Thompson \u6784\u9020 NFA + Pike VM \u5e76\u884c\u6a21\u62df\u2026O(n\u00b7m)', 'M4 \u6355\u83b7\u7ec4\uff08capture slots\uff09', 'M5 \u2026bench \u62a5\u544a\u56de\u6eaf\u7248 vs Pike VM \u8017\u65f6\u5bf9\u6bd4'; references Thompson 1968; C11/Makefile specifics."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Only shell command: 'make && make test && ./regex a* aaaa ; echo \"exit=$?\" ; make clean' \u2014 no install commands; all 6 files (Makefile, README.md, include/regex.h, src/main.c, src/regex.c, tests/test_main.c) written inside the project dir; no third-party deps ('\u65e0\u7b2c\u4e09\u65b9\u4f9d\u8d56')."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 868.6,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a staged milestone plan, not code: '### T0 \u00b7 \u9879\u76ee\u9aa8\u67b6\u4e0e CLI - [ ] \u672a\u5b8c\u6210' \u2026 '\u4efb\u52a1\u5fc5\u987b\u8dd1\u901a\u5168\u90e8\u9a8c\u6536\u547d\u4ee4\u540e\u624d\u80fd\u52fe\u9009 `- [x]`'; FILES WRITTEN IN PROJECT (1) lists only TASKS.md (8404 chars of task prompts/acceptance criteria), with prompts explicitly spec-only: '\u63d0\u793a\u8bcd\u91cc\u53ea\u7ed9\u89c4\u683c\u4e0e\u6d4b\u8bd5\uff0c\u4e0d\u7ed9\u53c2\u8003\u7b54\u6848'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Tasks end with runnable checkpoints giving command + expected behaviour: '\u9a8c\u6536\uff1a`make` \u7f16\u8bd1\u96f6\u8b66\u544a\uff1b`make test` \u901a\u8fc7\uff1b`./regex a abc` \u9000\u51fa\u7801\u4e3a 2\u3002' and '`./regex \\'(a|b)*abb\\' aabb` \u2192 0\uff1b`./regex \\'(a|b)*abb\\' abab` \u2192 1'"
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the tutorial's actual stages and artifacts: reading map 'T2 | Converting Regular Expressions to NFAs\uff1bImplementation: Compiling to NFA', 'T5 | Caching the NFA to build a DFA'; article-specific details: '`a(bb)+a` \u2192 `abb.+.a.`\uff08\u6587\u7ae0\u539f\u4f8b\uff09', 'Split=256\u3001Match=257 \u4f5c\u4e3a\u4f2a\u5b57\u7b26\u5e38\u91cf', 're2post/post2nfa', 'DState \u7f13\u5b58', '\u56de\u6eaf\u5b9e\u73b0 O(2\u207f)\uff0cThompson \u6a21\u62df O(mn)', '`a?\u207fa\u207f` \u57fa\u51c6'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run, but a shell command wrote outside the project dir: 'curl -s https://swtch.com/~rsc/regexp/regexp1.html -o /tmp/regexp1.html && wc -c /tmp/regexp1.html' (and subsequent python3/sed read-write /tmp/regexp1.txt), while the project dir is /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-regex-engine-regex-c-3"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 900.0,
+        "stddev": 0.0,
+        "min": 900.0,
+        "max": 900.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 574.7,
+        "stddev": 415.6374,
+        "min": 280.8,
+        "max": 868.6
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "+325.3",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

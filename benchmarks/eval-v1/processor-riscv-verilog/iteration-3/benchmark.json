@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "processor-riscv-verilog",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:52Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 369.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged 7-milestone plan (TASKS.md M1-M7) but only the current M1 skeleton written; rtl/blinker.v leaves the core to the learner: 'TODO(1): \u58f0\u660e reg [$clog2(BLINK_DIV)-1:0] cnt' and 'TODO(2): \u58f0\u660e reg led_r'; answer: '\u4e24\u5904 TODO \u7559\u7ed9\u4f60\u5199\uff1a\u8ba1\u6570\u5668 + LED \u7ffb\u8f6c'; TASKS.md rule: '\u9aa8\u67b6\u6587\u4ef6\u91cc\u6807 TODO \u7684\u90e8\u5206\u7531\u4f60\u81ea\u5df1\u5199'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Answer ends with a concrete checkpoint: 'make sim' with '# \u671f\u671b\u8f93\u51fa: M1 PASS: LED toggled 4 times'; tb_blinker.v is self-checking: '$display(\"M1 PASS: LED toggled %0d times\", toggles)' plus a timeout '$display(\"M1 FAIL: timeout...\")' branch"
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the cited tutorial (Bruno Levy learn-fpga FROM_BLINKER_TO_RISCV URL in TASKS.md/README): Blinker\u2192ALU\u2192\u5bc4\u5b58\u5668\u5806+PC ('x0 \u6052 0', '\u540c\u6b65\u5199/\u5f02\u6b65\u8bfb')\u2192\u5355\u5468\u671f RV32I ('\u8bd1\u7801\u3001\u7acb\u5373\u6570\u3001\u8bbf\u5b58\u3001\u5206\u652f', 'sum 1..10 = 55')\u2192MMIO LED/UART\u2192'rv32ui-p-*' compliance\u2192'5 \u7ea7\u6d41\u6c34\u7ebf\uff08\u62a5 CPI\uff09'; Verilog-specific concepts like 'always @(posedge clk)' \u2014 tutorial-specific, not generic"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Shell log contains only ls/grep/which/find/mkdir-in-project/touch/printf/.gitignore/make -n \u2014 no install executed; agent: '\u5de5\u5177\u94fe\u672a\u88c5\uff0c\u5b89\u88c5\u547d\u4ee4\u5728 README\uff08brew install icarus-verilog gtkwave\uff09\uff0c\u7531\u4f60\u81ea\u5df1\u6267\u884c'; README: '\u5de5\u5177\u94fe\uff08\u8bf7\u81ea\u884c\u5b89\u88c5\uff0cmacOS\uff09'; all writes (rtl/, tb/, sim/, scratch/, .gitignore, Makefile, *.md) are inside the project dir"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 661.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Only 2 files written, both planning/coaching artifacts: TASKS.md (staged T0\u2013T24 plan in 8 phases A\u2013H with '- [ ]' checkboxes) and CLAUDE.md; no stepN.v implementation written. CLAUDE.md: '\u8ba9\u5b66\u4e60\u8005\u5199\u6838\u5fc3: \u72b6\u6001\u673a\u3001ALU case\u3001\u8bd1\u7801\u7ebf\u3001\u7acb\u5373\u6570\u62fc\u63a5\u7b49\u6838\u5fc3\u903b\u8f91\u7531\u5b66\u4e60\u8005\u5b8c\u6210\uff1b\u53ea\u6709\u5b66\u4e60\u8005\u4e3b\u52a8\u8981\u6c42\u6216\u5361\u4f4f\u65f6\u624d\u7ed9\u5f53\u524d\u4efb\u52a1\u7684\u5b8c\u6574\u4ee3\u7801' and '\u53c2\u8003\u7b54\u6848 stepN.v \u53ea\u5728\u5b66\u4e60\u8005\u5b8c\u6210\u6216\u660e\u786e\u8981\u6c42\u5bf9\u7167\u65f6\u6253\u5f00\uff0c\u7528 diff \u8bb2\u5dee\u5f02'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Agent's stated protocol: '4. End the reply with the first runnable checkpoint', todos completed. Deliverable contains concrete checkpoints with expected output: T0 '\u9a8c\u8bc1: cd $TUT && ./run.sh step1.v \u2192 \u7ec8\u7aef\u6301\u7eed\u6eda\u52a8 LEDS = xxxxx\uff085 \u4f4d\u8ba1\u6570\uff09\u3002<Ctrl+C> \u540e\u8f93\u5165 finish \u9000\u51fa'; T1 './run.sh my_step1.v \u2192 LEDS = 00000 \u8d77\u8fde\u7eed\u9012\u589e\u7684\u4e8c\u8fdb\u5236\u8ba1\u6570\u6d41'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match the tutorial's actual stages and vocabulary: 'T7\u2013T10 | Verilog \u6c47\u7f16\u5668\u3001\u8df3\u8f6c\u3001\u5206\u652f\u3001LUI/AUIPC | 38 \u6761 RV32I \u6307\u4ee4\u5b8c\u6210 28 \u6761', 'T22\u2013T24 | Flash \u6620\u5c04\u3001\u4ece Flash \u6267\u884c\u3001\u94fe\u63a5\u811a\u672c\u8fdb\u9636 | 4MB \u4ee3\u7801\u7a7a\u95f4\uff0c\u8dd1 pi/raytracer'; tutorial-specific mechanics: './run.sh my_stepN.v', 'module SOC(CLK, RESET, LEDS[4:0], RXD, TXD)', 'make ICESTICK.firmware_config', bench_iverilog/clockworks/riscv_assembly. Agent read the real 3702-line README via curl+sed and verified coverage: 'for i in $(seq 1 24); do grep -q \"Step $i\" TASKS.md'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "Wrote outside the project dir: 'mkdir -p /tmp/femtorv && cd /tmp/femtorv && curl -sL ...README.md -o README.md', then ran ~25 more commands there; agent admits 'I did download to /tmp earlier which violated that rule' and cleanup failed ('rm -rf /tmp/femtorv' \u2192 permission denied, retried, then 'ls /tmp/femtorv 2>&1' to check). No install commands were run (learner is told 'brew install icarus-verilog verilator' / 'sudo apt-get install iverilog verilator'), but the out-of-project write fails B4 per rubric."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 500.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Only the first milestone's first step was implemented: files are rtl/step1_blinker.v, tb/tb_step1.v, Makefile, README.md, docs/MILESTONES.md; README progress shows '[x] M0 Step 1 \u2014 blinker' with all later items unchecked ('[ ] M0 Step 2', '[ ] M1 Step 3', ...), and MILESTONES.md is a staged plan M0\u2013M6 with per-step \u4ea7\u51fa/\u9a8c\u6536 TODOs, not a full core implementation."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with a concrete checkpoint: '\u672c\u673a\u8dd1 `brew install icarus-verilog && make sim`\uff0c\u770b\u5230 `PASS: 3 toggles observed` \u5373\u9aa8\u67b6\u9a8c\u8bc1\u901a\u8fc7' \u2014 command plus expected output, matching tb_step1.v's '$display(\"PASS: %0d toggles observed...\"'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones are aligned to the actual tutorial the agent fetched (BrunoLevy/learn-fpga FemtoRV/TUTORIALS/FROM_BLINKER_TO_RISCV, '24 \u4e2a Step + Episode II \u6d41\u6c34\u7ebf + Episode III \u4e2d\u65ad') with tutorial-specific stages: 'Step 4\uff1a\u6307\u4ee4\u8bd1\u7801\u5668', 'Step 5\uff1a\u5bc4\u5b58\u5668\u5806\uff082 \u8bfb 1 \u5199\uff09', 'Step 6\uff1aALU\uff08ADD/SUB/SLT/\u79fb\u4f4d/\u903b\u8f91\uff09', 'Step 8\uff1aJumps\uff08JAL/JALR\uff09', 'Step 10\uff1aLUI/AUIPC', 'Step 17\uff1aMemory-mapped I/O', 'Step 19\uff1aVerilator \u52a0\u901f\u4eff\u771f', 'Step 23\u201324\uff1a\u7a0b\u5e8f\u4ece SPI Flash \u542f\u52a8', 'Episode II\uff08PIPELINE.md\uff09', 'Episode III\uff08INTERRUPTS.md\uff09' \u2014 verified via curl of the tutorial README and GitHub API, plus a coverage check 'Step 1\u201324 + Episode II/III \u5168\u90e8\u6620\u5c04\u5b8c\u6bd5'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "SHELL COMMANDS RUN includes install commands: 'brew install icarus-verilog 2>&1 | tail -5' and 'pip3 install --quiet --user pyverilog 2>&1 | tail -2' \u2014 the agent ran them itself (though it reports 'brew \u5b89\u88c5\u88ab\u73af\u5883\u62e6\u622a' / '\u5b89\u88c5\u7c7b\u547d\u4ee4\u5747\u88ab\u73af\u5883\u62e6\u622a', the commands were executed). Also wrote outside the project dir: 'curl ... -o /tmp/fbtr.json' and '-o /tmp/fbtr_readme.md'."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 809.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a scaffold, not an implementation: TASKS.md (16094 chars) with '\u91cc\u7a0b\u7891\u603b\u89c8' M0\u2013M9 table (T0.1\u2013T24), tasks as unchecked TODOs ('- [ ] T0.1 \u5b89\u88c5\u4eff\u771f\u4e0e\u7efc\u5408\u5de5\u5177'), protocol '\u6bcf\u4e2a\u4f1a\u8bdd\u53ea\u505a\u4e00\u4e2a\u4efb\u52a1: \u4ece\u5934\u626b\u63cf\u672c\u6587\u4ef6, \u53d6\u7b2c\u4e00\u4e2a\u672a\u52fe\u9009 (- [ ]) \u7684\u4efb\u52a1', and done-record rule '\u9a8c\u6536\u547d\u4ee4\u5168\u90e8\u901a\u8fc7\u624d\u5141\u8bb8\u52fe\u9009 - [x]'; agent verified via 'grep -c ^-\\ \\[\\ \\]' TASKS.md. No stepN.v processor code was written \u2014 each task instructs '\u4ee3\u7801\u81ea\u5df1\u5199'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Tasks carry concrete runnable checkpoints with expected output: T0.1 \u9a8c\u6536 'iverilog -V | head -1 && verilator --version' \u2192 '\u4e24\u6761\u547d\u4ee4\u5747\u6709\u7248\u672c\u8f93\u51fa'; T0.2 'test -f reference/learn-fpga/FemtoRV/TUTORIALS/FROM_BLINKER_TO_RISCV/step1.v && echo OK'; T1 verify 'vvp output shows LEDS counting'; done record '\u4f8b\u5982 LEDS=15'; CLAUDE.md \u5e38\u7528\u547d\u4ee4 './run.sh steps/step1.v'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the tutorial's actual 24 steps with its specific concepts: 'instruction decoder (opcode, rs1/rs2/rd, funct3/funct7, 5 immediate formats)', 'register bank + 3-state FSM (FETCH_INSTR, FETCH_REGS, EXECUTE)', 'JAL/JALR + nextPC', 'branches (6 variants + takeBranch)', '33-bit subtract, EQ/LT/LTU', 'LW/LB/LBU/LH/LHU', 'SW/SB/SH + wmask', 'IO page bit 22, 1-hot', 'Mandelbrot (fixed point, mulsi3)', 'MappedSPIFlash + mem_rbusy', 'spiflash0.ld, iceprog', 'riscv64-elf-gcc', '$readmemh', 'sieve.c'; references real repo files clockworks.v, riscv_assembly.v, bench_iverilog.v, run.sh."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "Agent ran no installer itself (brew install appears only as learner instructions), but shell command 'mkdir -p /tmp/femtorv && curl -sL \"https://raw.githubusercontent.com/.../README.md\" -o /tmp/femtorv/README.md' followed by 'cp -r /tmp/femtorv .../.tutorial-ref' wrote files to /tmp, outside the project dir."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 515.25,
+        "stddev": 206.8287,
+        "min": 369.0,
+        "max": 661.5
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 654.9,
+        "stddev": 218.496,
+        "min": 500.4,
+        "max": 809.4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.12",
+      "time_seconds": "-139.6",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

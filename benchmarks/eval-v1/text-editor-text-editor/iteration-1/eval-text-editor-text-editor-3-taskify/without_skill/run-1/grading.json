@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged plan, not an implementation: only TASKS.md (8883 chars) was written, no kilo.c. It contains '- [ ]' TODO checkboxes, '7 章 × 里程碑表：每个里程碑 3–9 个 step', a per-step '执行协议（每个 step 固定流程）' and '每章验收 + 最终验收：8 条可执行检查项' — a scaffold with TODOs for the learner to execute."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete commands with expected behaviour throughout: '观察点：`make && ./kilo` 立即退出且 `echo $?` 为 0'; pty checkpoint 'expect -c ... spawn ./kilo, send \"\\x11\" ... | cat -v | grep -c ~' to '确认能画出 ~ 和状态栏'; and the plan ends with '每章验收 + 最终验收：8 条可执行检查项' plus '断点续做：`git log` 即进度表'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (text-editor-text-editor): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial's real stages and step names from the kilo-src tags: 'Ch1: 1–2 / Ch2: 3–19 / Ch3: 20–54 / Ch4: 55–100 / Ch5: 101–130 / Ch6: 131–141 / Ch7: 142–184'; steps 'main, make / read, press-q / echo, atexit, icanon / opost, vmin-vtime / basic-search / syntax-digits / propagate-highlight'; C-specific concepts (tcgetattr/tcsetattr, ECHO/ICANON/ISIG/IXON/ICRNL/OPOST, VMIN=0/VTIME=1, Ctrl-Q=\\x11). Verified against fetched chapter pages 01.setup.html–08.appendices.html."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but commands wrote outside the project dir: 'git clone --bare --filter=blob:none https://github.com/snaptoken/kilo-src /tmp/kilo-src-bare', then repeatedly 'cd /tmp/kilo-src-bare' and redirected outputs to '/tmp/kilo-steps.txt' and '/tmp/extra.txt'."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 580.4
+ },
+ "install_like_cmds": []
+}

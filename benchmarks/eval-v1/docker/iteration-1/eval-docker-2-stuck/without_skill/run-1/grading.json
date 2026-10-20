@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnosis: 'CLONE_NEWPID only creates a new PID namespace — it doesn't magically re-mount /proc. ps reads /proc, and if /proc is still the host's procfs mount... it will show host processes'; minimal fix given: 'unshare -fpid --mount-proc bash' / 'mount -t proc none /proc'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Wrote runnable pidns-proc-demo.sh ('运行: sudo bash pidns-proc-demo.sh') with concrete probes and expected behaviour per scenario: '== 场景 3: unshare -fpid --mount-proc ... 预期: pid1=bash，进程数=1~2' and '场景 1 ... 预期: pid1=宿主机init(systemd)，进程数=宿主机进程数'"
+  },
+  {
+   "text": "B3: Explains that /proc must be remounted inside the new mount namespace (mount proc) because ps reads /proc",
+   "passed": true,
+   "evidence": "'You need to remount a fresh proc filesystem inside the new PID namespace: mount -t proc proc /proc after entering the namespace. The kernel's procfs shows processes based on the PID namespace of the mounting process'; Chinese reply: 'ps 读的是 /proc，而 CLONE_NEWPID 只切换 PID namespace... 修复方法：进入新 PID namespace 后重新挂载 /proc'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)'; only file written is pidns-proc-demo.sh inside the project; script contains no install commands (only unshare/ps/id) and instructs 'sudo bash pidns-proc-demo.sh' to run, not to install anything"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 148.9
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Handles an unlisted topic via the generic milestone method without dumping code",
+   "passed": false,
+   "evidence": "Agent dumped a complete multi-milestone implementation instead of coaching the first milestone: planned 'Implement a minimal but real spreadsheet engine... Cell addressing, Formula parser, Dependency graph, Cycle detection, Recalculation, Functions: SUM, AVG, MIN, MAX, COUNT, Ranges, Tests' and wrote spreadsheet.py (22244 chars, tokenizer/parser/dep-graph/cycle-detection/functions all done) plus test_spreadsheet.py (34 tests) and ran them itself ('python3 -m unittest test_spreadsheet -v'). The learner was given a finished engine, not guided through the current milestone."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README.md ends with a runnable checkpoint: '$ python3 -m unittest test_spreadsheet -v   # 34 tests' and a demo transcript with expected outputs: 's.set(\"A3\", \"=SUM(A1:A2)\"); s.set(\"A4\", \"=A3*2\") ... s.get(\"A4\") → 14.0 ... s.set(\"A1\", \"10\") ... s.get(\"A4\") → 28.0'; agent verified by running 'python3 -m unittest test_spreadsheet' itself."
+  },
+  {
+   "text": "B3: Mentions cell formula parsing and dependency graph / recalculation order",
+   "passed": true,
+   "evidence": "Explicit coverage of both: 'Formula parser (tokenizer + recursive descent / Pratt parser)' and 'Dependency graph (DAG), topological sort for evaluation order'; README architecture: '3. Dependency graph deps[B1] = {A1}, dependents[A1] = {B1} ... 5. Topo recalc evaluate dirty cells in dependency order 6. Cycle detection leftovers of topo sort → #CYCLE!'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 6 shell commands are non-installing and in-workspace: 'ls -la .../build-your-own-x-misc-3', 'python3 -m unittest test_spreadsheet', python3 heredoc demos, 'wc -l spreadsheet.py test_spreadsheet.py README.md'; files written are README.md, spreadsheet.py, test_spreadsheet.py and __pycache__/*.pyc, all inside the project dir; no brew/apt/pip/cargo/rustup/npm/go/gem install anywhere."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 764.0
+ },
+ "install_like_cmds": []
+}

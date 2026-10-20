@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds window + game loop milestone with TODOs; no complete game",
+   "passed": true,
+   "evidence": "Only milestone 1/6 scaffolded: game.py has Game.__init__/run completed but '3 个 TODO 留给你' (handle_events/update/render contain 'TODO 1/2/3' with '...'); PROGRESS.md shows milestones 2-6 '待开始'; no snake/food/collision code exists."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final turn gives concrete command 'python3 -m snake.game' plus pass criteria: '窗口打开，左上角 FPS 稳定在 60 附近；按 ESC 或点 X 窗口关闭、终端无任何报错'."
+  },
+  {
+   "text": "B3: Mentions a game loop with update/render and a fixed tick/frame rate",
+   "passed": true,
+   "evidence": "'每秒重复 60 次「处理输入 → 更新世界状态 → 画一帧」。帧率用 clock.tick(FPS) 压住' and 'update 和 render 分开写'; code loop: handle_events(); self.update(self.clock.tick(FPS)); self.render()."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Shell commands run were only version/import/py_compile checks (e.g. 'python3 -m py_compile snake/game.py'); pip install appears only as learner instruction: '安装依赖（我按规矩不替你跑安装命令）：python3 -m pip install pygame-ce'; all 8 files written inside project dir (snake/, README.md, PROGRESS.md, __pycache__)."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 280.6
+ },
+ "install_like_cmds": []
+}

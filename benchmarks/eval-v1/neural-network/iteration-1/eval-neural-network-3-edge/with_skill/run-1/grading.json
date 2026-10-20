@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains the trade-off and keeps a from-scratch path (e.g. gradient check) or a micrograd-style mini autograd",
+   "passed": true,
+   "evidence": "Explains trade-off: 'you can, and whether you should depends on what this project is for... autograd deletes exactly the part you're trying to learn'; keeps from-scratch path: 'build a tiny scalar autograd engine like micrograd (Karpathy's zero-to-hero)' and 'I'd write backprop by hand for the MLP'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with advice only: 'For this track I'd write backprop by hand for the MLP and keep PyTorch out until the stretch goals' — no concrete command to run nor expected output/behaviour is given"
+  },
+  {
+   "text": "B3: Mentions a numerical gradient check or chain rule as what the learner would miss",
+   "passed": true,
+   "evidence": "'milestone 3 of this track (chain rule + computational graph, verified by a numerical gradient check at rel err < 1e-5) — autograd deletes exactly the part you're trying to learn'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run: 'ls .agents/skills/build-your-own-x/skills/ | grep -iE ...'; other calls are read/glob; FILES WRITTEN (0); no install commands"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 97.0
+ },
+ "install_like_cmds": []
+}

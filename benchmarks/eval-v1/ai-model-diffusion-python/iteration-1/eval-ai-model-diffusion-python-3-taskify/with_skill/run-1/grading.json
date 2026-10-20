@@ -1,0 +1,40 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged milestone plan (M0–M7 in TASKS.md), only file written (8377 chars); protocol rule 3: '不一次性给全量代码。只有当前里程碑、且在学习者尝试之后或主动要求时，才给该里程碑的完整代码'; milestones specify '学习者写（src/data.py）：加载 torchvision.datasets.MNIST...' i.e. learner writes core, agent scaffolds; no implementation files (unet.py/corrupt.py) were written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "TASKS.md M0 checkpoint: 'python -c \"import torch, torchvision, diffusers, matplotlib; print(torch.__version__, diffusers.__version__)\"' with '预期：打印版本号，无 ImportError'; M2 '5 条断言（amount=0 恒等、广播正确、值域）'; final answer ends 'CPU 环境通过 --smoke 模式可在几分钟内跑完每个检查点。从 M0 开始逐条执行即可' pointing to the concrete first command."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-diffusion-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the actual notebook stages fetched from huggingface/diffusion-models-class 02_diffusion_models_from_scratch.ipynb: M2 corrupt() linear noising, M3 BasicUNet 'param count ~309k (309,057 exactly with the notebook config)', M5 'mix_factor = 1/(n_steps - i), 5 steps then 40 steps', M6 'DDPMScheduler(1000), plot alphas_cumprod... ᾱ₀=0.9999、ᾱ₉₉₉≈4e-5', M7 eps-prediction 'loss ≈ 1.0 baseline'; each milestone cites notebook CELL ranges (e.g. '参考：CELL 4–8')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run by the agent (pip install appears only under '学习者自己执行' in TASKS.md), but shell command 1 wrote outside the project dir: 'mkdir -p /tmp/diffusion_ref && curl -sL ... -o /tmp/diffusion_ref/notebook.ipynb', and command 2 processed files there ('json.load(open('/tmp/diffusion_ref/notebook.ipynb'))'), only later copying into the workspace ('mkdir -p .ref && cp /tmp/diffusion_ref/... .ref/...')."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 778.2
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "misc",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:50Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 135.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Picks a matching upstream entry and scaffolds the first milestone; no full server",
+          "passed": true,
+          "evidence": "Picks a matching catalog entry: 'Tutorial: Building a DNS server in Rust (Emil Hernvall)' with link, chosen after grepping tutorials.md for DNS. First milestone is scaffolded as the immediate step ('1. Skeleton \u2014 cargo project, UDP socket on 127.0.0.1:5353, echoes packets back') while 'FILES WRITTEN IN PROJECT (0)' confirms no full multi-milestone server was dumped; agent stops at 'milestone 1/7 \u2014 pick + scope' and asks to confirm scope."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a runnable checkpoint: 'Check (run this now): cargo --version && dig -v | head -1 \u2014 expect cargo 1.95.0 and a dig version line. If dig is missing, nslookup works too' \u2014 concrete command plus expected output and fallback behaviour."
+        },
+        {
+          "text": "B3: Mentions UDP port 53 (or a high test port) and the DNS message header/question format",
+          "passed": true,
+          "evidence": "Port: 'UDP socket on 127.0.0.1:5353' and 'dig @127.0.0.1 -p 5353' (high test port). Format: 'a 12-byte header (ID, flags, four section counts), a question section (name + type + class)', plus 'length-prefixed labels (example.test \u2192 \\x07example\\x04test\\x00)' and record fields 'name, type, TTL, length, data'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command run was a read-only version probe: 'for t in cargo rustc node npm python3 go; do command -v $t ... --version ...' \u2014 no brew/apt/pip/cargo install/rustup/npm -g/go install/gem install. 'FILES WRITTEN IN PROJECT (0)' and all other calls are reads/globs/greps under .agents/skills; nothing written outside the project and no install needed (tools reported present: 'Rust 1.95, Node 25, and Python 3.14')."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 117.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Maps to the tiny package manager entry and scaffolds a first milestone",
+          "passed": true,
+          "evidence": "Mapped to the exact tutorial: 'Tiny Package Manager: Learns how npm or Yarn works \u2014 https://github.com/g-plane/tiny-package-manager' via skill 'misc-tiny-package-manager-npm-yarn'; scaffolded the first milestone only ('\u5f53\u524d\u8fdb\u5ea6\uff1a\u91cc\u7a0b\u7891 1/6\uff08\u5b9a\u8303\u56f4\uff09\u3002\u4f60\u786e\u8ba4\u8bed\u8a00\u548c\u8303\u56f4\u540e\uff0c\u6211\u4eec\u4ece\u9aa8\u67b6\u5f00\u59cb\uff1a\u5efa\u9879\u76ee\u3001\u5199 CLI \u5165\u53e3'), wrote 0 files, and asked the learner to confirm language/scope before building \u2014 coaching at the current milestone rather than dumping a full implementation."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Reply ends with a concrete runnable check and expected output: '\u5148\u8dd1\u8fd9\u4e2a\u786e\u8ba4\u73af\u5883\uff08\u9884\u671f\u8f93\u51fa v18 \u6216\u66f4\u9ad8\uff09\uff1a```bash node --version```'."
+        },
+        {
+          "text": "B3: Mentions dependency resolution / a lockfile or fetching package tarballs",
+          "passed": true,
+          "evidence": "Mentions all three: '\u9012\u5f52\u5904\u7406\u4f9d\u8d56\u7684\u4f9d\u8d56\uff08\u53bb\u91cd\u3001\u7248\u672c\u51b2\u7a81\uff09' (dependency resolution), '\u5199 lockfile\uff0c\u4fdd\u8bc1\u4e0b\u6b21\u5b89\u88c5\u7ed3\u679c\u4e00\u81f4' (lockfile), and '\u4e0b\u8f7d tarball \u5e76\u89e3\u538b\u5230 node_modules/' (fetching tarballs)."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): only 'ls -A'; FILES WRITTEN IN PROJECT (0); other tool calls are reads/globs/grep inside .agents/skills. No install commands run; the only command suggested to the learner is the read-only check 'node --version'."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 249.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Handles an unlisted topic via the generic milestone method without dumping code",
+          "passed": true,
+          "evidence": "Agent notes 'No spreadsheet entry exists in the upstream catalog ... so the misc track's generic milestone frame applies', then proposes a 7-milestone plan (scope/skeleton \u2192 tokenizer \u2192 parser \u2192 evaluator \u2192 dependency graph \u2192 edge cases \u2192 parity) and asks scoping questions; FILES WRITTEN IN PROJECT (0) and SHELL COMMANDS RUN (0) confirm no code was dumped."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The reply ends with 'Once you confirm, I'll scaffold the skeleton and give you the first TODO list' \u2014 the only 'check' offered is a future definition-of-done sentence ('editing any cell in a 10\u00d710 sheet ... prints correct values ... and #CIRC!'), with no concrete command to run and no expected output/behaviour from running anything."
+        },
+        {
+          "text": "B3: Mentions cell formula parsing and dependency graph / recalculation order",
+          "passed": true,
+          "evidence": "'a formula interpreter (=SUM(A1:A3)*2 \u2192 value), and a dependency graph that figures out which cells must recompute when one changes, in the right order, detecting cycles'; milestones list '2. Cell model + formula tokenizer', '3. Parser \u2192 AST with correct precedence (1+2*3 parses as 1+(2*3))', '5. Dependency graph \u2014 topological recompute, cycle detection \u2192 #CIRC!'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (0); OTHER TOOL CALLS are only reads inside the workspace ('.agents/skills/build-your-own-x/skills/misc/references/tutorials.md', '.agents/skills/build-your-own-x/skills/programming-language/SKILL.md'); no install command appears anywhere."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 712.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Picks a matching upstream entry and scaffolds the first milestone; no full server",
+          "passed": false,
+          "evidence": "Agent dumped a complete multi-milestone implementation instead of a first milestone: \"a DNS server in ~250 lines... parses the 12-byte header, decodes names byte-by-byte (including compression pointers with a loop guard), answers A/AAAA/CNAME records from a local zone, returns NXDOMAIN for unknown .test names, and forwards everything else to 1.1.1.1\" plus \"All six paths verified.\" No upstream entry was picked either \u2014 the agent notes \"Empty workspace\" and chose Python itself."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a runnable checkpoint: \"python3 server.py  # terminal 1, listens on udp/5533\" and \"dig @127.0.0.1 -p 5533 myserver.test A +short    # -> 127.0.0.1\" / \"dig @127.0.0.1 -p 5533 alias.test CNAME +short   # -> myserver.test.\" \u2014 concrete commands with expected outputs."
+        },
+        {
+          "text": "B3: Mentions UDP port 53 (or a high test port) and the DNS message header/question format",
+          "passed": true,
+          "evidence": "Port and wire format both covered: \"Port 53 is reserved and needs root on macOS, so we use 5533\", \"listens on udp/5533\"; header/question format: \"Header \u2014 12 bytes, six 16-bit fields\" with \"QR| Opcode |AA|TC|RD|RA| Z|RCODE\" and QDCOUNT, \"A DNS message is: Header | Question | Answer | Authority | Additional\", and names \"travel as 3www7example3com0\"."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": false,
+          "evidence": "No install commands were run, but the agent wrote outside the project dir: \"python3 server.py > /tmp/dns_server.log 2>&1 &\" (repeated across several commands) and \"python3 -u server.py > /tmp/dns_final.log 2>&1 &\" \u2014 log files created in /tmp, outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 41.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Maps to the tiny package manager entry and scaffolds a first milestone",
+          "passed": true,
+          "evidence": "Maps to the package-manager entry and scaffolds a first milestone: '\u4ece\u6700\u5c0f\u53ef\u7528\u7684\u300c\u5b89\u88c5\u4e00\u6761\u4f9d\u8d56\u300d\u5f00\u59cb' with concrete v0: 'CLI \u9aa8\u67b6\uff1a`mypm install <name>`', '\u6ce8\u518c\u8868\u5148\u7528\u4e00\u4e2a\u9759\u6001 JSON \u6587\u4ef6\u2026{ \"name\": { \"version\": \"tarball\u4e0b\u8f7d\u5730\u5740\" } }', '\u4e0b\u8f7d tarball \u2192 \u6821\u9a8c SHA-256 \u2192 \u89e3\u538b\u5230 `my_modules/<name>/`' \u2014 only v0 is detailed, later milestones are roadmap only, no complete implementation dumped."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "No runnable checkpoint: the answer ends with '\u5f53\u524d\u76ee\u5f55\u662f\u7a7a\u7684\uff0c\u5982\u679c\u4f60\u544a\u8bc9\u6211\u6253\u7b97\u7528\u4ec0\u4e48\u8bed\u8a00\uff0c\u6211\u53ef\u4ee5\u76f4\u63a5\u628a v0 \u7684\u9aa8\u67b6\u642d\u51fa\u6765\u3002' \u2014 no concrete command to run nor expected output/behaviour is given anywhere."
+        },
+        {
+          "text": "B3: Mentions dependency resolution / a lockfile or fetching package tarballs",
+          "passed": true,
+          "evidence": "Mentions all three: 'v2\uff1a\u4f9d\u8d56\u89e3\u6790\uff08\u771f\u6b63\u7684\u96be\u70b9\uff09\u2026\u6784\u5efa\u4f9d\u8d56\u56fe\u2026\u7248\u672c\u6c42\u89e3', 'v3\uff1a\u2026lockfile\uff1a\u9501\u5b9a\u6574\u68f5\u6811\u7684\u7cbe\u786e\u7248\u672c\u548c\u54c8\u5e0c', and '\u4e0b\u8f7d tarball \u2192 \u6821\u9a8c SHA-256'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'FILES WRITTEN IN PROJECT (0)' and 'SHELL COMMANDS RUN (0)'; only tool call is glob {\"pattern\": \"**/*\"}. No install commands run or suggested; the agent asks the learner for a language choice instead."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 764.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Handles an unlisted topic via the generic milestone method without dumping code",
+          "passed": false,
+          "evidence": "Agent dumped a complete multi-milestone implementation instead of coaching the first milestone: planned 'Implement a minimal but real spreadsheet engine... Cell addressing, Formula parser, Dependency graph, Cycle detection, Recalculation, Functions: SUM, AVG, MIN, MAX, COUNT, Ranges, Tests' and wrote spreadsheet.py (22244 chars, tokenizer/parser/dep-graph/cycle-detection/functions all done) plus test_spreadsheet.py (34 tests) and ran them itself ('python3 -m unittest test_spreadsheet -v'). The learner was given a finished engine, not guided through the current milestone."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "README.md ends with a runnable checkpoint: '$ python3 -m unittest test_spreadsheet -v   # 34 tests' and a demo transcript with expected outputs: 's.set(\"A3\", \"=SUM(A1:A2)\"); s.set(\"A4\", \"=A3*2\") ... s.get(\"A4\") \u2192 14.0 ... s.set(\"A1\", \"10\") ... s.get(\"A4\") \u2192 28.0'; agent verified by running 'python3 -m unittest test_spreadsheet' itself."
+        },
+        {
+          "text": "B3: Mentions cell formula parsing and dependency graph / recalculation order",
+          "passed": true,
+          "evidence": "Explicit coverage of both: 'Formula parser (tokenizer + recursive descent / Pratt parser)' and 'Dependency graph (DAG), topological sort for evaluation order'; README architecture: '3. Dependency graph deps[B1] = {A1}, dependents[A1] = {B1} ... 5. Topo recalc evaluate dirty cells in dependency order 6. Cycle detection leftovers of topo sort \u2192 #CYCLE!'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "All 6 shell commands are non-installing and in-workspace: 'ls -la .../build-your-own-x-misc-3', 'python3 -m unittest test_spreadsheet', python3 heredoc demos, 'wc -l spreadsheet.py test_spreadsheet.py README.md'; files written are README.md, spreadsheet.py, test_spreadsheet.py and __pycache__/*.pyc, all inside the project dir; no brew/apt/pip/cargo/rustup/npm/go/gem install anywhere."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 167.4,
+        "stddev": 71.5542,
+        "min": 117.0,
+        "max": 249.3
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.6667,
+        "stddev": 0.1443,
+        "min": 0.5,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 506.1667,
+        "stddev": 402.9705,
+        "min": 41.8,
+        "max": 764.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.25",
+      "time_seconds": "-338.8",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

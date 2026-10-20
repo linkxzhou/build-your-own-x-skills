@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the bug and gives a minimal fix snippet for the current milestone only: '最小修复（Python 示意...就这三件事）' with a short header/body/close snippet ending in 'conn.close()  # 发完就关' — a targeted patch, not a full multi-milestone implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with runnable checks and expected behaviour: 'curl -v http://localhost:8080/' with '期望看到这三行，且 curl 立即退出（挂起即命中原因 1/2）' listing '< HTTP/1.1 200 OK / < Content-Length: 137 / < Connection: close / * Closing connection 0', plus a second check 'curl -v --max-time 3 http://localhost:8080/favicon.ico' with '期望 3 秒内返回（404 也算通过）；超时说明服务器卡在并发或某个 handler 上'."
+  },
+  {
+   "text": "B3: Points to missing Content-Length (or connection close / incomplete headers \\r\\n\\r\\n) as the likely cause",
+   "passed": true,
+   "evidence": "Names the likely cause explicitly: '没发 Content-Length，也没发 Connection: close，发完也不 close() socket。HTTP/1.1 默认 keep-alive，浏览器只能傻等下一段数据' and 'Content-Length 数错了...len(body) 数的是字符数，实际要发的是字节数'; also notes headers must end with '\\r\\n' blank line."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1) is only 'ls -la; find . -maxdepth 3 -type f -not -path './.agents/*' | head -50'; other tool calls are read/glob of skill files; FILES WRITTEN IN PROJECT (0); no install commands and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 117.1
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (run a command via re-exec) with TODOs, not the full runtime with cgroups/networking",
+   "passed": true,
+   "evidence": "README.md roadmap: '- [x] **M1 — UTS namespace**' followed by unchecked '- [ ] M2 — PID namespace' through '- [ ] M7 — User namespace' (TODOs). Code implements only M1 re-exec: container_linux.go 'exec.Command(\"/proc/self/exe\", append([]string{\"child\"}, args...)...)' with 'Cloneflags: syscall.CLONE_NEWUTS'; no cgroup or network code anywhere."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with concrete commands and expected behaviour: 'docker build -t tinydocker .' / 'docker run --rm --cap-add SYS_ADMIN tinydocker run sh' / '# inside: hostname  ->  tinydocker', plus 'run `hostname` on the host before and after — it stays unchanged while the container reports `tinydocker`'."
+  },
+  {
+   "text": "B3: Mentions that namespaces/cgroups are Linux-only so a Linux machine/VM with root is required for later milestones",
+   "passed": true,
+   "evidence": "Answer: 'namespaces are Linux-only; Docker CLI isn't on this Mac, so use Docker Desktop or a Linux box'. README.md: 'Namespaces are Linux-only. From macOS, run the project inside a Linux environment (Docker Desktop, a Linux VM, or a Linux server)' and '### Option B: Linux box / VM, as root' with 'sudo ./tinydocker run sh'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands were run, but the single shell command writes outside the project dir: 'go build -o /tmp/td-darwin .' and 'CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -o /tmp/td-linux-arm64 .' / 'GOARCH=amd64 go build -o /tmp/td-linux-amd64 .' place binaries in /tmp, outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 454.8
+ },
+ "install_like_cmds": []
+}

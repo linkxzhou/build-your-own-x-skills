@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds variable interpolation with TODOs; not the full engine",
+   "passed": true,
+   "evidence": "Only the first milestone was implemented, the rest is deferred for the learner: '起步产物就是 lexer.py + test_lexer.py，跑通后再进 parser' and '下一步是写 test_lexer.py 验证行为…跑通后再进 parser'. Only lexer.py was written (parser/renderer not built), so it is not the full engine."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No concrete command to run is given. It only names expected behaviour: 'tokenize(\"Hello {{ name }}!\") 应得到 [text, var]' and 'render(\"Hello {{ name }}!\", {\"name\": \"World\"}) == \"Hello World!\"', but never a runnable command like 'python test_lexer.py' or 'pytest'."
+  },
+  {
+   "text": "B3: Mentions tokenizing text vs {{ }} expressions",
+   "passed": true,
+   "evidence": "'Lexer — 按三种定界符切分：`{{ }}` 表达式、`{% %}` 语句、`{# #}` 注释，其余是纯文本'; code emits Token kinds \"'text' | 'var' | 'tag'\" with plain text kept as Token(\"text\", part)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## SHELL COMMANDS RUN (0)'; only tool calls were 'glob {\"pattern\": \"**/*\"}' and a write of lexer.py inside the project; no install command appears anywhere."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 104.2
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only milestone 0 was implemented: kilo.c is a 572-char skeleton printing 'kilo: skeleton ok (milestone 0)' with '里程碑 1（raw mode）由你自己实现，TODO 已在下方标出' and a TODO listing tcgetattr→clear ECHO|ICANON→tcsetattr→Ctrl-Q 0x11→restore. Answer coaches: '卡住时把报错或现象贴给我，一次给一条提示' — staged 0–7 plan plus scaffold with TODOs, no complete implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Answer ends with a concrete checkpoint: '你的检查命令： make && ./kilo' and expected behaviour '预期：敲键盘字符无回显；Ctrl-Q 退出后 `echo` 恢复正常'， plus '在真实终端（Terminal.app / iTerm2）里运行，IDE 输出面板没有 TTY'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (text-editor-text-editor): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the tutorial's actual stages — README maps 0–1→'01.setup/02.enteringRawMode', 2–3→'03.rawInputAndOutput/04.aTextViewer', 4–5→'05.aTextEditor', 6→'06.search', 7→'07.syntaxHighlighting' (agent web_fetched viewsourcecode.org/snaptoken/kilo/ to confirm). Concepts are kilo-specific: 'termios、关闭回显/规范模式、退出恢复'， 'Ctrl-Q 退出: 读取按键，若为 0x11 ('q' & 0x1f)', 转义序列/波浪线， dirty 标志， 增量查找， C 关键字着色； C99 with -Wall -Wextra -pedantic."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Only shell commands: 'ls -la; … which cc gcc clang make …; uname -s' and 'make && ./kilo; echo \"exit=$?\"' — no install commands; toolchain verified present so none needed. All 5 written files (kilo.c, Makefile, README.md, PROGRESS.md, .gitignore, plus compiled ./kilo) are inside the project dir; other calls are skill-file reads, web_fetch of the tutorial, explore/plan/todo."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 274.3
+ },
+ "install_like_cmds": []
+}

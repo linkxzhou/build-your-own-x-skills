@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses JSON re-serialization as the cause ('JSON serialization changes key order, encoding, integer formatting') and gives a minimal fix: 'record the byte range of the `info` dictionary in the original file... then slice those raw bytes and SHA1 them', plus a decode-offset code sketch."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with only a vague verification suggestion: '拿一个知名种子，对比 `transmission-show` 或 WebTorrent 网页显示的 info hash；或者用 `mktorrent` 自己造一个种子' — no concrete command invocation and no expected output/behaviour."
+  },
+  {
+   "text": "B3: Explains the info hash is SHA-1 of the original bencoded bytes of the info dict (re-bencode exactly, not JSON)",
+   "passed": true,
+   "evidence": "'info_hash must be the SHA1 of the exact original bencoded bytes of the `info` dictionary from the torrent file, not a re-serialization' and 'info_hash 必须对 torrent 文件里 `info` 字典的原始 bencode 字节做 SHA1'; explicitly rules out JSON ('bencode 整数是 i42e，JSON 是 42')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run is 'ls -la /Users/linkxzhou/.../build-your-own-x-bittorrent-client-2/' inside the workspace; 0 files written; no install commands executed (transmission-show/mktorrent/bencodepy are only mentioned as suggestions to the learner)."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 58.5
+ },
+ "install_like_cmds": []
+}

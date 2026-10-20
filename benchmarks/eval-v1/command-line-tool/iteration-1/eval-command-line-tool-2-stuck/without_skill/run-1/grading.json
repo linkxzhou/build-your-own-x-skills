@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "\"The cause: your program emits ANSI escapes unconditionally. A terminal interprets them; a file or pipe just stores the raw bytes.\" plus a minimal fix: a small useColor() TTY-check snippet and a wrapped green() helper — a hint-sized fix, no full implementation written (FILES WRITTEN: 0)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with: \"Quick sanity test after the fix: `./mycli | cat` should print plain text, `./mycli` in the terminal should still be colored, and `./mycli --color always | less -R` should show color through the pipe.\" — concrete commands with expected behaviour."
+  },
+  {
+   "text": "B3: Recommends detecting whether stdout is a TTY and disabling ANSI colors when it is not (or a --no-color flag / NO_COLOR)",
+   "passed": true,
+   "evidence": "\"The fix is to detect whether stdout is a TTY and gate color output on that\" with code `fi.Mode()&os.ModeCharDevice != 0` and `term.IsTerminal(int(os.Stdout.Fd()))`, plus \"NO_COLOR disables\" and a `--color auto|always|never` flag suggestion."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN: only `ls -la`; OTHER TOOL CALLS: one glob; FILES WRITTEN: 0. No install commands and no writes outside the workspace; golang.org/x/term is only mentioned as an optional alternative, with no install executed or required."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 34.2
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-111708-5a987f",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/regex-engine/iteration-2/eval-regex-engine-3-edge/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 193.3,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

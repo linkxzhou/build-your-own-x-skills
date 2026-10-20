@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only file written is TASKS.md (FILES WRITTEN IN PROJECT (1)); it is a staged plan: '每个里程碑含目标、文件、任务分解、验证命令与预期输出、关键概念' with milestones 0–6 and coaching instructions '先自己写，卡住再对照' / 'Claude Code 会先讲概念（3–6 句），再让你写核心代码'. No re.c implementation was written; Python ports were throwaway verification in shell heredocs, later 'rm -f nfa.c.txt'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with '第一个可运行检查点（里程碑 0）' and concrete command 'cc -O2 -o re re.c && ./re 'a' a && echo OK' plus expected behaviour: 're.c 此刻只需 main 读两个参数并打印占位输出；命令以 OK 结尾即通过，然后对 Claude Code 说\"执行里程碑 1\"继续.'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the article's actual stages and concepts: 're2post 中缀转后缀' (abb.+.a.), 'Thompson 构造 post2nfa（State/Frag/patch）', '多状态 NFA 模拟（clist/nlist/listid 去重）', '复现 (a?){n}a{n} 性能对比', 'DState 缓存 → 惰性 DFA', each tagged to article sections ('对应文章小节'). Specificity verified against source: '后缀转换的三个期望值…对照了 rsc 的 nfa.c 原始 re2post 源码' and a faithful port run to check all milestone-3 expectations, catching 'a(bb)+a 对 abba 实际匹配，负例已换成 aba'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands run (only curl/sed/ls/rm/python3/grep), but a command wrote outside the project dir: 'curl -s https://swtch.com/~rsc/regexp/regexp1.html -o /tmp/regexp1.html' and subsequent reads of '/tmp/regexp1.txt' (e.g. 'sed -n '55,330p' /tmp/regexp1.txt', read {\"path\": \"/tmp/regexp1.txt\"}); cleanup 'rm -f /tmp/regexp1.html /tmp/regexp1.txt' came only afterwards."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 818.1
+ },
+ "install_like_cmds": []
+}

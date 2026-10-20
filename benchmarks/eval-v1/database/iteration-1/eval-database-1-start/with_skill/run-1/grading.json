@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (TCP server / PING or RESP basics) with TODOs, without delivering the full server with expiry and persistence",
+   "passed": true,
+   "evidence": "server.py scaffolds only milestone 1: main() has bind/listen/accept loop, while handle_connection is left for the learner: '# TODO: 在这里写你的代码' + 'raise NotImplementedError(\"里程碑 1：实现 handle_connection\")'. No expiry/persistence code exists; README/PROGRESS.md list milestones 2-5 (RESP GET/SET, 并发, 过期, 持久化) all as '待完成'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with runnable checkpoint: 'cd mini-redis; python3 server.py  # 终端 1' and 'printf *1\\r\\n$4\\r\\nPING\\r\\n | nc localhost 6380  # 终端 2，期望输出 +PONG', plus '写完把代码贴给我（或直接说\"写好了\"让我跑检查点）'."
+  },
+  {
+   "text": "B3: Mentions the RESP protocol framing (e.g. *<n>\\r\\n$<len>\\r\\n...) or an equivalent explicit wire format for commands",
+   "passed": true,
+   "evidence": "Explicit RESP framing: '客户端把 PING 编码成 *1\\r\\n$4\\r\\nPING\\r\\n（意思是\"1 个参数，长度 4，内容 PING\"），服务器回 +PONG\\r\\n'; README adds '客户端 → 服务器：*<参数个数>\\r\\n，后跟每个参数的 $<字节长度>\\r\\n<数据>\\r\\n。例：SET key value 编码为 *3\\r\\n$3\\r\\nSET\\r\\n$3\\r\\nkey\\r\\n$5\\r\\nvalue\\r\\n'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command: 'cd mini-redis && python3 -m py_compile server.py && echo COMPILE_OK' — no install command. Files written (server.py, README.md, PROGRESS.md, __pycache__/server.cpython-314.pyc) are all inside mini-redis/ in the project dir; no writes outside workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 327.8
+ },
+ "install_like_cmds": []
+}

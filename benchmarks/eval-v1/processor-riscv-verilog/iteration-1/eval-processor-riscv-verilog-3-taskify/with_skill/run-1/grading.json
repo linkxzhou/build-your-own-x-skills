@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": false,
+   "evidence": "AGENT FINAL ANSWER section is empty (no content between '## AGENT FINAL ANSWER' and '## FILES WRITTEN IN PROJECT (0)'); no staged milestone plan or scaffold with TODOs was delivered."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Empty final answer contains no runnable command or expected output/behaviour; FILES WRITTEN IN PROJECT (0) confirms no artifact with a checkpoint was produced."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": false,
+   "evidence": "Final answer is empty, so no tutorial-specific milestones, language or key concepts can be evidenced; only exploratory reads occurred (e.g. \"sed -n '83,103p' /tmp/femtorv/README.md\", \"grep -n \\\"Try this|try this\\\"\") with no resulting task list."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Agent wrote outside the project dir: \"mkdir -p /tmp/femtorv && cd /tmp/femtorv && curl -sL ... -o README.md\" and \"curl -sL ... toolchain.md -o /tmp/femtorv/toolchain.md\"; no install commands were run, but writing to /tmp violates the workspace constraint."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 0,
+  "failed": 4,
+  "total": 4,
+  "pass_rate": 0.0
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds window + triangle (or chunk data) with TODOs; no full engine",
+   "passed": false,
+   "evidence": "No scaffolding was produced: 'FILES WRITTEN IN PROJECT (0)' and the answer defers all code — 'Answer those and we set up the project skeleton and get your first triangle on screen.' Only a roadmap table and two clarifying questions are given; no window/triangle or chunk-data scaffold with TODOs."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with questions, not a runnable checkpoint: '1. **Stack** — C++/OpenGL as above... 2. **Scope** — full 7 milestones... Answer those and we set up the project skeleton.' No concrete command to run nor expected output is provided; table entries like 'a coloured triangle renders' are future milestones without commands."
+  },
+  {
+   "text": "B3: Mentions OpenGL/WebGL setup and chunked block storage",
+   "passed": true,
+   "evidence": "OpenGL setup: 'Default stack (my suggestion): C++20 + OpenGL 3.3 core + GLFW + GLAD, built with CMake' and milestone 1 'Window + triangle | GL context, shaders, VBOs'. Chunked block storage: milestone 3 'Chunk data | 16×16×16 block array, block ids'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run was a version probe ('for t in g++ gcc clang++ cmake...; do command -v $t...') plus 'ls -a'; no install executed and 0 files written. Tools needed are delegated to the learner: 'You'll need GLFW, which I'd have you install yourself: `brew install glfw`.'"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 119.8
+ },
+ "install_like_cmds": []
+}

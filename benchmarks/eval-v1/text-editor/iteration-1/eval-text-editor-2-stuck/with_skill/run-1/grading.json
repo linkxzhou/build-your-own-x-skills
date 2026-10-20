@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnosis given: 'The editor put the terminal into raw mode (disabled ECHO via termios/tcsetattr) and exited without restoring it'; minimal fix: '**立刻修复**：`stty sane`。它只恢复行规程设置（echo、icanon、isig 等），比 `reset` 轻'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with '如果是现成的 vim/less 出这个问题...`dmesg` 里能看到对应的 segfault 记录；正常退出还坏的话，检查 shell rc 里有没有动过 `stty`' — a conditional aside with no concrete command-plus-expected-output checkpoint; the command/expectation pairs (`stty -a` → '-echo -icanon -isig', `echo $?` → 139) appear mid-answer, not at the end"
+  },
+  {
+   "text": "B3: Explains original termios must be saved and restored on exit (atexit/disableRawMode)",
+   "passed": true,
+   "evidence": "'开 raw mode 前先 `tcgetattr` 保存原始设置' / '`atexit` 恢复，覆盖正常退出'; code shows 'static struct termios orig;', 'static void disableRawMode(void) { tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig); }' and 'atexit(disableRawMode);'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): only 'ls -la'; OTHER TOOL CALLS are glob/read/grep on '.agents/skills/...' paths; FILES WRITTEN IN PROJECT (0); no install command and nothing written outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": true,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 460.0
+ },
+ "install_like_cmds": []
+}

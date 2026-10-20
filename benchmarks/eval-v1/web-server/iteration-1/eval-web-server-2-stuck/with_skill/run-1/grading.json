@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the hang ('响应已经发出去了，但浏览器不知道响应在哪里结束') and gives minimal fixes: '修复三选一：算准 body 字节数加 Content-Length；发完响应后关闭连接（并带 Connection: close）；改用 chunked 编码' and for the accept-loop cause '修复：每个连接一个线程/协程，或响应统一带 Connection: close 并在发完后关闭'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The reply ends with a request for code: '把处理请求、写响应的那段代码贴出来（或放到工作区告诉我路径），我可以直接指出具体是哪一行的问题。' The only concrete command with expected behaviour ('curl -v --max-time 5 http://localhost:8000/' / '如果 body 已经完整打印但 curl 还挂到超时，就是第 1/2 类帧问题') appears mid-answer, and the written diagnose_hang.py is never given to the learner with a run command in the final reply"
+  },
+  {
+   "text": "B3: Points to missing Content-Length (or connection close / incomplete headers \\r\\n\\r\\n) as the likely cause",
+   "passed": true,
+   "evidence": "'HTTP/1.1 默认 keep-alive，如果响应头里既没有 Content-Length 也没有 Transfer-Encoding: chunked，浏览器会认为 body 还没传完，一直挂着'; also '发完 body 没 close / 没 flush' and '头和体必须用 \\r\\n\\r\\n 分隔，少写或写成 \\n，浏览器会认为头还没结束'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command is 'cat > diagnose_hang.py <<'PYEOF'' writing inside the project; FILES WRITTEN are diagnose_hang.py and __pycache__/diagnose_hang.cpython-314.pyc (both in project dir); other tool calls are glob only; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 280.8
+ },
+ "install_like_cmds": []
+}

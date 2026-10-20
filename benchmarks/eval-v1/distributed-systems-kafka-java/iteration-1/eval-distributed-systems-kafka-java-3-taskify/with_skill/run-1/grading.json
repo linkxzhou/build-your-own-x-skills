@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": false,
+   "evidence": "AGENT FINAL ANSWER section is empty and 'FILES WRITTEN IN PROJECT (0)'; no milestone plan or scaffold with TODOs was ever delivered — the agent only fetched tutorial articles (e.g. 'curl -s ...stage-4... -o /tmp/stage4.md') before ending."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No final answer was produced, so there is no concrete command to run nor expected output/behaviour anywhere in the transcript."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (distributed-systems-kafka-java): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": false,
+   "evidence": "No task list or milestones exist in the answer (empty FINAL ANSWER, 0 files); research covered the tutorial's stages 1–6 but nothing tutorial-specific was written for the learner."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but commands wrote outside the project dir: 'curl -s \"https://r.jina.ai/...\" -o /tmp/stage1.md' (also /tmp/stage2.md through /tmp/stage6.md and /tmp/profile.md)."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 0,
+  "failed": 4,
+  "total": 4,
+  "pass_rate": 0.0
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

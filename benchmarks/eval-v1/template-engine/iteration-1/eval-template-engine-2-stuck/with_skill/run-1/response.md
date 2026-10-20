@@ -1,0 +1,10 @@
+Yes — that's cross-site scripting (XSS), the most common critical web vulnerability. Anyone who can inject `<script>` runs arbitrary JavaScript in the browser of every user who views that content: stealing session cookies, acting as the victim, keylogging, redirecting to phishing pages. If the input is stored and shown to other users (comments, profiles, admin panels), it becomes a stored-XSS vector that can even self-propagate as a worm.
+
+Fixes, in order of importance:
+
+1. **Escape by default.** The engine should HTML-encode `<`, `>`, `&`, `"`, `'` in every interpolated value, with raw output available only through an explicit opt-in (`| safe` / `raw` filter). This is how Jinja2 autoescape, Django, and React behave: safety is the default, raw is the marked exception.
+2. **Escape per context.** HTML body, attribute values, JS strings, URLs, and CSS each need different encoding. A value interpolated into `onclick="..."` or `href="..."` needs JS/URL escaping; entity-encoding alone still allows `javascript:` URLs and event handlers.
+3. **Sanitize with an allowlist.** If users legitimately need rich HTML, run it through a real sanitizer server-side (DOMPurify, bleach, sanitize-html). A denylist that strips only `<script>` fails immediately: `<img onerror=...>`, `<svg onload=...>`, `<a href="javascript:...">` all execute too.
+4. **Defense in depth:** a `Content-Security-Policy` restricting script sources, and `HttpOnly` + `Secure` cookies so injected JS can't read the session token even if something slips through.
+
+Quick verification: submit `<script>alert(document.cookie)</script>` as input, then view the page as a different user or logged out. If the alert fires, it's exploitable. In an engine you control, the standard design is autoescape-on plus context-aware escaping functions and a single explicit `|safe` escape hatch for trusted HTML.

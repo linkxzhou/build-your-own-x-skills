@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "text-editor",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:51Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 239.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds raw mode milestone with TODOs; no full editor",
+          "passed": true,
+          "evidence": "kilo.c is a 1615-char milestone-1 skeleton with 'TODO 1.1 includes + die()', 'TODO 1.2 raw mode off/on (termios)', 'TODO 1.3 read keypresses', 'TODO 1.4 Ctrl-Q to quit'; enableRawMode leaves flag-clearing as a TODO ('(void)raw; /* remove once you use it */'), quit is still 'q' with 'TODO 1.4: replace with Ctrl-Q', and PROGRESS.md lists milestones 2\u20137 all 'pending' \u2014 the agent coaches ('What to write next (TODOs are marked in kilo.c)') rather than dumping a full editor"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "'**How to check it.** Run `./kilo` in a real terminal (Terminal.app/iTerm2 \u2014 an IDE output pane is a pipe, as you just saw). Type `asdf`: each key prints its code (`97 ('a')` \u2026). Press Ctrl-Q: it exits and your shell still echoes normally.' \u2014 concrete command plus expected output/behaviour"
+        },
+        {
+          "text": "B3: Mentions termios raw mode (disable ECHO/ICANON) and restoring the terminal on exit",
+          "passed": true,
+          "evidence": "'it flips the tty into *raw mode* via `termios`: save the original settings, clear the right flag bits with `tcsetattr`, and restore the saved settings on exit \u2014 otherwise your shell is left with no echo after the program dies'; plus 'clear `ECHO | ICANON | ISIG`', 'disableRawMode() \u2014 copy `orig_termios` back with `tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios)`, register it with `atexit()`', and hint 'raw.c_lflag &= ~(ECHO | ICANON);'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command: 'make clean >/dev/null && make 2>&1 && printf 'hello\\x11' | ./kilo; echo \"exit=$?\"' \u2014 no install command; other calls are edits to kilo.c; files written (Makefile, PROGRESS.md, kilo.c, kilo binary) are all inside the project dir; toolchain was checked, with 'toolchain is ready (cc/clang/make on macOS)', and nothing was installed"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 460.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnosis given: 'The editor put the terminal into raw mode (disabled ECHO via termios/tcsetattr) and exited without restoring it'; minimal fix: '**\u7acb\u523b\u4fee\u590d**\uff1a`stty sane`\u3002\u5b83\u53ea\u6062\u590d\u884c\u89c4\u7a0b\u8bbe\u7f6e\uff08echo\u3001icanon\u3001isig \u7b49\uff09\uff0c\u6bd4 `reset` \u8f7b'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer ends with '\u5982\u679c\u662f\u73b0\u6210\u7684 vim/less \u51fa\u8fd9\u4e2a\u95ee\u9898...`dmesg` \u91cc\u80fd\u770b\u5230\u5bf9\u5e94\u7684 segfault \u8bb0\u5f55\uff1b\u6b63\u5e38\u9000\u51fa\u8fd8\u574f\u7684\u8bdd\uff0c\u68c0\u67e5 shell rc \u91cc\u6709\u6ca1\u6709\u52a8\u8fc7 `stty`' \u2014 a conditional aside with no concrete command-plus-expected-output checkpoint; the command/expectation pairs (`stty -a` \u2192 '-echo -icanon -isig', `echo $?` \u2192 139) appear mid-answer, not at the end"
+        },
+        {
+          "text": "B3: Explains original termios must be saved and restored on exit (atexit/disableRawMode)",
+          "passed": true,
+          "evidence": "'\u5f00 raw mode \u524d\u5148 `tcgetattr` \u4fdd\u5b58\u539f\u59cb\u8bbe\u7f6e' / '`atexit` \u6062\u590d\uff0c\u8986\u76d6\u6b63\u5e38\u9000\u51fa'; code shows 'static struct termios orig;', 'static void disableRawMode(void) { tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig); }' and 'atexit(disableRawMode);'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): only 'ls -la'; OTHER TOOL CALLS are glob/read/grep on '.agents/skills/...' paths; FILES WRITTEN IN PROJECT (0); no install command and nothing written outside the workspace"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 267.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Explains raw mode needs a real TTY and offers a workable option",
+          "passed": true,
+          "evidence": "\"Raw mode needs a real TTY. ... My recommendation: build kilo for the integrated terminal, and add a non-TTY fallback mode as a stretch milestone \u2014 the same binary detects a pipe/Output-pane stdin and switches to a line-oriented mode.\""
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "\"Open the integrated Terminal pane in VS Code (Terminal \u2192 New Terminal), then: ./kilo\" with expected behaviour: \"Press `a`, `Enter`, an arrow key \u2192 you see decimal byte codes (arrows print `27 91 65...`)\" and \"Press `Ctrl-Q` \u2192 kilo exits, and your prompt still echoes normally\"; compile command `cc -Wall -Wextra -pedantic -std=c99 -o kilo kilo.c` given."
+        },
+        {
+          "text": "B3: States the output pane is not a TTY; use the integrated terminal or a real terminal",
+          "passed": true,
+          "evidence": "\"The Output pane is a log sink: no TTY, no cursor addressing, so a full-screen editor can't render there. VS Code's integrated Terminal pane is a real terminal (xterm.js over a pty), so kilo runs there unchanged.\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only commands run: \"ls -la; echo ---; which gcc clang cc make 2>/dev/null; echo ---; uname -s 2>/dev/null\" (read-only probes); only write is kilo.c inside the project; no install commands, learner is told to compile with cc themselves."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 467.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds raw mode milestone with TODOs; no full editor",
+          "passed": true,
+          "evidence": "kilo.c header: \"Current milestone: the foundation... Everything editor-specific (files, editing, search, syntax highlighting) is still ahead \u2014 see README.md for the roadmap\"; code covers only raw mode/keys/rendering (~250 lines); README has \"Roadmap \u2014 build these next\" with 4 unsolved milestones (viewer, status bars, editing, save) as TODOs"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "README \"## Build and run\": `make` / `./kilo` with expected behaviour \"Quit with Ctrl-Q. Move the cursor with the arrow keys; Home, End, Page Up, Page Down work too\"; agent also verified: \"make 2>&1 && echo --- build OK --- && ./kilo\" plus a pty smoke test"
+        },
+        {
+          "text": "B3: Mentions termios raw mode (disable ECHO/ICANON) and restoring the terminal on exit",
+          "passed": true,
+          "evidence": "kilo.c: `#include <termios.h>`, `raw.c_lflag &= ~(ECHO | ICANON | IEXTEN | ISIG);`, `atexit(disableRawMode);` and disableRawMode() restores via `tcsetattr(STDIN_FILENO, TCSAFLUSH, &E.orig_termios)`; README: \"The original settings are saved and restored via `atexit`\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": false,
+          "evidence": "No install commands were run, but commands wrote outside the project dir: `printf '\\x11' | timeout 10 script -q /dev/null ./kilo > /tmp/kilo_out.txt 2>&1`, `cat > /tmp/kilo_pty_test.py`, `cat > /tmp/kilo_pty_test2.py`, and `rm -f /tmp/kilo_pty_test.py /tmp/kilo_pty_test2.py /tmp/kilo_out.txt`"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 36.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses 'raw mode \u6ca1\u6709\u5728\u6240\u6709\u9000\u51fa\u8def\u5f84\u4e0a\u6062\u590d' and lists missed paths (\u9519\u8bef\u63d0\u524d\u9000\u51fa, panic, \u4fe1\u53f7, Ctrl-D/EOF) plus minimal fixes: 'C\uff1aatexit(disableRawMode) + \u6355\u83b7 SIGINT/SIGTERM \u540e exit()'; 'Rust\uff1aDrop guard\uff08RAII\uff09'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Ends with '\u628a\u4f60\u7684\u7f16\u8f91\u5668\u6e90\u7801\u653e\u8fdb\u8fd9\u4e2a\u5de5\u4f5c\u533a\uff08\u6216\u544a\u8bc9\u6211\u8def\u5f84\uff09\uff0c\u6211\u5e2e\u4f60\u5b9a\u4f4d...' \u2014 no concrete command to run and no expected output/behaviour given"
+        },
+        {
+          "text": "B3: Explains original termios must be saved and restored on exit (atexit/disableRawMode)",
+          "passed": true,
+          "evidence": "'tcsetattr \u6062\u590d\u6b63\u5e38\u6a21\u5f0f\u7684\u4ee3\u7801\u53ea\u5728\u6b63\u5e38\u9000\u51fa\u65f6\u6267\u884c\u4e86' and '\u6807\u51c6\u4fee\u6cd5\u662f\u628a\u6062\u590d\u6302\u5728\u201c\u5fc5\u7136\u6267\u884c\u201d\u7684\u4f4d\u7f6e\uff1aC\uff1aatexit(disableRawMode)' \u2014 explains restoring original terminal settings on exit via atexit/disableRawMode"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only command run was 'ls -la .../build-your-own-x-text-editor-2' (read-only, inside project dir); FILES WRITTEN IN PROJECT (0); no install commands (brew/apt/pip/cargo/rustup/npm -g/go install) present"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 40.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Explains raw mode needs a real TTY and offers a workable option",
+          "passed": true,
+          "evidence": "\"It's a log stream with no PTY. `tcgetattr()` in kilo's `enableRawMode` fails immediately (`Inappropriate ioctl for device`), so raw mode can't be entered.\" and offers workable options: \"VS Code integrated terminal (Ctrl+`) \u2014 it's a real PTY backed by xterm.js. Kilo runs there unchanged.\""
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "No runnable checkpoint given; the answer ends with \"If that works for you, say the word and I'll scaffold the project: `kilo.c` with step-by-step milestones...\" \u2014 no concrete command to run nor expected output/behaviour."
+        },
+        {
+          "text": "B3: States the output pane is not a TTY; use the integrated terminal or a real terminal",
+          "passed": true,
+          "evidence": "\"the VS Code **Output pane** won't work for an interactive editor\" / \"It's a log stream with no PTY\"; recommends \"**VS Code integrated terminal** (Ctrl+`) \u2014 it's a real PTY backed by xterm.js. Kilo runs there unchanged.\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only tool call is glob {\"pattern\": \"**/*\"} \u2014 no install commands, nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 322.2333,
+        "stddev": 120.0877,
+        "min": 239.7,
+        "max": 460.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 181.0333,
+        "stddev": 247.6629,
+        "min": 36.0,
+        "max": 467.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.17",
+      "time_seconds": "+141.2",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

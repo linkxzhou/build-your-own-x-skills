@@ -1,0 +1,92 @@
+{
+  "skill_name": "command-line-tool",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想用 Rust 写一个 cowsay 一样的命令行小工具，带我开始。",
+      "expected_output": "Scaffolds hello CLI / arg parsing with TODOs; not the full tool; Mentions exit codes or stdout vs stderr, or argument parsing (e.g. clap or std::env::args)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'command-line-tool' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds hello CLI / arg parsing with TODOs; not the full tool"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions exit codes or stdout vs stderr, or argument parsing (e.g. clap or std::env::args)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My Go CLI prints the colored output fine in the terminal, but when I pipe it to a file the file is full of escape codes.",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Recommends detecting whether stdout is a TTY and disabling ANSI colors when it is not (or a --no-color flag / NO_COLOR)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'command-line-tool' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Recommends detecting whether stdout is a TTY and disabling ANSI colors when it is not (or a --no-color flag / NO_COLOR)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Write the whole lolcat clone for me, I'll read it later.",
+      "expected_output": "Offers a staged path and gives at most the current milestone in full; Any colour logic described uses ANSI escape sequences (e.g. 24-bit \\x1b[38;2;r;g;bm) correctly",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'command-line-tool' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Offers a staged path and gives at most the current milestone in full"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Any colour logic described uses ANSI escape sequences (e.g. 24-bit \\x1b[38;2;r;g;bm) correctly"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

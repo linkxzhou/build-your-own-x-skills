@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged plan, not an implementation: TASKS.md defines T1–T6 each with 目标/步骤/验收 checkboxes ('## T1 — 用原始文本体验 HTTP 协议 … **验收**: - [ ] 能说出请求的三段结构…'); T2 only describes components to write ('AF_INET + SOCK_STREAM、SO_REUSEADDR、bind、listen(1)…') and T4 gives a 2-line hint; the only full server.py was throwaway verification in /tmp/ws2, deleted before finishing."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Each milestone ends in a concrete command with expected output: T2 验收 '`curl -si http://localhost:8000/` 首行输出 `HTTP/1.0 200 OK`，body 为 `Hello World`'; T1 验收 '监听端能看到 `GET / HTTP/1.0` 文本'; T5/T6 give 404 and attack-reproduction commands with expected behaviour."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial's actual 5 stages: 'T1 用 nc 本机收发原始 HTTP 文本 / T2 socket 最小服务器，返回 Hello World / T3 返回 htdocs/index.html / T4 解析请求路径 / T5 FileNotFoundError → 404', citing its real sections ('Sending HTTP responses using sockets', 'Index.html', 'Return other pages') and concepts (AF_INET/SOCK_STREAM/SO_REUSEADDR/listen(1)/recv(1024), POST Content-Length); T6 is an explicitly-labelled extra ('外加一个进阶任务')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands appear, but multiple commands wrote outside the project dir: 'curl -sL -o /tmp/webserver.html', 'mkdir -p /tmp/ws-test/htdocs && cd /tmp/ws-test && cat > server.py', 'mkdir -p /tmp/ws2/htdocs … python3 server.py', '/tmp/resp_payload.txt … /tmp/req.txt … /tmp/resp.txt'."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 850.4
+ },
+ "install_like_cmds": []
+}

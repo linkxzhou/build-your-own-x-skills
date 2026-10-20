@@ -1,0 +1,43 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds boot / freestanding binary milestone with TODOs; no full kernel",
+   "passed": true,
+   "evidence": "Only milestone 1 was implemented: src/main.rs is a minimal no_std/no_main freestanding binary (\"#![no_std]  // 不链接标准库\", \"pub extern \"C\" fn _start() -> !\" writing \"Hello World!\" to 0xb8000) with a bare #[panic_handler]; PROGRESS.md leaves the rest as TODOs: milestones 2-6 (\"VGA 文本输出 + println!\", \"中断\", \"内存\", \"多任务\", \"拓展\") all marked \"未开始\", and milestone 1 itself notes \"QEMU 启动待学习者执行\". No vga_buffer module, interrupts, paging, or scheduler files exist."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README.md '构建与运行' gives concrete commands: \"cargo bootimage # 产物: target/x86_64-blog_os/debug/bootimage-blog_os.bin\" then \"qemu-system-x86_64 -drive format=raw,file=target/x86_64-blog_os/debug/bootimage-blog_os.bin\"; PROGRESS.md milestone 1 states expected behaviour \"屏幕左上角出现浅青色 Hello World!\", plus a headless check \"xp /48bx 0xb8000 # 偶数位应为 \"Hello World!\" 的 ASCII（48 65 6c 6c 6f ...），奇数位为颜色字节 0x0b\"."
+  },
+  {
+   "text": "B3: Mentions a freestanding (no_std) binary, and QEMU to run it",
+   "passed": true,
+   "evidence": "src/main.rs: \"#![no_std]  // 不链接标准库：内核之下没有操作系统来提供 std\" and \"#![no_main]\"; README.md: \"x86_64-blog_os.json | 自定义 target：裸机 x86_64，无 OS、软浮点、禁 red zone、panic=abort\" and runs it via \"qemu-system-x86_64 -drive format=raw,file=...\"; PROGRESS.md: \"裸机 Rust 内核在 QEMU 里点亮屏幕\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 38 shell commands are read-only or in-project: version checks (\"cargo --version\", \"rustup component list --installed\"), curl fetches of GitHub sources, \"cd blog_os && cargo build\", and downloads written inside the project (\"curl -sL ... -o blog_os/scratch_bootimage_builder.rs\"). No brew/apt/pip/cargo install/rustup add/npm -g/go install/gem install was executed; tools are delegated to the learner: README.md \"一次性配置（只需做一次，自行执行）：cargo install bootimage ... rustup component add llvm-tools-preview --toolchain nightly\". All 84 written files are under blog_os/."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": [
+  "rustup component list --toolchain nightly --installed 2>&1; echo ---; which bootimage objcopy llvm-objcopy 2>&1; echo ---; ls ~/.cargo/bin 2>/dev/null"
+ ]
+}

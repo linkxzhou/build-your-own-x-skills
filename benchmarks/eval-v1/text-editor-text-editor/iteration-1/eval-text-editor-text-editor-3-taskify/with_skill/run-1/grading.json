@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged plan, only file written is kilo-tasks.md (4496 chars): '本清单把 7 章 75 个小节重组为 34 个任务' across milestones M1–M7; coaching protocol: '学习者写核心代码；Claude Code 审查，只在被要求或学习者试错后给当前任务的完整代码' and global rule '不一次性给完整代码'. No kilo implementation was written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete runnable checkpoints with expected behaviour per task, e.g. T1.1 '验：`make && ./kilo` 编译零警告；此时是死循环，Ctrl-C 杀掉即可'; protocol step 4 '编译运行，按「验」逐项检查'; final acceptance '验收：所有任务完成，按 kilo-tasks.md 的验收清单逐项检查' plus per-milestone 出口检查 (e.g. M5 '插入/删除/换行/保存，diff 一致')."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (text-editor-text-editor): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the tutorial's actual chapters/steps: 'M2 原始模式 | 02.enteringRawMode | 3–19 | T2.1–T2.5' … 'M7 语法高亮 | 07.syntaxHighlighting | 142–184'; tutorial-specific concepts: 'termios, tcgetattr/tcsetattr, atexit', 'ioctl TIOCGWINSZ + fallback', 'append buffer 重构', 'dirty 标志 + 退出确认', 'Ctrl-F 增量搜索、Esc 还原'; verified step boundaries against the live site (e.g. 'Steps in ch6 intro: …131–134')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run and the file says '不代跑安装命令（brew / apt / pip 等）', but a shell command wrote outside the project dir: `curl -s --max-time 20 \"https://viewsourcecode.org/snaptoken/kilo/02.enteringRawMode.html\" -o /tmp/kilo02.html` creates /tmp/kilo02.html."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

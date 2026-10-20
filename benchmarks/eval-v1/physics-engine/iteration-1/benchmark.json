@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "physics-engine",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:51Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 293.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the integrator milestone with TODOs; no full engine",
+          "passed": true,
+          "evidence": "Scaffolded only milestone 1/7 ('Where we are: milestone 1/7 \u2014 the integrator') with the physics left as learner TODOs: body.js has 'TODO 1' (invMass), 'TODO 2: accumulate into this.force', 'TODO 3' (integrate); world.js has 'TODO 4: implement the accumulator loop' and 'TODO 5'. Final answer: 'What to write next \u2014 five TODOs, all in src/' and 'Right now it's 2 pass / 3 fail. Done means 5 pass'. PROGRESS.md lists milestones 1\u20137 all 'pending'; no engine code beyond stubs (vec2.js is labeled 'Provided as plumbing \u2014 the physics is yours to write')."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete command and expected behaviour: 'How to check it: cd physics-engine && node --test' plus 'Right now it's 2 pass / 3 fail. Done means 5 pass \u2014 the tests pin the physics (free fall 1 s \u2192 0.5\u00b7g within 1%), the step count (exactly 120 per simulated second), remainder carry-over, static bodies, and spike clamping.'"
+        },
+        {
+          "text": "B3: Mentions a fixed timestep and an integrator such as semi-implicit Euler",
+          "passed": true,
+          "evidence": "Explicitly covers both: '**Semi-implicit Euler** \u2014 update velocity first, then position with the *new* velocity... a = F/m + g, then v += a\u00b7dt, then x += v\u00b7dt' and '**Fixed timestep with an accumulator** \u2014 ...run as many fixed dt = 1/120 s steps as the bank covers, carrying the remainder to the next frame.'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "All 4 shell commands are version checks/test runs ('node --version... ls -la', 'cd physics-engine && node --test ...'), no install commands; all writes/edits are inside physics-engine/ (package.json, README.md, PROGRESS.md, src/*, tests/m1.test.js). Agent states 'Node v25.8.0 is available and the workspace is empty \u2014 no installs needed, node:test runs the checkpoints natively' and 'no installs needed, Node 25 runs the tests natively'."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 122.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Lists ranked causes ('\u7a7f\u900f\u53ea\u505a\u6bd4\u4f8b\u4fee\u6b63','\u68c0\u6d4b\u70b9\u7528\u9519','dt \u8fc7\u5927 + \u663e\u5f0f\u6b27\u62c9') and gives a minimal fix snippet: '\u6807\u51c6\u4fee\u6cd5\uff08\u534a\u9690\u5f0f\u6b27\u62c9 + \u786c\u6295\u5f71 + \u901f\u5ea6\u53cd\u5c04\uff09' with 7-line code ending '\u628a\u7269\u7406\u6b65\u8fdb\u90a3\u6bb5\u4ee3\u7801\u8d34\u51fa\u6765\u2026\u6211\u5e2e\u4f60\u5b9a\u4f4d\u5230\u5177\u4f53\u884c' \u2014 a hint-level fix, not a full implementation dump."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Ends with '\u628a\u7269\u7406\u6b65\u8fdb\u90a3\u6bb5\u4ee3\u7801\u8d34\u51fa\u6765\uff08\u6216\u544a\u8bc9\u6211\u6587\u4ef6\u8def\u5f84\uff09\uff0c\u6211\u5e2e\u4f60\u5b9a\u4f4d\u5230\u5177\u4f53\u884c\u3002' \u2014 a request for the learner's code; no concrete command to run and no expected output/behaviour is given."
+        },
+        {
+          "text": "B3: Recommends positional correction (push out by penetration depth) and/or impulse response; mentions tunneling with large timesteps",
+          "passed": true,
+          "evidence": "Positional correction: '\u4f4d\u7f6e\u4e00\u6b65\u6295\u5f71\u56de\u8868\u9762' / 'y = r # \u4f4d\u7f6e\u786c\u6295\u5f71\u56de\u8868\u9762'; impulse response: 'vy = -vy * e # \u901f\u5ea6\u53cd\u5c04'; tunneling with large dt: 'dt \u8fc7\u5927 + \u663e\u5f0f\u6b27\u62c9\uff1a\u2026\u76f4\u63a5\u8df3\u8fc7\u68c0\u6d4b\uff08\u96a7\u7a7f\uff09'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only read-only actions: 'ls -la; find . -maxdepth 2 -type d\u2026' and glob calls; FILES WRITTEN IN PROJECT (0); no install commands (brew/apt/pip/etc.) and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 108.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Advises staying 2D first or scopes a 3D plan honestly without dumping code",
+          "passed": true,
+          "evidence": "Scopes a 3D plan honestly without dumping code: '3D from day one works... the third axis adds cross products, inertia tensors, and quaternions, so we'll lean on numeric tests to keep debugging sane'; presents a 7-milestone 3D-adapted table with checkpoints, asks 'Two questions before we scaffold', and writes 0 files (FILES WRITTEN IN PROJECT (0)); reasoning states 'Don't dump code yet \u2014 scope first.'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The reply ends with 'Reply with your picks \u2014 or just \"defaults\" \u2014 and we start milestone 1...' \u2014 no concrete command to run is given anywhere; checkpoints are described only as behaviours (e.g. 'free fall: after 1 s, y \u2248 0.5\u00b7g within tolerance') without an executable command or expected printed output."
+        },
+        {
+          "text": "B3: Names a concrete extra 3D difficulty (rotation/inertia tensors, quaternions, or GJK/EPA)",
+          "passed": true,
+          "evidence": "'the third axis adds cross products, inertia tensors, and quaternions'; milestone 5 'Rotation: inertia tensor, quaternions, friction'; milestone 7 'Stretch: GJK, distance joints'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (0) and FILES WRITTEN IN PROJECT (0); only read calls into .agents/skills/build-your-own-x/skills/physics-engine-3d/ \u2014 no install commands, nothing outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 407.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the integrator milestone with TODOs; no full engine",
+          "passed": false,
+          "evidence": "Agent wrote a complete multi-milestone engine, not an integrator scaffold with TODOs: README 'What's implemented' lists 'Narrowphase: circle\u2013circle, circle\u2013box, box\u2013box', 'Impulse resolution + positional correction (slop + percent)', 'Fixed-timestep loop with accumulator', 'Canvas debug renderer'; world.js steps 'apply gravity \u2192 integrate \u2192 collide \u2192 resolve'; no TODO markers in any written file \u2014 collision, resolution, renderer and demo all fully implemented in v0.1."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Concrete command exists \u2014 README: 'python3 -m http.server 8000 / # then open http://localhost:8000' \u2014 but no expected output/behaviour is stated anywhere (README sections are Run / What's implemented / Architecture / Roadmap; nothing like 'you should see balls falling and bouncing'), so the runnable checkpoint lacks the expected-behaviour half."
+        },
+        {
+          "text": "B3: Mentions a fixed timestep and an integrator such as semi-implicit Euler",
+          "passed": true,
+          "evidence": "README: 'Semi-implicit Euler integration (`body.integrate`)' and 'Fixed-timestep loop with accumulator (`src/main.js`)'; body.js comment: 'Semi-implicit Euler: update velocity first, then position using the NEW velocity'; main.js: 'const DT = 1 / 120; // 120 Hz physics' with accumulator loop."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command run was verification: 'for f in src/*.js; do node --check \"$f\" ...; node --input-type=module -e ...' \u2014 no install commands; all 10 files written inside the project (package.json, index.html, README.md, src/*.js); 'npx serve' appears only as a suggestion to the learner in README."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 54.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses 4 likely causes with concrete minimal fixes despite empty workspace: '\u6539\u6210 `distance < radius`\uff08\u534a\u7a7a\u95f4\u5224\u65ad\uff09\u5373\u53ef', '\u6b63\u786e\u987a\u5e8f\u662f\uff1a\u65bd\u529b/\u79ef\u5206 \u2192 \u78b0\u649e\u68c0\u6d4b \u2192 \u4f4d\u7f6e\u4fee\u6b63 \u2192 \u901f\u5ea6\u4fee\u6b63', and the reversed-normal hint 'pos - normal * penetration...\u6bcf\u5e27\u4fee\u6b63\u53cd\u800c\u628a\u7403\u5f80\u5730\u91cc\u63a8'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with '\u628a\u4ee3\u7801\u53d1\u6211\uff0c\u6211\u76f4\u63a5\u6307\u51fa\u662f\u54ea\u4e00\u884c\u3002' \u2014 a request for code; no concrete command to run and no expected output/behaviour anywhere."
+        },
+        {
+          "text": "B3: Recommends positional correction (push out by penetration depth) and/or impulse response; mentions tunneling with large timesteps",
+          "passed": false,
+          "evidence": "Positional correction is discussed ('\u6bcf\u5e27\u53ea\u4fee\u6b63 `penetration * 0.2`', '\u4f4d\u7f6e\u4fee\u6b63', slop), but tunneling is attributed to weak correction/one-sided detection ('\u76f4\u5230\u7403\u5fc3\u8d8a\u8fc7\u5730\u9762\u540e\u78b0\u649e\u68c0\u6d4b\u5931\u6548\uff0c\u76f4\u63a5\u6389\u51fa\u53bb'); large timesteps are never mentioned."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only read-only commands ran: 'ls -la && find . -type f | head -50' and glob {\"pattern\": \"**/*\"}; FILES WRITTEN (0); no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and nothing written outside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 900.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Advises staying 2D first or scopes a 3D plan honestly without dumping code",
+          "passed": false,
+          "evidence": "Agent dumped a complete multi-milestone implementation instead of a first milestone: final answer lists '1. physics/vec3.py \u2026 9. README.md \u2026 Then run tests and demo to verify' and drafts full box_box SAT with clipping plus the sequential-impulse solver; FILES WRITTEN IN PROJECT (19) confirms a finished engine (narrowphase, solver, demo.py, tests). No 2D-first advice or honest milestone scoping appears \u2014 the answer is internal build narration."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The final answer ends truncated mid-code ('self.inv_inertia_') while drafting RigidBody.__init__ and never presents a closing command or expected output to the learner. README.md lists 'python demo.py' / 'python -m unittest discover -s tests -v', but the answer itself never reaches a runnable checkpoint with expected behaviour."
+        },
+        {
+          "text": "B3: Names a concrete extra 3D difficulty (rotation/inertia tensors, quaternions, or GJK/EPA)",
+          "passed": true,
+          "evidence": "README.md: '3D from day one: full quaternion orientations, 3D inertia tensors, and 3D collision detection including OBB-vs-OBB via SAT with face clipping.' Answer drafts 'physics/quaternion.py (with Mat3)' and body.py implements 'R * diag(inv_inertia_local) * R^T' with 'Solid sphere: I = 2/5 m r^2'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (7) are only 'ls -la \u2026', repeated 'python3 -m unittest discover \u2026', a grep, and a 'python3 - <<EOF' heredoc; OTHER TOOL CALLS are glob/explore/plan/write/edit. All 19 files are inside the project dir (physics/, tests/, demo.py, README.md, __pycache__). No brew/apt/pip/cargo/rustup/npm -g/go install command appears."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 174.8667,
+        "stddev": 102.988,
+        "min": 108.4,
+        "max": 293.5
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.5,
+        "stddev": 0.0,
+        "min": 0.5,
+        "max": 0.5
+      },
+      "time_seconds": {
+        "mean": 453.9,
+        "stddev": 424.888,
+        "min": 54.0,
+        "max": 900.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.33",
+      "time_seconds": "-279.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

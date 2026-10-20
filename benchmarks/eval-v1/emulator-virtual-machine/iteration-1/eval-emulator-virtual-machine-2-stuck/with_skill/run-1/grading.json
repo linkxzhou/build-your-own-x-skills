@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Agent diagnoses the bug and gives a minimal fix: \"The classic issue: DXYN should XOR pixels into the framebuffer, not assign/set them\" and \"the primary fix: DXYN must XOR pixels and set VF when erasing. Also ensure pixel coordinates wrap modulo 64/32.\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No runnable checkpoint for the learner. The answer trails off mid-sentence (\"So the garbling must come from elsewhere. But the user attribute\") with no concrete command to run and no expected output/behaviour; the only commands seen (e.g. \"cat > /tmp/sim.py\") were the agent's own exploration, never presented as a checkpoint."
+  },
+  {
+   "text": "B3: Explains DXYN XORs sprite pixels onto the screen and sets VF on collision",
+   "passed": true,
+   "evidence": "Explicit semantics given: \"if screen pixel is already 1, set VF = 1; screen pixel ^= 1\" plus \"Drawing is done even when VF gets set\", and \"set VF=1 when a pixel is erased\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands were run, but the agent wrote outside the project dir repeatedly: \"curl -sL ... -o /tmp/ibm.ch8\", \"-o /tmp/tree.json\", \"-o /tmp/repo.html\", \"-o /tmp/demos.html\", \"-o /tmp/prog.html\", and \"cat > /tmp/sim.py\" — all writes to /tmp, which fails the 'writes outside the project dir' rule."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 556.1
+ },
+ "install_like_cmds": []
+}

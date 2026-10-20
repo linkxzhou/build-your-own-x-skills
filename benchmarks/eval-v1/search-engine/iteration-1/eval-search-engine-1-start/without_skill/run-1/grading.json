@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds tokenizer/index milestone with TODOs; no full ranking system",
+   "passed": true,
+   "evidence": "Scoped work to first milestones only: 'Your first exercise (Milestone 1+2, ~30 min)' with numbered steps '1. Has 5–10 hardcoded documents... 2. Tokenizes each one. 3. Builds the index as dict[str, list[int]]... 4. Prints the whole index' — a TODO-style scaffold for the learner; ranking deferred ('4. **Ranking** — score docs with TF-IDF, then upgrade to BM25' is a later roadmap item, no ranking code written; FILES WRITTEN: 0)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No concrete runnable command or expected output given. Ends with 'Pick a language and tell me when it's done — paste the index output and I'll review it' — the learner must choose language and write the program; no command (e.g. python3 index.py) and no sample expected output/behaviour is provided."
+  },
+  {
+   "text": "B3: Describes an inverted index mapping term → list of document ids (postings)",
+   "passed": true,
+   "evidence": "'**Inverted index** (what search needs): `word → [docs containing it]`'; 'Each term maps to a **posting list** — a sorted list of entries, one per doc that contains the term'; 'Builds the index as `dict[str, list[int]]` — term → sorted docIDs'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): only 'ls -la'; FILES WRITTEN IN PROJECT (0); no install commands (brew/apt/pip/cargo/rustup/npm -g/go install) and no writes outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 40.9
+ },
+ "install_like_cmds": []
+}

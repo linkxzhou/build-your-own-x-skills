@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Adapts the plan to a compiler track in C without dumping a complete compiler",
+   "passed": true,
+   "evidence": "Plan adapted to compiler track in C: 'Yes — compiler to x86 is a solid choice, and C is the right host language for it' with a 7-milestone table, but stops at '**Where we are:** milestone 0 — scoping' and asks 'Two questions before we start' (acwj vs freestyle; language flavor). Only files written are scratch pipeline checks (mylang/scratch/hello.s returning 42 and its binary) — no compiler implementation was dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete checkpoint: 'cd mylang/scratch && clang -arch x86_64 hello.s -o hello && ./hello; echo \"exit=$?\"' and 'Expected output: `exit=42` (I already ran this — it passes on your machine).'"
+  },
+  {
+   "text": "B3: Mentions the compiler stages (parse → code generation to assembly) and an assembler/linker or emitted assembly to check output",
+   "passed": true,
+   "evidence": "Stages named: milestone 1 'Skeleton + tokenizer', milestone 2 'Parser → AST, precedence', milestone 3 'Codegen: expressions' with `return 1 + 2 * 3;` → `echo $?` → `7`; language 'emits x86-64 assembly'; emitted assembly checked via assembler/linker: 'emit `.s` → assemble for x86_64 → run' and checkpoint command `clang -arch x86_64 hello.s -o hello`."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 3 shell commands are read-only checks or in-project builds: tool check (`command -v` for gcc/cc/clang/as/nasm/ld/make), Rosetta check (`arch -x86_64 /usr/bin/true`), and `mkdir -p mylang/scratch && ... > hello.s && clang -arch x86_64 hello.s -o hello && ./hello`. No brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere; only writes are mylang/scratch/hello.s and mylang/scratch/hello inside the project. Missing nasm handled without install: 'nasm is missing but unneeded — clang assembles our `.s` output directly.'"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 296.0
+ },
+ "install_like_cmds": []
+}

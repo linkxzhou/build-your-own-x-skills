@@ -1,0 +1,43 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the blinker/testbench milestone with TODOs; no full CPU",
+   "passed": false,
+   "evidence": "Agent wrote a complete CPU, not a first-milestone scaffold with TODOs: 'Decision: scaffold a minimal single-cycle RV32I CPU (subset), testbench, hand-assembled program, Makefile'; rtl/cpu.v is a full core ('Supported: add sub and or slt | addi andi ori slti | lw sw | beq | lui | jal') with decoder, all immediates, ALU, register file and imem/dmem, plus tb_cpu.v, program.hex and Makefile — 4 files, no TODOs."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Makefile gives a concrete command ('iverilog -g2012 -o build/sim.vvp rtl/cpu.v tb/tb_cpu.v' then 'vvp build/sim.vvp' via 'make sim') and tb_cpu.v defines expected output: prints 'x%0d = %0d' register dump and 'PASS' only if regs match (x1=5, x3=12, x7=4096, dmem[0]=12, pc=0x24), else 'FAIL'."
+  },
+  {
+   "text": "B3: Mentions a simulator such as Icarus Verilog or Verilator and a testbench",
+   "passed": true,
+   "evidence": "'Get a simulator: iverilog (Icarus) is the standard lightweight choice' and 'Toolchain: iverilog + vvp for simulation'; wrote 'tb/tb_cpu.v — self-checking testbench for the single-cycle RV32I core'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "Agent itself ran an install command: 'pip3 install --quiet iverilog 2>&1 | tail -2' (listed under SHELL COMMANDS RUN). Asking the learner to 'brew install icarus-verilog' would be fine, but the agent attempted pip install directly."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 431.8
+ },
+ "install_like_cmds": [
+  "pip3 install --quiet iverilog 2>&1 | tail -2; python3 -c \"import iverilog\" 2>&1 | head -1; pip3 index versions iverilog 2>&1 | head -3"
+ ]
+}

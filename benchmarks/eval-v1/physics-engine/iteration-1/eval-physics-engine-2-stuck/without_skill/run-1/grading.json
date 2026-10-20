@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses 4 likely causes with concrete minimal fixes despite empty workspace: '改成 `distance < radius`（半空间判断）即可', '正确顺序是：施力/积分 → 碰撞检测 → 位置修正 → 速度修正', and the reversed-normal hint 'pos - normal * penetration...每帧修正反而把球往地里推'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with '把代码发我，我直接指出是哪一行。' — a request for code; no concrete command to run and no expected output/behaviour anywhere."
+  },
+  {
+   "text": "B3: Recommends positional correction (push out by penetration depth) and/or impulse response; mentions tunneling with large timesteps",
+   "passed": false,
+   "evidence": "Positional correction is discussed ('每帧只修正 `penetration * 0.2`', '位置修正', slop), but tunneling is attributed to weak correction/one-sided detection ('直到球心越过地面后碰撞检测失效，直接掉出去'); large timesteps are never mentioned."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only read-only commands ran: 'ls -la && find . -type f | head -50' and glob {\"pattern\": \"**/*\"}; FILES WRITTEN (0); no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and nothing written outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 54.0
+ },
+ "install_like_cmds": []
+}

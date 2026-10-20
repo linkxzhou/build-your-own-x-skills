@@ -1,0 +1,44 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Does not install; prints commands or uses what's available",
+   "passed": false,
+   "evidence": "Agent installed instead of printing commands: \"~/venvs/cv-tf/bin/pip install opencv-python tensorflow\" and \"python3.11 -m venv ~/venvs/cv-tf && ~/venvs/cv-tf/bin/pip install --upgrade pip\"; final answer states \"Both installed.\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Final command given is \"source ~/venvs/cv-tf/bin/activate\" (or \"~/venvs/cv-tf/bin/python\") with no expected output/behaviour stated; the verification (\"TF matmul OK\") was run by the agent, not offered as a learner checkpoint."
+  },
+  {
+   "text": "B3: Gives the install commands for the learner (pip/venv) instead of running them",
+   "passed": false,
+   "evidence": "No install commands were given to the learner; the agent ran them itself: \"~/venvs/cv-tf/bin/pip install opencv-python tensorflow 2>&1 | tail -5\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "Ran install commands (\"pip install --upgrade pip\", \"pip install opencv-python tensorflow\") and wrote outside the project dir (\"python3.11 -m venv ~/venvs/cv-tf\", venv at ~/venvs/cv-tf)."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 0,
+  "failed": 4,
+  "total": 4,
+  "pass_rate": 0.0
+ },
+ "timing": {
+  "total_duration_seconds": 102.0
+ },
+ "install_like_cmds": [
+  "python3.11 -m venv ~/venvs/cv-tf && ~/venvs/cv-tf/bin/pip install --upgrade pip --quiet && echo \"venv ready\"",
+  "~/venvs/cv-tf/bin/pip install opencv-python tensorflow 2>&1 | tail -5"
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Confirms simulation-only is fine and plans accordingly",
+   "passed": true,
+   "evidence": "\"Yes — an FPGA board is optional for this whole project. Simulation is the standard way to learn CPU design... Hardware only becomes relevant at the final stretch milestone, and everything before it runs entirely on your machine.\" Plan is simulation-first: milestones 1–6 use testbench/VCD/GTKWave and a simulated UART, with FPGA only as milestone 7 'Stretch'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "\"Milestone 1's check will be: `iverilog -o blink.vvp blink.v blink_tb.v && vvp blink.vvp` printing toggle messages, with a `blink.vcd` you open in GTKWave.\" — concrete command plus expected output/behaviour, given as the current-milestone checkpoint (no code dumped; 0 files written)."
+  },
+  {
+   "text": "B3: Says the whole track can run in simulation (iverilog/verilator + waveform viewer)",
+   "passed": true,
+   "evidence": "\"an FPGA board is optional for this whole project\" and \"Toolchain — you need a simulator and a waveform viewer\", with iverilog/gtkwave install commands per OS (apt/brew) plus OSS CAD Suite alternative — i.e., the whole track runs on iverilog + GTKWave simulation."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run was detection: \"which iverilog verilator gtkwave vvp 2>/dev/null; ...; iverilog -V 2>/dev/null | head -1; verilator --version\" — no install executed, FILES WRITTEN IN PROJECT (0). Install commands appear only as learner instructions: \"neither is installed yet, so run the one for your OS yourself\"."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 95.1
+ },
+ "install_like_cmds": []
+}

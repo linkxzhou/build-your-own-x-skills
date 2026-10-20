@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds raw mode milestone with TODOs; no full editor",
+   "passed": true,
+   "evidence": "kilo.c is a 1615-char milestone-1 skeleton with 'TODO 1.1 includes + die()', 'TODO 1.2 raw mode off/on (termios)', 'TODO 1.3 read keypresses', 'TODO 1.4 Ctrl-Q to quit'; enableRawMode leaves flag-clearing as a TODO ('(void)raw; /* remove once you use it */'), quit is still 'q' with 'TODO 1.4: replace with Ctrl-Q', and PROGRESS.md lists milestones 2–7 all 'pending' — the agent coaches ('What to write next (TODOs are marked in kilo.c)') rather than dumping a full editor"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'**How to check it.** Run `./kilo` in a real terminal (Terminal.app/iTerm2 — an IDE output pane is a pipe, as you just saw). Type `asdf`: each key prints its code (`97 ('a')` …). Press Ctrl-Q: it exits and your shell still echoes normally.' — concrete command plus expected output/behaviour"
+  },
+  {
+   "text": "B3: Mentions termios raw mode (disable ECHO/ICANON) and restoring the terminal on exit",
+   "passed": true,
+   "evidence": "'it flips the tty into *raw mode* via `termios`: save the original settings, clear the right flag bits with `tcsetattr`, and restore the saved settings on exit — otherwise your shell is left with no echo after the program dies'; plus 'clear `ECHO | ICANON | ISIG`', 'disableRawMode() — copy `orig_termios` back with `tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig_termios)`, register it with `atexit()`', and hint 'raw.c_lflag &= ~(ECHO | ICANON);'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command: 'make clean >/dev/null && make 2>&1 && printf 'hello\\x11' | ./kilo; echo \"exit=$?\"' — no install command; other calls are edits to kilo.c; files written (Makefile, PROGRESS.md, kilo.c, kilo binary) are all inside the project dir; toolchain was checked, with 'toolchain is ready (cc/clang/make on macOS)', and nothing was installed"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 239.7
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Scaffold with TODOs, core left to learner: server.py handle_client raises NotImplementedError(\"M1: handle_client 还没实现 — 按上面的提示写\"); agent: \"accept 循环已写好，handle_client 留给你…你的工作在 handle_client\"; README has staged milestone table M1–M7; PROGRESS.md only records \"M0 骨架引导\"; \"当前进度：M1 / M7\". Only M1 boilerplate written, M2+ untouched."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete runnable checkpoint and expected output: \"bash scripts/check_m1.sh  # 通过时输出: M1 通过: GET / 返回 HTTP 200\"; check_m1.sh implements it (curl -w '%{http_code}', prints \"M1 通过: GET / 返回 HTTP $code\" or failure hints like \"handle_client 实现了吗?\")."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the joaoventura tutorial's actual stages and Python concepts: M1 TCP listener (socket、bind/listen/accept), M2 HTTP 解析 (请求行、头部、Content-Length body, 畸形请求→400), M3 静态文件 (MIME、404、路径穿越防护), M5 并发 (线程、keep-alive); server.py docstring cites \"Building a basic HTTP Server from scratch in Python — joaoventura\"; concept coaching is tutorial-specific (\"状态行 + 头 + 空行 + body…连续两个 \\r\\n\", recv/sendall/close steps), read per-tutorial skill web-server-http and its tutorial-map/concepts references."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but a command wrote outside the project dir: smoke test \"python3 server.py 8080 > /tmp/srv.log 2>&1 &\" (SHELL COMMANDS RUN #5) creates /tmp/srv.log outside the project; all other writes (tests/fixtures, __pycache__, scripts) stay inside."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 597.7
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint rather than rewriting the whole parser",
+   "passed": true,
+   "evidence": "Diagnoses the bug ('Your loop treats all operators as equal precedence, so `1 + 2 * 3` groups as `(1 + 2) * 3`') and offers 'a small change to your existing loop' — a single parse_expr snippet — plus an alternative grammar, without rewriting the whole parser."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with 'Same result; precedence climbing scales better once you have many levels, since you add a table entry instead of a new function.' No concrete command to run and no expected output/behaviour is given anywhere."
+  },
+  {
+   "text": "B3: Explains operator precedence and fixes it via precedence climbing/Pratt parsing or separate grammar levels (term/factor)",
+   "passed": true,
+   "evidence": "Explains precedence and fixes via precedence climbing: \"PRECEDENCE = {'+': 1, '-': 1, '*': 2, '/': 2}\", \"rhs = self.parse_expr(PRECEDENCE[op] + 1)\", with a trace ('inner call parses `2`, sees `*` (prec 2 ≥ 2)... → `2 * 3`'), and also gives separate grammar levels: 'expr := term ((\\'|\\'|-\\') term)* / term := factor (...)* / factor := NUMBER | ( expr )'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): 'ls -la' only; OTHER TOOL CALLS: a glob; FILES WRITTEN IN PROJECT (0). No install commands and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 28.8
+ },
+ "install_like_cmds": []
+}

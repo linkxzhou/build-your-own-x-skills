@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-110000-f3498b",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/frontend-framework-library/iteration-2/eval-frontend-framework-library-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 123.5,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

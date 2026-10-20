@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged plan + scaffold, only milestone 0 implemented: README.md has a 7-milestone table ('| 1 | 内存 + ROM 加载器 | ... | 7 | 进阶（可选） |'); final answer states 'chip8.cpp 构造 + load()（0x200 装载、大小校验）已实现；cycle() 留给你' and '里程碑 1 你要写的两处（都标了 TODO）'; chip8.cpp write contains 'TODO(里程碑 2 之前): 把 0-9/A-F 的 16 个字符字体…写入 memory_ 的 0x050-0x09F'; plan assumption '骨架只搭结构：Chip8 类字段齐全但 cycle() 留 TODO，不倾倒完整实现'. Core interpreter (cycle, fonts, display, input) left to learner."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete commands + expected behaviour: '检查命令：`ctest --test-dir build --output-on-failure`（给字体集加断言：`mem(0x050)==0xF0`、`mem(0x054)==0xF0`），以及 `./build/chip8 roms/xxx.ch8 --trace`' with '--trace 打印 ROM 头 16 字节' and '与 ROM 文件头用 `xxd` 比对'; also reports current green state 'ctest 1/1 通过，0 编译警告，无 ROM 时打印用法并返回退出码 1'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (emulator-virtual-machine-chip8-interpreter): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Tutorial-specific, not generic: attribution '跟随教程《How to write an emulator (CHIP-8 interpreter)》(multigesture.net)'; milestones use CHIP-8 concepts — '4KB 地址空间、程序装载到 0x200、PC 从 0x200 开始', '大端 16 位 opcode、V0–VF 寄存器', '全部 35 条指令', '64×32 帧缓冲、XOR 精灵绘制、VF 碰撞标志', '16 键键盘映射、60Hz 递减的 delay/sound 定时器'; font detail '0xF0, 0x90, 0x90, 0x90, 0xF0 是 \"0\"…在教程 \"Fonts\" 一节'; CHIP-8 test ROMs 'corax89/chip8-test-suite', 'tobiasvl/chip8-test-rom', IBM logo; C++ matches tutorial language."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 8 shell commands are version checks or in-project builds: 'ls -la && … (g++ --version…; clang++…; cmake…; make…)', '(sdl2-config --version…); (brew --version…)' (checks only, no install), 'cd chip8 && cmake -S . -B build … && cmake --build build … && ctest …', 'touch chip8.cpp main.cpp tests/test_chip8.cpp', 'find . -path ./build -prune…'. All writes go to chip8/ (README.md, CMakeLists.txt, chip8.hpp/cpp, main.cpp, tests/, .gitignore, build/). SDL2 already present ('本机 SDL2 2.32.10 已就绪'), nothing installed."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 554.5
+ },
+ "install_like_cmds": []
+}

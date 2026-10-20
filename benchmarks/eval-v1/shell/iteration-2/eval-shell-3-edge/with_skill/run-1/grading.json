@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives an honest constraint (fork/exec/pipes are POSIX) and offers a concrete workable option instead of pretending it works natively",
+   "passed": true,
+   "evidence": "Honest constraint given: 'Milestone 7 (signals + jobs): Windows has no POSIX signals or process groups' and 'the C tutorials... are built on fork/execvp/waitpid/dup2, and MSVC has no fork'; concrete workable option offered: 'the cleanest no-WSL path is Docker Desktop: edit on Windows, compile and test inside a Linux container (docker run --rm -it -v ${PWD}:/work gcc bash)'. It does not pretend everything works natively — it explicitly carves out what you lose."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: 'run in PowerShell... cargo --version' with 'Expected: cargo 1.xx.x (xxxxxxx 20xx-xx-xx)' and next behaviour 'we start milestone 1: a REPL that reads a line, splits it, and exits on exit or Ctrl-D'."
+  },
+  {
+   "text": "B3: States that fork() is not available on native Windows and suggests WSL, a Linux VM/container, or CreateProcess-based alternative with trade-offs",
+   "passed": true,
+   "evidence": "States fork unavailability: 'MSVC has no fork'; suggests a Linux container alternative: 'the cleanest no-WSL path is Docker Desktop... compile and test inside a Linux container (docker run --rm -it -v ${PWD}:/work gcc bash)' with trade-offs ('gives you the real Unix syscalls with a one-command setup'; milestone 7 'turns into a Windows-API exercise instead of a signals one')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'FILES WRITTEN IN PROJECT (0)' and 'SHELL COMMANDS RUN (0)'; only read-only web_fetch/read calls listed. No install command executed; tool install is delegated to the learner: 'install from rustup.rs if missing'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 175.0
+ },
+ "install_like_cmds": []
+}

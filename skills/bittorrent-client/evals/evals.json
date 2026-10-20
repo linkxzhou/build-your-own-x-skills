@@ -1,0 +1,92 @@
+{
+  "skill_name": "bittorrent-client",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to write a BitTorrent client in Go. Step 1?",
+      "expected_output": "Scaffolds bencode parsing (or the first milestone) with TODOs; no full client; Describes bencode types: strings <len>:<data>, integers i<n>e, lists l...e, dicts d...e",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'bittorrent-client' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds bencode parsing (or the first milestone) with TODOs; no full client"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Describes bencode types: strings <len>:<data>, integers i<n>e, lists l...e, dicts d...e"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我算出来的 info hash 跟别的客户端显示的不一样。我是把解析后的 info 字典用 json 序列化再 sha1。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains the info hash is SHA-1 of the original bencoded bytes of the info dict (re-bencode exactly, not JSON)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'bittorrent-client' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains the info hash is SHA-1 of the original bencoded bytes of the info dict (re-bencode exactly, not JSON)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I'm building my own BitTorrent client. How can I test it without downloading anything illegal?",
+      "expected_output": "Proposes a legal torrent (e.g. a Linux ISO) or a local tracker setup; Mentions a concrete legal source such as a Debian/Ubuntu ISO torrent",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'bittorrent-client' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Proposes a legal torrent (e.g. a Linux ISO) or a local tracker setup"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions a concrete legal source such as a Debian/Ubuntu ISO torrent"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

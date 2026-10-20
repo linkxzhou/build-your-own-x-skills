@@ -1,0 +1,43 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the data + tokenizer milestone with TODOs; no full model",
+   "passed": false,
+   "evidence": "Complete multi-milestone dump, no TODO scaffold: '03_gpt.py (6429 chars)' implements the full model (Head/MultiHead/Block, 'max_iters = 3000', AdamW training) and agent's reasoning states 'I'll go with 01_bigram.py + 02_attention.py fully working, and 03_gpt.py as the full model'; it even rejected the skeleton option ('a skeleton 03 with TODOs? That might frustrate')."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README gives concrete commands ('.venv/bin/python 01_bigram.py' ... '.venv/bin/python 03_gpt.py') plus expected behaviour: 'loss starts at ~4.17 (= ln 65, pure chance) and drops to ~2.7' and 'train ~1.8 / val ~1.9; the sample has words, names, and Shakespeare-ish rhythm'; agent also ran all three scripts to verify."
+  },
+  {
+   "text": "B3: Mentions a tokenizer (char-level or BPE) and a train/val split",
+   "passed": true,
+   "evidence": "Char-level tokenizer: 'chars = sorted(set(text))' with 'encode = lambda s: [stoi[c] for c in s]' ('what a vocabulary is (character-level here)'); train/val split: 'n = int(0.9 * len(data)); train_data, val_data = data[:n], data[n:] # hold out 10% to detect memorization'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "Agent itself ran an install command: '.venv/bin/pip install --quiet --upgrade pip && .venv/bin/pip install --quiet torch' (SHELL COMMANDS RUN), violating the no-install rule; asking the learner to install would have been fine."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 459.9
+ },
+ "install_like_cmds": [
+  "python3 -m venv .venv && .venv/bin/pip install --quiet --upgrade pip && .venv/bin/pip install --quiet torch 2>&1 | tail -3; .venv/bin/python -c \"import torch; print('torch', torch.__version__, '| mps:', torch.backends.mps.is_available())\""
+ ]
+}

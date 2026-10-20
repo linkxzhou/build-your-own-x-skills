@@ -1,0 +1,92 @@
+{
+  "skill_name": "search-engine",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to build a small search engine with an inverted index. Coach me.",
+      "expected_output": "Scaffolds tokenizer/index milestone with TODOs; no full ranking system; Describes an inverted index mapping term → list of document ids (postings)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'search-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds tokenizer/index milestone with TODOs; no full ranking system"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Describes an inverted index mapping term → list of document ids (postings)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我的 TF-IDF 排序结果里，最常见的词（比如 the）权重最高，排序很糟。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains IDF (log(N/df)) down-weights common terms and/or remove stopwords; checks the formula",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'search-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains IDF (log(N/df)) down-weights common terms and/or remove stopwords; checks the formula"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I don't have a dataset. What should I index?",
+      "expected_output": "Proposes a concrete small local corpus and stays in the workspace; Suggests a concrete corpus (e.g. local markdown/docs, Wikipedia abstracts, or a small generated set)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'search-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Proposes a concrete small local corpus and stays in the workspace"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Suggests a concrete corpus (e.g. local markdown/docs, Wikipedia abstracts, or a small generated set)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

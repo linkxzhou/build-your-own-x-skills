@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Scaffold with TODOs, only M0 implemented: `Dispatch(...) { return nil, ErrNotImplemented }`, `ParseCommand ... return nil, ErrNotImplemented`, `handleConn ... return errors.New(\"handleConn: TODO(M1)\")`, `Store.Set ... return ErrNotImplemented`; README states 「骨架只提供结构与 TODO(M*) 标记，核心逻辑由你逐里程碑实现」; PROGRESS.md shows M0 ✅, M1–M6 ⬜ left to learner."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete checkpoint: 「**检查**：`go run ./cmd/miniredis -port 6380`，另开终端 `printf '*1\\r\\n$4\\r\\nPING\\r\\n' | nc 127.0.0.1 6380`，期望输出 `+PONG`」 and 「写完跑检查，把结果（或卡住的报错）贴给我」."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (database-redis-go): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the build-your-own.org/redis stages in Go: M1 TCP+PING with RESP framing `*1\\r\\n$4\\r\\nPING\\r\\n` → `+PONG`; M2 「RESP2 五种类型、命令分发表」; M3 goroutine per conn + `go test -race`; M4 「过期 PX/EX/TTL | 惰性 + 定期删除、可注入时间源」; M5 「AOF vs 快照、重放、损坏尾部」; M6 DEL/INCR、B+树 — tutorial-specific concepts (RESP2 bulk string `$-1`, nil reply), not generic boilerplate."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands run, but multiple shell commands write outside the project dir: `go build -o /tmp/miniredis ./cmd/miniredis` (binary in /tmp) and `go run ./cmd/miniredis -port 6380 >/tmp/mr.log 2>&1` / `/tmp/miniredis -port 6380 >/tmp/mr.log 2>&1` (log in /tmp), repeated across 5 of the 14 commands."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 720.8
+ },
+ "install_like_cmds": []
+}

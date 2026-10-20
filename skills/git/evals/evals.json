@@ -1,0 +1,92 @@
+{
+  "skill_name": "git",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to understand git by building it. Python is fine. Get me started on step one.",
+      "expected_output": "Scaffolds milestone 1 (init / repo layout) with TODOs for the learner and does not hand over the code for later milestones (objects, trees, commits); States that a repository needs .git/objects, .git/refs (heads) and a HEAD file pointing at refs/heads/<branch>",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'git' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds milestone 1 (init / repo layout) with TODOs for the learner and does not hand over the code for later milestones (objects, trees, commits)"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "States that a repository needs .git/objects, .git/refs (heads) and a HEAD file pointing at refs/heads/<branch>"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我在做自己的 git 的 hash-object，算出来的 sha 和 `git hash-object` 不一样。我的代码：`sha1(data).hexdigest()` 然后 zlib 压缩写入。哪里错了？",
+      "expected_output": "Diagnoses the bug and gives a minimal fix or hint, not a rewrite of the project; Explains that the hash must be computed over the header `blob <size>\\0` + content (not the raw data), before compression",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'git' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses the bug and gives a minimal fix or hint, not a rewrite of the project"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains that the hash must be computed over the header `blob <size>\\0` + content (not the raw data), before compression"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Just give me the complete source of a working mini-git (init, add, commit, log) in one go, I don't want the step-by-step.",
+      "expected_output": "Acknowledges the request but offers a staged path; provides complete code for at most the current milestone instead of the whole project; Any code or plan given uses real git object formats (blob/tree/commit) so the result is readable by real git",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'git' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Acknowledges the request but offers a staged path; provides complete code for at most the current milestone instead of the whole project"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Any code or plan given uses real git object formats (blob/tree/commit) so the result is readable by real git"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

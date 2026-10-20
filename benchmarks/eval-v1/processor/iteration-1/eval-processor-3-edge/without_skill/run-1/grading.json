@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Confirms simulation-only is fine and plans accordingly",
+   "passed": true,
+   "evidence": "\"Yes — simulation is a complete workflow for this. An FPGA board is only needed at the very end (and optionally even then)\" plus a concrete plan: roadmap \"1. RV32I single-cycle core... 2. Pass the full rv32ui-p-* test suite. 3. 5-stage pipeline...\" and \"the natural first artifact is `cpu.v` (PC + fetch stage) and `tb.v`\"."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with \"The empty workspace here is a fine place to start — the natural first artifact is `cpu.v` ... and `tb.v` (a testbench that toggles the clock and dumps waveforms)\" — it names files to create but gives no concrete command to run and no expected output/behaviour; the only command mentioned anywhere is the install command \"brew install icarus-verilog\"."
+  },
+  {
+   "text": "B3: Says the whole track can run in simulation (iverilog/verilator + waveform viewer)",
+   "passed": true,
+   "evidence": "\"simulation is a complete workflow for this... Everything that makes you a CPU designer happens on your machine\" and toolchain lists \"Icarus Verilog\", \"Verilator — compiles your Verilog to a fast C++ model\", and \"GTKWave or Surfer — view waveforms\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "\"FILES WRITTEN IN PROJECT (0)\" and \"SHELL COMMANDS RUN (0)\" — nothing was run or written outside the workspace; the answer only tells the learner \"Icarus Verilog (`brew install icarus-verilog`)\" and \"Install `riscv-none-elf-gcc`\", which is asking the learner to install (allowed)."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 35.5
+ },
+ "install_like_cmds": []
+}

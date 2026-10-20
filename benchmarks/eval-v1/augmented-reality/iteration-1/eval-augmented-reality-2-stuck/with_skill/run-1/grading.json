@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": false,
+   "evidence": "Diagnosis is present ('findHomography on all matches with the default method... plain least squares over every point — a handful of bad ORB matches drags the whole homography anywhere'), but the agent dumped a complete implementation instead of a minimal fix for the current milestone: 'FILES WRITTEN IN PROJECT (1) homography_stabilized.py (7273 chars)' implementing the entire failure chain ('1. findHomography on ALL matches... 2. Raw brute-force matches... 3. No acceptance gate... 4. Per-frame H jitter') plus self-test and live-video modes, delivered as 'Wrote homography_stabilized.py — a runnable version of the corrected pipeline'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete command and expected behaviour: 'python homography_stabilized.py --selftest' — 'It warps a textured reference with a known H, checks the projected corners land within 5 px of ground truth, and confirms a blank frame is rejected by the gate instead of yanking the rectangle.'"
+  },
+  {
+   "text": "B3: Recommends filtering matches (ratio test / cross-check) and using RANSAC in findHomography",
+   "passed": true,
+   "evidence": "Explicit: 'Filter with the ratio test: ... good = [m for m, n in matches if m.distance < 0.75 * n.distance]' and 'cv2.findHomography(src, dst, cv2.USAC_MAGSAC, 3.0, maxIters=2000, confidence=0.999)' / 'cv2.RANSAC, 5.0 also works'; cross-check also named: 'cv2.BFMatcher(cv2.NORM_HAMMING, crossCheck=True) or knn + ratio'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)'; other tool calls are glob, grep, and one write creating 'homography_stabilized.py' inside the project; no install commands anywhere; learner is only asked to run it themselves ('Verify it on your machine with the built-in synthetic test')."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 157.9
+ },
+ "install_like_cmds": []
+}

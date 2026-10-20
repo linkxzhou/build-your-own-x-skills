@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged plan + scaffold, only current milestone implemented: TASKS.md lists 7 milestones each with '检查点（通过后才进入下一个）'; main.c implements only M1 echo REPL and defers the rest as comments: '后续里程碑 (见 ../TASKS.md，先不要提前实现): M2: fork + execvp + waitpid…M7: 信号与后台作业', plus 'TODO(learner) 练习 1 的第一步: 给你的 shell 起个名字，改掉下面的提示符'. Final answer hands the next action to the learner: '你的第一步：给 shell 起名…改 myshell/src/main.c:21 的 PROMPT 宏'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a runnable checkpoint: 'make -C myshell; printf 'hi\\nls\\nexit\\n' | ./myshell/myshell; echo $?' with expected behaviour '# 期望: 三行提示符各跟 hi、ls，然后退出码 0；交互模式下按 Ctrl-D 也应干净退出', and '通过后告诉我，我们进 M2'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (shell-shell-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Tutorial-specific: cites upstream 'Let's build a shell!（Kamal Marhubi, Strange Loop 2014 workshop）https://github.com/kamalmarhubi/shell-workshop' and fetched its raw README to align milestones; stages match the workshop (M2 'fork + execvp + waitpid；为什么必须 fork', M3 'cd/exit 为什么必须在 shell 进程内执行', M5 'open + dup2 实现 > >> <', M6 'pipe()、关闭 fd'), with C-specific concepts like 'execvp 会替换当前进程映像——直接调用它，你的 shell 就消失了' and upstream detail '上游作者用的是 \"heee> \"'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Only 2 shell commands ran: environment probe 'ls -la; which cc gcc clang make…; uname -s' and 'make -C myshell && printf … | ./myshell/myshell; echo \"exit=$?\"' — no install commands; all 9 files written inside the project (TASKS.md, PROGRESS.md, myshell/{Makefile,README.md,.gitignore,src/main.c} plus in-project build artifacts myshell/myshell and myshell.dSYM); README notes requirements instead of installing: '需要 Unix-like 环境…和任意 C 编译器 + make'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 346.5
+ },
+ "install_like_cmds": []
+}

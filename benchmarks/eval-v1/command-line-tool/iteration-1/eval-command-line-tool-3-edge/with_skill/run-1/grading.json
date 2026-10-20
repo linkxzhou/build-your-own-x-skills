@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Offers a staged path and gives at most the current milestone in full",
+   "passed": false,
+   "evidence": "Agent dumped the complete clone in one shot: todo 'Write lolcat.py (rainbow math, escape passthrough, CLI, animation, SIGPIPE safety)' completed; FILES WRITTEN shows lolcat.py (14068 chars) implementing the full surface — '1. Read from files given as args, or stdin... 3. Options: -p/--spread... -a/--animate... 7. Animation mode'. It explicitly chose dumping over coaching: 'the user's explicit request takes precedence — they asked for the whole thing written... delivering the complete implementation.' No staged milestones; the whole multi-feature tool was delivered instead of a first/current milestone."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The final answer ends mid-quote of upstream help text ('-s, --seed=<i') with no closing instruction to the learner; the only runnable examples ('$ echo \"hello world\" | python3 lolcat.py') live in the file docstring, and the verification commands (py_compile, rainbow asserts) were run by the agent itself, not handed over as a 'run this and expect X' checkpoint."
+  },
+  {
+   "text": "B3: Any colour logic described uses ANSI escape sequences (e.g. 24-bit \\x1b[38;2;r;g;bm) correctly",
+   "passed": true,
+   "evidence": "Colour logic uses ANSI correctly: \"normal → \\x1b[38;2;R;G;Bm, invert → \\x1b[48;2;R;G;Bm (background color)\", \"bold -b: \\x1b[1m prefix\", final reset \"print \\\"\\x1b[0m\\\"\", cursor control \"\\x1b[#{i}A\\x1b[0G\" for animation, and CSI passthrough 'consume until char in range 0x40–0x7E' / OSC 'until BEL (\\x07) or ST' — all valid SGR/CSI forms including 24-bit fg/bg."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 3 shell commands are local python3 only: 'python3 -m py_compile lolcat.py', heredoc asserts on rainbow(), 'python3 lolcat.py --help' — no brew/apt/pip/cargo/rustup/npm/go/gem install anywhere. FILES WRITTEN IN PROJECT (2) lists only lolcat.py and __pycache__/lolcat.cpython-314.pyc, both inside the project dir; web_search/web_fetch/api.github.com calls are read-only."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": true,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 896.3
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the append-only log milestone with TODOs; no full broker",
+   "passed": true,
+   "evidence": "log.go is a scaffold: types Segment/Log + signatures with TODO bodies, e.g. Append: '// TODO: 1. off := l.nextOffset ... return 0, errors.New(\"not implemented\")'; same for NewLog/Read/Close. Only 3 milestone-1 files written (go.mod, log.go, log_test.go); no broker/TCP code — TCP is deferred ('TCP binary protocol in milestone 2'). Learner writes the core bodies."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Checkpoint test written: '// Checkpoint 1：追加 10k 条消息，读 offset 5000，内容必须正确。' with concrete expected behaviour ('Read(5000) = %q, want %q', want \"msg-5000\"; reopen test expects 'first offset after reopen = %d, want 500'); concrete command given/run: 'go vet ./... && go test ./... 2>&1 | tail -20'; planned per-turn format includes 'how to check it (command + expected output)'."
+  },
+  {
+   "text": "B3: Describes an append-only log with offsets (segments/index)",
+   "passed": true,
+   "evidence": "log.go doc: 'Package minilog 实现一个 Kafka 风格的追加式日志：每条消息按到达顺序拿到单调递增的 offset，落盘为多个段（segment），每个段由一个 .log 数据文件和一个 .index 索引文件组成'; on-disk spec: '记录 = [4B payload 长度][4B crc32(payload)][payload]', '索引项 = [8B offset][8B 该记录在 .log 中的物理位置]'; segment roll: '若 active.position >= l.maxSegBytes：封口当前段...开新段'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only 2 shell commands, both clean: 'go version 2>&1; echo \"---\"; ls -a' and 'go vet ./... && go test ./... 2>&1 | tail -20' — no brew/apt/pip/cargo/rustup/npm -g/go install/gem install. Writes limited to project files go.mod, log.go, log_test.go; other calls are reads/glob/grep of .agents/skills plus todo_write. Go 1.26.1 already present ('Environment: Go 1.26.1 on macOS arm64'), so no install needed or requested."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 252.6
+ },
+ "install_like_cmds": []
+}

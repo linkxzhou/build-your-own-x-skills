@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds milestone 1 (init / repo layout) with TODOs for the learner and does not hand over the code for later milestones (objects, trees, commits)",
+   "passed": true,
+   "evidence": "Only milestone 1 was implemented: mygit.py docstring 'Step 1: `init` — create the .git directory skeleton' and 'Step one is done: mygit.py implements init'. No code for later milestones was handed over — step two is described in prose only ('Step two is the object model: implement `hash-object`... and `cat-file`... Say the word and we'll build it'), and mygit.py contains only the init command on the dispatch skeleton."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: 'Try it: `python3 mygit.py init myproject`, then poke around `.git/` and run real `git status` inside' with expected behaviour given — the annotated .git/ layout (HEAD → \"ref: refs/heads/main\") and 'real git accepts its output as a valid repo (`git status` → \"On branch main / No commits yet\")'."
+  },
+  {
+   "text": "B3: States that a repository needs .git/objects, .git/refs (heads) and a HEAD file pointing at refs/heads/<branch>",
+   "passed": true,
+   "evidence": "Layout diagram states all three: 'objects/{info,pack}/ ← empty; the object database lives here' plus 'objects/ is the database'; 'refs/{heads,tags}/ ← empty; branches will be files here'; and 'HEAD → \"ref: refs/heads/main\" (a pointer, not a hash)' with 'HEAD is a symbolic ref. It holds the *path* of a branch, and a branch is a file under refs/heads/'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Recorded commands are only 'rm -rf test-repo && ls -la' and 'ls -la' — no install commands (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and all executed commands are workspace-local. The out-of-workspace attempt was denied by the sandbox and wrote nothing ('The compound command hit a permission issue... Even `whoami` is denied'), after which the agent self-corrected: 'I'll test inside the workspace instead.' No tools needed installing; Python was already assumed per the prompt."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 295.1
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "web-server",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:52Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 267.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds TCP listener milestone with TODOs; no full framework",
+          "passed": true,
+          "evidence": "Wrote only a milestone-1 skeleton http-server/server.py: 'TODO 1: setsockopt SO_REUSEADDR ... TODO 6: sendall(RESPONSE) on conn, then conn.close()' ending in 'raise NotImplementedError(\"fill in TODOs 1-6\")', with 'RESPONSE = b\"\"  # TODO' left for the learner; PROGRESS.md marks milestone 1 'in progress', 2-7 'pending' \u2014 no full framework or multi-milestone implementation dumped."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "'Checkpoint command: `curl -v localhost:8080` \u2192 expect `HTTP/1.1 200 OK` and `Hello, world!`. Also `python3 server.py` runs without error.' plus stated format rule 'how to check it (command + expected output \u2014 every reply ends with this)'."
+        },
+        {
+          "text": "B3: Mentions the request line + headers + CRLF format of an HTTP response",
+          "passed": true,
+          "evidence": "Written file comment: 'status line, Content-Type header, Content-Length header, blank line, body. Every line ends with \\r\\n (CRLF, the HTTP line ending), and Content-Length must equal the body's byte length.'; reasoning adds 'the blank line separates headers from body, and Content-Length must match the body byte count'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "All 3 shell commands are read-only inside the workspace (ls, find, python3 --version, cat of skill reference); only files written are http-server/server.py and http-server/PROGRESS.md; agent states 'Stay in workspace, never install anything. Python 3.14.7 is available \u2014 good, no installs needed.' No install commands anywhere."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 117.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses the bug and gives a minimal fix snippet for the current milestone only: '\u6700\u5c0f\u4fee\u590d\uff08Python \u793a\u610f...\u5c31\u8fd9\u4e09\u4ef6\u4e8b\uff09' with a short header/body/close snippet ending in 'conn.close()  # \u53d1\u5b8c\u5c31\u5173' \u2014 a targeted patch, not a full multi-milestone implementation."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with runnable checks and expected behaviour: 'curl -v http://localhost:8080/' with '\u671f\u671b\u770b\u5230\u8fd9\u4e09\u884c\uff0c\u4e14 curl \u7acb\u5373\u9000\u51fa\uff08\u6302\u8d77\u5373\u547d\u4e2d\u539f\u56e0 1/2\uff09' listing '< HTTP/1.1 200 OK / < Content-Length: 137 / < Connection: close / * Closing connection 0', plus a second check 'curl -v --max-time 3 http://localhost:8080/favicon.ico' with '\u671f\u671b 3 \u79d2\u5185\u8fd4\u56de\uff08404 \u4e5f\u7b97\u901a\u8fc7\uff09\uff1b\u8d85\u65f6\u8bf4\u660e\u670d\u52a1\u5668\u5361\u5728\u5e76\u53d1\u6216\u67d0\u4e2a handler \u4e0a'."
+        },
+        {
+          "text": "B3: Points to missing Content-Length (or connection close / incomplete headers \\r\\n\\r\\n) as the likely cause",
+          "passed": true,
+          "evidence": "Names the likely cause explicitly: '\u6ca1\u53d1 Content-Length\uff0c\u4e5f\u6ca1\u53d1 Connection: close\uff0c\u53d1\u5b8c\u4e5f\u4e0d close() socket\u3002HTTP/1.1 \u9ed8\u8ba4 keep-alive\uff0c\u6d4f\u89c8\u5668\u53ea\u80fd\u50bb\u7b49\u4e0b\u4e00\u6bb5\u6570\u636e' and 'Content-Length \u6570\u9519\u4e86...len(body) \u6570\u7684\u662f\u5b57\u7b26\u6570\uff0c\u5b9e\u9645\u8981\u53d1\u7684\u662f\u5b57\u8282\u6570'; also notes headers must end with '\\r\\n' blank line."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1) is only 'ls -la; find . -maxdepth 3 -type f -not -path './.agents/*' | head -50'; other tool calls are read/glob of skill files; FILES WRITTEN IN PROJECT (0); no install commands and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 40.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Explains the security issue and a minimal fix",
+          "passed": true,
+          "evidence": "Explains the issue: 'Serving any user-supplied path is a path traversal (directory traversal) vulnerability' with impact 'arbitrary file read: source code, .env files... SSH private keys'. Minimal fix given as concrete code: 'target = (root / request_path.lstrip(\"/\")).resolve(); if not target.is_relative_to(root): return 403'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with advice, no runnable checkpoint: 'Every mainstream static-file handler (nginx root/alias, Express express.static...) does exactly this canonicalize-then-verify dance internally. If you're building a server to learn, implementing this check yourself is a great exercise'. No concrete command to run nor expected output/behaviour anywhere in the answer."
+        },
+        {
+          "text": "B3: Identifies path traversal (../) and recommends normalizing and restricting to a root directory",
+          "passed": true,
+          "evidence": "Identifies traversal with 'GET /../../../../etc/passwd' and encoded variants '%2e%2e%2f, ..%2f'; recommends 'URL-decode first, then normalize (`.` and `..` segments collapsed)' and 'Resolve to a canonical absolute path and verify it stays inside the web root'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): 'ls -la' only; OTHER TOOL CALLS: glob '**/*'; FILES WRITTEN IN PROJECT (0). No install commands and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 90.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds TCP listener milestone with TODOs; no full framework",
+          "passed": true,
+          "evidence": "Wrote only a milestone-1 skeleton: server.py (821 chars) with 'TODO 1: create a TCP socket' ... 'TODO 7: close the connection socket', 'server = None' and empty bodies \u2014 'a milestone 1 skeleton with 7 TODOs and zero answers. Fill in the blanks yourself'. Roadmap milestones 2-8 are one-line descriptions with no implementation code."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete commands and expected behaviour: 'run it and hit it with `nc localhost 8000` and `curl -v localhost:8000`'; skeleton docstring: 'Run: python3 server.py / Test: nc localhost 8000 (type something, press enter) / curl -v localhost:8000 (read the raw dump curl prints)'; earlier: 'watch curl choke on the echo \u2014 that's fine, read the raw dump'."
+        },
+        {
+          "text": "B3: Mentions the request line + headers + CRLF format of an HTTP response",
+          "passed": true,
+          "evidence": "'Parse it \u2014 request line + headers into a dict'; 'Send a valid HTTP response (status line, headers, body)'; 'HTTP lines end in \\r\\n, both in requests and responses'; 'HTTP/1.1 is text-based, CRLF line endings, blank line separates headers from body'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'## SHELL COMMANDS RUN (0)'; only tool calls were glob and a write of server.py listed under 'FILES WRITTEN IN PROJECT (1)'; no install commands anywhere \u2014 learner is only told to run preinstalled 'nc' and 'curl' themselves."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 31.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Agent diagnoses the symptom ('\u7f3a\u5c11 Content-Length \u4e14\u6ca1\u6709\u5173\u95ed\u8fde\u63a5\uff08\u6700\u5e38\u89c1\uff09... \u5934\u90e8\u548c\u6b63\u6587\u4e4b\u95f4\u5c11\u4e86\u7a7a\u884c ... send() \u53ef\u80fd\u53ea\u53d1\u4e86\u4e00\u90e8\u5206') and gives a minimal fix: a minimal response snippet using sendall with Content-Length, Connection: close, and conn.close()."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Final answer ends with '\u628a\u4f60\u7684\u4ee3\u7801\u53d1\u8fc7\u6765\uff08\u6216\u653e\u5230\u5f53\u524d\u76ee\u5f55\uff09\uff0c\u6211\u53ef\u4ee5\u76f4\u63a5\u5b9a\u4f4d\u95ee\u9898\u3002' \u2014 a request for the learner's code; there is no concrete command to run (e.g. curl) nor expected output/behaviour anywhere in the answer."
+        },
+        {
+          "text": "B3: Points to missing Content-Length (or connection close / incomplete headers \\r\\n\\r\\n) as the likely cause",
+          "passed": true,
+          "evidence": "'1. **\u7f3a\u5c11 `Content-Length` \u4e14\u6ca1\u6709\u5173\u95ed\u8fde\u63a5**\uff08\u6700\u5e38\u89c1\uff09... 2. **\u5934\u90e8\u548c\u6b63\u6587\u4e4b\u95f4\u5c11\u4e86\u7a7a\u884c**\u3002headers \u7ed3\u675f\u5fc5\u987b\u6709\u4e00\u4e2a\u7a7a\u884c `\\r\\n\\r\\n`' \u2014 explicitly names Content-Length/connection close and the missing \\r\\n\\r\\n as likely causes."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only command run is 'ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-web-server-2/' plus a glob; no install commands and FILES WRITTEN IN PROJECT (0), so nothing written outside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 92.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Explains the security issue and a minimal fix",
+          "passed": true,
+          "evidence": "'No \u2014 that's a path traversal vulnerability. A request like GET /../../../../etc/passwd ... would let a client read any file the server process can access' plus minimal fix: 'resolve the requested path to its canonical form and verify it stays inside the document root before opening anything' with a safe_path() code snippet."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with runnable checkpoint: 'I put the guard into a runnable demo, safe_path.py, and verified it:' followed by exact expected output block (ALLOW '/index.html' ... BLOCK '/../../etc/passwd'); shell log confirms 'python3 safe_path.py' was run and safe_path.py (complete, 1334 chars) exists in the project."
+        },
+        {
+          "text": "B3: Identifies path traversal (../) and recommends normalizing and restricting to a root directory",
+          "passed": true,
+          "evidence": "Identifies '../' traversal: 'GET /../../etc/passwd' and '%2e%2e%2f'; recommends normalizing ('Path.resolve() ... collapses .. segments and follows symlinks') and restricting to a root ('verify it stays inside the document root', DOCROOT = Path('./public').resolve(), is_relative_to check)."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only commands run: 'python3 safe_path.py' (x2) \u2014 no install commands; files written are 'public/index.html' and 'safe_path.py', both inside the project dir; edit tool only modified safe_path.py."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 141.7333,
+        "stddev": 115.2418,
+        "min": 40.8,
+        "max": 267.3
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 71.5333,
+        "stddev": 34.5271,
+        "min": 31.7,
+        "max": 92.9
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "+70.2",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

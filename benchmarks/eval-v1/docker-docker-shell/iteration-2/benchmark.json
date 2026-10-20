@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "docker-docker-shell",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:52Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 208.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Scaffold with stubs, not a full implementation: bocker_run() body is 'echo \"TODO(m1): bocker_run $*\" >&2; return 1', _init() is 'TODO(m2)', M3-M6 are TODO comments; agent tells learner '\u4f60\u8981\u5199\u7684\uff1abocker/bocker \u91cc\u7684 bocker_run() ... \u628a TODO \u6362\u6210' \u2014 learner writes the code, only M1 is described."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete checkpoint: 'sudo ./bocker run alpine /bin/echo hi' with '# \u671f\u671b\u8f93\u51fa\uff1ahi \uff08\u5f53\u524d stub \u4f1a\u6253\u5370 TODO(m1) \u5e76 exit 1\uff09' and '\u5199\u5b8c bocker_run \u540e\u8dd1\u4e0a\u9762\u8fd9\u6761\u547d\u4ee4\uff0c\u628a\u5b9e\u9645\u8f93\u51fa\u8d34\u7ed9\u6211\u2014\u2014\u8fc7\u4e86\u5c31\u8fdb M2'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (docker-docker-shell): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match bocker's actual stages in bash: 'run \u4e00\u6761\u547d\u4ee4 \u2014 \u7236\u5b50 re-exec', 'UTS + PID namespace', 'mount ns + pivot_root + alpine rootfs', 'cgroups v2 \u2014 memory/pids', 'veth pair + bridge + NAT', 'overlayfs + ps/images/rm/log', aligned to upstream p8952/bocker; PROGRESS.md cites CLONE_NEWUTS/CLONE_NEWPID, memory.max/pids.max."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Agent commands were read-only or in-project: 'mkdir -p bocker/scratch && chmod +x bocker/bocker && bash -n bocker/bocker'; no install run. README asks learner to install: 'inside the VM: sudo apt-get install -y curl btrfs-progs iptables as needed' \u2014 learner-side, allowed."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 255.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "TASKS.md is a 9-milestone plan (M0\u2013M8) with coaching rules: '\u7ed9\u9aa8\u67b6\uff1a\u53ea\u7ed9\u51fa\u5f53\u524d\u91cc\u7a0b\u7891\u7684\u51fd\u6570\u7b7e\u540d/\u6846\u67b6\u4ee3\u7801', '\u4f60\u6765\u5199\u6838\u5fc3\uff1a\u5b66\u4e60\u8005\u4eb2\u624b\u5b9e\u73b0', '\u4e0d\u4e00\u6b21\u6027\u7ed9\u5168\u90e8\u4ee3\u7801'. Content lists tasks like 'bocker_check <id>\uff1a\u7528 btrfs subvolume list | grep -qw \u5224\u65ad\u5b58\u5728\u6027' as signatures/descriptions, no complete implementation written."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with a checkpoint: '$ ./bocker help' plus '\u671f\u671b\u8f93\u51fa\uff1a\u5217\u51fa pull init rm images ps run exec logs commit \u5168\u90e8\u5b50\u547d\u4ee4\u53ca\u7528\u6cd5\uff1b\u540c\u65f6 ip addr show bridge0 \u663e\u793a 10.0.0.1/24'; each milestone also has a \u9a8c\u8bc1 block, e.g. M1: './bocker init ./scratch/rootfs # Created: img_42150'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (docker-docker-shell): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror bocker's actual stages and code: real function names (bocker_init/bocker_check/bocker_images/bocker_pull), real details 'img_$(shuf -i 42002-42254 -n 1)', 'cp -rf --reflink=auto', 'img.source', '#HELP \u6ce8\u91ca\u5373\u6587\u6863', 'set -o errexit -o nounset -o pipefail', 'unshare -fmuip --mount-proc', cgcreate/cgset/cgexec, veth+bridge+netns, and the accurate note that 'bocker pull \u4f9d\u8d56\u5df2\u505c\u670d\u7684 Docker Registry v1 API' with a 2025-usable replacement."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Only 2 shell commands ran: 'curl -sL https://raw.githubusercontent.com/p8952/bocker/master/bocker | sed -n ...' (read-only fetch) and 'ls -la'; other calls are read/web_fetch/glob/write of TASKS.md in project. No install commands executed; deps are delegated to learner: '\u4f9d\u8d56\u5305\uff1abtrfs-progs curl iproute2 iptables libcgroup-tools util-linux coreutils' and 'Claude \u4e0d\u4ee3\u88c5\u4f9d\u8d56\uff08\u6253\u5370\u547d\u4ee4\u7531\u4f60\u6267\u884c\uff09'."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 509.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "All runtime functions are stubs with TODOs, e.g. lib/container.sh: 'container_run() { log_err \"container_run: TODO (M2) \u2014 unshare + pivot_root + busybox init\"; return 1; }' and lib/image.sh: 'image_pull: TODO (M5)'. docs/milestones.md stages M0\u2013M6 with \u4efb\u52a1/\u9a8c\u6536/\u63d0\u793a per milestone; only the M0 skeleton (CLI dispatch, lint/test harness) is implemented, leaving M1\u2013M6 for the learner."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer reports a runnable checkpoint with expected output: '\u9aa8\u67b6\u5df2\u5efa\u597d\uff0c`make lint && make test` \u5168\u7eff\uff088 passed\uff09' and gives the next concrete run: '\u8ba9 `minidocker run <rootfs> sh` \u8d70\u901a chroot'; README quick start lists 'make lint / make test / make test-linux / make linecount' with behaviors."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (docker-docker-shell): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match the docker-in-bash tutorial's actual concepts: 'M1 rootfs + chroot | chroot(2), mount --bind', 'M2 namespaces | unshare, pivot_root, /proc', 'M3 cgroups v2 | memory.max \u89e6\u53d1 OOM kill', 'M4 veth, bridge, iptables NAT', 'M5 Registry API v2, overlayfs', 'M6 nsenter, \u4fe1\u53f7'; core constraint is bash-specific: '\u6838\u5fc3\u811a\u672c bin/minidocker \u63a7\u5236\u5728 100 \u884c\u4ee5\u5185' with 'make linecount'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (2) are 'ls -la ... && sw_vers; uname -a' and 'chmod +x bin/minidocker tests/smoke.sh && make lint && make test && make linecount && find ...' \u2014 no install commands; all 10 FILES WRITTEN are inside the project (Dockerfile.dev, Makefile, README.md, bin/, lib/, tests/, docs/, .gitignore). apt-get/docker appear only as learner-facing file content (Dockerfile.dev, 'make test-linux'), i.e. asking the learner to set up Linux."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 576.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a staged milestone plan, not an implementation: TASKS.md has '\u4efb\u52a1\u603b\u89c8' table of Task 0-8 each with \u76ee\u6807/\u5b9e\u73b0\u8981\u6c42/\u9a8c\u6536\u6807\u51c6; CLAUDE.md instructs '\u4e00\u6b21\u53ea\u505a\u5f53\u524d Task\uff1b\u5b9e\u73b0\u8303\u56f4\u4ee5\u8be5 Task \u7684\"\u5b9e\u73b0\u8981\u6c42\"\u4e3a\u51c6\uff0c\u4e0d\u63d0\u524d\u5b9e\u73b0\u540e\u7eed Task' and '\u53c2\u8003\u4e0a\u6e38\u6e90\u7801\u7406\u89e3\u610f\u56fe\uff0c\u4f46\u4ee3\u7801\u81ea\u5df1\u5199'. No bocker script was written."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Every task ends with concrete verify commands plus expected output, e.g. Task 0: 'mount | grep /var/bocker # \u8f93\u51fa\u5305\u542b btrfs', 'stat -fc %T /sys/fs/cgroup/ # \u8f93\u51fa tmpfs\uff08cgroups v1\uff09', 'cat /proc/sys/net/ipv4/ip_forward # 1'; CLAUDE.md: '\u6bcf\u4e2a Task \u5b8c\u6210\u524d\u5fc5\u987b\u9010\u6761\u8dd1\u901a\"\u9a8c\u6536\u6807\u51c6\"'; plan includes final '\u6bd5\u4e1a\u68c0\u9a8c' running the full README example."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (docker-docker-shell): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror bocker's actual stages and code: functions bocker_check/init/images/rm/run/ps/logs/exec/commit/pull/help; concepts btrfs subvolume/CoW/reflink, chroot+unshare namespaces, veth/bridge/netns/NAT, cgroups v1 'cpu,cpuacct,memory'; tutorial-specific details: 'set -o errexit -o nounset -o pipefail; shopt -s nullglob', '#HELP' convention, BOCKER_CPU_SHARE/BOCKER_MEM_LIMIT, bridge0 10.0.0.1/24, Registry v1 dead\u2192v2 adaptation, and the known bocker_init stray bocker_run bug."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (3) are only 'curl -sL .../bocker | tail -c 3000', 'ls -la ... && find ...', and greps on TASKS.md \u2014 no install commands. FILES WRITTEN IN PROJECT (2): CLAUDE.md, TASKS.md, both inside the project dir. Installs appear only as learner instructions ('\u5b89\u88c5 Lima\uff08brew install lima\uff09', apt-get in the VM provision script), which is allowed."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 231.75,
+        "stddev": 33.0219,
+        "min": 208.4,
+        "max": 255.1
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 542.95,
+        "stddev": 47.3054,
+        "min": 509.5,
+        "max": 576.4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "-311.2",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

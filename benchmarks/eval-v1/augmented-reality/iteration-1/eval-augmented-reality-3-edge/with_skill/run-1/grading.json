@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Offers a workable path with static images or a video file instead of a webcam",
+   "passed": true,
+   "evidence": "Offers three webcam-free paths: '2. **Still images only.** One marker photo + a few scene photos containing it. Covers milestones 1–5 fully' and 'cv2.VideoCapture('clip.mp4') reads it exactly like a live feed'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with questions ('Two things to confirm before we start milestone 1: 1. Do you have a phone...? 2. Python OK?') and a setup line; milestone checks ('script displays both') are future descriptions with no concrete command to run now and no expected output given"
+  },
+  {
+   "text": "B3: Explains using a reference image plus scene images/video frames as input",
+   "passed": true,
+   "evidence": "'Photograph the printed marker once (that's your reference image), then record a 10–15s clip moving around it' and 'One marker photo + a few scene photos containing it'; milestone 1: 'Image input: load marker + scene/video'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'FILES WRITTEN IN PROJECT (0)', 'SHELL COMMANDS RUN (0)', only read tool calls; agent explicitly defers installs: '(you run these, I never install): pip install opencv-python numpy'"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 142.7
+ },
+ "install_like_cmds": []
+}

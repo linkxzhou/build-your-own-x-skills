@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-111009-3d6ef4",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/operating-system/iteration-2/eval-operating-system-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 360.7,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

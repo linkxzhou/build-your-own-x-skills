@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses regfile not hardwiring x0: \"寄存器堆没有把 x0 硬连为 0。RISC-V 规范要求 x0 恒为 0，写入 x0 必须被丢弃\" and gives minimal fix code: \"if (we && rd != 5'b0) regs[rd] <= wdata;\" plus read-port mux \"(rs1 == 5'b0) ? 32'b0 : regs[rs1]\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with \"把寄存器堆的代码（regfile 模块）放到工作区里，我可以直接帮你定位并改掉具体那几行\" — a request for code, with no concrete command to run and no expected output/behaviour"
+  },
+  {
+   "text": "B3: States x0 is hardwired to zero: ignore writes to register 0 / always read 0",
+   "passed": true,
+   "evidence": "\"RISC-V 规范要求 x0 恒为 0，写入 x0 必须被丢弃\"; write ignore \"if (we && rd != 5'b0)\" and always-read-0 \"assign rdata1 = (rs1 == 5'b0) ? 32'b0 : regs[rs1]\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command is \"ls -la\" plus glob {\"pattern\": \"**/*\"}; FILES WRITTEN IN PROJECT (0); no install commands and nothing written outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 42.2
+ },
+ "install_like_cmds": []
+}

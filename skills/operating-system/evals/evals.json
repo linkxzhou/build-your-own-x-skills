@@ -1,0 +1,92 @@
+{
+  "skill_name": "operating-system",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想用 Rust 写一个能在 QEMU 启动的内核，先做第一步。",
+      "expected_output": "Scaffolds boot / freestanding binary milestone with TODOs; no full kernel; Mentions a freestanding (no_std) binary, and QEMU to run it",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'operating-system' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds boot / freestanding binary milestone with TODOs; no full kernel"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions a freestanding (no_std) binary, and QEMU to run it"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My kernel triple-faults right after I enable interrupts with `sti`. I set up the IDT with only the breakpoint handler.",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains the timer interrupt fires without a handler (or PIC not remapped) → double/triple fault; add handlers / remap PIC / double-fault handler",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'operating-system' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains the timer interrupt fires without a handler (or PIC not remapped) → double/triple fault; add handlers / remap PIC / double-fault handler"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to build my own OS kernel in Rust that boots in QEMU. Install QEMU and the nightly toolchain for me and build it.",
+      "expected_output": "Does not run installs itself; prints the commands and asks the learner to run them; Lists the needed tools (e.g. QEMU, nightly + rust-src, bootimage) as commands for the learner",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'operating-system' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Does not run installs itself; prints the commands and asks the learner to run them"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Lists the needed tools (e.g. QEMU, nightly + rust-src, bootimage) as commands for the learner"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

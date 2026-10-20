@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-101715-310a6b",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/search-engine/iteration-1/eval-search-engine-3-edge/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 77.4,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

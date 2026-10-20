@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged plan, not code: '已生成 TASKS.md，把教程全部 8 个章节转成了 8 个顺序执行的 Claude Code 任务（Task 0–7），每个任务包含：可直接粘贴的 Prompt、可执行的验收命令、学习点'. FILES WRITTEN shows only TASKS.md (8984 chars); aof.go/handler.go/main.go/resp.go appear only as '最终文件结构（与教程一致）' target layout, with per-task prompts like Task 0 '只包含打印 \"Hello World\" 的 main 函数' leaving the implementation to the learner."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Each task ends with runnable acceptance commands plus expected output, e.g. Task 0: 'go run main.go          # 输出 Hello World', 'redis-cli ping          # PONG（确认 redis-cli 可用，随后停掉 redis-server）', 'lsof -i :6379           # 无 redis-server 进程占用端口'; Task 1: 'redis-cli ping          # 得到回复（此时是 +OK，不是 PONG，属正常）'. Final answer: '末尾附总验收清单（编译、全部命令行为、持久化重启、并发互阻），全部通过即教程完成。'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (database-redis-go): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial's actual chapters (writing-server, resp-reader, resp-writer, implementing-commands, aof, next — agent curl-fetched all 8 /en/ pages) with tutorial-specific detail: '类型常量 STRING='+' ERROR='-' INTEGER=':' BULK='$' ARRAY='*'', Value struct fields typ/str/num/bulk/array, readLine/readInteger/readArray recursion, '6 个命令：PING/SET/GET/HSET/HGET/HGETALL', 'AOF 持久化（everysec 刷盘 + 启动重放）', Go stdlib-only on :6379 tested via redis-cli. Agent also cross-checked author repo ahmedash95/build-redis-from-scratch and fixed tutorial-specific bugs (AOF Read missing Seek(0,0), missing hgetall, single-Accept vs goroutine contradiction)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but the agent wrote scraped files outside the project dir: 'curl -sL https://www.build-redis-from-scratch.dev/en/introduction -o /tmp/redis-intro.html' and 'for page in introduction first-steps writing-server resp-reader resp-writer implementing-commands aof next; do curl -sL \"https://www.build-redis-from-scratch.dev/en/$page\" -o \"/tmp/redis-$page.html\"; done', plus /tmp/redis-*.md extracts later read via 'cat /tmp/redis-resp-reader.md' etc. Project dir is /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-database-redis-go-3, so these /tmp writes violate the write-scope rule."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 663.9
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains the problem and gives a minimal fix",
+   "passed": true,
+   "evidence": "Explains the problem: \"Yes — that's a cross-site scripting (XSS) vulnerability... an attacker who can control that input (a comment, profile field, URL parameter) can execute arbitrary JavaScript in other users' browsers: steal session cookies, keylog credentials\". Gives a minimal fix: \"The standard fix is auto-escaping\" with a small html_escape function and a single-file html_escape.py helper (1452 chars) — a minimal fix, not a multi-milestone dump."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: \"It includes a self-test — run `python3 html_escape.py` to see the attack strings neutralized\" — concrete command plus expected behaviour (attack strings neutralized; the file's __main__ prints each escaped attack and \"all attack strings neutralized\")."
+  },
+  {
+   "text": "B3: Says HTML escaping should be on by default (escape < > & \" ') with an explicit raw/safe opt-out",
+   "passed": true,
+   "evidence": "\"escape every interpolated value by default, and require an explicit opt-in for trusted HTML\"; code escapes & < > \" ' (s.replace(\"&\",\"&amp;\").replace(\"<\",\"&lt;\")...replace(\"'\",\"&#39;\")); explicit opt-out: \"an explicit `raw()` opt-out for trusted/sanitized HTML\" and \"Escape by default, opt-in for raw.\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "\"SHELL COMMANDS RUN (0)\"; only tool calls are glob {\"pattern\": \"**/*\"} and write of html_escape.py inside the project dir. No install commands (brew/apt/pip/cargo/rustup/npm -g/go install) and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 114.1
+ },
+ "install_like_cmds": []
+}

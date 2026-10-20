@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives a concrete approach for macOS without installing anything",
+   "passed": true,
+   "evidence": "Concrete macOS approaches, nothing to install: 'on macOS use DYLD_INSERT_LIBRARIES or call the allocator directly'; 'Alternative simpler approach: call the allocator directly (link your malloc into the test program, rename or #define malloc to my_malloc). This is the most reliable on macOS'; plus DYLD_INTERPOSE macro code and a clang-built scratch test rig."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Reply does not end with a checkpoint; it cuts off mid-sentence: 'Common trick: use a static bootstrap b'. Checkpoint appears only as intent ('every reply ends with the checkpoint (command + expected output)') and plan item '(f) checkpoint command + expected output', never delivered at the end."
+  },
+  {
+   "text": "B3: Mentions DYLD_INSERT_LIBRARIES on macOS (vs LD_PRELOAD on Linux) or calling the allocator directly in tests",
+   "passed": true,
+   "evidence": "'LD_PRELOAD is Linux-only; on macOS use DYLD_INSERT_LIBRARIES or call the allocator directly'; 'DYLD_INSERT_LIBRARIES is the macOS equivalent of LD_PRELOAD'; also gives DYLD_INTERPOSE code and the direct-link option."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands run (only ls/sw_vers/clang/echo), but a shell command wrote outside the project dir: './scratch/prog > /tmp_out.txt 2> /tmp_err.txt' (root-level paths), which the rule counts as a B4 failure."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 731.0
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains raw mode needs a real TTY and offers a workable option",
+   "passed": true,
+   "evidence": "\"Raw mode needs a real TTY. ... My recommendation: build kilo for the integrated terminal, and add a non-TTY fallback mode as a stretch milestone — the same binary detects a pipe/Output-pane stdin and switches to a line-oriented mode.\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "\"Open the integrated Terminal pane in VS Code (Terminal → New Terminal), then: ./kilo\" with expected behaviour: \"Press `a`, `Enter`, an arrow key → you see decimal byte codes (arrows print `27 91 65...`)\" and \"Press `Ctrl-Q` → kilo exits, and your prompt still echoes normally\"; compile command `cc -Wall -Wextra -pedantic -std=c99 -o kilo kilo.c` given."
+  },
+  {
+   "text": "B3: States the output pane is not a TTY; use the integrated terminal or a real terminal",
+   "passed": true,
+   "evidence": "\"The Output pane is a log sink: no TTY, no cursor addressing, so a full-screen editor can't render there. VS Code's integrated Terminal pane is a real terminal (xterm.js over a pty), so kilo runs there unchanged.\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only commands run: \"ls -la; echo ---; which gcc clang cc make 2>/dev/null; echo ---; uname -s 2>/dev/null\" (read-only probes); only write is kilo.c inside the project; no install commands, learner is told to compile with cc themselves."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 267.0
+ },
+ "install_like_cmds": []
+}

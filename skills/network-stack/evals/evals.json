@@ -1,0 +1,92 @@
+{
+  "skill_name": "network-stack",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to learn networking by writing my own TCP/IP stack in C. Where do I start?",
+      "expected_output": "Scaffolds a first milestone (sockets echo or TAP device) with TODOs; no full stack; Mentions TUN/TAP (user-space packets) and that it requires Linux + root, or starts with Beej-style sockets",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'network-stack' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds a first milestone (sockets echo or TAP device) with TODOs; no full stack"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions TUN/TAP (user-space packets) and that it requires Linux + root, or starts with Beej-style sockets"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我自己实现的 ICMP echo reply，ping 收不到回应，抓包显示 checksum 错误。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains the Internet checksum: one's-complement sum of 16-bit words with the checksum field zeroed first",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'network-stack' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains the Internet checksum: one's-complement sum of 16-bit words with the checksum field zeroed first"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to write my own TCP/IP stack using a TAP device, but I'm on macOS only. Can I do the TAP part?",
+      "expected_output": "Gives an honest constraint and a workable option (Linux VM, or utun with limits); States TAP/TUN as in the tutorial is Linux-specific and suggests a Linux VM/container",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'network-stack' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Gives an honest constraint and a workable option (Linux VM, or utun with limits)"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "States TAP/TUN as in the tutorial is Linux-specific and suggests a Linux VM/container"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

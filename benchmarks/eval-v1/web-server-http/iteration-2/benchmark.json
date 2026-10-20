@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "web-server-http",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:53Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 285.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged plan + scaffold with TODOs, only current milestone built: '\u5f53\u524d\u8fdb\u5ea6\uff1aM1 / 7 \u2014 TCP listener'; server.py leaves the core to the learner: 'TODO(\u4f60\u6765\u5199): \u91cc\u7a0b\u7891 1 \u7684\u6838\u5fc3 a) client_socket.recv(1024)\u2026 b) client_socket.sendall(RESPONSE)\u2026 c) client_socket.close()' and '\u4f60\u63a5\u4e0b\u6765\u5199\uff08server.py \u7684 TODO \u5904\uff0c\u7ea6 3 \u884c\uff09'; TASKS.md stages M1\u2013M7 with '\u901a\u8fc7\u4e00\u4e2a\u518d\u8fdb\u4e0b\u4e00\u4e2a'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete checkpoint and expected behaviour: 'python3 server.py # \u7ec8\u7aef 1 / curl -v localhost:8080 # \u7ec8\u7aef 2' with '\u9884\u671f\uff1aHTTP/1.1 200 OK\uff0cbody \u4e3a Hello, World!\uff1b\u670d\u52a1\u5668\u7ec8\u7aef\u6253\u5370 Connection from ...'"
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Mapped to exact tutorial skill: 'Exact match found: web-server-http \u2014 \u7528 Python \u4ece\u96f6\u6784\u5efa\u57fa\u7840 HTTP Server (Jo\u00e3o Ventura's article)' with link http://joaoventura.net/blog/2017/python-webserver/; milestones mirror the tutorial's stages and concepts \u2014 M1 'socket\u3001bind/listen/accept\u3001\u5b57\u8282\u6d41\u3001HTTP \u54cd\u5e94\u7684\u6700\u5c0f\u5f62\u6001\uff08\u72b6\u6001\u884c + \u5934 + \\r\\n\\r\\n + body\uff09', M2 'Content-Length \u51b3\u5b9a\u8bfb\u591a\u5c11 body\u3001CRLF', M3 'MIME \u7c7b\u578b\u6620\u5c04\u3001\u8def\u5f84\u5b89\u5168\uff08\u62d2\u7edd .. \u76ee\u5f55\u7a7f\u8d8a\uff09'; stdlib-only server.py matches the tutorial's approach"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "All 8 shell commands are reads or writes inside the project: 'mkdir -p my-http-server/scratch my-http-server/www && touch my-http-server/tests/__init__.py'; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere; README states '\u96f6\u7b2c\u4e09\u65b9\u4f9d\u8d56\uff0c\u96f6 pip \u5b89\u88c5' and '\u53ea\u7528\u6807\u51c6\u5e93\uff1b\u9700\u8981\u88c5\u4e1c\u897f\u65f6\u5148\u505c\u4e0b\u6765\u8ba8\u8bba'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 733.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a staged milestone plan (M0\u2013M5 + S1/S2 table), with a coaching loop: \u300c\u6982\u5ff5\u8bb2\u89e3(3-6\u53e5) \u2192 \u7ed9\u9aa8\u67b6 \u2192 \u6211\u81ea\u5df1\u5199\u6838\u5fc3 \u2192 \u8dd1\u9a8c\u6536\u547d\u4ee4 \u2192 \u6309\u771f\u5b9e\u8f93\u51fa\u8c03\u8bd5 \u2192 2-3\u53e5\u590d\u76d8\u300d and \u300c\u6211\u6ca1\u5c1d\u8bd5\u4e4b\u524d\uff0c\u6838\u5fc3\u4ee3\u7801\u7531\u6211\u5199\uff1b\u6211\u660e\u786e\u6c42\u52a9\u65f6\u624d\u7ed9\u5f53\u524d\u4efb\u52a1\u7684\u5b8c\u6574\u4ee3\u7801\u300d. No complete server implementation was written \u2014 only skeleton snippets (e.g. the fixed response header snippet) plus acceptance commands per milestone."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with a runnable checkpoint: \u300c\u9a8c\u6536: head -40 python-webserver-tasks.md \u2026 \u671f\u671b\u8f93\u51fa\uff1a\u6807\u9898\u3001\u539f\u6587\u65b0\u94fe\u63a5\u3001gist \u94fe\u63a5\u548c\u5f00\u573a\u767d\u6a21\u677f\u300d. Each milestone also ends with concrete commands and expected output, e.g. M0 \u300cpython3 --version # \u8f93\u51fa Python 3.x\u300d."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match the article's actual stages: M1 \u300cHTTP \u5c31\u662f\u6587\u672c\u300dreproduces the article's own POST demo (Content-Length: 21, name=John&surname=Doe), M2 socket \u76d1\u542c+\u56fa\u5b9a\u54cd\u5e94, M3 index.html, M4 \u89e3\u6790\u8bf7\u6c42\u884c, M5 404 \u2014 matching the fetched article.txt (\u300cHTTP is just text\u300d, GET/POST examples). Uses tutorial-specific artifacts: htdocs/ with index.html and ipsum.html, Python 3 socket stdlib only, the author's real gist link and the verified zip URL (HTTP 200 check in shell log)."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run and the task list correctly says \u300c\u4e0d\u4ee3\u66ff\u6211\u8fd0\u884c pip/apt/brew \u7b49\u5b89\u88c5\u547d\u4ee4\u300d. But the agent ran: curl -sL --max-time 25 \"https://web.archive.org/web/2017id_/\u2026\" -o /tmp/article.html \u2014 writing outside the project dir (/tmp), which violates the workspace-only rule."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 359.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged M0-M6 roadmap delivered (README.md: '### M0 \u00b7 \u9aa8\u67b6\u4e0e TCP \u76d1\u542c\uff08\u5df2\u5b8c\u6210\uff0c\u968f\u9aa8\u67b6\u4ea4\u4ed8\uff09' through '### M6 \u00b7 \u6536\u5c3e\uff1akeep-alive\u3001HEAD \u4e0e\u538b\u6d4b'), and only the first milestone M0 is implemented; later milestones are left as learner TODOs: tcp.py 'TODO(M1): \u5148 conn.recv(4096) \u8bfb\u51fa\u8bf7\u6c42\uff0c\u628a\u6536\u5230\u7684\u5b57\u8282\u539f\u6837 sendall \u56de\u53bb\uff0c\u66ff\u6362\u4e0b\u9762\u7684\u786c\u7f16\u7801\u54cd\u5e94' and 'TODO(M5): \u8fd9\u91cc\u662f\u5355\u7ebf\u7a0b\u4e32\u884c\u5904\u7406\u2026\u5e76\u53d1\u91cc\u7a0b\u7891\u5c31\u662f\u6539\u9020\u8fd9\u4e2a\u5faa\u73af'. Final answer hands M1 to the learner: '\u73b0\u5728\u5c31\u53ef\u4ee5\u5f00\u59cb M1\uff1a\u2026\u628a handle_connection \u6539\u6210 echo'. No http.py/router.py exist yet."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete runnable checkpoint: '\u8fd0\u884c `python3 -m server`\uff0c\u7136\u540e\u628a `server/tcp.py:20` \u7684 `handle_connection` \u6539\u6210 echo \u2014\u2014 \u7528 `conn.recv(4096)` \u8bfb\u51fa\u8bf7\u6c42\u5b57\u8282\u5e76\u539f\u6837\u56de\u663e\uff0c\u6539\u5b8c\u8dd1 `python3 -m unittest discover -s tests -v` \u9a8c\u8bc1'; README quick start gives 'curl -v http://127.0.0.1:8080/' with expected '\u8fd4\u56de 200 \u548c `Hello, World!`'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones are tutorial-specific, not generic: socket lifecycle 'socket \u2192 bind \u2192 listen \u2192 accept \u2192 recv/send \u2192 close', '\\r\\n\\r\n' header delimiting, 'recv(n) \u7684 n \u662f\u4e0a\u9650\u800c\u975e\u4fdd\u8bc1\u3001TCP \u7c98\u5305/\u62c6\u5305', parse_request \u2192 Request \u5bf9\u8c61 with 400, path traversal '(/../) \u4e0e\u9632\u5fa1', status codes 400/404/405/500, keep-alive/HEAD with acceptance 'Re-using existing connection', 'ab -n 1000 -c 10' load test \u2014 all in Python stdlib socket, matching the build-your-own HTTP server stages."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Only 2 shell commands ran: 'lsof -ti :8080 | xargs kill 2>/dev/null; \u2026' and 'sleep 1; lsof -ti :8080 && echo \u2026' \u2014 no install commands (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install). All 13 files written are inside the project dir (README.md, pyproject.toml, server/*, static/index.html, tests/test_smoke.py); no writes outside the workspace evidenced."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 850.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a staged plan, not an implementation: TASKS.md defines T1\u2013T6 each with \u76ee\u6807/\u6b65\u9aa4/\u9a8c\u6536 checkboxes ('## T1 \u2014 \u7528\u539f\u59cb\u6587\u672c\u4f53\u9a8c HTTP \u534f\u8bae \u2026 **\u9a8c\u6536**: - [ ] \u80fd\u8bf4\u51fa\u8bf7\u6c42\u7684\u4e09\u6bb5\u7ed3\u6784\u2026'); T2 only describes components to write ('AF_INET + SOCK_STREAM\u3001SO_REUSEADDR\u3001bind\u3001listen(1)\u2026') and T4 gives a 2-line hint; the only full server.py was throwaway verification in /tmp/ws2, deleted before finishing."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Each milestone ends in a concrete command with expected output: T2 \u9a8c\u6536 '`curl -si http://localhost:8000/` \u9996\u884c\u8f93\u51fa `HTTP/1.0 200 OK`\uff0cbody \u4e3a `Hello World`'; T1 \u9a8c\u6536 '\u76d1\u542c\u7aef\u80fd\u770b\u5230 `GET / HTTP/1.0` \u6587\u672c'; T5/T6 give 404 and attack-reproduction commands with expected behaviour."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the tutorial's actual 5 stages: 'T1 \u7528 nc \u672c\u673a\u6536\u53d1\u539f\u59cb HTTP \u6587\u672c / T2 socket \u6700\u5c0f\u670d\u52a1\u5668\uff0c\u8fd4\u56de Hello World / T3 \u8fd4\u56de htdocs/index.html / T4 \u89e3\u6790\u8bf7\u6c42\u8def\u5f84 / T5 FileNotFoundError \u2192 404', citing its real sections ('Sending HTTP responses using sockets', 'Index.html', 'Return other pages') and concepts (AF_INET/SOCK_STREAM/SO_REUSEADDR/listen(1)/recv(1024), POST Content-Length); T6 is an explicitly-labelled extra ('\u5916\u52a0\u4e00\u4e2a\u8fdb\u9636\u4efb\u52a1')."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands appear, but multiple commands wrote outside the project dir: 'curl -sL -o /tmp/webserver.html', 'mkdir -p /tmp/ws-test/htdocs && cd /tmp/ws-test && cat > server.py', 'mkdir -p /tmp/ws2/htdocs \u2026 python3 server.py', '/tmp/resp_payload.txt \u2026 /tmp/req.txt \u2026 /tmp/resp.txt'."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 509.85,
+        "stddev": 316.8545,
+        "min": 285.8,
+        "max": 733.9
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 604.75,
+        "stddev": 347.4016,
+        "min": 359.1,
+        "max": 850.4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "-94.9",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

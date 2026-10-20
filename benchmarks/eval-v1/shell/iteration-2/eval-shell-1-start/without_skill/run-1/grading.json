@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the REPL milestone with TODOs and does not deliver pipes/redirection code yet",
+   "passed": true,
+   "evidence": "shell.c implements only the first milestone: REPL loop (printf \"msh> \"/getline/strtok), fork+execvp+waitpid, builtins cd/exit — no pipe/redirection code anywhere in the source. Future work is deferred, not delivered: '这一步跑通后，自然的下一步是：管道 |、重定向 > <、& 后台执行、信号处理…想继续哪个告诉我即可'. This is the single current milestone the user asked for ('先做最基本的那一步'), not a multi-milestone dump."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Answer ends with a runnable checkpoint: '运行方式：`./msh`，然后可以试 `ls -l`、`echo hi`、`cd /tmp` 等' — concrete command plus the behaviour to verify (prompt appears and those commands execute; cd/exit/EOF behaviour described: 'Ctrl+D（EOF）也能干净退出'). Agent also reports its own verification: '编译零警告，测试全部符合预期（最后 ls 报错恰好证明 cd / 生效了）'."
+  },
+  {
+   "text": "B3: Mentions reading a line, tokenizing it and exiting cleanly on EOF (Ctrl-D) / `exit`",
+   "passed": true,
+   "evidence": "Reading a line: '`getline` 读行'; tokenizing: '`strtok` 按空白分词'; clean exit on EOF/exit: 'Ctrl+D（EOF）也能干净退出' and builtin `exit`; code confirms: 'if (getline(&line, &cap, stdin) == -1) { … break; }' and 'if (strcmp(args[0], \"exit\") == 0) break;'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only two commands run: 'cc -Wall -Wextra -g -o msh shell.c && echo BUILD_OK' and 'printf … | ./msh' — no install commands (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install). Files written (shell.c, msh, msh.dSYM/*) are all inside the project dir; no paths outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 84.9
+ },
+ "install_like_cmds": []
+}

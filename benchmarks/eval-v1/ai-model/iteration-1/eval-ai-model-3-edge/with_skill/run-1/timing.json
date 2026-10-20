@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-091350-684605",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/ai-model/iteration-1/eval-ai-model-3-edge/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 102.4,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

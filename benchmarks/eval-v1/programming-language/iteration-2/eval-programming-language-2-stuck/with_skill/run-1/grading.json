@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint rather than rewriting the whole parser",
+   "passed": true,
+   "evidence": "Diagnosis: 'a flat left-to-right loop has one precedence level, so every operator binds equally and 1 + 2 * 3 groups as (1 + 2) * 3'. Minimal fix scoped to the current milestone: 'Your current code is parse_expr with the parse_term body inlined into it; the only change is extracting the * / loop into its own function and having + - call it for the right operand' — a ~15-line tier split, not a multi-milestone or whole-parser rewrite."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with '**How to check it:** run your parser on these four inputs:' with concrete expected outputs: '1 + 2 * 3 → 7', '(1 + 2) * 3 → 9', '2 * 3 + 4 → 10', '8 - 3 - 2 → 3 (left-associative within a tier)', plus a failure diagnostic: 'If 8 - 3 - 2 gives 7, your tier-1 loop is building the tree right-associatively'."
+  },
+  {
+   "text": "B3: Explains operator precedence and fixes it via precedence climbing/Pratt parsing or separate grammar levels (term/factor)",
+   "passed": true,
+   "evidence": "Explains precedence via separate grammar levels: 'Precedence comes from layering the grammar: each tier parses only its own operators and delegates its operands to the next-higher tier', implemented as parse_expr (+ -) / parse_term (* /) / parse_factor tiers; also notes 'at 4+ tiers, switch to precedence climbing / Pratt parsing'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only tool calls are two reads and one grep confined to '.agents/skills/build-your-own-x/skills/programming-language/...' — no install commands and nothing written outside the project."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 133.7
+ },
+ "install_like_cmds": []
+}

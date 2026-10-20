@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (TCP server / PING or RESP basics) with TODOs, without delivering the full server with expiry and persistence",
+   "passed": false,
+   "evidence": "User asked '带我开始' (help me get started) but agent dumped a complete implementation: FILES WRITTEN (11) include full 'mini_redis/resp.py (5305 chars)', 'mini_redis/server.py (3953 chars)' with GET/SET/PING dispatch, 'mini_redis/store.py', full suite 'tests/test_server.py (5298 chars)' and README; shell ran 'python3 -m unittest discover -s tests -v'. No TODOs scaffolded for the learner — a finished multi-milestone build (protocol+server+store+tests+docs), failing coaches-not-dumps."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Captured AGENT FINAL ANSWER ends mid-sentence ('Need a reply parser in tests — that') with no closing runnable command or expected output. README contains 'python3 -m mini_redis.server --port 6379' and 'python3 -m unittest discover -s tests', but no evidence the answer itself ended with a checkpoint plus expected output/behaviour."
+  },
+  {
+   "text": "B3: Mentions the RESP protocol framing (e.g. *<n>\\r\\n$<len>\\r\\n...) or an equivalent explicit wire format for commands",
+   "passed": true,
+   "evidence": "Explicit RESP framing in answer: 'Client → server: arrays of bulk strings: *2\\r\\n$3\\r\\nGET\\r\\n$3\\r\\nfoo\\r\\n' and reply types 'Simple string: +OK\\r\\n', 'Bulk string: $3\\r\\nbar\\r\\n or $-1\\r\\n for nil'; README also shows '*3\\r\\n$3\\r\\nSET\\r\\n$8\\r\\ngreeting\\r\\n$11\\r\\nhello world\\r\\n'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands run, but shell commands wrote outside the project dir: 'echo $! > /tmp/mini_redis.pid', 'nohup python3 -m mini_redis.server --port 6398 >/tmp/mr.log 2>&1 & echo $! > /tmp/mr.pid', 'kill $(cat /tmp/mr.pid); rm -f /tmp/...', 'cat /tmp/mr.log' — /tmp is outside the project directory."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 528.5
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only the M0 skeleton was implemented: Loxy.java's run() is a stub printing '[loxy] 尚未实现词法扫描' with 'TODO(M1): Scanner scanner = new Scanner(source);' etc., and the agent removed the premature Interpreter field ('按最小骨架原则，先移除该字段，留 TODO'). M1 is assigned to the learner: '**你来做**（书 Ch 4...）：1. TokenType.java ... 3. Scanner.java — scanTokens() 主循环'; Token/Scanner/Parser files were never written by the agent (only 6 files: README, PROGRESS, run.sh, Loxy.java, smoke.lox, compiled .class)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete checkpoints and expected output: 'printf 'var a = 1;\\n' | ./run.sh # 期望：VAR var null 1 / IDENTIFIER a null 1 / NUMBER 1 1.0 1 ...' and 'printf 'var a = \"unterminated;\\n' | ./run.sh # 期望：[line 1] Error: Unterminated string.', plus verified M0 results ('./run.sh a b` 输出 `Usage: jlox [script]` 退出码 64') and '写完贴出你的 token 输出或卡住的代码'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (programming-language-crafting-interpreters): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones map to the book's real chapters: M1 Scanner Ch 4, M2 Parser→AST Ch 5-6, M3 求值 Ch 7, M4 语句/作用域 Ch 8,11, M5 控制流/函数 Ch 9-10, stretch '字节码 VM（clox，C）Part II'. Concepts are book-specific: maximal munch ('`!`/`=` 这类要看下一个字符决定是 `!=` 还是 `!`，即 maximal munch'), scanTokens() dispatch, '扫描器自身只报错不中断', AstPrinter S-expression '(+ 1 (* 2 3))', book exit codes 64/65/70, fib(20)=6765, closure counter; agent read the crafting-interpreters skill and tutorial-map.md."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 11 shell commands are read-only or in-project (ls, which, java -version, chmod +x jlox/run.sh, ./run.sh smoke tests, date, sed -i on jlox/PROGRESS.md); no brew/apt/pip/install command was executed — JDK was only detected at /opt/homebrew/opt/openjdk@21. All 6 written files are under jlox/ in the workspace; run.sh only tells the learner to install ('error: 找不到 JDK。请先安装，例如：brew install openjdk@21')."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 621.7
+ },
+ "install_like_cmds": []
+}

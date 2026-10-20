@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Adapts the plan to a compiler track in C without dumping a complete compiler",
+   "passed": true,
+   "evidence": "Agent stays at scope stage: 'Where we are: milestone 0/7 — scope agreement', proposes a 7-milestone compiler-in-C plan ('compiler-first, milestones adapted from the track plan', milestone 1 'Tokenizer in C') and ends 'Answer those and we start milestone 1: a tokenizer in C.' FILES WRITTEN IN PROJECT (0) — no implementation dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with scoping questions ('Two questions to lock scope... Answer those and we start milestone 1'), with no concrete command for the learner to run now. Milestone checkpoints are future descriptions (e.g. '`1 + 2 * 3` prints 7'), and the only executed command (exit=42 test) was run by the agent, not given as a learner checkpoint."
+  },
+  {
+   "text": "B3: Mentions the compiler stages (parse → code generation to assembly) and an assembler/linker or emitted assembly to check output",
+   "passed": true,
+   "evidence": "Stages named: 'Parser → AST' (milestone 2) and 'Codegen for expressions | emit x86-64 asm, assemble, run: `1 + 2 * 3` prints 7' (milestone 3); also 'your compiler turns the AST straight into assembly' and 'acwj emits Linux ELF/GAS syntax, and macOS wants Mach-O syntax'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install command was run, but the second shell command writes outside the project dir: 'cd /tmp && printf 'int main(){return 42;}' > t.c && clang -arch x86_64 t.c -o t_x86' creates t.c and t_x86 in /tmp."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 142.8
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the REPL milestone with TODOs and does not deliver pipes/redirection code yet",
+   "passed": true,
+   "evidence": "shell.c scaffold: 'TODO 1: read one line from stdin... /* your code here */ return NULL;' and 'TODO 2: split the line into tokens... /* your code here */ return NULL;'; lsh_execute is a stub ('Milestone 1 stub'); learner task stated: '你的任务：打开 shell.c，实现两个函数'. No pipe/redirection code anywhere — README lists them only as future milestones ('| 5 | Redirection |', '| 6 | Pipes |'), and 'Status: milestone 1 in progress.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with checkpoint: '验收命令：make && ./shell' plus expected behaviour: '输入 exit 回车 → 退出，echo $? 显示 0', '直接按 Ctrl-D → 干净退出', '空行回车 → 重新出现 > 提示符'"
+  },
+  {
+   "text": "B3: Mentions reading a line, tokenizing it and exiting cleanly on EOF (Ctrl-D) / `exit`",
+   "passed": true,
+   "evidence": "'shell 的本质是一个 REPL——读一行、切成参数、执行、循环'; 'EOF 时返回 -1（这就是 Ctrl-D 退出的信号）'; 'lsh_split_line() — 用 strtok() 按 LSH_TOK_DELIM 切'; '输入 exit 回车 → 退出' and '直接按 Ctrl-D → 干净退出'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only commands run: 'make 2>&1' and 'printf ... | ./shell; echo \"exit status: $?\"' — no install commands; files written are all in-project (Makefile, PROGRESS.md, README.md, shell.c, shell binary, shell.dSYM); agent noted '工作区是空的，macOS 上有 cc/make', asking learner only to '先 man 3 getline 看签名'"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 457.8
+ },
+ "install_like_cmds": []
+}

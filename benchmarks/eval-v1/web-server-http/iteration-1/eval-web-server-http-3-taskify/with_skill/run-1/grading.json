@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "TASKS.md is a staged plan, not an implementation: 6 milestones M0–M5 with `- [ ]` checkboxes, no httpserver.py code written ('httpserver.py # 服务器，M1 起逐步实现'); protocol states '让学习者亲手写核心代码' and '除非学习者已尝试并明确要求，否则不给出当前里程碑的完整代码；绝不提前给出后续里程碑的代码。作者 gist 仅在全部里程碑完成后作为对照'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Each milestone has a concrete acceptance command + expected output: M1 '`curl` 收到 200 + Hello World，服务端打印原始请求', M3 '`GET /ipsum.html` 返回 ipsum 页面', M4 '不存在的路径返回 404，服务器不崩溃'; plus '验收命令必须真实执行，以实际输出为准'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones map to the tutorial's actual sections: '引言、\"HTTP is just text\"', '\"Sending HTTP responses using sockets\"', '\"Index.html\"', '\"Return other pages\"', '\"404 - Not found\"'; tutorial-specific details included: socket-only stdlib, htdocs/index.html/ipsum.html, hardcoded 'HTTP/1.0 200 OK', '\\n' vs '\\r\\n' response endings, FileNotFoundError→404, pitfalls 'Address already in use'、favicon 二次请求、空请求导致 IndexError"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run and TASKS.md correctly says '只用 Python 标准库（socket），不安装任何依赖。需要安装工具时只打印命令，由学习者自己执行', but the agent wrote outside the project dir: 'curl -sL https://joaoventura.net/articles/2017/python-webserver/ -o /tmp/article.html' and later 'cp /tmp/article.md ./.tmp_article.md' — files written to /tmp, outside the project directory"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 535.9
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds createElement/render milestone with TODOs; not the full reconciler + hooks",
+   "passed": true,
+   "evidence": "Final answer: '**Where we are:** milestone 1/6 — `createElement`'; createElement.js contains 'TODO: implement createElement' with 'throw new Error(\"TODO: implement createElement\")' for the learner; PROGRESS.md shows milestones 2-6 'pending' with no render/reconciler/hooks code written — only the milestone-1 scaffold (createElement.js skeleton + tests) exists."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer gives concrete command 'cd tiny-react && node --test' with expected behaviour: 'Currently 0/3 pass (all fail with `TODO: implement createElement`). You're done when it prints `pass 3`'; agent verified it by running 'cd tiny-react && node --test 2>&1 | grep -E \"^ℹ (tests|pass|fail)\"'."
+  },
+  {
+   "text": "B3: Explains that JSX compiles to createElement(type, props, ...children) calls / plain objects",
+   "passed": true,
+   "evidence": "'JSX is sugar. `<div id=\"a\">hi</div>` compiles to a function call `createElement(\"div\", { id: \"a\" }, \"hi\")`, and that call's whole job is to return a plain JS object describing the node — type, props, children.' plus TEXT_ELEMENT wrapping explanation."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 5 shell commands are read-only or in-project test runs ('ls -d .agents/...', 'node --version; npm --version; ls', 'cd tiny-react && node --test ...'); no brew/apt/pip/npm -g/install commands; all 4 files written under tiny-react/ (PROGRESS.md, index.html, src/createElement.js, src/createElement.test.js) inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 607.0
+ },
+ "install_like_cmds": []
+}

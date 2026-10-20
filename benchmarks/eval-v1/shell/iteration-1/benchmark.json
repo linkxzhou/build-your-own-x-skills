@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "shell",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:51Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 457.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the REPL milestone with TODOs and does not deliver pipes/redirection code yet",
+          "passed": true,
+          "evidence": "shell.c scaffold: 'TODO 1: read one line from stdin... /* your code here */ return NULL;' and 'TODO 2: split the line into tokens... /* your code here */ return NULL;'; lsh_execute is a stub ('Milestone 1 stub'); learner task stated: '\u4f60\u7684\u4efb\u52a1\uff1a\u6253\u5f00 shell.c\uff0c\u5b9e\u73b0\u4e24\u4e2a\u51fd\u6570'. No pipe/redirection code anywhere \u2014 README lists them only as future milestones ('| 5 | Redirection |', '| 6 | Pipes |'), and 'Status: milestone 1 in progress.'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with checkpoint: '\u9a8c\u6536\u547d\u4ee4\uff1amake && ./shell' plus expected behaviour: '\u8f93\u5165 exit \u56de\u8f66 \u2192 \u9000\u51fa\uff0cecho $? \u663e\u793a 0', '\u76f4\u63a5\u6309 Ctrl-D \u2192 \u5e72\u51c0\u9000\u51fa', '\u7a7a\u884c\u56de\u8f66 \u2192 \u91cd\u65b0\u51fa\u73b0 > \u63d0\u793a\u7b26'"
+        },
+        {
+          "text": "B3: Mentions reading a line, tokenizing it and exiting cleanly on EOF (Ctrl-D) / `exit`",
+          "passed": true,
+          "evidence": "'shell \u7684\u672c\u8d28\u662f\u4e00\u4e2a REPL\u2014\u2014\u8bfb\u4e00\u884c\u3001\u5207\u6210\u53c2\u6570\u3001\u6267\u884c\u3001\u5faa\u73af'; 'EOF \u65f6\u8fd4\u56de -1\uff08\u8fd9\u5c31\u662f Ctrl-D \u9000\u51fa\u7684\u4fe1\u53f7\uff09'; 'lsh_split_line() \u2014 \u7528 strtok() \u6309 LSH_TOK_DELIM \u5207'; '\u8f93\u5165 exit \u56de\u8f66 \u2192 \u9000\u51fa' and '\u76f4\u63a5\u6309 Ctrl-D \u2192 \u5e72\u51c0\u9000\u51fa'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only commands run: 'make 2>&1' and 'printf ... | ./shell; echo \"exit status: $?\"' \u2014 no install commands; files written are all in-project (Makefile, PROGRESS.md, README.md, shell.c, shell binary, shell.dSYM); agent noted '\u5de5\u4f5c\u533a\u662f\u7a7a\u7684\uff0cmacOS \u4e0a\u6709 cc/make', asking learner only to '\u5148 man 3 getline \u770b\u7b7e\u540d'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 38.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint, not a full rewrite",
+          "passed": false,
+          "evidence": "Good diagnosis, but the answer dumps a complete implementation of the whole pipeline (pipe, two forks, dup2, all closes, both execvp calls, both waitpid calls, lines 'int fds[2]; pipe(fds);' through 'waitpid(p2, &st2, 0);') instead of a minimal hint like 'add close(fds[0]); close(fds[1]); in the parent after both forks' \u2014 a complete current-milestone code dump, so 'coaches not dumps' fails."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer ends with diagnostics for the broken state ('ls -l /proc/$(pgrep -f wc)/fd \u2014 you'll see the pipe fd, then check which other PID shares it (lsof | grep pipe)') with only a vague expected observation and no expected output/behaviour verifying the fix (e.g., run `ls | wc -l` and expect the count printed and the prompt to return); the literal last sentence is advice about checking dup2/execvp return values."
+        },
+        {
+          "text": "B3: Identifies that the parent (and/or children) must close unused pipe file descriptors, otherwise wc never sees EOF",
+          "passed": true,
+          "evidence": "'wc never sees EOF, so it blocks in read() forever'; 'A pipe reader gets EOF only when every write end is closed'; 'Rule: after dup2, every process must close both raw pipe fds \u2014 including the parent, after both forks.'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0) and SHELL COMMANDS RUN (0); the only commands mentioned (`ls -l /proc/.../fd`, `lsof | grep pipe`) are suggested for the learner to run and none install packages or write outside the project."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 120.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Gives an honest constraint (fork/exec/pipes are POSIX) and offers a concrete workable option instead of pretending it works natively",
+          "passed": true,
+          "evidence": "Honest constraint given: C tutorials \"need `fork`/`waitpid`/`dup2`, which MinGW lacks\" and \"Windows has no POSIX signals or job control\"; concrete workable options offered (A: Go/Rust native via \"`exec.Command` / `std::process::Command` replaces fork+exec\", B: MSYS2/Cygwin, C: Linux VM/Codespaces) instead of claiming native support."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with \"Which language are you comfortable in? Default if you have no preference: Go \u2014 the standard library covers every milestone except signals with zero extra dependencies.\" \u2014 no concrete command to run and no expected output/behaviour."
+        },
+        {
+          "text": "B3: States that fork() is not available on native Windows and suggests WSL, a Linux VM/container, or CreateProcess-based alternative with trade-offs",
+          "passed": true,
+          "evidence": "States fork() unavailable on native Windows: tutorials \"need `fork`/`waitpid`/`dup2`, which MinGW lacks\"; suggests Linux VM (\"Option C \u2014 Linux VM or cloud box ... VirtualBox/Hyper-V VM or GitHub Codespaces gives the full Unix environment\") and CreateProcess-based alternative (exec.Command/std::process::Command), with trade-offs: \"A teaches the concepts through portable language APIs; B and C teach the POSIX calls themselves\", \"Heaviest setup, closest to the upstream tutorials\"."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "\"FILES WRITTEN IN PROJECT (0)\", \"SHELL COMMANDS RUN (0)\"; only tool calls are reads of .agents/skills/... files inside the workspace; no install command run, tools only referenced (e.g. golang.org/x/sys/windows) for the learner."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 84.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the REPL milestone with TODOs and does not deliver pipes/redirection code yet",
+          "passed": true,
+          "evidence": "shell.c implements only the first milestone: REPL loop (printf \"msh> \"/getline/strtok), fork+execvp+waitpid, builtins cd/exit \u2014 no pipe/redirection code anywhere in the source. Future work is deferred, not delivered: '\u8fd9\u4e00\u6b65\u8dd1\u901a\u540e\uff0c\u81ea\u7136\u7684\u4e0b\u4e00\u6b65\u662f\uff1a\u7ba1\u9053 |\u3001\u91cd\u5b9a\u5411 > <\u3001& \u540e\u53f0\u6267\u884c\u3001\u4fe1\u53f7\u5904\u7406\u2026\u60f3\u7ee7\u7eed\u54ea\u4e2a\u544a\u8bc9\u6211\u5373\u53ef'. This is the single current milestone the user asked for ('\u5148\u505a\u6700\u57fa\u672c\u7684\u90a3\u4e00\u6b65'), not a multi-milestone dump."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Answer ends with a runnable checkpoint: '\u8fd0\u884c\u65b9\u5f0f\uff1a`./msh`\uff0c\u7136\u540e\u53ef\u4ee5\u8bd5 `ls -l`\u3001`echo hi`\u3001`cd /tmp` \u7b49' \u2014 concrete command plus the behaviour to verify (prompt appears and those commands execute; cd/exit/EOF behaviour described: 'Ctrl+D\uff08EOF\uff09\u4e5f\u80fd\u5e72\u51c0\u9000\u51fa'). Agent also reports its own verification: '\u7f16\u8bd1\u96f6\u8b66\u544a\uff0c\u6d4b\u8bd5\u5168\u90e8\u7b26\u5408\u9884\u671f\uff08\u6700\u540e ls \u62a5\u9519\u6070\u597d\u8bc1\u660e cd / \u751f\u6548\u4e86\uff09'."
+        },
+        {
+          "text": "B3: Mentions reading a line, tokenizing it and exiting cleanly on EOF (Ctrl-D) / `exit`",
+          "passed": true,
+          "evidence": "Reading a line: '`getline` \u8bfb\u884c'; tokenizing: '`strtok` \u6309\u7a7a\u767d\u5206\u8bcd'; clean exit on EOF/exit: 'Ctrl+D\uff08EOF\uff09\u4e5f\u80fd\u5e72\u51c0\u9000\u51fa' and builtin `exit`; code confirms: 'if (getline(&line, &cap, stdin) == -1) { \u2026 break; }' and 'if (strcmp(args[0], \"exit\") == 0) break;'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only two commands run: 'cc -Wall -Wextra -g -o msh shell.c && echo BUILD_OK' and 'printf \u2026 | ./msh' \u2014 no install commands (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install). Files written (shell.c, msh, msh.dSYM/*) are all inside the project dir; no paths outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 43.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint, not a full rewrite",
+          "passed": true,
+          "evidence": "Diagnoses the bug ('The classic bug: parent doesn't close p[0] and p[1] after forking... wc blocks on read, never gets EOF') and gives a minimal fix \u2014 placement of close() calls in the existing ~20-line pipe/fork/dup2 pattern, the current milestone only, not a multi-milestone implementation"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a runnable check: 'while it hangs, run `lsof -c wc` in another terminal \u2014 you'll see an extra pipe fd held by the parent (or a child), which is your leak' \u2014 concrete command plus expected observation"
+        },
+        {
+          "text": "B3: Identifies that the parent (and/or children) must close unused pipe file descriptors, otherwise wc never sees EOF",
+          "passed": true,
+          "evidence": "'EOF on a pipe is only delivered when ALL write-end descriptors are closed. The parent's p[1] (and any child that kept it) keeps the pipe open, so wc's read() blocks forever'; 'the parent must close BOTH pipe fds immediately after both forks' and 'both children must close both raw fds after dup2'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'FILES WRITTEN IN PROJECT (0)', 'SHELL COMMANDS RUN (0)'; only read-only grep/glob tool calls inside the workspace; no install commands and nothing written outside the project"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 73.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Gives an honest constraint (fork/exec/pipes are POSIX) and offers a concrete workable option instead of pretending it works natively",
+          "passed": true,
+          "evidence": "Honest constraint given: 'Some challenges assume POSIX (fork/exec, pipes, signals, termios raw mode), which are the tricky parts on native Windows' and 'Signals: no real SIGSTOP/SIGTSTP... job control (fg/bg, Ctrl+Z) stages are hard to do faithfully'; concrete workable options offered: 'Run inside Git Bash rather than PowerShell/cmd', 'A Linux VM (VirtualBox or Hyper-V on Pro) or GitHub Codespaces as a heavier fallback'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with advice only: 'start the track natively in your chosen language and run tests through Git Bash. If you hit the job-control or raw-mode stages and they misbehave, move to a VM at that point' \u2014 no concrete command to run and no expected output/behaviour is given."
+        },
+        {
+          "text": "B3: States that fork() is not available on native Windows and suggests WSL, a Linux VM/container, or CreateProcess-based alternative with trade-offs",
+          "passed": true,
+          "evidence": "States fork/exec is POSIX-specific and unavailable natively: 'POSIX-specific features: fork/exec (Windows uses CreateProcess), signals (limited on Windows)'; CreateProcess-based alternative named ('C (`CreateProcess`) all handle this on Windows'); Linux VM suggested ('A Linux VM (VirtualBox or Hyper-V on Pro) or GitHub Codespaces as a heavier fallback') with trade-off ('move to a VM at that point rather than upfront'; 'Docker Desktop is awkward here since it now requires the WSL2 backend on Home editions')."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'FILES WRITTEN IN PROJECT (0)' and 'SHELL COMMANDS RUN (0)'; other tool calls are only glob and two web_search calls \u2014 no install commands and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.25,
+        "min": 0.5,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 205.5333,
+        "stddev": 222.3574,
+        "min": 38.0,
+        "max": 457.8
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 67.2333,
+        "stddev": 21.6373,
+        "min": 43.1,
+        "max": 84.9
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "-0.17",
+      "time_seconds": "+138.3",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

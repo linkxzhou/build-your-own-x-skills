@@ -1,0 +1,92 @@
+{
+  "skill_name": "emulator-virtual-machine",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to write a CHIP-8 emulator. Which language, and what's milestone 1?",
+      "expected_output": "Scaffolds memory + ROM loading with TODOs; no full emulator; States CHIP-8 programs load at 0x200 and memory is 4 KB",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'emulator-virtual-machine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds memory + ROM loading with TODOs; no full emulator"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "States CHIP-8 programs load at 0x200 and memory is 4 KB"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我的 CHIP-8 模拟器跑 IBM logo 只出现乱码像素，绘制指令 DXYN 我用的是直接赋值像素。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains DXYN XORs sprite pixels onto the screen and sets VF on collision",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'emulator-virtual-machine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains DXYN XORs sprite pixels onto the screen and sets VF on collision"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Can I skip CHIP-8 and go straight to a Game Boy emulator?",
+      "expected_output": "Gives honest advice (CHIP-8 or LC-3 first, or a scoped GB plan) without dumping code; Mentions a concrete GB difficulty such as the PPU timing, MBC banking, or CPU test ROMs (blargg)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'emulator-virtual-machine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Gives honest advice (CHIP-8 or LC-3 first, or a scoped GB plan) without dumping code"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions a concrete GB difficulty such as the PPU timing, MBC banking, or CPU test ROMs (blargg)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

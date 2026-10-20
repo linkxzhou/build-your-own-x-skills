@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnosis: 'Your loop runs more iterations per second on the faster machine, so 5 px per iteration adds up to more pixels per second. At 60 fps that's 300 px/s; at 144 fps it's 720 px/s.' Minimal fix given: 'Fix: move based on elapsed time (delta time), not per iteration' with a short JS/pygame snippet."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'Created `delta-time-demo.html` — a self-contained, runnable demo (no dependencies, just open it in a browser). The player moves at 300 px/s using delta time, with an on-screen fps counter so you can verify the speed stays constant whether the loop runs at 30 or 144 fps.' — concrete run step plus expected behaviour."
+  },
+  {
+   "text": "B3: Recommends delta-time based movement or a fixed timestep",
+   "passed": true,
+   "evidence": "'Fix: move based on elapsed time (delta time), not per iteration. Define speed in pixels per second and multiply by the time since the last frame' — code shows `const dt = Math.min((now - last) / 1000, 0.1); ... player.x += 300 * dt;` and pygame `dt = clock.tick(60) / 1000`."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## SHELL COMMANDS RUN (0)'; only other tool calls are glob and a write of delta-time-demo.html, listed under 'FILES WRITTEN IN PROJECT (1)'. No install commands (brew/apt/pip/etc.) appear anywhere and nothing is written outside the project."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 63.9
+ },
+ "install_like_cmds": []
+}

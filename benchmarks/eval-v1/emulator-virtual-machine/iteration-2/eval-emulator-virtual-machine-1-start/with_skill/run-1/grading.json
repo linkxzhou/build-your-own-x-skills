@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds memory + ROM loading with TODOs; no full emulator",
+   "passed": true,
+   "evidence": "Gives a skeleton only: 'Skeleton (C; translates 1:1 to any language) — you write the bodies' with chip8.h declaring 'uint8_t mem[MEM_SIZE]; uint16_t pc;' and 'size_t chip8_load_rom(Chip8 *c, const char *path);' plus 'main.c: init, load argv[1], print pc and the first 16 bytes'. FILES WRITTEN IN PROJECT (0); no emulator implementation (no fetch/decode/execute, display, etc.) — explicitly 'I give the concept + skeleton (interface), not full implementation.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable check: '$ cc -o chip8 main.c chip8.c && ./chip8 ibm.ch8' with expected output 'PC=0x200 loaded=<n> / 00 e0 a2 2a 60 0c d0 14 ...' and verification criteria: '<n> must equal wc -c < ibm.ch8, and the hex dump must match xxd -g1 ibm.ch8 | head byte for byte'."
+  },
+  {
+   "text": "B3: States CHIP-8 programs load at 0x200 and memory is 4 KB",
+   "passed": true,
+   "evidence": "'a CHIP-8 machine is 4096 bytes of RAM' (= 4 KB) and 'ROMs load at address 0x200 because on the original hardware 0x000–0x1FF was occupied by the CHIP-8 interpreter itself'; reinforced by '#define MEM_SIZE 4096' and '#define ROM_START 0x200', and 'PC starts at 0x200'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run is 'ls -A'; other tool calls are read/glob of skill files. No install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) appear anywhere, and nothing is written outside the project dir (zero files written; ROM fetch 'I'll fetch it into the workspace when we start' is inside the workspace and deferred)."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 352.7
+ },
+ "install_like_cmds": []
+}

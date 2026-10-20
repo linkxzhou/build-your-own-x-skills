@@ -1,0 +1,43 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds createElement/render milestone with TODOs; not the full reconciler + hooks",
+   "passed": false,
+   "evidence": "Complete multi-milestone implementation, not a first-milestone scaffold with TODOs: FILES WRITTEN include src/mini-react/hooks.js (useState/useEffect), reconciler.js, and test/smoke.test.js covering 'mount → useState update → conditional render → useEffect'; README: 'A tiny React clone (~300 lines) built to understand how React actually works: JSX → virtual DOM → fibers → work loop → reconciliation → commit → hooks.' Final answer contains the full reconciler (performUnitOfWork/reconcileChildren/commitRoot) and useState code, with no TODOs."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "AGENT FINAL ANSWER ends mid-code-block at 'wipFiber.hooks.push(hook); hookIndex++;' with no closing checkpoint; no concrete 'run this command, expect this output' instruction appears at the end of the answer (run commands exist only inside README.md and the agent's own shell verification, not as an ending checkpoint to the learner)."
+  },
+  {
+   "text": "B3: Explains that JSX compiles to createElement(type, props, ...children) calls / plain objects",
+   "passed": true,
+   "evidence": "README: 'JSX compiles to `createElement(...)` calls, which return plain objects: the virtual DOM.' createElement.js comment: 'turns JSX into plain objects (\"virtual DOM\")... You never call this by hand; the JSX compiler does: <h1 className=\"title\">Count: {n}</h1>'; final answer: 'createElement — turns JSX into vdom objects { type, props }'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "SHELL COMMANDS RUN includes 'npm install --save-dev esbuild 2>&1 | tail -2 && npm run build...' — the agent ran an install command itself (installed the esbuild package; node_modules/esbuild + @esbuild/darwin-arm64 10MB binary appear in FILES WRITTEN) instead of asking the learner to install it."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 748.3
+ },
+ "install_like_cmds": [
+  "npm install --save-dev esbuild 2>&1 | tail -2 && npm run build 2>&1 | tail -5 && npm test"
+ ]
+}

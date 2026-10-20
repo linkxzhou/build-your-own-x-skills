@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains the security issue and a minimal fix",
+   "passed": true,
+   "evidence": "Explains the issue: 'Serving any user-supplied path is a path traversal (directory traversal) vulnerability — one of the most common ways a file server leaks the whole machine' and gives a minimal fix: 'The fix: resolve, then verify containment' with a short Python snippet using ROOT, resolve() and is_relative_to(ROOT)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with 'The same rule applies to any API that takes a filesystem path from untrusted input — uploads, downloads, template includes, ?file= parameters.' There is no concrete command to run and no expected output/behaviour anywhere in the answer."
+  },
+  {
+   "text": "B3: Identifies path traversal (../) and recommends normalizing and restricting to a root directory",
+   "passed": true,
+   "evidence": "Identifies traversal payloads 'GET /../../etc/passwd' and 'GET /%2e%2e/%2e%2e/etc/shadow'; recommends 'normalize `.`/`..` segments *and* resolve symlinks' and 'Define a fixed document root... Check the resolved path is still inside the root; reject otherwise.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Shell commands run: only 'ls -la'; other tool call: glob {\"pattern\": \"**/*\"}; files written in project: 0. No install commands and no writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 40.0
+ },
+ "install_like_cmds": []
+}

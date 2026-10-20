@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only 2 files written, both planning/coaching artifacts: TASKS.md (staged T0–T24 plan in 8 phases A–H with '- [ ]' checkboxes) and CLAUDE.md; no stepN.v implementation written. CLAUDE.md: '让学习者写核心: 状态机、ALU case、译码线、立即数拼接等核心逻辑由学习者完成；只有学习者主动要求或卡住时才给当前任务的完整代码' and '参考答案 stepN.v 只在学习者完成或明确要求对照时打开，用 diff 讲差异'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Agent's stated protocol: '4. End the reply with the first runnable checkpoint', todos completed. Deliverable contains concrete checkpoints with expected output: T0 '验证: cd $TUT && ./run.sh step1.v → 终端持续滚动 LEDS = xxxxx（5 位计数）。<Ctrl+C> 后输入 finish 退出'; T1 './run.sh my_step1.v → LEDS = 00000 起连续递增的二进制计数流'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the tutorial's actual stages and vocabulary: 'T7–T10 | Verilog 汇编器、跳转、分支、LUI/AUIPC | 38 条 RV32I 指令完成 28 条', 'T22–T24 | Flash 映射、从 Flash 执行、链接脚本进阶 | 4MB 代码空间，跑 pi/raytracer'; tutorial-specific mechanics: './run.sh my_stepN.v', 'module SOC(CLK, RESET, LEDS[4:0], RXD, TXD)', 'make ICESTICK.firmware_config', bench_iverilog/clockworks/riscv_assembly. Agent read the real 3702-line README via curl+sed and verified coverage: 'for i in $(seq 1 24); do grep -q \"Step $i\" TASKS.md'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Wrote outside the project dir: 'mkdir -p /tmp/femtorv && cd /tmp/femtorv && curl -sL ...README.md -o README.md', then ran ~25 more commands there; agent admits 'I did download to /tmp earlier which violated that rule' and cleanup failed ('rm -rf /tmp/femtorv' → permission denied, retried, then 'ls /tmp/femtorv 2>&1' to check). No install commands were run (learner is told 'brew install icarus-verilog verilator' / 'sudo apt-get install iverilog verilator'), but the out-of-project write fails B4 per rubric."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 661.5
+ },
+ "install_like_cmds": []
+}

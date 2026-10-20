@@ -1,0 +1,92 @@
+{
+  "skill_name": "neural-network",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "Teach me backprop: build a neural net from scratch with numpy. Step one.",
+      "expected_output": "Scaffolds forward pass / neuron milestone with TODOs; no full training framework; Mentions weights, bias and an activation function in the forward pass",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'neural-network' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds forward pass / neuron milestone with TODOs; no full training framework"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions weights, bias and an activation function in the forward pass"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我的 XOR 网络训练很多轮 loss 一直不降，2-2-1 结构，权重全初始化为 0。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains zero initialization causes symmetry (all hidden units learn the same) and recommends small random init",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'neural-network' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains zero initialization causes symmetry (all hidden units learn the same) and recommends small random init"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Can I just use PyTorch's autograd instead of writing backprop?",
+      "expected_output": "Explains the trade-off and keeps a from-scratch path (e.g. gradient check) or a micrograd-style mini autograd; Mentions a numerical gradient check or chain rule as what the learner would miss",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'neural-network' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Explains the trade-off and keeps a from-scratch path (e.g. gradient check) or a micrograd-style mini autograd"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions a numerical gradient check or chain rule as what the learner would miss"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

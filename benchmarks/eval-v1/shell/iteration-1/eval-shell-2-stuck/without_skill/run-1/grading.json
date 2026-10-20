@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint, not a full rewrite",
+   "passed": true,
+   "evidence": "Diagnoses the bug ('The classic bug: parent doesn't close p[0] and p[1] after forking... wc blocks on read, never gets EOF') and gives a minimal fix — placement of close() calls in the existing ~20-line pipe/fork/dup2 pattern, the current milestone only, not a multi-milestone implementation"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable check: 'while it hangs, run `lsof -c wc` in another terminal — you'll see an extra pipe fd held by the parent (or a child), which is your leak' — concrete command plus expected observation"
+  },
+  {
+   "text": "B3: Identifies that the parent (and/or children) must close unused pipe file descriptors, otherwise wc never sees EOF",
+   "passed": true,
+   "evidence": "'EOF on a pipe is only delivered when ALL write-end descriptors are closed. The parent's p[1] (and any child that kept it) keeps the pipe open, so wc's read() blocks forever'; 'the parent must close BOTH pipe fds immediately after both forks' and 'both children must close both raw fds after dup2'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'FILES WRITTEN IN PROJECT (0)', 'SHELL COMMANDS RUN (0)'; only read-only grep/glob tool calls inside the workspace; no install commands and nothing written outside the project"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 43.1
+ },
+ "install_like_cmds": []
+}

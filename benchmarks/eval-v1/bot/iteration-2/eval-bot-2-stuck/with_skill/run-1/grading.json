@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses cause and gives minimal fix: 'message.content 为空的原因是 Message Content Intent 没开' with one-line fix 'intents.message_content = True   # 关键行' plus explanation '默认关闭时网关照样推送 MESSAGE_CREATE 事件，但 payload 里的 content... 会被剥离'. The written file is a minimal single-issue fix example, not a multi-milestone dump."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with runnable checkpoint: '替换第 44 行的 token 后运行；若启动即抛 `PrivilegedIntentsRequired`，去门户打开 Message Content Intent 开关再重启' (file discord_bot_intents_fix.py prints diagnostics 'content={message.content!r}'), plus concrete behaviour test: '如果 `@bot 你好` 能读到 content 而 `!hello` 读不到，就坐实了是 Intent 问题'."
+  },
+  {
+   "text": "B3: Identifies the Message Content privileged intent must be enabled in the developer portal and in the client intents",
+   "passed": true,
+   "evidence": "Explicitly identifies both places: '两处都要开：1. 代码里声明... intents.message_content = True 2. 开发者门户勾选：... Bot → Privileged Gateway Intents → 打开 Message Content Intent → Save Changes' and names it privileged: 'Message Content 是特权 Intent'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)'; only tool calls were glob/grep and one write; 'FILES WRITTEN IN PROJECT (1): discord_bot_intents_fix.py' — no install commands, nothing written outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 264.8
+ },
+ "install_like_cmds": []
+}

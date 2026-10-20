@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "\"That gap is textbook overfitting: the model memorized the training images instead of learning features that transfer\" plus a fix list (\"Fine-tune a pretrained backbone\", \"Augment aggressively\", \"Add regularization: weight decay (1e-4 to 5e-4), dropout, label smoothing\")."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with a described diagnostic, not a runnable command: \"take a few training images, run them through your inference path (with its preprocessing), and confirm they still score ~99%\" — no concrete command (shell/python snippet) is given, only expected behaviour."
+  },
+  {
+   "text": "B3: Identifies overfitting / distribution shift and suggests a held-out test set, augmentation or simpler model",
+   "passed": true,
+   "evidence": "\"That gap is textbook overfitting\"; \"Train/inference distribution mismatch\"; suggests \"Hold out a real validation set and early-stop on its accuracy\", \"Augment aggressively: random crops, horizontal flips, color jitter\", and \"Shrink the model or freeze early layers\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "\"SHELL COMMANDS RUN (0)\" and \"FILES WRITTEN IN PROJECT (0)\"; only tool calls are two globs (\"glob {\"pattern\": \"**/*.py\"}\", \"glob {\"pattern\": \"*\"}\") — no install commands or writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 30.8
+ },
+ "install_like_cmds": []
+}

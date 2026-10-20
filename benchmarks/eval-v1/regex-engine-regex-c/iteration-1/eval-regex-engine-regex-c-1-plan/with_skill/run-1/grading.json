@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only the M0 skeleton was written; the engine is a stub: src/regex.c contains `int re_search(...) { (void)pattern; (void)text; return RE_NOT_IMPLEMENTED; }` under the comment 'Milestone 1：这里由你来写 … 建议的结构（TODO 清单，不是答案）'. Agent stated 'Project skeleton (minimal, milestone 0 only — do NOT dump full solution)'. Files are harness/scaffolding only (Makefile, CLI shell main.c, regex.h API, stub regex.c, test table data, run.sh, README, PROGRESS); no matcher/NFA code for M1-M5 is implemented."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Milestone plan gives concrete checks: 'Check: `make && ./regex 'a' a` prints match; `make test` runs a trivial test table'. README 快速开始 specifies commands with expected behaviour: `./regex 'h.llo' hello` → 'match at 0 / no match', `make test` → runs tests/cases.txt. PROGRESS.md M0 row records the verified checkpoint output: '`make test` | 0 passed, 0 failed, 19 skipped (of 19)，rc=0（stub 阶段的预期状态）', and the agent ran `make; ./regex 'a' 'a'; make test` (shell log) to confirm."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror Russ Cox regexp1.html exactly, pinned as 'Tutorial: Russ Cox regexp1.html': 'M1: Recursive backtracking matcher (Pike style) for literals + . ^ $', 'M3: Proper parser → AST (concatenation, alternation |, groups (), precedence)', 'M4: Thompson construction → NFA, then simulation with two lists (addstate + step)', 'M5: Pathological benchmark: (a?){n}a{n} vs a{n} with n=25 — backtracker exponential, NFA linear', M6+ 'DFA subset construction / submatch captures' — all in C, with test semantics 'leftmost match … like re.search'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 10 shell commands are inspection/build only (ls, which, cat -A, sed, od, grep, iconv, xxd, a python3 heredoc that only reads tests/cases.txt to validate TSV format, make, ./regex) — no brew/apt/pip/cargo/rustup/npm/go/gem install anywhere. All writes are inside the project dir: Makefile, README.md, PROGRESS.md, src/{main.c,regex.c,regex.h}, tests/{cases.txt,run.sh} plus build artifacts (regex, *.o) in the project root."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

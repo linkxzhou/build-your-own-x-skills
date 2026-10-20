@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-090627-07a06f",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/bittorrent-client/iteration-1/eval-bittorrent-client-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 239.3,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

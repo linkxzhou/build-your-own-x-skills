@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the symptom and gives a prioritized minimal fix: \"你描述的症状(每方块 6 面)是体素渲染最典型的性能杀手\" and \"## 1. 面剔除(收益最大，先做这个)\" with concrete pseudocode \"if neighbor == AIR or isTransparent(neighbor): emitFace(...)\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with \"做完第 1、2 步...就能从个位数帧率回到 60 FPS。如果你把代码放进工作区或贴出渲染循环，我可以指出具体哪一步卡住\" — a predicted outcome plus a request for the learner's code; no concrete runnable command with expected output/behaviour is given"
+  },
+  {
+   "text": "B3: Recommends face culling between solid neighbours (only emit exposed faces) / chunk meshing",
+   "passed": true,
+   "evidence": "\"一个方块只有暴露在空气/透明方块旁边的面才需要画。埋在地里的方块 6 个面全是浪费\" (face culling against solid neighbours) and \"把世界切成 16×16×16...每个 chunk 把所有可见面写进一个顶点缓冲，一次 draw call 画完\" (chunk meshing)"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only tool call is glob {\"pattern\": \"**/*\"}; no install commands and nothing written outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 52.6
+ },
+ "install_like_cmds": []
+}

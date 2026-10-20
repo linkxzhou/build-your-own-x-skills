@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds window + game loop milestone with TODOs; no complete game",
+   "passed": false,
+   "evidence": "Agent wrote a complete game, not a scaffold with TODOs: 'Create snake.py with a minimal but complete version: grid, snake movement, food, score, game over, restart'; todo '编写 snake.py：网格、蛇移动、食物、得分、死亡、重开' marked completed; snake.py contains full working step()/draw()/main() with collision, eating, scoring ('第一版完成，逻辑已通过冒烟测试')."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'## 运行' block gives command '.venv/bin/python snake.py' plus expected behaviour: '方向键控制，撞墙或撞自己结束（分数打印在终端）。'"
+  },
+  {
+   "text": "B3: Mentions a game loop with update/render and a fixed tick/frame rate",
+   "passed": true,
+   "evidence": "'## 游戏开发最核心的概念：游戏循环' lists '1. 处理输入 2. 更新状态 3. 绘制 4. tick → clock.tick(FPS) 控制节奏' and '每秒重复 FPS 次…FPS=8 意味着蛇每秒走 8 格'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "Agent installed packages itself instead of asking the learner: '还没装 pygame。我先装环境，再带你写第一版' and todo '创建 venv 并安装 pygame-ce' status completed; run command '.venv/bin/python snake.py' confirms agent-created venv with pygame installed."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 130.8
+ },
+ "install_like_cmds": []
+}

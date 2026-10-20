@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds literal/./^/$ matching with TODOs; not a full NFA engine",
+   "passed": true,
+   "evidence": "Delivered only the first milestone: regex.py is ~40 lines implementing literal/./^/$ plus `*` ('最小正则引擎 v0：支持字面量、.、*、^、$'), with the rest explicitly deferred: '已知局限（留给后续版本）：…没有 +、?、字符类、分组' and roadmap '? 和 + → 字符类 [abc] → 捕获分组'. It is a Pike-style recursive backtracker, not a full NFA engine."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer only claims 'v0 完成，35 个用例全部通过，且与标准库 re.search 对拍一致' mid-narrative; it never gives the learner a concrete command to run (no 'python3 test_regex.py' or similar appears in the final answer) and instead ends with future work ('下一步自然的扩展顺序是 ? 和 + …'), so there is no runnable checkpoint pairing a command with expected output."
+  },
+  {
+   "text": "B3: Mentions Rob Pike's recursive matcher or an equivalent recursive approach for the first features",
+   "passed": true,
+   "evidence": "regex.py docstring: '核心思路（Pike 式递归回溯匹配器，三个函数）'; answer explains the recursive design: '_match_here (regex.py:23)：模式剩余部分能否从文本开头匹配' and '_match_star 先试 0 次再递增，天然产生回溯语义：a*ab 匹配 aaab 时，* 会自动让出字符'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Files written are only regex.py, test_regex.py and __pycache__/*.pyc (inside the project dir); the sole shell command is 'python3 test_regex.py && python3 -c …' — no brew/apt/pip/cargo/rustup/npm/go/gem install and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 294.4
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the tokenizer (or first) milestone with TODOs and does not hand over parser+evaluator code",
+   "passed": false,
+   "evidence": "Agent handed over a complete multi-milestone implementation, not just the first milestone: FILES WRITTEN include parser.py (9382 chars, full AST + recursive-descent parser), interpreter.py (7714 chars, full evaluator with Environment chain/closures/ReturnSignal), main.py (REPL + file runner) and examples/demo.mini. Its own reasoning: 'I should probably build the complete thing in stages within this turn' and 'build it in stages (lexer → parser → evaluator → REPL), each in its own file'. No TODO-scaffold-only tokenizer milestone."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete runnable checkpoint verified by the agent: 'python3 main.py examples/demo.mini' (run in SHELL COMMANDS) plus REPL pipe test; expected behaviour documented in examples/demo.mini ('print fib(n);          // 55', 'print sum;             // 5050', 'print c();             // 1') and planned response step '5. Step 4: main/REPL — run demo, show output'."
+  },
+  {
+   "text": "B3: Lists the pipeline tokenizer → parser/AST → evaluator in that order",
+   "passed": true,
+   "evidence": "Pipeline listed in order: 'The classic approach...: 1. Lexer (tokenizer) 2. Parser → AST 3. Evaluator (tree-walking interpreter)' and 'Stage 1: Lexer (tokens) - Stage 2: Parser → AST - Stage 3: Interpreter (tree-walking evaluator) - Stage 4: REPL'; file docstrings reinforce it ('第 1 步：词法分析器', '第 2 步：语法分析器', '第 3 步：解释器')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 8 shell commands are read/run only (ls, python3 --version, python3 -c tests, python3 main.py ..., printf | python3 main.py) — no brew/apt/pip/cargo/rustup/npm/go/gem install. All writes are inside the project dir (lexer.py, parser.py, interpreter.py, main.py, examples/demo.mini, __pycache__/*.pyc); no writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 453.9
+ },
+ "install_like_cmds": []
+}

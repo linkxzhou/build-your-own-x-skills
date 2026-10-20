@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "ai-model-rag-python",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:52Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 333.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Only milestone 1 (skeleton) was implemented: cli.py subcommands are stubs that print '[search] TODO: \u91cc\u7a0b\u7891 4 \u5b9e\u73b0\u6b64\u5b50\u547d\u4ee4' and exit 2; PROGRESS.md shows M1 \u2705 \u5b8c\u6210, M2\u2013M7 \u2b1c \u672a\u5f00\u59cb. For M2 the agent gives only an interface skeleton ('\u6838\u5fc3\u7531\u4f60\u6765\u5199') with invariants left as comments ('\u4e0d\u53d8\u91cf\uff08\u5728 __post_init__ \u91cc\u6821\u9a8c\uff09') and asks the learner to write tests/test_models.py themselves; '\u5361\u4f4f\u4e86\u8bf4\u4e00\u58f0\uff0c\u6211\u4e00\u6b21\u7ed9\u4e00\u4e2a\u63d0\u793a.'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Answer ends with concrete checkpoint: '\u68c0\u67e5\u547d\u4ee4\uff1a`python3 -m unittest tests.test_models -v`\uff0c\u5168\u7eff\u5373\u8fdb\u5165 M3'. M1 checkpoint was also run and reported: 'python3 -m ragsearch --help'/'python3 -m unittest discover -s tests -v' with '4 tests OK\uff080.084s\uff09\uff1b`search` \u5360\u4f4d\u6309\u9884\u671f\u9000\u51fa\u7801 2'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (ai-model-rag-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the RAG tutorial stages read from ai-model-rag-python skill ('chunking \u2192 embeddings \u2192 retrieval \u2192 generation'): M3 \u8f93\u5165\u5c42 \u52a0\u8f7d+\u91cd\u53e0\u5206\u5757, M4 \u5d4c\u5165\uff08\u54c8\u5e0c\u57fa\u7ebf\uff09+\u4f59\u5f26 top-k \u7d22\u5f15, M5 ask \u68c0\u7d22+\u62bd\u53d6\u5f0f\u56de\u7b54+\u5f15\u7528, M6 recall@k \u5411\u91cf vs \u5173\u952e\u8bcd\u57fa\u7ebf, M7 BM25 \u6df7\u5408/\u91cd\u6392/\u771f\u5b9e\u5d4c\u5165. RAG-specific invariants: 'chunk \u5fc5\u987b\u80fd\u8ffd\u6eaf\u56de\u5b83\u7684\u6765\u6e90\u6587\u6863\uff08doc_id + ordinal\uff09\uff0c\u8fd9\u6837 M5 \u7684\u56de\u7b54\u624d\u80fd\u7ed9\u51fa\u5f15\u7528'. Python-specific: stdlib-only M1\u2013M3, numpy from M4."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "All 4 shell commands are read-only or run the project itself (ls, python3 --version, python3 -m ragsearch, python3 -m unittest); no install command appears. All 12 written files are inside the project (README.md, PROGRESS.md, pyproject.toml, ragsearch/*, tests/*, data/sample.md). Installation is deferred to the learner: 'M4 \u8d77\u9700\u8981 `pip install numpy`\uff08\u5230\u65f6\u4f60\u81ea\u5df1\u6267\u884c\uff09' and README 'M4 \u8d77\u6309\u9700\u5b89\u88c5\uff08\u81ea\u884c\u6267\u884c\uff09'."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 554.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverables are planning docs only (TASKS.md + PROGRESS.md, no src/ implementation written): 'TASKS.md \u2014 \u628a\u4e0a\u6e38 5 \u4e2a notebook \u7684 18 \u4e2a Part \u8f6c\u6210 20 \u4e2a\u4efb\u52a1\uff08\u4efb\u52a1 0 \u73af\u5883\u9aa8\u67b6 + \u4efb\u52a1 1\u201319\uff09\uff0c\u6309 6 \u4e2a\u91cc\u7a0b\u7891\u5206\u7ec4'\uff0c and rule 4: '\u4e0d\u503e\u5012\u5b8c\u6574\u65b9\u6848\uff1aClaude Code \u53ea\u7ed9\u5f53\u524d\u4efb\u52a1\u7684\u9aa8\u67b6\u548c\u63d0\u793a\uff1b\u5b8c\u6574\u4ee3\u7801\u4ec5\u5728\u5b66\u4e60\u8005\u5c1d\u8bd5\u540e\u6216\u660e\u786e\u8981\u6c42\u65f6\u7ed9\u51fa\uff0c\u4e14\u53ea\u9650\u5f53\u524d\u4efb\u52a1'. Tasks specify scaffolds (e.g. 'src/indexer.py \u2014 chunk_documents(docs, chunk_size=1000, overlap=200)...') for the learner to implement."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Task 0 ends with concrete commands and expected behaviour: '\u9a8c\u8bc1\uff1a pytest tests/test_skeleton.py -v; python -c \"from src.llm import get_llm; print(get_llm().invoke('ping')[:50])\"' and '\u901a\u8fc7\u6807\u51c6\uff1a\u6d4b\u8bd5\u5168\u7eff\uff0cLLM \u8fd4\u56de\u975e\u7a7a\u5b57\u7b26\u4e32'\uff1b answer states '\u6bcf\u4e2a\u4efb\u52a1\u4ee5 pytest \u6536\u5c3e' and results are logged to PROGRESS.md."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (ai-model-rag-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the tutorial's actual parts: 'M2 \u67e5\u8be2\u53d8\u6362 | \u4efb\u52a1 4-8 | 5 \u79cd\u67e5\u8be2\u53d8\u6362 + RRF', 'M3 \u8def\u7531\u4e0e\u67e5\u8be2\u6784\u9020 | \u903b\u8f91/\u8bed\u4e49\u8def\u7531 + \u5143\u6570\u636e filter', 'M4 \u7d22\u5f15\u8fdb\u9636 | \u5207\u5757\u5bf9\u6bd4\u8868 + 3 \u79cd\u7d22\u5f15\u65b9\u6848', 'M5 \u68c0\u7d22\u8fdb\u9636\u4e0e\u7ea0\u9519 | \u91cd\u6392 + CRAG + Self-RAG + \u957f\u4e0a\u4e0b\u6587\u5bf9\u6bd4'\uff1b Python/LangChain specifics: RecursiveCharacterTextSplitter chunk_size/chunk_overlap, Chroma, HyDE, ColBERT, corpus fixed to 'https://lilianweng.github.io/posts/2023-06-23-agent/ \u4e0e\u4e0a\u6e38\u4e00\u81f4'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "Agent wrote outside the project dir: 'cd /tmp && for nb in rag_from_scratch_1_to_4 rag_from_scratch_5_to_9 ...; do curl -sL \"https://raw.githubusercontent.com/...\" -o \"${nb}.ipynb\"; done' \u2014 downloaded 5 notebooks into /tmp. (No install commands were run by the agent; pip/ollama installs are correctly delegated: '\u5b89\u88c5\u7531\u5b66\u4e60\u8005\u6267\u884c'.)"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 288.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Only the M0 skeleton was built; every milestone function is a stub: chunker.py has '\"\"\"TODO(M1): \u6ed1\u7a97\u5207\u5206\u3002...\"\"\"' followed by 'raise NotImplementedError(\"M1: \u5728 chunker.py \u5b9e\u73b0 chunk_document()\")', and loaders/embedder/store/retriever/generator/pipeline follow the same TODO(Mx)+NotImplementedError pattern. README contains an M0\u2013M6 milestone table with acceptance criteria and '\u5b66\u4e60\u7ea6\u5b9a\uff1a\u6bcf\u4e2a\u91cc\u7a0b\u7891\uff1a\u8bfb\u6a21\u5757\u91cc\u7684 TODO(Mx) \u6ce8\u91ca \u2192 \u5148\u5199\u6d4b\u8bd5 \u2192 \u5b9e\u73b0' \u2014 a staged scaffold with TODOs, not a complete implementation."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "README \u5feb\u901f\u5f00\u59cb gives concrete commands with expected behaviour: 'python -m rag.cli --help     # M0\uff1a\u9aa8\u67b6\u53ef\u8fd0\u884c' and 'pytest -q                    # M0\uff1a\u5192\u70df\u6d4b\u8bd5'; the agent also verified the checkpoint by running 'python3 -m rag.cli --help' and 'python3 -m pytest -q' (test_skeleton.py asserts imports work, CLI help exits 0, stubs raise NotImplementedError)."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (ai-model-rag-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match RAG-for-document-search stages, not generic boilerplate: 'M1 \u6444\u53d6\u4e0e\u5206\u5757\u2026\u56fa\u5b9a\u957f\u5ea6+\u91cd\u53e0\u6ed1\u7a97', 'M2 \u5411\u91cf\u5316\u2026HashingEmbedder\uff08\u8bcd\u888b\u54c8\u5e0c + L2 \u5f52\u4e00\u5316\uff0c\u79bb\u7ebf\u53ef\u590d\u73b0\uff09', 'M3 \u5411\u91cf\u7d22\u5f15\u2026top-k \u4f59\u5f26\u68c0\u7d22\uff0c\u6301\u4e45\u5316\u5230 data/', 'M4 \u7aef\u5230\u7aef\u68c0\u7d22\u95ee\u7b54\u2026\u62bd\u53d6\u5f0f\u7b54\u6848 + \u5f15\u7528\u6765\u6e90', 'M6 \u8bc4\u4f30\u2026recall@k\u3001MRR'; modules loaders/chunker/embedder/store/retriever/generator mirror the RAG pipeline 'docs \u2192 loaders \u2192 chunker \u2192 embedder \u2192 VectorStore \u2192 Retriever \u2192 Generator'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "Shell command run: 'python3 -m pytest -q 2>&1 | tail -5 || python3 -m pip install -q pytest 2>&1 | tail -2' \u2014 contains a pip install command (auto-installing pytest rather than asking the learner to install). All file writes stayed inside the project dir, but the install command violates B4."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 406.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Agent wrote only TASKS.md (FILES WRITTEN: 1) \u2014 a staged plan: '19 \u4e2a\u4efb\u52a1(Task 0\u201318)+ 5 \u6761\u603b\u9a8c\u6536 = 24 \u4e2a\u590d\u9009\u6846', \u9636\u6bb5 0\u20135, each task with \u76ee\u6807/\u53c2\u8003/\u5b9e\u73b0\u8981\u6c42/\u9a8c\u6536\u6807\u51c6 and unchecked '- [ ]' boxes; no src/partNN_*.py implementation was written, only specified as future work ('\u6307\u5b9a\u8f93\u51fa\u6587\u4ef6 src/partNN_*.py')."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete runnable checkpoints with expected output: Task 0 \u9a8c\u6536 'python -c \"import langchain, chromadb, tiktoken, bs4; print(\\'ok\\')\" \u8f93\u51fa ok', Task 1 'python -m src.part01_basic_rag \"What is Task Decomposition?\" \u8f93\u51fa\u975e\u7a7a\u7b54\u6848'; final answer ends with the concrete next action '\u5728 Claude Code \u91cc\u76f4\u63a5\u8bf4\u300c\u6309 TASKS.md \u4ece Task 0 \u5f00\u59cb\u6267\u884c\u300d\u5373\u53ef\u5f00\u59cb\u3002'"
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (ai-model-rag-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match the actual repo (structure verified via GitHub API tree and cloned notebooks): 'Task 5\u20139 | Part 5\u20139:Multi Query\u3001RAG-Fusion\u3001Decomposition\u3001Step Back\u3001HyDE', 'Task 16\u201318 | Part 16\u201318:CRAG\u3001Self-RAG\u3001\u957f\u4e0a\u4e0b\u6587\u5bf9\u6bd4\u5b9e\u9a8c'; references are tutorial-specific: '.ref_repo/rag_from_scratch_1_to_4.ipynb cells 6\u20137', hub prompt 'rlm/rag-prompt', corpus 'https://lilianweng.github.io/posts/2023-06-23-agent/', LCEL chain with WebBaseLoader/RecursiveCharacterTextSplitter/Chroma."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run, but two commands wrote outside the project dir: 'cd /tmp && rm -rf ragfs && git clone --depth 1 https://github.com/langchain-ai/rag-from-scratch.git ragfs' and 'cd $HOME && rm -rf .ragfs_tmp && git clone ... .ragfs_tmp' \u2014 both outside /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-ai-model-rag-python-3."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 444.1,
+        "stddev": 156.5534,
+        "min": 333.4,
+        "max": 554.8
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 347.55,
+        "stddev": 83.7922,
+        "min": 288.3,
+        "max": 406.8
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.12",
+      "time_seconds": "+96.6",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

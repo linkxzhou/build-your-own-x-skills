@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "search-engine",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:51Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 149.6,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds tokenizer/index milestone with TODOs; no full ranking system",
+          "passed": true,
+          "evidence": "Scaffolded only milestone 1: wrote search/tokenizer.py with TODOs intact ('# TODO 1: lowercase the input / text = ...' through 'return ...') and told the learner 'Your move: fill in the four TODOs. The `...` placeholders are the only spots to touch.' Ranking appears only as future plan row '| 4 | Ranking | TF-IDF or BM25 |' with no implementation \u2014 no full ranking system dumped."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a concrete runnable check: '**Check:** `python3 search/tokenizer.py` \u2014 done when all three lines print `ok` and the exit code is 0' plus 'Paste the output when you run it \u2014 pass or fail, we debug from the real result'; the harness prints e.g. \"ok  tokenize('Running dogs!') = ['run', 'dog']\"."
+        },
+        {
+          "text": "B3: Describes an inverted index mapping term \u2192 list of document ids (postings)",
+          "passed": false,
+          "evidence": "Only mention is the plan-table cell '| 2 | Inverted index | postings lists, doc ids |' and 'move to the inverted index' \u2014 it names topics but never describes the mapping of term \u2192 list of document ids (postings); a vague mention is insufficient for this technical assertion."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'## SHELL COMMANDS RUN (0)'; tool calls were only a read-only glob and a write to search/tokenizer.py inside the project; guide choice notes 'Python 3, stdlib only' and the Redis option was rejected as 'needs Redis server, extra dependency'; the check command `python3 search/tokenizer.py` installs nothing."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 190.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnosed 4 concrete causes with fixes: '\u53ea\u7b97\u4e86 TF\uff0c\u6ca1\u4e58 IDF\u2026\u4fee\u590d\uff1ascore = tf * idf'; 'IDF \u516c\u5f0f\u5199\u53cd\u2026\u4fee\u590d\uff1alog(N/df)'; 'df \u5fc5\u987b\u6309\u6587\u6863\u53bb\u91cd'; plus '\u628a\u4f60\u7684 IDF \u8ba1\u7b97\u548c\u6392\u5e8f\u90a3\u51e0\u884c\u8d34\u51fa\u6765\uff0c\u6211\u53ef\u4ee5\u76f4\u63a5\u6307\u51fa\u662f\u54ea\u4e00\u5904' \u2014 diagnosis + minimal hints, single diagnostic script, not a multi-milestone dump"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with runnable checkpoint: '\u8dd1 `python3 tfidf_check.py` \u540e\u5bf9\u7167\u4e09\u5904' with expected behaviour stated: 'df[the] = 3 \u2192 idf = 0.2877\u2026\u6392\u5728\u5168\u90e8 8 \u4e2a\u8bcd\u7684\u6700\u540e', 'aardvark \u7684 idf = 1.3863'; command was actually run and output verified"
+        },
+        {
+          "text": "B3: Explains IDF (log(N/df)) down-weights common terms and/or remove stopwords; checks the formula",
+          "passed": true,
+          "evidence": "Explains and checks formula: 'idf(t) = log(N / df(t))    # N = \u6587\u6863\u603b\u6570, df(t) = \u5305\u542b t \u7684\u6587\u6863\u6570'; '\u201cthe\u201d \u51e0\u4e4e\u51fa\u73b0\u5728\u6240\u6709\u6587\u6863\uff0cIDF \u5e94\u63a5\u8fd1 0\uff0c\u6743\u91cd\u6392\u5728\u5168\u8bcd\u8868\u6700\u4f4e\u4e00\u6863'; flags inverted variants 'log(df/N)\u3001df/N \u6216 log(df)'; script self_check verifies idf<0 and 'the' in top3"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): 'python3 tfidf_check.py' only; FILES WRITTEN IN PROJECT (1): 'tfidf_check.py' inside project; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 77.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Proposes a concrete small local corpus and stays in the workspace",
+          "passed": true,
+          "evidence": "Proposes concrete small corpora: 'CACM (3,204 abstracts) or Cranfield (1,400 docs) \u2014 small, plain text', '100\u2013500 Project Gutenberg books', 'Generate synthetic keys (uuid4 or sequential ints) and random values', and 'keep it small enough to fit in memory: 10k\u2013100k documents'; agent stayed in workspace (FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0), only glob/read of workspace files)."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with a clarifying question, no runnable command or expected output: 'What are you building, and in which language? That decides which track I'd coach you through.' No command to run is given anywhere in the answer."
+        },
+        {
+          "text": "B3: Suggests a concrete corpus (e.g. local markdown/docs, Wikipedia abstracts, or a small generated set)",
+          "passed": true,
+          "evidence": "Concrete corpora suggested by project type: 'CACM (3,204 abstracts) or Cranfield (1,400 docs)', '100\u2013500 Project Gutenberg books', 'One Stack Exchange dump (e.g., english.stackexchange.com)', 'arXiv abstracts (Kaggle, ~2M rows \u2014 sample 50k to start) or a Wikipedia subset', 'Your own notes, bookmarks, or PDFs', and a small generated set: 'Generate synthetic keys (uuid4 or sequential ints) and random values'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (0) and FILES WRITTEN IN PROJECT (0); only tool calls are glob and read of workspace files ('.agents/skills/build-your-own-x/SKILL.md', 'AGENTS.md'); no install commands and no writes outside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 40.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds tokenizer/index milestone with TODOs; no full ranking system",
+          "passed": true,
+          "evidence": "Scoped work to first milestones only: 'Your first exercise (Milestone 1+2, ~30 min)' with numbered steps '1. Has 5\u201310 hardcoded documents... 2. Tokenizes each one. 3. Builds the index as dict[str, list[int]]... 4. Prints the whole index' \u2014 a TODO-style scaffold for the learner; ranking deferred ('4. **Ranking** \u2014 score docs with TF-IDF, then upgrade to BM25' is a later roadmap item, no ranking code written; FILES WRITTEN: 0)."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "No concrete runnable command or expected output given. Ends with 'Pick a language and tell me when it's done \u2014 paste the index output and I'll review it' \u2014 the learner must choose language and write the program; no command (e.g. python3 index.py) and no sample expected output/behaviour is provided."
+        },
+        {
+          "text": "B3: Describes an inverted index mapping term \u2192 list of document ids (postings)",
+          "passed": true,
+          "evidence": "'**Inverted index** (what search needs): `word \u2192 [docs containing it]`'; 'Each term maps to a **posting list** \u2014 a sorted list of entries, one per doc that contains the term'; 'Builds the index as `dict[str, list[int]]` \u2014 term \u2192 sorted docIDs'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): only 'ls -la'; FILES WRITTEN IN PROJECT (0); no install commands (brew/apt/pip/cargo/rustup/npm -g/go install) and no writes outside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 54.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses three candidate bugs: 'IDF \u7f3a\u5931\uff1a\u6392\u5e8f\u53ea\u7528\u4e86 TF\uff08\u6216 IDF \u6052\u7b49\u4e8e 1\uff09', 'IDF \u516c\u5f0f\u5199\u53cd\uff1a\u5199\u6210\u4e86 log(df / N)', 'df \u7edf\u8ba1\u53e3\u5f84\u9519\u8bef', and gives the correct formula 'tfidf(t, d) = tf(t, d) \u00d7 log(N / df)' as a hint, then asks for the code file to apply the fix."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Ends with '\u628a\u4f60\u7684\u6392\u5e8f\u4ee3\u7801\u6587\u4ef6\u8def\u5f84\u53d1\u6211\uff08\u6216\u76f4\u63a5\u8d34\u51fa\u6765\uff09\uff0c\u6211\u5e2e\u4f60\u6539\u3002' \u2014 no concrete command to run and no expected output/behaviour is given."
+        },
+        {
+          "text": "B3: Explains IDF (log(N/df)) down-weights common terms and/or remove stopwords; checks the formula",
+          "passed": true,
+          "evidence": "Explains '\u6b63\u786e\u5f62\u5f0f\u662f log(N / df) \u2014\u2014 df \u8d8a\u5927\u6743\u91cd\u5e94\u8d8a\u4f4e\uff0c\u5199\u53cd\u540e the\uff08df \u6700\u5927\uff09\u53cd\u800c\u5f97\u5206\u6700\u9ad8' and gives 'tfidf(t, d) = tf(t, d) \u00d7 log(N / df)' plus smoothing variant 'log(N / (1 + df(t)))'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command is 'ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-search-engine-2' (read-only, project dir); other calls are glob/grep; FILES WRITTEN (0); no install command anywhere."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 34.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Proposes a concrete small local corpus and stays in the workspace",
+          "passed": false,
+          "evidence": "All proposed corpora are remote or outside the workspace: 'Hacker News (Algolia API)', 'Wikipedia', 'Project Gutenberg', 'Stack Exchange data dumps (archive.org)', 'Your own machine \u2014 index your notes, code, or PDFs'. No small local corpus inside the workspace is proposed; recommendation is 'start with HN via Algolia'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with 'Recommendation: start with HN via Algolia for a fast end-to-end loop... One caveat: HN titles are short...' \u2014 no concrete command to run and no expected output/behaviour is given (only a bare API URL, no runnable command)."
+        },
+        {
+          "text": "B3: Suggests a concrete corpus (e.g. local markdown/docs, Wikipedia abstracts, or a small generated set)",
+          "passed": true,
+          "evidence": "'Hacker News (Algolia API) \u2014 easiest. No auth, returns JSON, one HTTP call per page: https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=1000' plus Wikipedia, Gutenberg, Stack Exchange dumps \u2014 concrete corpora suggested."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'FILES WRITTEN IN PROJECT (0)' and 'SHELL COMMANDS RUN (0)'; only tool call was glob {\"pattern\": \"**/*\"}. No install command run and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 139.2333,
+        "stddev": 57.357,
+        "min": 77.4,
+        "max": 190.7
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.6667,
+        "stddev": 0.1443,
+        "min": 0.5,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 43.1333,
+        "stddev": 10.4309,
+        "min": 34.0,
+        "max": 54.5
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.17",
+      "time_seconds": "+96.1",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

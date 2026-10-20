@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the data + tokenizer milestone with TODOs; no full model",
+   "passed": true,
+   "evidence": "Scaffolded only milestone 1 of 7: tinygpt/tokenizer.py contains 4 learner TODOs each raising NotImplementedError ('TODO 1: build stoi / itos / vocab_size' ... 'TODO 4: train_val_split'), plus check_m1.py harness, README, PROGRESS.md and downloaded corpus; no model/attention/training code written — README lists milestones 2-7 as future rows with empty status."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer gives concrete command 'cd tinygpt / python3 check_m1.py' and expected behaviour: 'Passes when every line shows [PASS] and it prints MILESTONE 1 PASSED — vocab size 65, encode/decode round-trips on samples and on the first 1000 chars, and a 90/10 split.' Agent also ran it pre-implementation and it failed at the TODO as expected."
+  },
+  {
+   "text": "B3: Mentions a tokenizer (char-level or BPE) and a train/val split",
+   "passed": true,
+   "evidence": "Tokenizer: 'the first layer of the whole system is a tokenizer: text → integer ids... We start character-level: the vocabulary is simply the 65 unique characters'. Train/val split: TODO 4 'train_val_split — hold out the last 10% as validation' and check 'a 90/10 split'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "No install command in the 4 shell commands (ls, python3 --version/import torch check, curl download of corpus into tinygpt/data/input.txt inside project, python3 check_m1.py); all writes are inside tinygpt/. Install is delegated to learner: 'For that one you'll need PyTorch (CPU is fine): pip install torch' with note 'learner runs it themselves — I must not run installs'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 323.0
+ },
+ "install_like_cmds": []
+}

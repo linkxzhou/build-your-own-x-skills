@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Proposes a legal torrent (e.g. a Linux ISO) or a local tracker setup",
+   "passed": true,
+   "evidence": "\"Linux ISOs — Ubuntu/Debian/Fedora official torrents\" and \"Run a local tracker: `opentracker` (single binary) or a minimal HTTP tracker you write yourself\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with a tip, no runnable checkpoint: \"One practical tip: keep a `testdata/` directory with a generated 1–4 MB file and its `.torrent` checked in... Multi-MB sizes force multi-piece paths\" — no concrete command with expected output/behaviour at the end"
+  },
+  {
+   "text": "B3: Mentions a concrete legal source such as a Debian/Ubuntu ISO torrent",
+   "passed": true,
+   "evidence": "\"Linux ISOs — Ubuntu/Debian/Fedora official torrents; large enough to exercise multi-piece downloads\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only commands run: \"ls -la /Users/linkxzhou/.../build-your-own-x-bittorrent-client-3\" and glob {\"pattern\": \"**/*\"}; FILES WRITTEN IN PROJECT (0); no install commands; tools like mktorrent/opentracker are only suggested to the learner"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 50.6
+ },
+ "install_like_cmds": []
+}

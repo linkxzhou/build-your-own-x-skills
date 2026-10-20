@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "TASKS.md is a staged plan: 8 milestones (M1–M8) each with 目标/文件/关键概念/任务/验证, no implementation code written; it states 'Claude Code 的角色是教练：只给当前里程碑的代码，先让你自己写' and 'M1–M7 先自己写，作者源码留到 M8 复盘时对照'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with runnable checkpoint: 'make && ./allocator_tests' plus expected output '预期看到 sbrk before: 0x... 和 sbrk after: 0x... 两行（后者更大...），以及 skeleton passed'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial's actual stages and names: an_malloc/an_free, sbrk, MAGICAL_BYTES=0x55, BLOCK_MARKER=0xDD, PAGE_SIZE=4096, best-fit+块分裂, fork 式测试运行器, sbrk(-4096) 缩堆, 布尔自旋锁线程安全缺陷 — all fetched from the full article and the skill's tutorial-map.md/concepts.md"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Ran 'mkdir -p /tmp/malloc && curl ... -o /tmp/malloc/article.html' — writes outside the project dir; agent admitted '我刚才把 HTML 下到了 /tmp，违反了 skill 的约束'. No install commands were run, but the out-of-project write violates B4"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 569.3
+ },
+ "install_like_cmds": []
+}

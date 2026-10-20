@@ -1,0 +1,92 @@
+{
+  "skill_name": "web-browser",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想用 Python 写一个简单的浏览器引擎，从第一步开始。",
+      "expected_output": "Scaffolds fetching a URL (sockets/HTTP) with TODOs; no full browser; Mentions sending an HTTP GET request and splitting headers/body at a blank line (\\r\\n\\r\\n)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'web-browser' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds fetching a URL (sockets/HTTP) with TODOs; no full browser"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions sending an HTTP GET request and splitting headers/body at a blank line (\\r\\n\\r\\n)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My HTML parser loses text when the page has unclosed <p> tags.",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains implicit tag closing / tree-building rules (e.g. a new <p> closes an open <p>)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'web-browser' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains implicit tag closing / tree-building rules (e.g. a new <p> closes an open <p>)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Can I build the browser without any GUI library?",
+      "expected_output": "Offers a no-GUI path (text output or render to image); Proposes a concrete option such as printing text layout or rendering to PNG/PPM",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'web-browser' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Offers a no-GUI path (text output or render to image)"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Proposes a concrete option such as printing text layout or rendering to PNG/PPM"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

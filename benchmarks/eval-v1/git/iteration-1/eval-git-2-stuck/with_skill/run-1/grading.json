@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses the bug and gives a minimal fix or hint, not a rewrite of the project",
+   "passed": true,
+   "evidence": "Diagnosed the bug precisely: 'git 对象的 SHA-1 是对 `blob <size>\\0` 头部加上内容一起算的，你只哈希了内容本身' and gave the minimal one-line fix 'full = b\"blob \" + str(len(data)).encode() + b\"\\0\" + data'. Only the current milestone (hash-object) function was shown after the learner's own attempt; no multi-milestone rewrite (no init/cat-file implementation)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Runnable checkpoint with expected behaviour: 'git hash-object f / python mygit.py hash-object f   # 两者应输出相同 sha / git cat-file -p <sha>  # 真实 git 能读出你写入的对象', reinforced at the end with concrete expected output 'git: 8d0e41234f24b6da002d962a26c2495ea16a425f / fixed: 8d0e41234f24b6da002d962a26c2495ea16a425f'."
+  },
+  {
+   "text": "B3: Explains that the hash must be computed over the header `blob <size>\\0` + content (not the raw data), before compression",
+   "passed": true,
+   "evidence": "'git's hash-object includes a header `blob <size>\\0` prepended to the content before hashing... sha1(b\"blob %d\\0\" % len(data) + data)'; 'zlib 压缩只用于落盘存储，与哈希无关'; '压缩的是 full（头部+内容），哈希的也是 full'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "Shell command wrote outside the project dir: 'mkdir -p /tmp/verify-hash && cd /tmp/verify-hash && printf 'hello git\\n' > f && ...' — created files under /tmp; agent even noted 'I'll use /tmp to avoid polluting the workspace'. No install command was run, but the out-of-project write fails the assertion."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 104.9
+ },
+ "install_like_cmds": []
+}

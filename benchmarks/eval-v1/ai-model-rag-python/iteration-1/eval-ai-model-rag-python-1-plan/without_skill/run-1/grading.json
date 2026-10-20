@@ -1,0 +1,43 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only the M0 skeleton was built; every milestone function is a stub: chunker.py has '\"\"\"TODO(M1): 滑窗切分。...\"\"\"' followed by 'raise NotImplementedError(\"M1: 在 chunker.py 实现 chunk_document()\")', and loaders/embedder/store/retriever/generator/pipeline follow the same TODO(Mx)+NotImplementedError pattern. README contains an M0–M6 milestone table with acceptance criteria and '学习约定：每个里程碑：读模块里的 TODO(Mx) 注释 → 先写测试 → 实现' — a staged scaffold with TODOs, not a complete implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README 快速开始 gives concrete commands with expected behaviour: 'python -m rag.cli --help     # M0：骨架可运行' and 'pytest -q                    # M0：冒烟测试'; the agent also verified the checkpoint by running 'python3 -m rag.cli --help' and 'python3 -m pytest -q' (test_skeleton.py asserts imports work, CLI help exits 0, stubs raise NotImplementedError)."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-rag-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match RAG-for-document-search stages, not generic boilerplate: 'M1 摄取与分块…固定长度+重叠滑窗', 'M2 向量化…HashingEmbedder（词袋哈希 + L2 归一化，离线可复现）', 'M3 向量索引…top-k 余弦检索，持久化到 data/', 'M4 端到端检索问答…抽取式答案 + 引用来源', 'M6 评估…recall@k、MRR'; modules loaders/chunker/embedder/store/retriever/generator mirror the RAG pipeline 'docs → loaders → chunker → embedder → VectorStore → Retriever → Generator'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Shell command run: 'python3 -m pytest -q 2>&1 | tail -5 || python3 -m pip install -q pytest 2>&1 | tail -2' — contains a pip install command (auto-installing pytest rather than asking the learner to install). All file writes stayed inside the project dir, but the install command violates B4."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 288.3
+ },
+ "install_like_cmds": [
+  "python3 -m rag.cli --help && echo \"---\" && python3 -m rag.cli ask \"test\" ; echo \"exit=$?\" ; echo \"---\" && python3 -m pytest -q 2>&1 | tail -5 || python3 -m pip install -q pytest 2>&1 | tail -2"
+ ]
+}

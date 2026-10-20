@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (camera/image input or feature detection) with TODOs; no full AR pipeline code",
+   "passed": true,
+   "evidence": "Wrote only a milestone-1 skeleton: '新建 `ar_cube.py`，核心留给你写' — file contains just load_images() with cv2.imread plus 'TODO 1: ...加断言', 'TODO 2: 打印两张图的 shape', 'TODO 3: cv2.imshow...' and '...'; no feature matching/homography/cube-rendering code, milestones 2-6 are only a text roadmap"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final reply ends: '**检查点**：`python ar_cube.py` → 打印两个尺寸（如 `(480, 640)`），弹出两个灰度窗口。跑通后把输出贴给我，进里程碑 2' — concrete command plus expected output/behaviour"
+  },
+  {
+   "text": "B3: Mentions feature detection/matching and a homography or pose estimate as the core steps",
+   "passed": true,
+   "evidence": "Milestone list: '2. **特征检测** — ORB/SIFT 关键点', '3. **特征匹配** — BFMatcher + Lowe ratio test', '4. **单应矩阵 / 位姿** — RANSAC 求 homography', '5. **渲染立方体** — 用位姿把 3D 立方体投影叠加到标记上'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run was read-only: 'ls -a; echo ---; python3 --version ... python3 -c \"import cv2, numpy; print(...)\"'; install left to learner: '先做两件事（你自己跑，我不代装）：pip install opencv-python numpy' printed in a fence; only file written is ar_cube.py inside the project"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 207.4
+ },
+ "install_like_cmds": []
+}

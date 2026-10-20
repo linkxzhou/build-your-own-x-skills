@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the bug and gives the fix: 'DXYN 必须用 XOR（异或）写像素，直接赋值会破坏精灵绘制，这正是 IBM logo 花屏的典型原因' plus explains '先画出 logo，再在偏移 1 像素的位置重画同一精灵，把重叠部分翻转掉'. Only the current milestone (DXYN fix) is implemented, no multi-milestone dump, and FILES WRITTEN IN PROJECT (0)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with expected behaviour only: '改完 XOR 后 IBM logo 应该显示为清晰的镂空 \"IBM\" 字样。如果还有问题，下一步检查取指解码…' — no concrete command to run is ever given (the only shell command was an exploratory 'ls', not a checkpoint)."
+  },
+  {
+   "text": "B3: Explains DXYN XORs sprite pixels onto the screen and sets VF on collision",
+   "passed": true,
+   "evidence": "'c->display[py][px] ^= 1; // 关键：异或' and 'if (c->display[py][px]) c->V[0xF] = 1; // 撞击检测：原像素为 1', plus 'VF 初始化：进入指令时置 0，绘制中任一像素发生翻转 1→0 才置 1' — explains both XOR drawing and VF collision flag."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): 'ls /Users/linkxzhou/.../build-your-own-x-emulator-virtual-machine-2' — read-only ls inside the workspace; FILES WRITTEN IN PROJECT (0); no brew/apt/pip/cargo/rustup/npm -g/go install or any install command appears."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 42.5
+ },
+ "install_like_cmds": []
+}

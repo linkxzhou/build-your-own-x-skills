@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses root cause: 「message.content 为空几乎只有一个原因：**Message Content Intent 没开**」 and gives minimal fix code `intents.message_content = True` passed to `commands.Bot`/`discord.Client`."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Runnable checkpoint with expected output: `print(discord.__version__)  # 必须 >= 2.0` and `print(bot.intents.message_content)  # 启动后应为 True`; plus wrote check_discord_intents.py whose docstring says 运行 `python check_discord_intents.py`."
+  },
+  {
+   "text": "B3: Identifies the Message Content privileged intent must be enabled in the developer portal and in the client intents",
+   "passed": true,
+   "evidence": "「必须在两处同时启用，缺一处内容就是空的」— both code declaration (`intents.message_content = True`) and portal step 「Bot → Privileged Gateway Intents → **MESSAGE CONTENT INTENT** 打开并保存」, plus restart note."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0); only glob/grep/write tool calls; single file check_discord_intents.py written inside the project dir; 'pip install -U discord.py' appears only as printed advice text in the script, nothing was executed."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 150.9
+ },
+ "install_like_cmds": []
+}

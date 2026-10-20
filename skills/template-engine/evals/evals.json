@@ -1,0 +1,92 @@
+{
+  "skill_name": "template-engine",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想用 Python 写一个类似 Jinja 的模板引擎，第一步做什么？",
+      "expected_output": "Scaffolds variable interpolation with TODOs; not the full engine; Mentions tokenizing text vs {{ }} expressions",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'template-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds variable interpolation with TODOs; not the full engine"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions tokenizing text vs {{ }} expressions"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My template engine renders `<script>` tags from user input as real HTML. Is that a problem?",
+      "expected_output": "Explains the problem and gives a minimal fix; Says HTML escaping should be on by default (escape < > & \" ') with an explicit raw/safe opt-out",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'template-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Explains the problem and gives a minimal fix"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Says HTML escaping should be on by default (escape < > & \" ') with an explicit raw/safe opt-out"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Can I compile templates to Python code instead of interpreting them?",
+      "expected_output": "Supports the compile approach and scaffolds that step only; Describes generating Python source for a render function and caching it (500 Lines approach)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'template-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Supports the compile approach and scaffolds that step only"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Describes generating Python source for a render function and caching it (500 Lines approach)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

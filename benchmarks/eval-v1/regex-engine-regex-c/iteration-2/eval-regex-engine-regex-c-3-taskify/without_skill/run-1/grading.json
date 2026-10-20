@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged milestone plan, not code: '### T0 · 项目骨架与 CLI - [ ] 未完成' … '任务必须跑通全部验收命令后才能勾选 `- [x]`'; FILES WRITTEN IN PROJECT (1) lists only TASKS.md (8404 chars of task prompts/acceptance criteria), with prompts explicitly spec-only: '提示词里只给规格与测试，不给参考答案'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Tasks end with runnable checkpoints giving command + expected behaviour: '验收：`make` 编译零警告；`make test` 通过；`./regex a abc` 退出码为 2。' and '`./regex \\'(a|b)*abb\\' aabb` → 0；`./regex \\'(a|b)*abb\\' abab` → 1'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial's actual stages and artifacts: reading map 'T2 | Converting Regular Expressions to NFAs；Implementation: Compiling to NFA', 'T5 | Caching the NFA to build a DFA'; article-specific details: '`a(bb)+a` → `abb.+.a.`（文章原例）', 'Split=256、Match=257 作为伪字符常量', 're2post/post2nfa', 'DState 缓存', '回溯实现 O(2ⁿ)，Thompson 模拟 O(mn)', '`a?ⁿaⁿ` 基准'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but a shell command wrote outside the project dir: 'curl -s https://swtch.com/~rsc/regexp/regexp1.html -o /tmp/regexp1.html && wc -c /tmp/regexp1.html' (and subsequent python3/sed read-write /tmp/regexp1.txt), while the project dir is /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-regex-engine-regex-c-3"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 868.6
+ },
+ "install_like_cmds": []
+}

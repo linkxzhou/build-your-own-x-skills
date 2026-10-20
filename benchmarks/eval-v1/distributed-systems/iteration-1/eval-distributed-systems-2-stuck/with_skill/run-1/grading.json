@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses root cause: 'Your broker has no committed position for your consumer, so every restart looks like a brand-new consumer and it falls back to the \"start from\" default (earliest / queue head)' and gives per-broker minimal fixes, e.g. 'enable.auto.commit=false but you never call commitSync()/commitAsync() after processing', 'delete after processing or extend the visibility timeout'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "A runnable command with expected output exists mid-answer ('kafka-consumer-groups.sh --describe --group <gid>: if CURRENT-OFFSET is - or far behind LOG-END-OFFSET, commits aren't landing'), but the answer ends with 'Tell me which broker and I'll point at the exact config lines.' — a question, so it does not end with a runnable checkpoint."
+  },
+  {
+   "text": "B3: Explains committing consumer offsets and resuming from the committed offset",
+   "passed": true,
+   "evidence": "Explains commit/resume mechanics: 'a new group has no committed offset, so auto.offset.reset (often earliest) applies', 'Commits fail silently during rebalances; check the CommitFailedException path', and 'is the offset/ack actually being persisted after successful processing'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): 'ls -la'; OTHER TOOL CALLS: glob only; FILES WRITTEN IN PROJECT (0); no install commands and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 44.4
+ },
+ "install_like_cmds": []
+}

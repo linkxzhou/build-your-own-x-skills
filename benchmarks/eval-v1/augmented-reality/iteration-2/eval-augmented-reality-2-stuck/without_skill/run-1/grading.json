@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses ranked causes ('Wrong distance norm. cv2.BFMatcher() defaults to L2, which is meaningless for ORB's binary descriptors — matches come out near-random'; 'Feeding all matches to findHomography'; 'Swapped point sets') and gives a minimal 'Fixed core:' snippet (~15 lines: knnMatch + ratio test + findHomography RANSAC) for the current milestone only, no multi-milestone dump, 0 files written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with 'Two more things that help once the above is in: raise nfeatures... smooth the four projected corners with an exponential moving average' — no concrete command to run and no expected output/behaviour anywhere."
+  },
+  {
+   "text": "B3: Recommends filtering matches (ratio test / cross-check) and using RANSAC in findHomography",
+   "passed": true,
+   "evidence": "'Filter first (Lowe ratio test), then run RANSAC'; code: 'good = [m for m, n in matches if m.distance < 0.75 * n.distance]' and 'H, mask = cv2.findHomography(src, dst, cv2.RANSAC, 4.0)'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command is 'ls -la .../build-your-own-x-augmented-reality-2' (read-only, inside project); other calls are glob/grep; FILES WRITTEN (0); no install commands."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 105.8
+ },
+ "install_like_cmds": []
+}

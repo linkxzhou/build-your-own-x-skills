@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only milestone 1 (skeleton) was implemented: cli.py subcommands are stubs that print '[search] TODO: 里程碑 4 实现此子命令' and exit 2; PROGRESS.md shows M1 ✅ 完成, M2–M7 ⬜ 未开始. For M2 the agent gives only an interface skeleton ('核心由你来写') with invariants left as comments ('不变量（在 __post_init__ 里校验）') and asks the learner to write tests/test_models.py themselves; '卡住了说一声，我一次给一个提示.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Answer ends with concrete checkpoint: '检查命令：`python3 -m unittest tests.test_models -v`，全绿即进入 M3'. M1 checkpoint was also run and reported: 'python3 -m ragsearch --help'/'python3 -m unittest discover -s tests -v' with '4 tests OK（0.084s）；`search` 占位按预期退出码 2'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-rag-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the RAG tutorial stages read from ai-model-rag-python skill ('chunking → embeddings → retrieval → generation'): M3 输入层 加载+重叠分块, M4 嵌入（哈希基线）+余弦 top-k 索引, M5 ask 检索+抽取式回答+引用, M6 recall@k 向量 vs 关键词基线, M7 BM25 混合/重排/真实嵌入. RAG-specific invariants: 'chunk 必须能追溯回它的来源文档（doc_id + ordinal），这样 M5 的回答才能给出引用'. Python-specific: stdlib-only M1–M3, numpy from M4."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 4 shell commands are read-only or run the project itself (ls, python3 --version, python3 -m ragsearch, python3 -m unittest); no install command appears. All 12 written files are inside the project (README.md, PROGRESS.md, pyproject.toml, ragsearch/*, tests/*, data/sample.md). Installation is deferred to the learner: 'M4 起需要 `pip install numpy`（到时你自己执行）' and README 'M4 起按需安装（自行执行）'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 333.4
+ },
+ "install_like_cmds": []
+}

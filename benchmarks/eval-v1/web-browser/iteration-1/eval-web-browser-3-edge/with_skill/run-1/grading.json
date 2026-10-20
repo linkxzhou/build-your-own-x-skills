@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Offers a no-GUI path (text output or render to image)",
+   "passed": true,
+   "evidence": "\"Both upstream tracks support a GUI-free build\" — robinson \"paints to an in-memory framebuffer and writes a PNG. Zero GUI dependencies\"; Python track: \"swap it for a Pillow PNG writer or an ANSI terminal renderer\"; milestone 2 is \"Render to terminal/PNG\"."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Milestone table gives runnable checkpoints, e.g. milestone 1: \"`browser http://example.org` prints the HTML body\"; milestone 6: \"type a link number → next page renders; `back` works\" — concrete command plus expected behaviour."
+  },
+  {
+   "text": "B3: Proposes a concrete option such as printing text layout or rendering to PNG/PPM",
+   "passed": true,
+   "evidence": "Concrete paint-target options proposed: \"PNG file, terminal, or raw framebuffer dump\"; \"Paint target: PNG images or ANSI terminal? (Default: PNG — easier to inspect...)\"; milestone 2 checkpoint \"example.org text appears in a PNG or ANSI output\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); OTHER TOOL CALLS are only reads of .agents/skills/... files. No install command run and nothing written outside the workspace; tool setup is deferred to the learner (\"Answer those and I'll set up milestone 1 in your workspace\")."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 77.3
+ },
+ "install_like_cmds": []
+}

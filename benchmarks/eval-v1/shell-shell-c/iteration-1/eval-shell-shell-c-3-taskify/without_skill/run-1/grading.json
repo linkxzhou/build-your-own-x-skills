@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": false,
+   "evidence": "AGENT FINAL ANSWER section is empty; instead of a staged plan the agent dumped a complete implementation: utils.c fully implements parse_command/parse_pipeline/print_command/print_pipeline with zero TODOs, plus a compiled binary 'shell' and objects 'shell.o'/'utils.o'. No milestone plan or scaffold exists."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Final answer is empty; nowhere in the evidence is a concrete command to run with expected output/behaviour given (e.g. no 'run make, expect...' instruction), only bare files."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (shell-shell-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": false,
+   "evidence": "No milestones or task list were produced at all (final answer empty), so nothing matches the tutorial's actual stages; the only tutorial-specific content (utils.c/utils.h mirroring the workshop's parsing stage: strsep, cmd_struct/pipeline_struct, TOKEN_SEP) appears as dumped code, not as a plan."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)' and OTHER TOOL CALLS empty — no install command (brew/apt/pip/etc.) was executed; all 7 files (Makefile, shell, shell.c, shell.o, utils.c, utils.h, utils.o) were written inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

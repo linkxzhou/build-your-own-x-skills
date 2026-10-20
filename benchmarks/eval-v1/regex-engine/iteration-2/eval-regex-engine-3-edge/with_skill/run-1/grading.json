@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains that wrapping re defeats the purpose and offers a test-oracle use of re instead",
+   "passed": true,
+   "evidence": "\"Delegating to `re` deletes the entire learning objective (parsing, Thompson construction, backtracking vs NFA simulation). `re` has one legitimate role in that project: test oracle.\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final line: \"Check (applies from milestone 1 onward): `python3 scratch/test_matcher.py` — a 15-case table asserting `mymatch(pat, s) == bool(re.search(pat, s))`; expected output `15/15 pass`.\" — concrete command plus expected output."
+  },
+  {
+   "text": "B3: Suggests using re only as a reference to compare results in tests",
+   "passed": true,
+   "evidence": "\"Every milestone checkpoint is defined as 'your matcher agrees with `re.search`' — you compare against it, and your engine's code stays `re`-free.\" (re appears only as external comparison reference; Milestone 5 likewise: \"`re` is the baseline you measure against\")."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run: \"ls .agents/skills/build-your-own-x/skills/ | grep -E '^(regex|template|shell|programming)' ; echo '---' ; ls ... | wc -l\" — read-only ls/grep/wc inside the workspace; \"FILES WRITTEN IN PROJECT (0)\"; no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) anywhere."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 193.3
+ },
+ "install_like_cmds": []
+}

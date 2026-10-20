@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Output is a staged 9-milestone scaffold (00-08 task files + README + CLAUDE.md) with per-task deliverables/TODOs and no implementation code written (no src/*.py or tests/*.py created). CLAUDE.md: '用户写核心代码，你做脚手架…用户卡住或明确要求时才给当前这一小步的完整代码'; tasks specify future work, e.g. 'src/warmup.py：实现三个函数' and '让我自己推导 chunk 的切片边界'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete usage command with expected behavior: 'cd llm-from-scratch && claude，然后输入「请阅读 tasks/00-setup.md 并带我完成这个任务」'; every task has a 验证 section with quantified expectations, e.g. task00 'pytest tests/test_warmup.py -v 预期：torch 版本 ≥ 2.0…grad_of 对输入 [1.0, 2.0, 3.0] 返回 [2.0, 4.0, 6.0]' and task01 '预期：打印 50257 [15496, 11, 995, 0]；测试全绿'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-llm-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the actual tutorial stages and concepts: Ch2 BPE/tiktoken gpt2 (50257) + sliding-window DataLoader, Ch3 causal mask/multi-head attention, Ch4 GPT-2 124M config 'vocab_size=50257, context_length=1024, emb_dim=768, n_heads=12, n_layers=12' with 163M-vs-124M param note, Ch5 The Verdict pretraining + 'Every effort moves you' + c_attn '[768, 2304]' split, Ch6 SMS Spam ~95%, Ch7 instruction finetune + Ollama llama3 scoring ~50-55, Appendix D/E warmup/cosine decay + LoRA <5M trainable. Agent verified against the real repo (fetched raw README, read ai-model-llm-python track skill)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run and installs are delegated to the learner ('安装命令由用户执行'), but the agent wrote outside the project dir: 'mkdir -p /tmp/llmref && curl -sL https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/README.md -o /tmp/llmref/README.md', later confirming with 'cp /tmp/llmref/README.md .ref/llms-from-scratch-README.md'; the /tmp artifact was never cleaned up."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 449.7
+ },
+ "install_like_cmds": []
+}

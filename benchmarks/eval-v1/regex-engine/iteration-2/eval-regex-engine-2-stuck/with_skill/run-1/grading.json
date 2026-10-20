@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains and suggests a direction without rewriting the engine",
+   "passed": true,
+   "evidence": "Explains mechanism ('The outer + can split the a-run into consecutive chunks in every possible way... the number of ways to partition n items into ordered groups is 2^(n-1)') and suggests directions ('Fixes, in order of effort: 1. Memoization... 2. Thompson NFA simulation... 3. Pattern-level mitigation') without rewriting the learner's engine — 'FILES WRITTEN IN PROJECT (0)'; the inline python3 heredoc is only a minimal model to get concrete numbers, not an engine rewrite."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Answer ends with '## Runnable check for your engine': concrete snippet 'for n in (10, 15, 20, 22): steps = 0; match(\"(a+)+b\", \"a\"*n); print(n, steps)' plus expected behaviour: 'expect ≈ 2^(n-1) before the fix' and 'After adding the memo set, the same harness should print step counts growing roughly quadratically (a few hundred at n=22 instead of 4M), with identical match results. That's your regression test...'"
+  },
+  {
+   "text": "B3: Identifies catastrophic/exponential backtracking and suggests Thompson NFA simulation (linear time)",
+   "passed": true,
+   "evidence": "Identifies it: 'classic catastrophic backtracking', 'the search tree doubles at each position', '2^(n-1) steps, so n=30 is ~537M steps'; suggests linear-time simulation: '**Thompson NFA simulation (Pike VM)** — ... Simulate all NFA threads in lockstep over the input, O(n·m) worst case, immune to this class of bug entirely.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (2): 'ls .agents/skills/ && ls .agents/skills/skills 2>/dev/null | head -50' and 'python3 - <<EOF' (self-contained step-counting model, no installs); OTHER TOOL CALLS: read .agents/skills/build-your-own-x/SKILL.md. No brew/apt/pip/cargo/rustup/npm -g/go install/gem install, no writes outside the project (0 files written)."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": true,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 149.7
+ },
+ "install_like_cmds": []
+}

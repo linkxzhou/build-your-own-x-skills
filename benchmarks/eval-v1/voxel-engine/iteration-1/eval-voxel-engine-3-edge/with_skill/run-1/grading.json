@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Accepts JS with WebGL/three.js and scaffolds accordingly",
+   "passed": true,
+   "evidence": "\"JavaScript is a fine language for this. The voxel-engine track explicitly lists JS with WebGL/three.js as a supported path\"; scaffold given as \"voxel/ index.html main.js shaders.js\" with TODOs (getContext('webgl2'), compile shaders, VBO + drawArrays) for milestone 1"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "\"run a local server (`npx serve` or `python3 -m http.server`) and open the page — you should see a single coloured triangle on a black background. Open devtools console: zero errors.\""
+  },
+  {
+   "text": "B3: Names WebGL or three.js as the rendering path",
+   "passed": true,
+   "evidence": "\"Raw WebGL or three.js? Default: **raw WebGL**\" and \"WebGL gives you the same GPU pipeline as OpenGL, just through a browser API\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command was \"ls .agents/skills/... | grep '^voxel-engine' ; grep -i ... manifest.json\" (read-only); FILES WRITTEN IN PROJECT (0); answer states \"Never run install commands yourself\" and only asks the learner to run npx serve/python3 -m http.server"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 106.3
+ },
+ "install_like_cmds": []
+}

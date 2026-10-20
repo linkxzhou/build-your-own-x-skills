@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (camera/image input or feature detection) with TODOs; no full AR pipeline code",
+   "passed": true,
+   "evidence": "Only Milestone 1/6 (图像输入) is scaffolded: ar_demo.py skeleton with '# TODO: cv2.imread 读图；返回 None 时打印原因并以非零码退出' and '# TODO: cv2.imshow 分别显示两张图…', labelled '核心约 15 行，你自己填'; later milestones (特征检测/匹配/单应性/渲染立方体) appear only as a roadmap table with no code, so no full AR pipeline is dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with checkpoint 'python ar_demo.py marker.jpg scene.jpg' plus '预期：弹出两个窗口分别显示两张图，按任意键退出，无 traceback', and asks learner to '跑完检查点（或卡住）把输出贴给我'."
+  },
+  {
+   "text": "B3: Mentions feature detection/matching and a homography or pose estimate as the core steps",
+   "passed": true,
+   "evidence": "Roadmap lists '2 | 特征检测 | ORB/SIFT 关键点…', '3 | 特征匹配 | 匹配可视化…', '4 | 单应性/位姿 | 标记轮廓以正确的四边形画到场景图上'; concept line: '读帧 → 求标记位姿 → 画 3D → 显示'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0) and FILES WRITTEN IN PROJECT (0); install commands are only printed for the learner: '环境（命令你来跑）：python3 -m venv .venv && source .venv/bin/activate / pip install opencv-python numpy', and agent states 'Never install anything yourself. Print pip command for learner.'"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 178.0
+ },
+ "install_like_cmds": []
+}

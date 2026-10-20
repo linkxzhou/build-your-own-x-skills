@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives honest advice (CHIP-8 or LC-3 first, or a scoped GB plan) without dumping code",
+   "passed": true,
+   "evidence": "Honest scoped advice with tradeoffs and no code: 'Here's the honest tradeoff', 'Realistic effort: CHIP-8 is a weekend; a Game Boy that boots Tetris is several weekends', two paths offered ('1. Straight to Game Boy... 2. One-weekend bridge first — the LC-3 VM'), plus scoping questions ('Two questions to set scope'). FILES WRITTEN (0); no implementation code dumped, only links (Cinoop, 0dmg, LC-3 VM)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with 'Default if you have no preference: Rust with 0dmg, straight to the Game Boy, skipping the bridge.' No concrete command to run and no expected output/behaviour is given anywhere; 'load a ROM, print its header bytes, set PC to 0x0100' is a milestone description, not a runnable checkpoint command."
+  },
+  {
+   "text": "B3: Mentions a concrete GB difficulty such as the PPU timing, MBC banking, or CPU test ROMs (blargg)",
+   "passed": true,
+   "evidence": "Concrete difficulties named: 'validated against Blargg's `cpu_instrs` test ROM', 'Memory bank controllers (MBC1/MBC3) — cartridges swap 16 KB banks', 'A PPU with scanline timing — you render line-by-line against the LY register'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0), FILES WRITTEN (0); only read calls into '.agents/skills/build-your-own-x/skills/emulator-virtual-machine/...'. No install commands run or suggested."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 92.4
+ },
+ "install_like_cmds": []
+}

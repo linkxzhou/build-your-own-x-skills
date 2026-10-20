@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Advises staying 2D first or scopes a 3D plan honestly without dumping code",
+   "passed": true,
+   "evidence": "Scopes a 3D plan honestly without dumping code: '3D from day one works... the third axis adds cross products, inertia tensors, and quaternions, so we'll lean on numeric tests to keep debugging sane'; presents a 7-milestone 3D-adapted table with checkpoints, asks 'Two questions before we scaffold', and writes 0 files (FILES WRITTEN IN PROJECT (0)); reasoning states 'Don't dump code yet — scope first.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The reply ends with 'Reply with your picks — or just \"defaults\" — and we start milestone 1...' — no concrete command to run is given anywhere; checkpoints are described only as behaviours (e.g. 'free fall: after 1 s, y ≈ 0.5·g within tolerance') without an executable command or expected printed output."
+  },
+  {
+   "text": "B3: Names a concrete extra 3D difficulty (rotation/inertia tensors, quaternions, or GJK/EPA)",
+   "passed": true,
+   "evidence": "'the third axis adds cross products, inertia tensors, and quaternions'; milestone 5 'Rotation: inertia tensor, quaternions, friction'; milestone 7 'Stretch: GJK, distance joints'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0) and FILES WRITTEN IN PROJECT (0); only read calls into .agents/skills/build-your-own-x/skills/physics-engine-3d/ — no install commands, nothing outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 108.4
+ },
+ "install_like_cmds": []
+}

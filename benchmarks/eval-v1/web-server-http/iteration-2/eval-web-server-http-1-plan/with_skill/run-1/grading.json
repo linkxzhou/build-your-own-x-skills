@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged plan + scaffold with TODOs, only current milestone built: '当前进度：M1 / 7 — TCP listener'; server.py leaves the core to the learner: 'TODO(你来写): 里程碑 1 的核心 a) client_socket.recv(1024)… b) client_socket.sendall(RESPONSE)… c) client_socket.close()' and '你接下来写（server.py 的 TODO 处，约 3 行）'; TASKS.md stages M1–M7 with '通过一个再进下一个'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete checkpoint and expected behaviour: 'python3 server.py # 终端 1 / curl -v localhost:8080 # 终端 2' with '预期：HTTP/1.1 200 OK，body 为 Hello, World!；服务器终端打印 Connection from ...'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Mapped to exact tutorial skill: 'Exact match found: web-server-http — 用 Python 从零构建基础 HTTP Server (João Ventura's article)' with link http://joaoventura.net/blog/2017/python-webserver/; milestones mirror the tutorial's stages and concepts — M1 'socket、bind/listen/accept、字节流、HTTP 响应的最小形态（状态行 + 头 + \\r\\n\\r\\n + body）', M2 'Content-Length 决定读多少 body、CRLF', M3 'MIME 类型映射、路径安全（拒绝 .. 目录穿越）'; stdlib-only server.py matches the tutorial's approach"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 8 shell commands are reads or writes inside the project: 'mkdir -p my-http-server/scratch my-http-server/www && touch my-http-server/tests/__init__.py'; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere; README states '零第三方依赖，零 pip 安装' and '只用标准库；需要装东西时先停下来讨论'"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 285.8
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,92 @@
+{
+  "skill_name": "programming-language",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想写一个自己的小语言解释器，用 Python，从第一步开始带我。",
+      "expected_output": "Scaffolds the tokenizer (or first) milestone with TODOs and does not hand over parser+evaluator code; Lists the pipeline tokenizer → parser/AST → evaluator in that order",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'programming-language' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds the tokenizer (or first) milestone with TODOs and does not hand over parser+evaluator code"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Lists the pipeline tokenizer → parser/AST → evaluator in that order"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My parser gives 9 for `1 + 2 * 3` instead of 7. I parse left to right: parse a number, then while next is an operator, combine. How do I fix it?",
+      "expected_output": "Diagnoses and gives a minimal fix or hint rather than rewriting the whole parser; Explains operator precedence and fixes it via precedence climbing/Pratt parsing or separate grammar levels (term/factor)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'programming-language' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint rather than rewriting the whole parser"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains operator precedence and fixes it via precedence climbing/Pratt parsing or separate grammar levels (term/factor)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to build my own programming language. Can I do it as a compiler to x86 instead of an interpreter? I know C.",
+      "expected_output": "Adapts the plan to a compiler track in C without dumping a complete compiler; Mentions the compiler stages (parse → code generation to assembly) and an assembler/linker or emitted assembly to check output",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'programming-language' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Adapts the plan to a compiler track in C without dumping a complete compiler"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions the compiler stages (parse → code generation to assembly) and an assembler/linker or emitted assembly to check output"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

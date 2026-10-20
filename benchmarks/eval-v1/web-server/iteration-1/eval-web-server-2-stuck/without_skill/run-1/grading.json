@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Agent diagnoses the symptom ('缺少 Content-Length 且没有关闭连接（最常见）... 头部和正文之间少了空行 ... send() 可能只发了一部分') and gives a minimal fix: a minimal response snippet using sendall with Content-Length, Connection: close, and conn.close()."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Final answer ends with '把你的代码发过来（或放到当前目录），我可以直接定位问题。' — a request for the learner's code; there is no concrete command to run (e.g. curl) nor expected output/behaviour anywhere in the answer."
+  },
+  {
+   "text": "B3: Points to missing Content-Length (or connection close / incomplete headers \\r\\n\\r\\n) as the likely cause",
+   "passed": true,
+   "evidence": "'1. **缺少 `Content-Length` 且没有关闭连接**（最常见）... 2. **头部和正文之间少了空行**。headers 结束必须有一个空行 `\\r\\n\\r\\n`' — explicitly names Content-Length/connection close and the missing \\r\\n\\r\\n as likely causes."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run is 'ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-web-server-2/' plus a glob; no install commands and FILES WRITTEN IN PROJECT (0), so nothing written outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 31.7
+ },
+ "install_like_cmds": []
+}

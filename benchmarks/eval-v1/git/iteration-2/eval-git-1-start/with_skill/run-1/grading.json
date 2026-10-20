@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds milestone 1 (init / repo layout) with TODOs for the learner and does not hand over the code for later milestones (objects, trees, commits)",
+   "passed": true,
+   "evidence": "mygit.py contains only CLI dispatch plus `cmd_init` stub with TODOs 1-5 and `raise NotImplementedError(\"cmd_init is yours to write\")`; answer says 'the `cmd_init` body is yours'. No code for objects/trees/commits — PROGRESS.md lists milestones 2-7 as 'pending' with checkpoints only."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'**Check it:**' block gives concrete commands (`mkdir lab && cd lab; python3 ../mygit.py init; git status`) and expected behaviour: 'Expected: `Initialized empty Git repository in .../lab/.git/`, then `On branch main` and `No commits yet` with exit code 0.'"
+  },
+  {
+   "text": "B3: States that a repository needs .git/objects, .git/refs (heads) and a HEAD file pointing at refs/heads/<branch>",
+   "passed": true,
+   "evidence": "Answer states: '`.git/objects/` — where every blob, tree, and commit will live', '`.git/refs/heads/` — where branch names map to commit SHAs', '`.git/HEAD` — a *symbolic ref*: one line, `ref: refs/heads/main`'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run: `ls -la && python3 --version && git --version` — no installs. Writes limited to project files mygit.py and PROGRESS.md; plan notes 'Python 3.14 stdlib only … nothing to install'. Checkpoint commands (`mkdir lab`, `python3 ../mygit.py init`, `git status`) stay inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 300.3
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-095112-8a7d44",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/neural-network/iteration-1/eval-neural-network-1-start/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 259.0,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

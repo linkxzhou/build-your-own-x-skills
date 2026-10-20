@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Maps to the tiny package manager entry and scaffolds a first milestone",
+   "passed": true,
+   "evidence": "Mapped to the exact tutorial: 'Tiny Package Manager: Learns how npm or Yarn works — https://github.com/g-plane/tiny-package-manager' via skill 'misc-tiny-package-manager-npm-yarn'; scaffolded the first milestone only ('当前进度：里程碑 1/6（定范围）。你确认语言和范围后，我们从骨架开始：建项目、写 CLI 入口'), wrote 0 files, and asked the learner to confirm language/scope before building — coaching at the current milestone rather than dumping a full implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Reply ends with a concrete runnable check and expected output: '先跑这个确认环境（预期输出 v18 或更高）：```bash node --version```'."
+  },
+  {
+   "text": "B3: Mentions dependency resolution / a lockfile or fetching package tarballs",
+   "passed": true,
+   "evidence": "Mentions all three: '递归处理依赖的依赖（去重、版本冲突）' (dependency resolution), '写 lockfile，保证下次安装结果一致' (lockfile), and '下载 tarball 并解压到 node_modules/' (fetching tarballs)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): only 'ls -A'; FILES WRITTEN IN PROJECT (0); other tool calls are reads/globs/grep inside .agents/skills. No install commands run; the only command suggested to the learner is the read-only check 'node --version'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 117.0
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,92 @@
+{
+  "skill_name": "voxel-engine",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to make a Minecraft-like voxel engine. Where do I begin?",
+      "expected_output": "Scaffolds window + triangle (or chunk data) with TODOs; no full engine; Mentions OpenGL/WebGL setup and chunked block storage",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'voxel-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds window + triangle (or chunk data) with TODOs; no full engine"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions OpenGL/WebGL setup and chunked block storage"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我的体素世界帧率很低，每个方块都画 6 个面。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Recommends face culling between solid neighbours (only emit exposed faces) / chunk meshing",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'voxel-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Recommends face culling between solid neighbours (only emit exposed faces) / chunk meshing"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to build my own Minecraft-like voxel engine, but I only know JavaScript. Can I do this?",
+      "expected_output": "Accepts JS with WebGL/three.js and scaffolds accordingly; Names WebGL or three.js as the rendering path",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'voxel-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Accepts JS with WebGL/three.js and scaffolds accordingly"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Names WebGL or three.js as the rendering path"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

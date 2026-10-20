@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Offers a staged path and gives at most the current milestone in full",
+   "passed": false,
+   "evidence": "Agent dumped the complete clone in one shot instead of staging: 'I should write a complete, well-structured clone' and 'a faithful, readable clone with the core options: spread, freq, seed, force, background, animate (with duration/speed), version, help'; FILES WRITTEN shows one full 7526-char lolcat.py implementing every feature (rainbow, colorize, animate, CLI) — a complete multi-milestone implementation, not the first/current milestone."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The final answer ends abruptly mid-code-sketch: 'Simpler approach: iterate over the raw text split with splitlines(keepends=True)... for line in text.splitlines(keepends=True):' — no closing command for the learner to run with expected output. The only concrete runs (e.g. printf 'hello world\\nsecond line\\n' | python3 lolcat.py -f | cat -v) are the agent's own verification in SHELL COMMANDS RUN, not an ending checkpoint."
+  },
+  {
+   "text": "B3: Any colour logic described uses ANSI escape sequences (e.g. 24-bit \\x1b[38;2;r;g;bm) correctly",
+   "passed": true,
+   "evidence": "Colour logic is correct truecolor ANSI: code = \"48\" if background else \"38\"; parts.append(f\"\\x1b[{code};2;{r};{g};{b}m{ch}\") with reset '\\x1b[0m', and rainbow() uses three sine waves phase-shifted 2π/3: 'red = math.sin(freq * t + 0.0) * 127 + 128' etc., matching \\x1b[38;2;r;g;bm semantics."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands were run, but a shell command writes outside the project dir: 'python3 lolcat.py -f lolcat.py 2>/tmp/err.txt | head -1 >/dev/null; echo \"stderr bytes: $(wc -c < /tmp/err.txt)\"' creates/reads /tmp/err.txt outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 326.1
+ },
+ "install_like_cmds": []
+}

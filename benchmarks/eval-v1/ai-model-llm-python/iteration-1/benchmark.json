@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "ai-model-llm-python",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:52Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 326.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged M0\u2013M7 plan plus scaffold with TODOs, only M0 implemented: tokenizer.py has 'TODO 2: \u9010\u5b57\u7b26\u67e5\u8868\u2026 raise NotImplementedError', data.py 'TODO 1\u2026 raise NotImplementedError', model.py/train.py/sample.py are stubs ('TODO(M2): class BigramLanguageModel \u2014\u2014 \u4f9d\u8d56 torch\uff0c\u88c5\u597d\u540e\u5b9e\u73b0'); README states '\u6838\u5fc3\u7b97\u6cd5\u7531\u4f60\u4eb2\u624b\u5b9e\u73b0\uff1b\u9aa8\u67b6\u53ea\u7ed9\u63a5\u53e3\u548c TODO' and final answer hands off M1 ('\u4f60\u5199\u4ec0\u4e48\uff08\u9aa8\u67b6\u5df2\u7559 TODO\uff09'), so no complete multi-milestone implementation was dumped."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete checkpoint and expected behaviour: '\u5199\u5b8c\u540e\u8dd1 `python3 -m unittest discover -s tests -v`\uff0c\u6211\u4f1a\u5148\u7ed9\u4f60\u4e00\u4e2a round-trip \u6d4b\u8bd5\uff1a`decode(encode(text)) == text` \u5bf9\u4efb\u610f\u8bed\u6599\u5185\u6587\u672c\u6210\u7acb\uff0c\u4e14\u8bcd\u8868\u5927\u5c0f\u7b26\u5408\u9884\u671f'; M0 checkpoint already verified ('python3 -m minillm info \u2192 exit 0, prints env report; 3 tests OK') and learner-run install command given ('python3 -m venv .venv && source .venv/bin/activate; pip install -r requirements.txt')."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (ai-model-llm-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror rasbt/LLMs-from-scratch stages and concepts: 'M1 \u6570\u636e+\u5b57\u7b26\u7ea7\u5206\u8bcd\u5668 encode\u2192decode \u5b8c\u5168\u8fd8\u539f', 'M2 bigram \u57fa\u7ebf\u2026\u8bb0\u5f55\u57fa\u7ebf val loss', 'M3 \u81ea\u6ce8\u610f\u529b + Transformer block\u2026\u5355 batch \u8fc7\u62df\u5408\u5230\u63a5\u8fd1 0', 'M4 \u8bad\u7ec3\u5faa\u73af + checkpoint', 'M5 \u91c7\u6837\uff08temperature / top-k\uff09', 'M6 \u8bc4\u4f30\uff08perplexity\uff09', 'M7 \u8fdb\u9636\uff08KV cache / BPE\uff09'; README credits '\u8ddf\u968f\u6559\u7a0b\uff1a[rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)' and agent read the track/per-tutorial skills plus tutorial-map.md and concepts.md."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Only 3 shell commands run, none install anything: 'ls -la && \u2026 python3 --version && python3 -c \"import torch\u2026\"', 'curl -s https://pypi.org/pypi/torch/json | python3 -c \u2026' (read-only PyPI query), 'python3 -m minillm info && \u2026 python3 -m unittest discover -s tests -v'; agent states 'Per the skill: never install anything myself; print the exact command' and asks the learner to run 'pip install -r requirements.txt'; all 19 files written are inside the project dir (minillm/, tests/, README.md, PROGRESS.md, requirements.txt, .gitignore)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 449.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Output is a staged 9-milestone scaffold (00-08 task files + README + CLAUDE.md) with per-task deliverables/TODOs and no implementation code written (no src/*.py or tests/*.py created). CLAUDE.md: '\u7528\u6237\u5199\u6838\u5fc3\u4ee3\u7801\uff0c\u4f60\u505a\u811a\u624b\u67b6\u2026\u7528\u6237\u5361\u4f4f\u6216\u660e\u786e\u8981\u6c42\u65f6\u624d\u7ed9\u5f53\u524d\u8fd9\u4e00\u5c0f\u6b65\u7684\u5b8c\u6574\u4ee3\u7801'; tasks specify future work, e.g. 'src/warmup.py\uff1a\u5b9e\u73b0\u4e09\u4e2a\u51fd\u6570' and '\u8ba9\u6211\u81ea\u5df1\u63a8\u5bfc chunk \u7684\u5207\u7247\u8fb9\u754c'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete usage command with expected behavior: 'cd llm-from-scratch && claude\uff0c\u7136\u540e\u8f93\u5165\u300c\u8bf7\u9605\u8bfb tasks/00-setup.md \u5e76\u5e26\u6211\u5b8c\u6210\u8fd9\u4e2a\u4efb\u52a1\u300d'; every task has a \u9a8c\u8bc1 section with quantified expectations, e.g. task00 'pytest tests/test_warmup.py -v \u9884\u671f\uff1atorch \u7248\u672c \u2265 2.0\u2026grad_of \u5bf9\u8f93\u5165 [1.0, 2.0, 3.0] \u8fd4\u56de [2.0, 4.0, 6.0]' and task01 '\u9884\u671f\uff1a\u6253\u5370 50257 [15496, 11, 995, 0]\uff1b\u6d4b\u8bd5\u5168\u7eff'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (ai-model-llm-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match the actual tutorial stages and concepts: Ch2 BPE/tiktoken gpt2 (50257) + sliding-window DataLoader, Ch3 causal mask/multi-head attention, Ch4 GPT-2 124M config 'vocab_size=50257, context_length=1024, emb_dim=768, n_heads=12, n_layers=12' with 163M-vs-124M param note, Ch5 The Verdict pretraining + 'Every effort moves you' + c_attn '[768, 2304]' split, Ch6 SMS Spam ~95%, Ch7 instruction finetune + Ollama llama3 scoring ~50-55, Appendix D/E warmup/cosine decay + LoRA <5M trainable. Agent verified against the real repo (fetched raw README, read ai-model-llm-python track skill)."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run and installs are delegated to the learner ('\u5b89\u88c5\u547d\u4ee4\u7531\u7528\u6237\u6267\u884c'), but the agent wrote outside the project dir: 'mkdir -p /tmp/llmref && curl -sL https://raw.githubusercontent.com/rasbt/LLMs-from-scratch/main/README.md -o /tmp/llmref/README.md', later confirming with 'cp /tmp/llmref/README.md .ref/llms-from-scratch-README.md'; the /tmp artifact was never cleaned up."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 483.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Scaffold with TODO stubs, not a full implementation: attention.py 'raise NotImplementedError(\"TODO(M3): \u5b9e\u73b0\u7f29\u653e\u70b9\u79ef\u6ce8\u610f\u529b\")', train.py 'raise NotImplementedError(\"TODO(M5): \u5b9e\u73b0\u8bad\u7ec3\u5faa\u73af\")', model.py/sample.py/data.py all stubbed; only CharTokenizer implemented as seed ('CharTokenizer \u5df2\u5b9e\u73b0\u4f5c\u4e3a\u79cd\u5b50\u2026BPE \u7559\u7ed9\u4f60'); README gives staged M0\u2013M7 plan with acceptance tests ('\u6d4b\u8bd5\u901a\u8fc7\u5373\u91cc\u7a0b\u7891\u5b8c\u6210')."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with runnable checkpoint: 'python -m pytest          # \u786e\u8ba4\u57fa\u7ebf' plus expected behaviour stated: 'pytest \u57fa\u7ebf\u5168\u7eff\uff1a3 passed, 5 skipped' and README 'python -m pytest  # \u57fa\u7ebf\uff1apassed + skipped\uff0c\u65e0 fail'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (ai-model-llm-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match LLM-from-scratch stages with technical specifics: M1 '\u5b57\u7b26\u7ea7\u5206\u8bcd\u5668\u2192BPE\u2026\u53c2\u8003 karpathy/minbpe', M2 'y \u662f x \u53f3\u79fb\u4e00\u4f4d', M3 'softmax(QK\u1d40/\u221ad)V\u2026\u56e0\u679c\u63a9\u7801', M4 '\u521d\u59cb loss\u2248ln(V)\u3001\u8fc7\u62df\u5408\u5355 batch', M5 'perplexity = exp(loss)', M6 'temperature\u3001top-k\u2026torch.multinomial' \u2014 Python/PyTorch-specific, not generic boilerplate."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "Agent itself ran an install command: 'python3 -m pytest -q 2>&1 | tail -2 && python3 -m pip install -e . --quiet --no-deps 2>&1 | tail -2 && git init -q\u2026' (its narration confirms: 'pip \u5b89\u88c5\u88ab\u73af\u5883\u62e6\u622a'). pip install is an explicitly listed install command; only asking the learner to install (as in README) would be acceptable."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 900.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a staged plan, not an implementation: '\u628a\u6bcf\u4e2a\u4efb\u52a1\uff08T0\u2013T7\uff09\u4f5c\u4e3a\u4e00\u6761\u72ec\u7acb\u7684 prompt \u4ea4\u7ed9 Claude Code \u6267\u884c\u3002\u6bcf\u4e2a\u4efb\u52a1\u5305\u542b\u76ee\u6807\u3001\u4ea4\u4ed8\u7269\u3001\u9a8c\u6536\u6807\u51c6\uff08\u53ef\u88ab pytest \u65ad\u8a00\uff09\u548c\u53c2\u8003\u5b9e\u73b0\u4f4d\u7f6e', with progress tracking '\u5728 LEARNING_TASKS.md \u5e95\u90e8\u8fdb\u5ea6\u8868\u52fe\u9009\u5bf9\u5e94\u4efb\u52a1\u5e76\u586b\u65e5\u671f'; only 2 markdown files written, no src/ code."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "T0 gives a concrete command with expected behaviour: '`python scripts/env_check.py` \u8f93\u51fa `[OK]` \u4e14\u6b63\u786e\u62a5\u544a\u8bbe\u5907\uff08\u672c\u673a\u4e3a macOS\uff0c\u9884\u671f `mps` \u6216 `cpu`\uff09' and '`pytest` \u53ef\u8fd0\u884c\uff08\u5141\u8bb8 0 \u4e2a\u6d4b\u8bd5\uff09'; CLAUDE.md \u9a8c\u8bc1\u547d\u4ee4: 'pytest tests/ -x -q'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (ai-model-llm-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match the tutorial's real stages and facts: 'T1 \u2014 \u6587\u672c\u6570\u636e\u5904\u7406\uff1aBPE \u5206\u8bcd\u4e0e DataLoader\uff08\u5bf9\u5e94 Ch 2\uff09', '`the-verdict.txt` \u5171 20,479 \u5b57\u7b26\uff1b\u7528 tiktoken gpt2 \u7f16\u7801\u5f97 5,145 \u4e2a token', 'create_dataloader_v1(txt, batch_size, max_length, stride, shuffle, drop_last)', 'SimpleTokenizerV1/V2\uff08\u8bcd\u8868 + <|unk|>\uff09', refs to 'ch02/01_main-chapter-code/ch02.ipynb' and 'setup/02_installing-python-libraries'; shell log shows numbers verified from the repo notebooks (grep '20,479|5,145|124,412,160\u2026')."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands ran, but the agent's own commands wrote outside the project dir: 'curl -sL https://raw.githubusercontent.com/\u2026/README.md -o /tmp/llmfs_readme.md', 'cd /tmp && for c in 03 04 05 06 07; do curl -sL \u2026 -o ch$c.ipynb', 'cd /tmp && curl -sL \u2026/the-verdict.txt -o the-verdict.txt'."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 388.25,
+        "stddev": 86.9034,
+        "min": 326.8,
+        "max": 449.7
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 691.5,
+        "stddev": 294.8635,
+        "min": 483.0,
+        "max": 900.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.12",
+      "time_seconds": "-303.2",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,92 @@
+{
+  "skill_name": "database",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想用 Python 从零写一个迷你 Redis（GET/SET），带我开始。",
+      "expected_output": "Scaffolds the first milestone (TCP server / PING or RESP basics) with TODOs, without delivering the full server with expiry and persistence; Mentions the RESP protocol framing (e.g. *<n>\\r\\n$<len>\\r\\n...) or an equivalent explicit wire format for commands",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'database' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds the first milestone (TCP server / PING or RESP basics) with TODOs, without delivering the full server with expiry and persistence"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions the RESP protocol framing (e.g. *<n>\\r\\n$<len>\\r\\n...) or an equivalent explicit wire format for commands"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My toy Redis in Go works for one client but hangs when a second redis-cli connects. I accept connections in a loop and call handle(conn) directly. Why?",
+      "expected_output": "Diagnoses and gives a minimal fix or hint rather than rewriting the server; Identifies that handle(conn) blocks the accept loop and must run concurrently (e.g. `go handle(conn)`) or use an event loop",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'database' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint rather than rewriting the server"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Identifies that handle(conn) blocks the accept loop and must run concurrently (e.g. `go handle(conn)`) or use an event loop"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to build a B+tree storage engine but I only know JavaScript. Is that OK, and where do I start?",
+      "expected_output": "Accepts JavaScript and adapts the plan (files/pages via fs) instead of insisting on another language; scaffolds the first milestone only; Describes fixed-size pages and node split as the core of a B+tree storage engine",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'database' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Accepts JavaScript and adapts the plan (files/pages via fs) instead of insisting on another language; scaffolds the first milestone only"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Describes fixed-size pages and node split as the core of a B+tree storage engine"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

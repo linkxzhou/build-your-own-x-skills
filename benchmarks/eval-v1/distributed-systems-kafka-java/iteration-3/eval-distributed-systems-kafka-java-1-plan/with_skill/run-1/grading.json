@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged plan M0–M7 with only M0 (skeleton) done; Log.java is a scaffold: 7 TODOs (M1-1..M1-7) with `throw new UnsupportedOperationException(\"M1: not implemented yet\")` and comment \"学习者任务：按 TODO 填空，不要一次性抄完整实现\"; answer ends \"我们进入 M1：先讲段文件与稀疏索引的原理，然后你按 Log.java 里的 TODO 逐个填空\"; M1–M7 all marked ⬜ 未开始 in PROGRESS.md"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with checkpoint: `cd my-kafka && ./build.sh && java -cp out com.example.kafka.Main` plus expected output block `build OK -> out/` / `my-kafka skeleton OK`; TASKS.md M0 验证: \"→ 输出 `my-kafka skeleton OK`\"; PROGRESS.md M0 row records the check command (pending JDK install by learner)"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (distributed-systems-kafka-java): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial track the agent read (explore finding: \"distributed-systems/SKILL.md defines 7 milestones (append-only log → broker API → topics/partitions → consumer groups → replication → failure testing → stretch Raft)\"); Java-specific concepts: 段文件/稀疏索引/offset (Log.java), 长度前缀帧, key 哈希分区, offset 提交/rebalance, ISR/高水位/acks=1/all, Raft 选主; concrete per-milestone files (Broker.java, GroupCoordinator.java, ReplicaManager.java, cluster/raft/) and tutorial link github.com/buildthingsuseful/build-your-own-kafka"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 7 shell commands are read-only or project-internal (ls/grep/cat, `java -version` checks, `chmod +x my-kafka/build.sh && mkdir -p my-kafka/scratch && touch my-kafka/scratch/.gitkeep && sh -n my-kafka/build.sh`); all 8 files written under my-kafka/; no install executed — agent says \"本机没有 JDK，按规则我不代装。请先安装（macOS）：brew install openjdk@17\", i.e. install is delegated to the learner"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 238.2
+ },
+ "install_like_cmds": []
+}

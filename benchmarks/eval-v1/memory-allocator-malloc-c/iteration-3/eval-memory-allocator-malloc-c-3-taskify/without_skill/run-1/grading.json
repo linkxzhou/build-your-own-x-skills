@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": false,
+   "evidence": "AGENT FINAL ANSWER section is empty and 'FILES WRITTEN IN PROJECT (0)'; no milestone plan, scaffold or TODOs were produced at all."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Empty final answer: no concrete command to run nor expected output/behaviour appears anywhere ('## AGENT FINAL ANSWER' followed by blank)."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": false,
+   "evidence": "No content referencing the tutorial's stages, language or key concepts (malloc/allocator) in the answer; the 51 shell commands only attempted to fetch the article (e.g. curl to web.archive.org, freedium.cfd) and never yielded a task list."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but multiple commands wrote outside the project dir, e.g. 'curl ... -o /tmp/wb.html', '-o /tmp/freedium.html', '-o /tmp/bing.html', '-o /tmp/ddg.html', and read outside paths 'ls -la /Users/linkxzhou/skev/byox-eval/...'."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 0,
+  "failed": 4,
+  "total": 4,
+  "pass_rate": 0.0
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

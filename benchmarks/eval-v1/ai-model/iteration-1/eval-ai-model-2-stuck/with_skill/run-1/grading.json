@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses memorization ('典型的记忆化症状：模型容量远超数据的信息量') and gives minimal fixes ordered by value: '加数据、去重——这是根本解', 'early stopping：盯 val loss，回升即停', 'dropout 0.1–0.2、weight decay 0.01–0.1'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No concrete runnable command with expected output; answer ends with a request for info: '把数据量、参数量、训练步数和 train/val 两条 loss 曲线发出来，我可以帮你定位到具体环节。' Checks like 'len(set(texts))' are described abstractly with no command to run"
+  },
+  {
+   "text": "B3: Identifies overfitting/memorization (tiny data, too many steps) and suggests a val set, more data, dropout or smaller model",
+   "passed": true,
+   "evidence": "Identifies overfitting/memorization ('纯记忆化', '小模型必然背下来；nanoGPT 在 Shakespeare…都会过拟合') and suggests val set ('划出 5–10% 数据做 val split'), more data ('加数据'), dropout ('dropout 0.1–0.2') and smaller model ('缩模型或加数据，让容量匹配数据规模')"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only tool calls are two glob reads ('glob {\"pattern\": \"**/*.py\"}'), no install commands, nothing written outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 93.3
+ },
+ "install_like_cmds": []
+}

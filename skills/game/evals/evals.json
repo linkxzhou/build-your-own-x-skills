@@ -1,0 +1,92 @@
+{
+  "skill_name": "game",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想用 Python 做一个贪吃蛇来学游戏开发，带我开始。",
+      "expected_output": "Scaffolds window + game loop milestone with TODOs; no complete game; Mentions a game loop with update/render and a fixed tick/frame rate",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'game' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds window + game loop milestone with TODOs; no complete game"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions a game loop with update/render and a fixed tick/frame rate"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My player moves faster on my gaming PC than on my laptop. I move it by 5 pixels each loop iteration.",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Recommends delta-time based movement or a fixed timestep",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'game' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Recommends delta-time based movement or a fixed timestep"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I have no graphics library installed and can't install anything. Can I still make a game?",
+      "expected_output": "Works within the constraint (terminal game, curses, or browser canvas) without installing; Proposes a concrete no-install option such as a terminal roguelike/curses or an HTML canvas page",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'game' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Works within the constraint (terminal game, curses, or browser canvas) without installing"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Proposes a concrete no-install option such as a terminal roguelike/curses or an HTML canvas page"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

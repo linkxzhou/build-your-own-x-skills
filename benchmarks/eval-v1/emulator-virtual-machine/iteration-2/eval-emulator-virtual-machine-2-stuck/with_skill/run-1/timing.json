@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-114009-5b3a51",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/emulator-virtual-machine/iteration-2/eval-emulator-virtual-machine-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 147.6,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses shadow acne: \"浮点舍入让 P 实际上略微落在球面内侧...这条 shadow ray 会以 t ≈ 0 再次击中球体自己，于是球体'遮挡了自己'\" and gives minimal fix: \"Vec3 shadowOrig = hitPos + N * 1e-3f\" plus \"if (t > 1e-4f) return t;\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No concrete command to run is given; the ending is only \"改完后黑点应完全消失，阴影边缘干净。如果还有残留噪声，把求交代码贴出来\" — expected behaviour without a runnable command/checkpoint"
+  },
+  {
+   "text": "B3: Explains self-intersection from floating-point error and fixes it with a small t_min/epsilon offset (e.g. 0.001)",
+   "passed": true,
+   "evidence": "Explains self-intersection from floating-point error: \"浮点舍入让 P 实际上略微落在球面内侧（或正好在球面上）。这条 shadow ray 会以 t ≈ 0 再次击中球体自己\" and fixes with epsilon offsets: \"hitPos + N * 1e-3f\", \"对 shadow ray 传一个 t_min = 1e-4 的下界\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0); SHELL COMMANDS RUN (1): only \"ls -la\"; no install commands and nothing written outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 47.4
+ },
+ "install_like_cmds": []
+}

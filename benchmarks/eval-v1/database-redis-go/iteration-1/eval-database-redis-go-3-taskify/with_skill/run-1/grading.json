@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "main.go is a skeleton, not a solution: 'TODO(M1.1): 创建 TCP listener' with 'var l net.Listener // 占位，替换成真实 listener'; agent states 'I should NOT dump the full solution. Give the skeleton with TODOs and let the learner fill in'; only M1 is coached ('M1 现在开始... TODO 就是你的作业'); no resp.go/handler.go/aof.go written; LEARNING_TASKS.md sets rule '核心逻辑由学习者编写；只有当前里程碑、且学习者尝试过后才提供完整代码'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final message ends with runnable checkpoint: '写完跑：go run . & printf 'PING\\r\\n' | nc localhost 6379 # 期望 +OK' and '卡住或跑通后把输出贴给我，我按 PROGRESS.md 记录后进 M2'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (database-redis-go): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Agent fetched all 8 real chapters ('introduction, first-steps, writing-server, resp-reader, resp-writer, implementing-commands, aof, next') and milestones map 1:1 (M1 Building Server, M2 Reading RESP, M3 Writing RESP, M4 Redis Commands, M6 AOF); tutorial-specific detail: '客户端命令是数组: *3\\r\\n$3\\r\\nset\\r\\n$5\\r\\nadmin\\r\\n$5\\r\\nahmed\\r\\n', type bytes 'ARRAY='*', BULK='$'', Go stdlib-only, port 6379, PING/SET/GET/HSET/HGETALL, AOF restart check '重启服务器后 GET name → ahmed'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands ran, but commands wrote outside the project dir: 'curl -sL ... -o /tmp/redis-intro.html' and 'cd /tmp && for p in introduction first-steps ...; do curl -sL ... -o \"redis-$p.html\" & done' plus python extraction writing redis-*.txt in /tmp"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 438.2
+ },
+ "install_like_cmds": []
+}

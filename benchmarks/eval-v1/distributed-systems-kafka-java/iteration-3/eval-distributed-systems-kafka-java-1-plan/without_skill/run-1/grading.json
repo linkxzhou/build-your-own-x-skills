@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged plan M0-M7 mapped to guide stages with only M0 done: README table shows 'M0 | Stage 1 | ... | ✅' and 'M1...M7 ... ⬜'; code is stubs with TODOs, e.g. MessageCodec.encode 'throw new UnsupportedOperationException(\"TODO(M1): 实现消息编码\")', SocketServer.start 'TODO(M4): 实现 SocketServer', broker main only 'skeleton 启动' prints; docs/MILESTONES.md defines per-milestone 目标/任务/验收 criteria."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README 快速开始 gives concrete commands: 'mvn clean package', 'java -cp target/simple-kafka-1.0-SNAPSHOT.jar com.simplekafka.broker.SimpleKafkaBroker 1 localhost 9091 2181' (x3 brokers) plus producer/consumer; M0 验收 states expected behaviour: '`mvn clean package` 成功；`SimpleKafkaBroker 1 localhost 9091 2181` 等命令可运行并打印参数'; agent verified by actually running the broker main via java -cp (shell log), which prints '[broker-1] skeleton 启动: host=... port=... zk=...'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (distributed-systems-kafka-java): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Agent fetched the actual guide (buildthingsuseful/build-your-own-kafka) and matched its stages: 'Stages: 1. project structure, 2. core protocol layer, 3. Zookeeper integration, 4. storage layer, 5. broker, 6. client library, 7. higher-level producer/consumer APIs, 8. testing'; milestones mirror Kafka-specific concepts: 'LogSegment：.log 追加写 + .index 稀疏索引', '/simplekafka/controller（ephemeral）选举 controller', '高水位（HW）', CRC32 frame '[4B 帧长][2B magic][4B CRC32]...'; guide-faithful Java specifics: jar 'simple-kafka-1.0-SNAPSHOT.jar', package com.simplekafka, broker args '<brokerId> <host> <port> <zkPort>'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run (agent told learner 'Maven 未安装，运行 `brew install maven`'), but commands wrote outside the project dir: 'mkdir -p /tmp/sk-libs /tmp/sk-classes', 'cd /tmp/sk-libs; curl -sSL -o zookeeper-3.8.4.jar https://repo1.maven.org/maven2/org/apache/zookeeper/zookeeper/3.8.4/zookeeper-3.8.4.jar', 'find src/main/java -name '*.java' > /tmp/sk-sources.txt', and javac output compiled classes to /tmp/sk-classes (later used via 'CP=/tmp/sk-classes:...')."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 522.5
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "git-git-wyag-thb-lt",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:52Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 575.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged 7-milestone plan with only M1 marked \u2705 ('| 1 \u2705 | init |'), M2 listed as '### M2 hash-object / cat-file \u2014 \u5f85\u5f00\u59cb' with a TODO list; mygit.py (4825 chars) implements only the init subcommand, matching the user's explicit '\u53ea\u5b8c\u6210\u7b2c\u4e00\u9636\u6bb5' \u2014 first milestone only, not a complete implementation."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Verification section gives concrete commands with expected behaviour: 'git status \u2192 On branch master / No commits yet'\uff1b'git fsck \u9000\u51fa\u7801 0'\uff1breal git 'add + commit\uff08a4834a9\uff09\u6210\u529f'\uff1b'\u5bf9\u5df2\u6709\u4ed3\u5e93\u91cd\u590d init \u6b63\u786e\u62a5\u9519\u9000\u51fa'. Each milestone row also carries a checkpoint, e.g. M2: 'mygit hash-object -w f \u7684 SHA \u4e0e git hash-object f \u4e00\u81f4'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (git-git-wyag-thb-lt): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror wyag's actual stages (init \u2192 hash-object/cat-file \u2192 write-tree/ls-tree \u2192 commit-tree/log \u2192 index add/status \u2192 checkout/branch \u2192 clone/push/packfile) with tutorial-specific concepts: '\"blob <len>\\0<data>\"'\u3001SHA-1\u3001zlib\u3001'objects/xx/yyyy\u2026'\u3001'20 \u5b57\u8282\u539f\u59cb SHA'\u3001'\u4e8c\u8fdb\u5236 index v2'\u3001'pkt-line\u3001packfile \u89e3\u6790\u3001delta'. Agent fetched the tutorial to confirm init artifacts ('\u6559\u7a0b\u539f\u6587\u5df2\u786e\u8ba4\uff1ainit \u9636\u6bb5\u521b\u5efa branches/ objects/ refs/tags/ refs/heads/\u2026'), and code follows wyag \u00a73.1\u20133.2 (GitRepository, repo_create writing 'ref: refs/heads/master', repositoryformatversion=0/filemode=false/bare=false, repo_find)."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run, but the agent wrote outside the project dir: 'curl -sL https://wyag.thb.lt/ -o /tmp/wyag.html && wc -c /tmp/wyag.html' (plus converted /tmp/wyag.txt read via 'sed -n 560,780p /tmp/wyag.txt'), 'mkdir /tmp/t1', 'python3 mygit.py init /tmp/t1 && find /tmp/t1/.git', 'touch /tmp/probe' \u2014 all target /tmp, outside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 274.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a staged plan, not an implementation: '\u628a wyag \u6559\u7a0b\u7684 10 \u7ae0\u538b\u7f29\u6210 8 \u4e2a Milestone\uff080\u20137\uff09+ 1 \u4e2a\u9009\u505a\u8fdb\u9636\u9879\uff0c\u6bcf\u4e2a Milestone \u90fd\u5e26\u76ee\u6807\u3001\u6838\u5fc3\u6982\u5ff5\u3001\u5b50\u4efb\u52a1 checklist'; file contains TODO checkboxes ('- [ ] \u5efa `wyag.py`\uff0c\u7528 `argparse` \u642d\u5b50\u547d\u4ee4\u5206\u53d1\u6846\u67b6') and coaching rules ('\u6838\u5fc3\u903b\u8f91\u7559\u7a7a\u8ba9\u6211\u81ea\u5df1\u5199', '\u4e0d\u8bb8\u76f4\u63a5\u91cd\u5199\u6574\u6bb5\u4ee3\u7801'). No complete wyag code was written \u2014 only task descriptions."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Every milestone ends with a concrete \u9a8c\u6536 command plus expected behaviour, e.g. M0: '`python wyag.py --help` \u8f93\u51fa\u547d\u4ee4\u5217\u8868'; M1: 'git status # \u771f git \u80fd\u8bc6\u522b\u8fd9\u4e2a\u4ed3\u5e93\uff08\u8f93\u51fa On branch master / No commits yet\uff09'; M2: 'git hash-object f.txt # \u4e24\u8005 sha \u5fc5\u987b\u5b8c\u5168\u4e00\u81f4'; M7: 'git fsck \u5e72\u51c0'. Final answer points to starting Milestone 0 under these rules."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (git-git-wyag-thb-lt): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones map 1:1 to wyag's actual chapters (\u00a71\u20132 argparse skeleton, \u00a73 init/repo_find, \u00a74 objects, \u00a75 log, \u00a76 ls-tree/checkout, \u00a77 refs, \u00a78 index read-only, \u00a79 rm/add/commit) and use exactly wyag's command set ('init\u3001hash-object\u3001cat-file\u3001log\u3001ls-tree\u3001checkout\u3001show-ref\u3001tag\u3001rev-parse\u3001ls-files\u3001check-ignore\u3001status\u3001rm\u3001add\u3001commit'). Tutorial-specific concepts: '\u5bf9\u8c61\u683c\u5f0f `<type> <size>\\0<data>`\u3001SHA-1 \u5bfb\u5740\u3001zlib \u538b\u7f29\u3001`.git/objects/xx/yyyy\u2026` \u4e24\u7ea7\u76ee\u5f55', '\u5386\u53f2\u662f Merkle DAG', 'tree \u6392\u5e8f\u3001index stat \u5b57\u6bb5'; language matches tutorial ('\u8bed\u8a00\u9ed8\u8ba4 Python 3 \u6807\u51c6\u5e93\uff08wyag \u539f\u6587\u5373 Python\uff0c\u96f6\u4f9d\u8d56\uff09'). Agent verified against fetched tutorial and per-tutorial skill (tutorial-map.md)."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Agent's 4 shell commands are read-only ('ls .agents/skills/ | grep', 'wc -l wyag-claude-code-tasks.md && grep -c ...'); other calls are read/glob/web_fetch/explore plus one write to 'wyag-claude-code-tasks.md' inside the project. No install commands run; the plan explicitly forbids them ('\u4e0d\u5b89\u88c5\u4efb\u4f55\u4f9d\u8d56\uff0c\u53ea\u7528 Python 3 \u6807\u51c6\u5e93'). The 'mkdir /tmp/t1' line appears only as a learner acceptance command in the task list, which is permitted."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 518.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged plan with only the first milestone delivered: README.md table marks M1 '\u2705 \u672c\u6b21\u4ea4\u4ed8' and M2\u2013M5 '\u2b1c'; wyag.py docstring '\u9636\u6bb5\u4e00\uff08M1\uff09\uff1a\u4ed3\u5e93\u5730\u57fa\u4e0e\u5185\u5bb9\u5bfb\u5740\u5bf9\u8c61\u5b58\u50a8' implements only init/cat-file/hash-object; README defers later work ('\u5bf9\u8c61\u540d\u89e3\u6790\u5728 M3 \u63d0\u4f9b'). Matches the user's '\u53ea\u5b8c\u6210\u7b2c\u4e00\u9636\u6bb5'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "README \u7528\u6cd5 gives concrete commands with expected behaviour: 'python3 wyag.py init <\u76ee\u5f55>'\uff08\u7b49\u4ef7 git init\uff09, 'python3 wyag.py hash-object [-t blob|commit|tag|tree] [-w] <\u6587\u4ef6>'\uff08-w \u5199\u5165\u5bf9\u8c61\u5e93\uff09, 'python3 wyag.py cat-file <blob|commit|tag|tree> <sha>'\uff08\u9700\u5b8c\u6574 40 \u4f4d SHA-1\uff09; tests/test_phase1.py states '\u76f4\u63a5\u8fd0\u884c\uff1apython3 tests/test_phase1.py'; agent then ran the tests and a live checkpoint demo (wyag init demo \u2192 hash-object -w hello.txt)."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (git-git-wyag-thb-lt): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones map to the tutorial's actual sections (README table: M1 \u00a73\u2013\u00a74 init/objects, M2 \u00a75 kvlm/log/Merkle DAG, M3 \u00a76\u2013\u00a77 ls-tree/checkout/show-ref/tag/branch/rev-parse, M4 \u00a78 index/ls-files/check-ignore/status, M5 \u00a79 rm/add/commit); agent fetched wyag.thb.lt and corrected the plan against the real TOC ('\u76ee\u5f55\u91cc\u6ca1\u6709 diff\u2026\u6559\u7a0b\u6700\u7ec8\u5b9e\u73b0 init, add, rm, status, commit, log, ls-tree, cat-file, checkout\u2026'); wyag.py implements wyag-specific internals: zlib '<type> <size>\\x00<content>' objects stored at '.git/objects/<sha\u524d2\u4f4d>/<sha\u540e38\u4f4d>', repo_find walk-up, SHA-1 content addressing."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run, but a shell command wrote outside the project dir: 'cd \"$(mktemp -d)\" && python3 \u2026/wyag.py init demo && cd demo && echo \"hello git\" > hello.txt && SHA=$(\u2026 hash-object -w hello.txt)' creates the demo repo, hello.txt and object files in a system temp dir outside the project; running tests/test_phase1.py likewise writes via tempfile outside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 211.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a staged plan, not an implementation: '\u628a wyag \u6559\u7a0b\u7684 10 \u4e2a\u7ae0\u8282\u8f6c\u6362\u6210\u4e86 10 \u4e2a\u53ef\u9010\u6761\u7c98\u8d34\u7ed9 Claude Code \u6267\u884c\u7684\u4efb\u52a1\uff08\u4efb\u52a1 0\u20139\uff09' in dependency order '\u9aa8\u67b6 \u2192 init/repo_find \u2192 \u5bf9\u8c61\u8bfb\u5199 \u2192 log/tree/checkout \u2192 refs/tag \u2192 index/status \u2192 add/commit \u2192 \u7aef\u5230\u7aef\u9a8c\u6536'; prompts scaffold with stubs '\u5148\u6ce8\u518c\u4f46\u6307\u5411\u629b NotImplementedError \u7684\u7a7a\u51fd\u6570' and anti-copy rule '\u7981\u6b62\u76f4\u63a5\u7167\u6284\u6559\u7a0b\u6e90\u7801\u538b\u7f29\u5305\uff1b\u8ba9 Claude Code \u89e3\u91ca\u6bcf\u6bb5\u4ee3\u7801\u4e3a\u4ec0\u4e48\u8fd9\u6837\u5199'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Every task ends with \u9a8c\u6536\u6807\u51c6 giving concrete commands and expected behavior, e.g. 'python3 wyag.py --help # \u5217\u51fa\u5168\u90e8\u5b50\u547d\u4ee4', 'python3 wyag.py cat-file # \u62a5 NotImplementedError \u800c\u975e NameError', 'git status # \u771f\u5b9e git \u5e94\u80fd\u8bc6\u522b\u8fd9\u662f\u5408\u6cd5\u4ed3\u5e93\uff08\u62a5 initial branch \u63d0\u793a\u800c\u975e fatal\uff09'; final answer instructs '\u8dd1\u901a\u9a8c\u6536\u547d\u4ee4\u540e\u8fdb\u5165\u4e0b\u4e00\u4e2a'"
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (git-git-wyag-thb-lt): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones map to wyag's real chapters and code: '\u5bf9\u5e94\u7ae0\u8282\uff1a[3. Creating repositories: init](https://wyag.thb.lt/#init)', 'GitRepository \u7c7b\uff1a\u6301\u6709 worktree\u3001gitdir\uff0crepo_dir(*path) \u548c repo_file(*path)', 'repo_find(path, required=True)\uff1a\u4ece\u7ed9\u5b9a\u76ee\u5f55\u5411\u4e0a\u9010\u7ea7\u67e5\u627e .git', tutorial-specific pitfalls 'tree \u7684 20 \u5b57\u8282\u4e8c\u8fdb\u5236 sha\u3001index \u7684 8 \u5b57\u8282\u5bf9\u9f50\u3001kvlm \u7684 message \u7a7a\u884c', and the tutorial's exact command set (init/hash-object/cat-file/log/ls-tree/checkout/show-ref/tag/rev-parse/ls-files/check-ignore/status/rm/add/commit) in Python"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Agent's only actions: two web_fetch of wyag.thb.lt, one write of WYAG_TASKS.md inside the project, and shell 'ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-git-git-wyag-thb-lt-3'; no install commands in any command run or in the file (commands are python3/git/find/mkdir/cd); /tmp/wyag-test appears only as learner-facing test isolation: '\u6d4b\u8bd5\u7edf\u4e00\u5728 /tmp/wyag-test \u4e0b\u8fdb\u884c\uff0c\u907f\u514d\u6c61\u67d3\u5de5\u4f5c\u533a'"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 424.7,
+        "stddev": 212.5563,
+        "min": 274.4,
+        "max": 575.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 364.85,
+        "stddev": 217.1525,
+        "min": 211.3,
+        "max": 518.4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "+59.8",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

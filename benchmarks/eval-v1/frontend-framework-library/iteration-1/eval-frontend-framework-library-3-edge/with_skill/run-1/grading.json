@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Adapts to a Redux-only track and scaffolds its first milestone",
+   "passed": true,
+   "evidence": "Adapted to Redux-only: 'Redux is a standalone state container; React-Redux is just an optional binding layer on top... we can build all of it with zero React'; README: 'Build Your Own Redux (no React)... React-Redux (Provider/connect) is an optional binding layer we skip entirely.' Scaffolded milestone 1 only: wrote package.json, README.md, PROGRESS.md, test/scaffold.test.js and the 5 M1 tests in test/reducer.test.js, leaving the implementation to the learner ('src/reducer.js... // your code here', 'Right now 1 fails (the reducer is empty) — that's your target') — no multi-milestone dump."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete checkpoint: '**Checkpoint:** `npm test` — the 5 tests in `test/reducer.test.js` must pass. They cover boot-from-undefined, immutable update, identity-preservation on unknown actions, replay determinism, and no-mutation. Right now 1 fails (the reducer is empty) — that's your target.' plus 'Write the reducer, run `npm test`, and paste any failure output here.'"
+  },
+  {
+   "text": "B3: Describes store with getState/dispatch/subscribe and pure reducers",
+   "passed": true,
+   "evidence": "Store API named and store role described: 'The core (`createStore`, `dispatch`, `subscribe`, middleware) is ~50 lines of framework-agnostic JavaScript'; 'Milestone 2: `createStore` — the object that actually holds the state and runs that reducer for you'; README M2 checkpoint 'dispatch/getState/validate tests pass'. Pure reducers described in depth: 'a *reducer*: a pure function `(state, action) → nextState` that never mutates. Same actions in, same state out; that's what makes replay/time-travel possible.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands were run (package.json has zero deps: 'No dependencies. Node's built-in test runner only.'), but a command wrote outside the project dir: 'curl -sL \"https://zapier.com/blog/how-to-build-redux/\" -o /tmp/zapier-redux.html' writes /tmp/zapier-redux.html, outside redux-from-scratch/ and the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 311.9
+ },
+ "install_like_cmds": []
+}

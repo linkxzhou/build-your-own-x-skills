@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains the problem and gives a minimal fix",
+   "passed": true,
+   "evidence": "Explains the problem: \"that's cross-site scripting (XSS)... runs arbitrary JavaScript in the browser of every user\"; gives minimal fix: \"Escape by default. The engine should HTML-encode <, >, &, \", ' in every interpolated value\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete checkpoint: \"submit `<script>alert(document.cookie)</script>` as input, then view the page as a different user or logged out. If the alert fires, it's exploitable\" — concrete action plus expected behaviour"
+  },
+  {
+   "text": "B3: Says HTML escaping should be on by default (escape < > & \" ') with an explicit raw/safe opt-out",
+   "passed": true,
+   "evidence": "\"Escape by default. The engine should HTML-encode `<`, `>`, `&`, `\"`, `'` in every interpolated value, with raw output available only through an explicit opt-in (`| safe` / `raw` filter)`\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0), no tool calls; answer only asks the learner to verify in their own engine, no install commands"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 55.0
+ },
+ "install_like_cmds": []
+}

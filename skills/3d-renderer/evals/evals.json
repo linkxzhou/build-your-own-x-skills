@@ -1,0 +1,92 @@
+{
+  "skill_name": "3d-renderer",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "Teach me graphics: I want to write a ray tracer in C++ from scratch. First step please.",
+      "expected_output": "Scaffolds image output (PPM) or the first milestone with TODOs; no full ray tracer; Uses a simple image format such as PPM so no graphics library is needed, or justifies another choice",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the '3d-renderer' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds image output (PPM) or the first milestone with TODOs; no full ray tracer"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Uses a simple image format such as PPM so no graphics library is needed, or justifies another choice"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我的光线追踪球体渲染出来全是黑色的点状噪声（shadow acne）。怎么回事？",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains self-intersection from floating-point error and fixes it with a small t_min/epsilon offset (e.g. 0.001)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the '3d-renderer' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains self-intersection from floating-point error and fixes it with a small t_min/epsilon offset (e.g. 0.001)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to write my own ray tracer from scratch, but I don't know C++. Can I do it in Python?",
+      "expected_output": "Accepts Python and adapts (smaller image sizes / numpy optional) without dumping a full renderer; Notes that pure Python is slow and suggests small resolutions or vectorization, while the math stays the same",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the '3d-renderer' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Accepts Python and adapts (smaller image sizes / numpy optional) without dumping a full renderer"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Notes that pure Python is slow and suggests small resolutions or vectorization, while the math stays the same"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

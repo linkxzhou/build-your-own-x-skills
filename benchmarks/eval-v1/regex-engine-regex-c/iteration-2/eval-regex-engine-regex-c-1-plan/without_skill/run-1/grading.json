@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged plan M0–M5 with acceptance criteria; src/regex.c is an M0 placeholder: 'M0 占位：M1 起逐里程碑填充真实实现' returning RE_ERR_UNIMPLEMENTED; answer ends '下一步是 M1：在 src/regex.c 里写递归回溯匹配器' — scaffold only, no final implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'里程碑与骨架已就绪，`make && make test` 零警告通过' plus '全流程通过：构建零警告、2/2 测试通过、CLI 正确输出占位错误并返回非零'; README gives concrete commands (make / make test / make clean, './regex <pattern> <text>') and verified run 'make && make test && ./regex a* aaaa'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the Russ Cox tutorial's actual stages: 'M1 递归回溯匹配器…理解回溯为何最坏 O(2^n)', 'M3 Thompson 构造 NFA + Pike VM 并行模拟…O(n·m)', 'M4 捕获组（capture slots）', 'M5 …bench 报告回溯版 vs Pike VM 耗时对比'; references Thompson 1968; C11/Makefile specifics."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Only shell command: 'make && make test && ./regex a* aaaa ; echo \"exit=$?\" ; make clean' — no install commands; all 6 files (Makefile, README.md, include/regex.h, src/main.c, src/regex.c, tests/test_main.c) written inside the project dir; no third-party deps ('无第三方依赖')."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 280.8
+ },
+ "install_like_cmds": []
+}

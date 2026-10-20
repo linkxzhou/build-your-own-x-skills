@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the root cause: \"这个症状几乎总是同一个问题：寄存器堆没有把 x0 硬连到 0\" and gives a minimal fix with code: \"if (we && rd != 5'd0) regs[rd] <= wdata;\" plus read-port mux \"assign rdata_a = (rs_a == 5'd0) ? 32'b0 : regs[rs_a];\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No concrete command or expected output anywhere; the reply ends with a request for code: \"把你的 regfile 和写回那段代码贴上来，我可以直接指出具体行。\" and earlier \"工作区里没有找到你的代码...把寄存器堆模块贴出来我帮你看\""
+  },
+  {
+   "text": "B3: States x0 is hardwired to zero: ignore writes to register 0 / always read 0",
+   "passed": true,
+   "evidence": "\"寄存器堆没有把 x0 硬连到 0\"; \"读端口硬连 0\"; \"写端口屏蔽 x0\" with \"if (we && rd != 5'd0)\"; \"架构上 x0 永远读 0\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0), FILES WRITTEN IN PROJECT (0); only tool calls are glob \"**/*.{v,sv,vh,svh}\" and grep for x0/regfile — no install commands, nothing written outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 53.6
+ },
+ "install_like_cmds": []
+}

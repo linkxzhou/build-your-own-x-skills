@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds createElement/render milestone with TODOs; not the full reconciler + hooks",
+   "passed": true,
+   "evidence": "didact.js contains only milestone 1 stubs: `throw new Error(\"TODO: implement createElement (milestone 1)\")` and `throw new Error(\"TODO: implement createTextElement (milestone 1)\")`; PROGRESS.md lists milestones 2–6 (render, reconciler, hooks) as 'pending', and main.js is a stub ('Milestone 2 replaces this'). No reconciler/hooks code written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer gives concrete command `cd tiny-react && npm test` and expected behaviour: \"Right now it's red: 6 tests, 6 failing with `TODO` errors. Green means all 6 pass — that's the checkpoint for this milestone\"."
+  },
+  {
+   "text": "B3: Explains that JSX compiles to createElement(type, props, ...children) calls / plain objects",
+   "passed": true,
+   "evidence": "\"JSX never runs in the browser. Babel compiles `<div id=\"a\">hi</div>` into a plain function call: `createElement(\"div\", { id: \"a\" }, \"hi\")`. That function's whole job is to return a plain object describing one piece of UI\"; reinforced in didact.js header comments."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 6 shell commands are `ls`, `node --version`, and `npm test` (node's built-in runner, no dependencies in package.json) — no install commands. All 6 writes are inside tiny-react/ (package.json, didact.js, test/createElement.test.js, index.html, main.js, PROGRESS.md); answer states \"No installs needed\"."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 322.6
+ },
+ "install_like_cmds": []
+}

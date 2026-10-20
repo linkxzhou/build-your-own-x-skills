@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Accepts Python and adapts (smaller image sizes / numpy optional) without dumping a full renderer",
+   "passed": true,
+   "evidence": "\"Yes — Python works fine for a ray tracer... At 256×144 pixels, pure Python renders in seconds\"; numpy kept optional as milestone 7 \"Stretch: AA, BVH, numpy\"; no full renderer dumped — main.py is a skeleton (\"You write the three TODO bodies\") where pixel_color/render/write_ppm all `raise NotImplementedError`"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "PROGRESS.md milestone 1 checkpoint: \"`python3 main.py` writes `out.ppm`; opens in a viewer as a smooth gradient\"; planned checkpoint \"`python3 main.py` produces out.ppm; `head out.ppm` shows `P3 256 144 255`\"; main.py's __main__ runs write_ppm(\"out.ppm\", render()) and prints \"wrote out.ppm (256x144)\""
+  },
+  {
+   "text": "B3: Notes that pure Python is slow and suggests small resolutions or vectorization, while the math stays the same",
+   "passed": true,
+   "evidence": "\"Python is slower but fine at small image sizes. At 256×144 pixels, pure Python renders in seconds\"; \"HEIGHT = 144  # 16:9 — small on purpose, Python render time stays sane\"; vectorization deferred: \"avoid numpy at first (learn the math), then optionally numpy-vectorize later for speed\" / stretch milestone \"AA, BVH, numpy\"; math unchanged: \"the math ports to Python almost line by line\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command was read-only: \"ls ~/.local/bin ...; python3 --version; which python3\" — no install; writes limited to raytracer/main.py and raytracer/PROGRESS.md inside the project; \"No installs required — we'll write images as PPM files with the stdlib\""
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 197.1
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds fetching a URL (sockets/HTTP) with TODOs; no full browser",
+   "passed": true,
+   "evidence": "browser.py is a skeleton: '你的任务：填掉下面两个 TODO' with '# TODO 1: 解析 URL，拆出 scheme / host / port / path' and '# TODO 2: 建立 TCP 连接，发送请求，读回响应体' followed by '...' bodies; answer says '你来写：`browser.py` 里的两个 TODO' and '当前进度：里程碑 1/7' — no full browser implemented"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with checkpoint: 'python3 browser.py http://example.org' and '预期输出一段以 `<html>` 开头、含 \"Example Domain\" 的 HTML'"
+  },
+  {
+   "text": "B3: Mentions sending an HTTP GET request and splitting headers/body at a blank line (\\r\\n\\r\\n)",
+   "passed": true,
+   "evidence": "Concept text: 'HTTP/1.1 请求就是一段按 \\r\\n 分行的纯文本——请求行、若干头部、空行——…头部之后的剩余字节就是 body'; file comment '用 socket 发一个 HTTP/1.1 GET 请求' and TODO 2 '发送请求行 + 头部，每行以 \\r\\n 结尾，头部结束后再补一个 \\r\\n' / '循环读响应头直到遇到空行；然后读出剩余的 body'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Commands run were only 'ls -la && python3 --version && python3 -c \"import tkinter…\"' and 'curl -s … http://example.org' — no installs; only file written is browser.py in project; Tk missing is delegated to learner: '届时你需要自己运行安装命令（macOS：`brew install python-tk@3.14`）'"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 185.8
+ },
+ "install_like_cmds": []
+}

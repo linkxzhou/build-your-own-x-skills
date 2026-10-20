@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint rather than rewriting the whole parser",
+   "passed": false,
+   "evidence": "Agent dumped a complete implementation instead of a minimal hint: 'Created precedence_demo.py — it contains your flat left-to-right parser (parse_buggy) next to a precedence-climbing parser (parse_fixed), sharing one tokenizer, with a comparison loop at the bottom' — a 2221-char file with full tokenizer, both parsers, and a self-test loop, plus complete expr/term/factor code in the reply."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final message gives a concrete command and expected output: 'Run it: python precedence_demo.py' and 'Expected output (hand-traced against the code): 1 + 2 * 3 buggy=9 fixed=7 ... 2 * (3 + 4) buggy=error fixed=14'."
+  },
+  {
+   "text": "B3: Explains operator precedence and fixes it via precedence climbing/Pratt parsing or separate grammar levels (term/factor)",
+   "passed": true,
+   "evidence": "Explains precedence ('Your loop treats `+` and `*` as equal precedence, so it folds left: (1 + 2) * 3 = 9') and fixes it both ways: layered grammar 'expr := term ((\"+\"|\"-\") term)*, term := factor ((\"*\"|\"/\") factor)*' and precedence climbing 'right = expr(PRECEDENCE[op] + 1)'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)'; only tool calls are two globs and one write of precedence_demo.py inside the project ('FILES WRITTEN IN PROJECT (1)'); no install commands — learner is told to run 'python precedence_demo.py' themselves."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 126.1
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds a bump allocator milestone with TODOs; no full allocator",
+   "passed": true,
+   "evidence": "mymalloc/mymalloc.c is a skeleton with TODO(learner) markers: align_up has 'return n; /* replace me */', arena_init body is empty TODO, my_malloc is 'return NULL; /* replace me */'; final answer tells learner '你要写的（都在 mymalloc/mymalloc.c...）1. align_up(n)... 2. arena_init()... 3. my_malloc(size)' with hints only, no solution code. PROGRESS.md shows M1 'in progress', M2-M7 'pending' — only the current milestone scaffolded, no full allocator (my_free is a no-op)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with concrete checkpoint: 'cd mymalloc && make test' with expected output 'M1 PASS: 1000 allocations, all 16-byte aligned, all bytes read back'; red baseline already confirmed ('FAIL: allocation 0 returned NULL') and test_m1.c asserts alignment/corruption checks."
+  },
+  {
+   "text": "B3: Mentions sbrk or mmap and alignment (e.g. 16 bytes)",
+   "passed": true,
+   "evidence": "Concept paragraph: '向 OS 要一大块内存（mmap，Linux 上也可用 sbrk，但 macOS 已弃用它）' mentions both mmap and sbrk; 'x86-64/ARM64 的 ABI 要求 malloc 返回 16 字节对齐的指针，所以每个切片都要向上取整到 16 的倍数' covers 16-byte alignment; skeleton defines '#define ALIGNMENT 16UL' and the mmap call."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Shell commands run were only 'ls .agents/skills/...', 'ls -la; which gcc cc clang make; uname -s', and 'cd mymalloc && make test' — no install commands; tools were checked via which and found present. All 9 files written are inside the workspace under mymalloc/ (Makefile, PROGRESS.md, mymalloc.c/.h, test_m1.c plus local build artifacts test_m1 and test_m1.dSYM); nothing outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 291.6
+ },
+ "install_like_cmds": []
+}

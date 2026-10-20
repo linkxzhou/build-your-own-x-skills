@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "All runtime functions are stubs with TODOs, e.g. lib/container.sh: 'container_run() { log_err \"container_run: TODO (M2) — unshare + pivot_root + busybox init\"; return 1; }' and lib/image.sh: 'image_pull: TODO (M5)'. docs/milestones.md stages M0–M6 with 任务/验收/提示 per milestone; only the M0 skeleton (CLI dispatch, lint/test harness) is implemented, leaving M1–M6 for the learner."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer reports a runnable checkpoint with expected output: '骨架已建好，`make lint && make test` 全绿（8 passed）' and gives the next concrete run: '让 `minidocker run <rootfs> sh` 走通 chroot'; README quick start lists 'make lint / make test / make test-linux / make linecount' with behaviors."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (docker-docker-shell): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the docker-in-bash tutorial's actual concepts: 'M1 rootfs + chroot | chroot(2), mount --bind', 'M2 namespaces | unshare, pivot_root, /proc', 'M3 cgroups v2 | memory.max 触发 OOM kill', 'M4 veth, bridge, iptables NAT', 'M5 Registry API v2, overlayfs', 'M6 nsenter, 信号'; core constraint is bash-specific: '核心脚本 bin/minidocker 控制在 100 行以内' with 'make linecount'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (2) are 'ls -la ... && sw_vers; uname -a' and 'chmod +x bin/minidocker tests/smoke.sh && make lint && make test && make linecount && find ...' — no install commands; all 10 FILES WRITTEN are inside the project (Dockerfile.dev, Makefile, README.md, bin/, lib/, tests/, docs/, .gitignore). apt-get/docker appear only as learner-facing file content (Dockerfile.dev, 'make test-linux'), i.e. asking the learner to set up Linux."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 509.5
+ },
+ "install_like_cmds": []
+}

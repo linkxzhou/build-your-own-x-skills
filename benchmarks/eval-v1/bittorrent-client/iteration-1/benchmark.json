@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "bittorrent-client",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:49Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 479.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds bencode parsing (or the first milestone) with TODOs; no full client",
+          "passed": true,
+          "evidence": "Only milestone-1 scaffold written: bencode/bencode.go has every function as a stub \u2014 'return nil, 0, ErrNotImplemented' with '// TODO: dispatch on the first byte', '// TODO: find the terminating 'e'', etc.; main.go says '// TODO(milestone 1): decode `raw` with bencode.Decode'. No tracker/handshake/download code exists; PROGRESS.md shows milestones 2-7 with empty Status cells. Final answer coaches ('What to write next \u2014 all TODOs live in bencode/bencode.go', 'Don't dump the solution') rather than implementing."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete checkpoint: '**How to check it:** go test ./bencode/ # all green, including round-trip and error cases; go run . ubuntu.torrent # prints announce, name, length' and 'milestone 1 is done when tests are green and `go run .` prints a real torrent's name and length.'"
+        },
+        {
+          "text": "B3: Describes bencode types: strings <len>:<data>, integers i<n>e, lists l...e, dicts d...e",
+          "passed": true,
+          "evidence": "'It has exactly four types: `i42e` (integers), `4:spam` (byte strings: length, colon, bytes), `l...e` (lists), and `d...e` (dicts whose keys are always byte strings, sorted when encoding).' All four types with concrete examples."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "All 4 shell commands are non-installing: 'go version 2>&1; echo \"---\"; ls' and three runs of 'go build ./... && go vet ./... && go test ./bencode/'. All writes (go.mod, main.go, PROGRESS.md, bencode/bencode.go, bencode/bencode_test.go) are inside the project dir; agent noted 'Go 1.26.1 is available' without installing anything."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 239.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses the bug: '\u95ee\u9898\u5c31\u51fa\u5728\u91cd\u65b0\u5e8f\u5217\u5316\u8fd9\u4e00\u6b65\u2026\u4efb\u4f55\"\u89e3\u6790\u6210\u5bf9\u8c61\u518d\u91cd\u65b0\u7f16\u7801\"\u7684\u64cd\u4f5c\u90fd\u4f1a\u6539\u53d8\u5b57\u8282\uff0chash \u5fc5\u7136\u5bf9\u4e0d\u4e0a' and gives a scoped fix: '\u6b63\u786e\u505a\u6cd5\u662f\u5728\u89e3\u6790 bencode \u65f6\u8bb0\u5f55 info \u503c\u7684\u8d77\u6b62\u504f\u79fb\uff0c\u76f4\u63a5\u5bf9\u539f\u59cb\u5207\u7247\u505a\u54c8\u5e0c' with a working decoder snippet; the written tool (tools/infohash.py) targets only the current info-hash milestone, not a multi-milestone dump"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The learner-facing answer ends with 'BitTorrent v2 \u7684 info hash \u662f\u5bf9 info \u5b57\u5178\u505a SHA-256 \u518d\u622a\u65ad\u524d 20 \u5b57\u8282\uff0c\u4f46\u539f\u5219\u76f8\u540c\u2014\u2014\u54c8\u5e0c\u539f\u59cb\u5b57\u8282' \u2014 no command plus expected output; the script docstring only says 'Usage: python3 infohash.py a.torrent [b.torrent ...]' with no expected output/behaviour, and the self-test ('self-test OK') was run internally with its output never given to the learner as a checkpoint"
+        },
+        {
+          "text": "B3: Explains the info hash is SHA-1 of the original bencoded bytes of the info dict (re-bencode exactly, not JSON)",
+          "passed": true,
+          "evidence": "'info hash \u7684\u5b9a\u4e49\u662f\uff1a\u5bf9 .torrent \u6587\u4ef6\u91cc info \u5b57\u5178\u7684\u539f\u59cb bencode \u5b57\u8282\uff08\u4e00\u4e2a\u5b57\u8282\u90fd\u4e0d\u80fd\u52a8\uff09\u505a SHA-1'; 'data[start:end] \u5c31\u662f\u6587\u4ef6\u91cc info \u5b57\u5178\u7684\u539f\u59cb\u5b57\u8282\uff0c\u76f4\u63a5\u5582\u7ed9 SHA-1'; also explains why JSON and even re-bencode break it ('\u4e0d\u540c\u5b9e\u73b0\u53ef\u80fd\u6539\u53d8 key \u987a\u5e8f\u2026\u53ea\u8981\u548c\u539f\u6587\u4ef6\u5dee\u4e00\u4e2a\u5b57\u8282\uff0chash \u5c31\u4e0d\u540c')"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Files written are all inside the project: sample.torrent, tools/infohash.py, tools/__pycache__/infohash.cpython-314.pyc; commands run are 'mkdir -p tools && cat > tools/infohash.py <<'PYEOF'' and 'python3 - <<'TESTEOF'' \u2014 no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere in the evidence"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 195.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Proposes a legal torrent (e.g. a Linux ISO) or a local tracker setup",
+          "passed": true,
+          "evidence": "Proposes both: local tracker setup \u2014 'mktorrent -a http://localhost:6969/announce -o test.torrent bigfile.bin' / 'opentracker -p 6969' / 'transmission-cli test.torrent -w ./seeddir' \u2014 and legal torrents ('Debian netinst ISO', 'Big Buck Bunny / Sintel \u2014 https://webtorrent.io/torrents/')."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Reply ends with a question and a file-save note, no command: 'Where are you in the build \u2014 which language, and which milestone is passing right now?' then 'Saved the test plan to `TESTING.md`... It's the checklist each milestone gets verified against as you go.' The promised checkpoint artifact is hollow too: TESTING.md's '## Milestone \u2192 checkpoint map' contains only the header row '| # | Milestone | Checkpoint |' with no rows; concrete commands (mktorrent/opentracker/transmission-show) appear only mid-answer."
+        },
+        {
+          "text": "B3: Mentions a concrete legal source such as a Debian/Ubuntu ISO torrent",
+          "passed": true,
+          "evidence": "'Debian netinst ISO \u2014 https://cdimage.debian.org/debian-cd/current/amd64/bt-cd/, tracked by tracker.debian.org. ~700 MB, good piece count, and Debian publishes checksums' \u2014 a concrete, named legal source with URL."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'## SHELL COMMANDS RUN (0)'; only tool calls are two reads of skill files and one write; '## FILES WRITTEN IN PROJECT (1) \u2014 TESTING.md' stays inside the project. No brew/apt/pip/cargo/rustup/npm -g/go install anywhere; mktorrent/opentracker/transmission-cli are given as commands for the learner to run themselves."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 61.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds bencode parsing (or the first milestone) with TODOs; no full client",
+          "passed": true,
+          "evidence": "Scoped to first milestone only: 'Step 1: parse the `.torrent` file... the real first deliverable is a bencode decoder'; gives skeleton 'type Torrent struct {...}' and layout 'bencode.go (decoder), torrent.go (struct + parse + info hash)'; 0 files written, no full client implementation. No literal TODO markers, but nothing beyond milestone 1 was implemented."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Only 'Validate the decoder against a real `.torrent` file before moving on' \u2014 no concrete command (e.g. go run/build invocation) and no expected output/behaviour given."
+        },
+        {
+          "text": "B3: Describes bencode types: strings <len>:<data>, integers i<n>e, lists l...e, dicts d...e",
+          "passed": true,
+          "evidence": "Lists all four: 'integers \u2014 `i123e`', 'byte strings \u2014 `4:spam` (length-prefixed raw bytes)', 'lists \u2014 `l<item>...e`', 'dicts \u2014 `d<key><value>...e`'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'SHELL COMMANDS RUN (0)' and 'FILES WRITTEN IN PROJECT (0)'; only tool call was glob {\"pattern\": \"**/*\"}; no install commands, nothing outside workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 58.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses JSON re-serialization as the cause ('JSON serialization changes key order, encoding, integer formatting') and gives a minimal fix: 'record the byte range of the `info` dictionary in the original file... then slice those raw bytes and SHA1 them', plus a decode-offset code sketch."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Ends with only a vague verification suggestion: '\u62ff\u4e00\u4e2a\u77e5\u540d\u79cd\u5b50\uff0c\u5bf9\u6bd4 `transmission-show` \u6216 WebTorrent \u7f51\u9875\u663e\u793a\u7684 info hash\uff1b\u6216\u8005\u7528 `mktorrent` \u81ea\u5df1\u9020\u4e00\u4e2a\u79cd\u5b50' \u2014 no concrete command invocation and no expected output/behaviour."
+        },
+        {
+          "text": "B3: Explains the info hash is SHA-1 of the original bencoded bytes of the info dict (re-bencode exactly, not JSON)",
+          "passed": true,
+          "evidence": "'info_hash must be the SHA1 of the exact original bencoded bytes of the `info` dictionary from the torrent file, not a re-serialization' and 'info_hash \u5fc5\u987b\u5bf9 torrent \u6587\u4ef6\u91cc `info` \u5b57\u5178\u7684\u539f\u59cb bencode \u5b57\u8282\u505a SHA1'; explicitly rules out JSON ('bencode \u6574\u6570\u662f i42e\uff0cJSON \u662f 42')."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only command run is 'ls -la /Users/linkxzhou/.../build-your-own-x-bittorrent-client-2/' inside the workspace; 0 files written; no install commands executed (transmission-show/mktorrent/bencodepy are only mentioned as suggestions to the learner)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 50.6,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Proposes a legal torrent (e.g. a Linux ISO) or a local tracker setup",
+          "passed": true,
+          "evidence": "\"Linux ISOs \u2014 Ubuntu/Debian/Fedora official torrents\" and \"Run a local tracker: `opentracker` (single binary) or a minimal HTTP tracker you write yourself\""
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with a tip, no runnable checkpoint: \"One practical tip: keep a `testdata/` directory with a generated 1\u20134 MB file and its `.torrent` checked in... Multi-MB sizes force multi-piece paths\" \u2014 no concrete command with expected output/behaviour at the end"
+        },
+        {
+          "text": "B3: Mentions a concrete legal source such as a Debian/Ubuntu ISO torrent",
+          "passed": true,
+          "evidence": "\"Linux ISOs \u2014 Ubuntu/Debian/Fedora official torrents; large enough to exercise multi-piece downloads\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only commands run: \"ls -la /Users/linkxzhou/.../build-your-own-x-bittorrent-client-3\" and glob {\"pattern\": \"**/*\"}; FILES WRITTEN IN PROJECT (0); no install commands; tools like mktorrent/opentracker are only suggested to the learner"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 304.6667,
+        "stddev": 152.8215,
+        "min": 195.4,
+        "max": 479.3
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 56.7333,
+        "stddev": 5.4684,
+        "min": 50.6,
+        "max": 61.1
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.08",
+      "time_seconds": "+247.9",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

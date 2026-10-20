@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses two causes: 'unshare(CLONE_NEWPID) 只对之后 fork 出的子进程生效' and '/proc 还是宿主机挂载的那份 procfs', with minimal fixes: 'unshare 之后必须 fork' and '同时创建新的 mount namespace（CLONE_NEWNS），在新 ns 里重新挂 proc'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete checkpoint with expected behaviour: '验证：进去后 `ps aux` 应该只剩 PID 1 自己；`ls /proc | grep -c '^[0-9]'` 只有个位数' plus runnable command 'unshare --pid --fork --mount-proc /bin/sh'."
+  },
+  {
+   "text": "B3: Explains that /proc must be remounted inside the new mount namespace (mount proc) because ps reads /proc",
+   "passed": true,
+   "evidence": "'`ps` 读的是 /proc，而 /proc 还是宿主机挂载的那份 procfs ... 修法：同时创建新的 mount namespace（CLONE_NEWNS），在新 ns 里重新挂 proc' and code 'mount(\"proc\", \"/proc\", \"proc\", 0, NULL)'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); answer contains no install commands, only 'unshare --pid --fork --mount-proc /bin/sh' for the learner to run."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 74.3
+ },
+ "install_like_cmds": []
+}

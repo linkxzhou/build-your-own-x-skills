@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (camera/image input or feature detection) with TODOs; no full AR pipeline code",
+   "passed": false,
+   "evidence": "Agent wrote the complete pipeline in one shot, not a first-milestone scaffold with TODOs: final answer says 主循环骨架（检测 + 位姿 + 画立方体，一步到位） and ar_cube.py contains the full chain cv2.aruco.detectMarkers → cv2.solvePnP → cv2.projectPoints → cv2.line for all 12 cube edges, with no TODOs anywhere."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete runnable commands with expected behaviour: 'python ar_cube.py --save-marker   # 生成 marker.png，打印或手机显示' and 'python ar_cube.py                 # Esc 退出', plus verification checkpoint '先确认标记能被检测到（画面上出现绿框）'."
+  },
+  {
+   "text": "B3: Mentions feature detection/matching and a homography or pose estimate as the core steps",
+   "passed": true,
+   "evidence": "Core steps explicitly listed: '1. 标记检测 — 用 ArUco 标记' and '3. 位姿估计 — cv2.solvePnP 把标记 4 个角点的 2D↔3D 对应解成 rvec/tvec'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0); only tool calls were glob and a write of ar_cube.py inside the project. The 'pip install opencv-contrib-python numpy' line is an instruction to the learner, which is allowed."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 131.9
+ },
+ "install_like_cmds": []
+}

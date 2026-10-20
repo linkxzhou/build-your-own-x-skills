@@ -1,0 +1,92 @@
+{
+  "skill_name": "augmented-reality",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想用 Python + OpenCV 做一个在标记图上叠加立方体的 AR demo，从哪开始？",
+      "expected_output": "Scaffolds the first milestone (camera/image input or feature detection) with TODOs; no full AR pipeline code; Mentions feature detection/matching and a homography or pose estimate as the core steps",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'augmented-reality' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds the first milestone (camera/image input or feature detection) with TODOs; no full AR pipeline code"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions feature detection/matching and a homography or pose estimate as the core steps"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My homography is garbage: the projected rectangle jumps around wildly. I match ORB features with brute force and call findHomography on all matches.",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Recommends filtering matches (ratio test / cross-check) and using RANSAC in findHomography",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'augmented-reality' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Recommends filtering matches (ratio test / cross-check) and using RANSAC in findHomography"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to build my own AR marker demo (overlay a cube on a printed marker), but I don't have a webcam. Can I still do this?",
+      "expected_output": "Offers a workable path with static images or a video file instead of a webcam; Explains using a reference image plus scene images/video frames as input",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'augmented-reality' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Offers a workable path with static images or a video file instead of a webcam"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains using a reference image plus scene images/video frames as input"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

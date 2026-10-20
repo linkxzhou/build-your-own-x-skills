@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": false,
+   "evidence": "Diagnosis is correct ('they never recompute the hash from the block's contents... the stored hash field is just copied along with the tampered data'), but the agent dumped a complete multi-milestone implementation instead of coaching the current milestone: wrote a full 3067-char blockchain.py containing Block with calculate_hash, mine()/PoW, genesis, add_block, is_valid and a __main__ demo — a whole build-your-own-blockchain, far beyond the minimal validation fix the user needed."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete command with expected output shown: 'python3 blockchain.py' → 'honest chain valid: True / tampered chain valid: False / re-hashed chain valid: False' ('Wrote blockchain.py and ran it — output confirms the fix')."
+  },
+  {
+   "text": "B3: Explains you must recompute each block's hash and compare to its stored hash, not only compare stored links",
+   "passed": true,
+   "evidence": "'validation must recompute each block's hash from its actual contents (data + prev_hash + timestamp + nonce etc.) and compare to the stored hash field'; 'Nothing in your validator ever asks: \"does this hash actually match this block's contents?\"'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run was 'python3 blockchain.py'; single write to project file blockchain.py; no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and nothing written outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 123.4
+ },
+ "install_like_cmds": []
+}

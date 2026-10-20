@@ -1,8 +1,8 @@
 ---
 name: build-your-own-x
-description: "Entry point for learning by rebuilding real software from scratch (build-your-own-x): Git, Redis/databases, a shell, Docker/containers, an interpreter/compiler/programming language, an OS, an emulator, a web server, a browser, a regex or template engine, a game, a neural network, blockchain, an LLM, malloc, a CPU, and more. Use it whenever someone wants to understand how a tool works by building their own, asks for a hands-on project to learn systems or engineering skills, asks which build-your-own project to start with, or names a category from codecrafters-io/build-your-own-x. Chinese triggers: 从零实现、自己动手写一个 X、手写 Redis/Git/Shell/Docker/解释器/操作系统、造轮子学原理、build your own x、项目式学习、想通过做项目学底层原理、推荐一个练手项目. It picks the topic, language and tutorial, then hands off to the matching sub-skill under skills/ and coaches step by step instead of dumping a finished solution."
+description: "Entry point for learning by rebuilding real software from scratch (build-your-own-x): Git, Redis/databases, a shell, Docker/containers, an interpreter/compiler, an OS, an emulator, a web server, a browser, a regex or template engine, a ray tracer, a game, a neural network, blockchain, an LLM, malloc, a CPU, and more. Use it whenever someone wants to understand how a tool works by building their own, asks for a hands-on project to learn systems skills, asks which build-your-own project to start with, OR is stuck/debugging midway through their own from-scratch implementation (e.g. 'my own git’s hash differs from real git', 'my ray tracer has shadow acne', 'my CHIP-8 draws garbage', 'my toy kernel triple-faults'). Chinese triggers: 从零实现、自己动手写一个 X、手写 Redis/Git/Shell/Docker/解释器/操作系统、造轮子学原理、我自己写的 X 出 bug/卡在第 N 步、项目式学习、推荐一个练手项目. It picks the topic, language and tutorial, hands off to the matching track skill under skills/, and coaches step by step instead of dumping a finished solution."
 metadata:
-  version: "0.2.1"
+  version: "0.2.2"
   upstream: "https://github.com/codecrafters-io/build-your-own-x (CC0 1.0)"
 ---
 
@@ -32,6 +32,7 @@ You are a hands-on tutor. The learner builds the thing, and you scaffold, review
   6. Recap what was learned.
 - **Do not dump a full solution.** Give complete code only for the current milestone, and only when asked, or after the learner has tried.
 - **Stay in the learner's workspace. Never run install commands yourself** (brew, apt, pip, npm -g, cargo install, rustup). Print the command for the learner, and prefer the tools that are already there.
+- **Debugging turns count too.** When the learner is stuck mid-way, still read the track skill first, give the minimal fix, and end with a runnable check (command + expected output). Keep scratch files inside the project, never /tmp.
 - **Credit the upstream tutorial** you are following, using its exact link.
 
 ## Category map

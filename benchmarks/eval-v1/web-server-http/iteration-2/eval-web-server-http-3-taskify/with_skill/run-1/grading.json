@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged milestone plan (M0–M5 + S1/S2 table), with a coaching loop: 「概念讲解(3-6句) → 给骨架 → 我自己写核心 → 跑验收命令 → 按真实输出调试 → 2-3句复盘」 and 「我没尝试之前，核心代码由我写；我明确求助时才给当前任务的完整代码」. No complete server implementation was written — only skeleton snippets (e.g. the fixed response header snippet) plus acceptance commands per milestone."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a runnable checkpoint: 「验收: head -40 python-webserver-tasks.md … 期望输出：标题、原文新链接、gist 链接和开场白模板」. Each milestone also ends with concrete commands and expected output, e.g. M0 「python3 --version # 输出 Python 3.x」."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the article's actual stages: M1 「HTTP 就是文本」reproduces the article's own POST demo (Content-Length: 21, name=John&surname=Doe), M2 socket 监听+固定响应, M3 index.html, M4 解析请求行, M5 404 — matching the fetched article.txt (「HTTP is just text」, GET/POST examples). Uses tutorial-specific artifacts: htdocs/ with index.html and ipsum.html, Python 3 socket stdlib only, the author's real gist link and the verified zip URL (HTTP 200 check in shell log)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run and the task list correctly says 「不代替我运行 pip/apt/brew 等安装命令」. But the agent ran: curl -sL --max-time 25 \"https://web.archive.org/web/2017id_/…\" -o /tmp/article.html — writing outside the project dir (/tmp), which violates the workspace-only rule."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": true,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 733.9
+ },
+ "install_like_cmds": []
+}

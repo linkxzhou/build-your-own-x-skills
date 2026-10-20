@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses 'This is a classic offset management / commit issue' and gives minimal fixes per cause: 'Fix: use a stable group id', 'Fix: commit manually after processing — commitSync() per batch', 'Persist the committed offset (fsync'd file or the broker itself) ... and load it on startup'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete checkpoint with expected behaviour: 'run `kafka-consumer-groups.sh --describe --group <your-group>` before and after a restart. If the group doesn't exist after restart → cause #1. If it exists but the OFFSET column lags behind LOG-END-OFFSET by the whole history → cause #2.' (appears before the closing request to paste code, but is a runnable command plus expected output)."
+  },
+  {
+   "text": "B3: Explains committing consumer offsets and resuming from the committed offset",
+   "passed": true,
+   "evidence": "Explains committing and resuming: 'enable.auto.commit=true commits on the poll loop, but if your consumer exits before the interval elapses ... nothing is persisted. Fix: commit manually after processing — commitSync() per batch, or commitAsync() with a final commitSync() on shutdown'; 'auto.offset.reset=earliest — this only matters when no committed offset exists for the group/partition'; custom queue: 'Persist the committed offset ... and load it on startup'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): only 'ls -la'; OTHER TOOL CALLS: glob {\"pattern\": \"**/*\"}; FILES WRITTEN IN PROJECT (0); no install commands and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 41.6
+ },
+ "install_like_cmds": []
+}

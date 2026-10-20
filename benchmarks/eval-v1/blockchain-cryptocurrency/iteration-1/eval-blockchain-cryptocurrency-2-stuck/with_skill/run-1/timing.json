@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-091129-ebbb3d",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/blockchain-cryptocurrency/iteration-1/eval-blockchain-cryptocurrency-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 123.4,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

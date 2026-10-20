@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnosed 4 concrete causes with fixes: '只算了 TF，没乘 IDF…修复：score = tf * idf'; 'IDF 公式写反…修复：log(N/df)'; 'df 必须按文档去重'; plus '把你的 IDF 计算和排序那几行贴出来，我可以直接指出是哪一处' — diagnosis + minimal hints, single diagnostic script, not a multi-milestone dump"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with runnable checkpoint: '跑 `python3 tfidf_check.py` 后对照三处' with expected behaviour stated: 'df[the] = 3 → idf = 0.2877…排在全部 8 个词的最后', 'aardvark 的 idf = 1.3863'; command was actually run and output verified"
+  },
+  {
+   "text": "B3: Explains IDF (log(N/df)) down-weights common terms and/or remove stopwords; checks the formula",
+   "passed": true,
+   "evidence": "Explains and checks formula: 'idf(t) = log(N / df(t))    # N = 文档总数, df(t) = 包含 t 的文档数'; '“the” 几乎出现在所有文档，IDF 应接近 0，权重排在全词表最低一档'; flags inverted variants 'log(df/N)、df/N 或 log(df)'; script self_check verifies idf<0 and 'the' in top3"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): 'python3 tfidf_check.py' only; FILES WRITTEN IN PROJECT (1): 'tfidf_check.py' inside project; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 190.7
+ },
+ "install_like_cmds": []
+}

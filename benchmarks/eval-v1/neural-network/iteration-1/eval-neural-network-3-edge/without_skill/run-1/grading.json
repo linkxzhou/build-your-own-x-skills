@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains the trade-off and keeps a from-scratch path (e.g. gradient check) or a micrograd-style mini autograd",
+   "passed": true,
+   "evidence": "Explains trade-off: 'If the goal is learning how neural networks actually train: autograd defeats the purpose... If the goal is a working model: use PyTorch.' Keeps from-scratch path: 'write a micrograd-style autograd engine first — a scalar `Value` class with `__add__`, `__mul__`, `tanh`, etc., each storing a `_backward` closure, plus a topological-sort backward pass.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with an offer, no runnable command or expected output: 'If you want, I can scaffold the micrograd-style engine here as a starting point.' No concrete command (e.g. python train.py) or expected behaviour is given anywhere."
+  },
+  {
+   "text": "B3: Mentions a numerical gradient check or chain rule as what the learner would miss",
+   "passed": false,
+   "evidence": "No mention of a numerical gradient check or the chain rule. Closest are vague: 'eliminates gradient bugs' and 'how gradients flow backward through layers, why `tanh` saturates, how gradients vanish' — neither names gradient checking nor the chain rule."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run is read-only inside the project: 'ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-neural-network-3'; 'FILES WRITTEN IN PROJECT (0)'; no install commands (brew/apt/pip/etc.) appear."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 30.3
+ },
+ "install_like_cmds": []
+}

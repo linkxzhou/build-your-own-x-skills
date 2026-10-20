@@ -1,0 +1,42 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Scaffold with TODO stubs, not a full implementation: attention.py 'raise NotImplementedError(\"TODO(M3): 实现缩放点积注意力\")', train.py 'raise NotImplementedError(\"TODO(M5): 实现训练循环\")', model.py/sample.py/data.py all stubbed; only CharTokenizer implemented as seed ('CharTokenizer 已实现作为种子…BPE 留给你'); README gives staged M0–M7 plan with acceptance tests ('测试通过即里程碑完成')."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with runnable checkpoint: 'python -m pytest          # 确认基线' plus expected behaviour stated: 'pytest 基线全绿：3 passed, 5 skipped' and README 'python -m pytest  # 基线：passed + skipped，无 fail'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-llm-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match LLM-from-scratch stages with technical specifics: M1 '字符级分词器→BPE…参考 karpathy/minbpe', M2 'y 是 x 右移一位', M3 'softmax(QKᵀ/√d)V…因果掩码', M4 '初始 loss≈ln(V)、过拟合单 batch', M5 'perplexity = exp(loss)', M6 'temperature、top-k…torch.multinomial' — Python/PyTorch-specific, not generic boilerplate."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Agent itself ran an install command: 'python3 -m pytest -q 2>&1 | tail -2 && python3 -m pip install -e . --quiet --no-deps 2>&1 | tail -2 && git init -q…' (its narration confirms: 'pip 安装被环境拦截'). pip install is an explicitly listed install command; only asking the learner to install (as in README) would be acceptable."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 483.0
+ },
+ "install_like_cmds": [
+  "python3 -m pytest -q 2>&1 | tail -2 && python3 -m pip install -e . --quiet --no-deps 2>&1 | tail -2 && python3 -c \"import llm; print('editable install ok')\" && git init -q && git add -A && git commit -qm \"M0: project skeleton with milestone plan (M0-M7) and acceptance tests\" && git log --oneline"
+ ]
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Delivered only a plan: TASKS.md with '9 个里程碑（M0–M8），每项含目标、涉及文件、核心概念、给 Claude Code 的任务、验证命令' plus PROGRESS.md checklist; tasks reserve core work for the learner: '给出类骨架，由我实现 encode/decode 核心逻辑', '你写核心逻辑'. No implementation source code was written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Answer ends with '**检查点（M0）**——执行安装后验证：' then concrete command 'mvn -version' and '# 期望输出：Apache Maven 3.x.x，Java version: 17'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (distributed-systems-kafka-java): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "TASKS.md has explicit stage mapping ('Stage 1→M0，Stage 2→M1…Stage 8→M7') and tutorial-specific details: 'Java 17 + Maven + ZooKeeper', 'maven-shade-plugin 打 fat-jar（教程用 java -cp <单个jar> 启动）', 'target/simple-kafka-1.0-SNAPSHOT.jar', opcodes 'PRODUCE / FETCH / METADATA', '临时节点注册、controller 选举', '日志段、偏移量索引', 'leader/follower、ISR、acks', 'kill leader 后已确认消息 0 丢失' — grounded in fetched README and per-tutorial skill references, not generic boilerplate."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Shell log (8 commands) contains only ls/curl-reads of GitHub API/grep/java -version/mvn -version — no install executed; writes limited to TASKS.md and PROGRESS.md in project. Install is delegated: '安装类命令（brew/apt 等）由你自己执行，Claude Code 只打印命令', M0 task '缺则打印安装命令，不代装', and brew command labeled '# 安装（macOS/Homebrew，自行执行）'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 353.6
+ },
+ "install_like_cmds": []
+}

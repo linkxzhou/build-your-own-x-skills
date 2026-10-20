@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only artifact written is TASKS.md, a staged plan: milestone table T00–T31 ('| T00 | — | 工具链 + 项目骨架 | 无参运行打印 Usage，退出码 64 |' … '| T31 | 附录 | 语法总表 | docs/grammar.md') plus coaching rules: '默认\"教练模式\"：先用 3–6 句讲清本任务核心概念，给出类/函数骨架，核心逻辑由学习者编写' and '只做当前任务…不一次性给出整本书的代码'. No interpreter implementation code was written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Recorded reply ends mid-sentence in design notes: 'Ch6 Parsing Expressions: recursive descent parser → Expr. Checkpoint: parse `1 + 2 * 3;` and print via AstPrinter → `(+ 1 (* 2 3))`; `-1 + 2' — the reply closes with no concrete runnable command + expected output. The agent planned 'End reply with first runnable checkpoint (exact command for milestone 1 + expected output)' but the delivered answer never reaches it."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (programming-language-crafting-interpreters): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the book's real structure: 'jlox/ — Java 树遍历解释器（Part II，ch4–13）', 'clox/ — C 字节码虚拟机（Part III，ch14–30）', one task per chapter with tutorial-specific concepts: 'T17 | 17 | 表达式编译 | Pratt 编译器 + DEBUG_PRINT_CODE', 'T20 | 20 | 哈希表 | 线性探测 + tombstone', 'T25 | 25 | 闭包 | Upvalue 捕获', 'T26 | 26 | GC | 标记-清除 + 压力测试', 'T29 | 29 | 超类 | OP_INHERIT / OP_GET_SUPER'; agent also read the tutorial-specific skill and tutorial-map.md/concepts.md."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 5 shell commands are read-only (ls/find/grep/cat/wc, e.g. 'ls -la', 'grep -c '^### T' TASKS.md'); only writes are TASKS.md plus 2 edits to it inside the project; TASKS.md rule 6 states '不代装全局工具链；需要依赖时打印命令让学习者自己执行'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 679.3
+ },
+ "install_like_cmds": []
+}

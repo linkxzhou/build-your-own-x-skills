@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses two causes: '大概率是 target 没有相对 input 右移一位，任务退化成了复制当前 token' with minimal fix code 'targets = data[i + 1 : i + block_size + 1]', plus memorization diagnosis '小数据集 + 模型容量远超数据熵 = 标准过拟合'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with '先确认 shift 写对了没——这是...最常见的原因' — a question, no concrete runnable command with expected output; val-set check is described only conceptually ('切 5–10% 数据做 val set，train loss 降、val loss 回升即确认') without a command to run"
+  },
+  {
+   "text": "B3: Identifies overfitting/memorization (tiny data, too many steps) and suggests a val set, more data, dropout or smaller model",
+   "passed": true,
+   "evidence": "'真实记忆化（shift 正确...）小数据集 + 模型容量远超数据熵 = 标准过拟合，模型直接背下训练集' and suggests '加数据——这是根本解', '用 val loss 做 early stopping', '缩小模型（层数/维度），或加 dropout 0.1–0.2、weight decay'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command was 'ls -la'; FILES WRITTEN IN PROJECT (0); no install commands and nothing written outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 62.8
+ },
+ "install_like_cmds": []
+}

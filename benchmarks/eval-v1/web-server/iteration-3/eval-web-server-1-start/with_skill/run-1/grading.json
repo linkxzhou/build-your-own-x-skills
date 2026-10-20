@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds TCP listener milestone with TODOs; no full framework",
+   "passed": true,
+   "evidence": "Scaffolded only milestone 1 as a skeleton: 'Milestone 1/6 — TCP listener'; server.py body is TODOs with '...' — 'TODO 1: create a TCP socket', 'TODO 2: bind it to (HOST, PORT), then listen()', 'TODO 3: the accept loop'; agent says 'The learner writes the core — I should NOT dump the full solution. Give the interface/skeleton with TODOs.' No framework code, milestones 2-6 pending in PROGRESS.md."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Reply ends with '**Checkpoint** — run the server, then: curl -v localhost:8080' and 'Expected: HTTP/1.1 200 OK in the response headers, Hello, world! as the body, and your server's stdout printing the raw request (GET / HTTP/1.1, Host: localhost:8080, ...)'."
+  },
+  {
+   "text": "B3: Mentions the request line + headers + CRLF format of an HTTP response",
+   "passed": true,
+   "evidence": "'the response is just a status line, headers, a blank \\r\\n\\r\\n line, then the body'; server.py comment: '\\r\\n (CRLF) is the line terminator HTTP mandates; the blank line separates headers from body'; request line shown via 'GET / HTTP/1.1, Host: localhost:8080'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command was read-only: 'ls -la; echo \"---\"; find . -maxdepth 2 -name \"*.py\" ...'; writes limited to 'httpserver/PROGRESS.md' and 'httpserver/server.py' inside the project; no install commands anywhere."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 136.9
+ },
+ "install_like_cmds": []
+}

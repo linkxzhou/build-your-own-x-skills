@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds image output (PPM) or the first milestone with TODOs; no full ray tracer",
+   "passed": true,
+   "evidence": "Agent built only the first milestone: main.cpp header says '// Step 1: produce an image file. No rays yet.' and the code is just a 256x256 gradient loop writing a P3 PPM — no rays, camera, vec3, or objects. Later milestones explicitly deferred: 'Step 2 preview: Replace the gradient with the first real rays... Say the word and we'll build it.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a runnable Workflow: 'clang++ -std=c++17 -O2 -Wall -o renderer main.cpp / ./renderer > image.ppm / python3 ppm2png.py image.ppm image.png && open image.png', plus verified expected output: '65539 lines = 3 header + 65536 pixels, corners match the intended gradient (top-left `0 0 0`, bottom-right `255 255 0`). Your first image is rendered — open `image.png`'."
+  },
+  {
+   "text": "B3: Uses a simple image format such as PPM so no graphics library is needed, or justifies another choice",
+   "passed": true,
+   "evidence": "Uses PPM P3 and justifies it: 'Why PPM: it's a 3-line header plus one `R G B` triple per pixel, in plain ASCII. No image library, no windowing system — pure \"from scratch\".' Code comment: 'We use the PPM format because it is plain text and needs zero libraries'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only 2 shell commands run: 'clang++ -std=c++17 -O2 -Wall -o renderer main.cpp && ./renderer > image.ppm && head -4 ... && wc -l ... && python3 ppm2png.py image.ppm image.png' and 'tail -1 image.ppm; sed -n 257p; sed -n 4p' — no install commands; all 5 files written (main.cpp, ppm2png.py, image.ppm, image.png, renderer) are inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 146.3
+ },
+ "install_like_cmds": []
+}

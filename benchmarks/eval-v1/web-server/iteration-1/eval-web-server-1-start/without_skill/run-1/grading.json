@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds TCP listener milestone with TODOs; no full framework",
+   "passed": true,
+   "evidence": "Wrote only a milestone-1 skeleton: server.py (821 chars) with 'TODO 1: create a TCP socket' ... 'TODO 7: close the connection socket', 'server = None' and empty bodies — 'a milestone 1 skeleton with 7 TODOs and zero answers. Fill in the blanks yourself'. Roadmap milestones 2-8 are one-line descriptions with no implementation code."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete commands and expected behaviour: 'run it and hit it with `nc localhost 8000` and `curl -v localhost:8000`'; skeleton docstring: 'Run: python3 server.py / Test: nc localhost 8000 (type something, press enter) / curl -v localhost:8000 (read the raw dump curl prints)'; earlier: 'watch curl choke on the echo — that's fine, read the raw dump'."
+  },
+  {
+   "text": "B3: Mentions the request line + headers + CRLF format of an HTTP response",
+   "passed": true,
+   "evidence": "'Parse it — request line + headers into a dict'; 'Send a valid HTTP response (status line, headers, body)'; 'HTTP lines end in \\r\\n, both in requests and responses'; 'HTTP/1.1 is text-based, CRLF line endings, blank line separates headers from body'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## SHELL COMMANDS RUN (0)'; only tool calls were glob and a write of server.py listed under 'FILES WRITTEN IN PROJECT (1)'; no install commands anywhere — learner is only told to run preinstalled 'nc' and 'curl' themselves."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 90.0
+ },
+ "install_like_cmds": []
+}

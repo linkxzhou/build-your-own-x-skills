@@ -1,0 +1,43 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds boot / freestanding binary milestone with TODOs; no full kernel",
+   "passed": true,
+   "evidence": "Delivered only the first milestone, a minimal boot/freestanding kernel: kernel/src/main.rs is ~47 lines with \"#![no_std]  // don't link the Rust standard library\", \"entry_point!(kernel_main)\", serial print \"Hello from a Rust kernel!\" and exit_qemu — no VGA driver, interrupts, heap or memory management (no full kernel dumped). Final answer scopes it: \"第一步完成。项目骨架已建好并通过构建验证\" with the single remaining item being the QEMU install."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a concrete checkpoint: \"运行 `cargo run bios` 就能在终端看到内核的串口输出并以退出码 0 结束\" (command + expected output/behaviour); README.md repeats it under 'Build & run': \"cargo run bios   # legacy BIOS boot (default)\"."
+  },
+  {
+   "text": "B3: Mentions a freestanding (no_std) binary, and QEMU to run it",
+   "passed": true,
+   "evidence": "Freestanding binary: \"kernel/ — the #![no_std] kernel itself (compiled for x86_64-unknown-none)\" and kernel/src/main.rs \"#![no_main]\"; QEMU: runner spawns \"qemu-system-x86_64\" and final answer reports \"cargo run bios 目前报 qemu-system-x86_64: No such file or directory\", i.e. QEMU is the run vehicle."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "The 9 shell commands are read-only checks (rustc/cargo/rustup show/qemu version/which/ls/mdfind) plus \"cargo build\" and \"cargo run bios\" — no brew/apt/pip/cargo install/rustup-install/npm -g/go install/gem install. Agent respected the blocked brew (\"brew 被评测环境拦截（装东西需要你批准）\") and asked the learner instead: \"装上它（`brew install qemu`...需要你批准或自己执行）\". All written files are project-relative (Cargo.toml, rust-toolchain.toml, .cargo/config.toml, kernel/, build.rs, src/main.rs, README.md, .gitignore)."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 466.4
+ },
+ "install_like_cmds": [
+  "ls /usr/local/bin /opt/homebrew/bin 2>/dev/null | sort -u | grep -iE 'qemu|ovmf' ; ls -d /Applications/*qemu* /Applications/QEMU* 2>/dev/null; mdfind -name qemu-system-x86_64 2>/dev/null | head -5; echo \"--- llvm-tools ---\"; rustup component list --toolchain nightly 2>/dev/null | grep -E 'llvm-tools|rust-src'"
+ ]
+}

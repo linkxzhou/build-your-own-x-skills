@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only the first milestone is implemented; the rest are scaffolded TODOs: src/allocator.c states '当前状态: M1 碰撞指针 (bump-the-pointer) 分配器' with my_free a no-op and comments '[M2] TODO: 引入块头 (size + 是否空闲标志), 把块挂回 free list' / '[M2] TODO: 相邻空闲块合并 (coalescing)' / '[M3] TODO: size 超过阈值...单独 mmap'; README marks 'M2 —— 空闲链表 (核心里程碑)' through M5 as future work; final answer hands off: '下一步从 src/allocator.c 里的 [M2] 注释开始：先在 NOTES.md 写下你的块头设计和合并策略，再动手改代码'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete command plus expected behaviour: '验证结果：`make test` 与 `make asan` 均退出码 0，严格警告级别（-Wpedantic -Wshadow -Wconversion）下零警告。`bytes_in_use=277824` 对比压测预算 262144，差值正是 16 字节对齐的填充开销'; NOTES.md gives the learner the checkpoint '运行 `make test`, 记录 `test_stress` 打印的 `bytes_in_use`, 对照压测预算 256 KiB, 解释差值来源'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the allocator tutorial's actual stages, not boilerplate: 'M2 —— 空闲链表: 块头: {size, free, next, prev}, 分配 = 从 free list 找块 (first-fit), 分裂...合并: free 时合并相邻空闲块'; 'M3 —— 超过阈值 (如 64 KiB) 的分配单独 mmap, free 时 munmap; realloc 先尝试原地扩展'; 'M4 —— 分离空闲链表 (segregated free lists) 按大小分桶'; plus C/macOS specifics: 'macOS 上 sbrk 已废弃', 'macOS 的 malloc 走 libmalloc 的 zone 机制', '16 字节对齐 (arm64)'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but a shell command wrote outside the project dir: 'curl -sL -o /tmp/freedium.html -w \"%{http_code}\" ... ' then read it back with 'wc -c < /tmp/freedium.html' — /tmp is outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 504.1
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the bug: 'they never recompute the hash from the block's contents, so editing data doesn't change the stored `hash` field, and validation passes' and gives a minimal fix: 'The fix: recompute each block's hash from its actual contents... and compare against the stored hash' with a concrete is_chain_valid snippet."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No concrete command to run with expected output is given; the answer ends with 'If you drop your actual block/validation code in here, I'll point at the exact lines to change.' — an invitation, not a runnable checkpoint. The closest is prose: 'editing block 1's data makes the recomputed hash differ from the stored one → invalid', with no command."
+  },
+  {
+   "text": "B3: Explains you must recompute each block's hash and compare to its stored hash, not only compare stored links",
+   "passed": true,
+   "evidence": "'Validation must re-derive each block's hash from its actual contents and compare against the stored value' and 'Your check verifies the *links* between stored hashes, never that each hash actually corresponds to its block's contents.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run is read-only inside the workspace: 'ls -la && find . -type f -not -path './.git/*' | head -50'; plus glob {\"pattern\": \"**/*\"}; FILES WRITTEN IN PROJECT (0); no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) appear."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 30.5
+ },
+ "install_like_cmds": []
+}

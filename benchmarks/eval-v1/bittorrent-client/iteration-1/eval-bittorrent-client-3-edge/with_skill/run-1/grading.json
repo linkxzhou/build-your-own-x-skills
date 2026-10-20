@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Proposes a legal torrent (e.g. a Linux ISO) or a local tracker setup",
+   "passed": true,
+   "evidence": "Proposes both: local tracker setup — 'mktorrent -a http://localhost:6969/announce -o test.torrent bigfile.bin' / 'opentracker -p 6969' / 'transmission-cli test.torrent -w ./seeddir' — and legal torrents ('Debian netinst ISO', 'Big Buck Bunny / Sintel — https://webtorrent.io/torrents/')."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Reply ends with a question and a file-save note, no command: 'Where are you in the build — which language, and which milestone is passing right now?' then 'Saved the test plan to `TESTING.md`... It's the checklist each milestone gets verified against as you go.' The promised checkpoint artifact is hollow too: TESTING.md's '## Milestone → checkpoint map' contains only the header row '| # | Milestone | Checkpoint |' with no rows; concrete commands (mktorrent/opentracker/transmission-show) appear only mid-answer."
+  },
+  {
+   "text": "B3: Mentions a concrete legal source such as a Debian/Ubuntu ISO torrent",
+   "passed": true,
+   "evidence": "'Debian netinst ISO — https://cdimage.debian.org/debian-cd/current/amd64/bt-cd/, tracked by tracker.debian.org. ~700 MB, good piece count, and Debian publishes checksums' — a concrete, named legal source with URL."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## SHELL COMMANDS RUN (0)'; only tool calls are two reads of skill files and one write; '## FILES WRITTEN IN PROJECT (1) — TESTING.md' stays inside the project. No brew/apt/pip/cargo/rustup/npm -g/go install anywhere; mktorrent/opentracker/transmission-cli are given as commands for the learner to run themselves."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 195.4
+ },
+ "install_like_cmds": []
+}

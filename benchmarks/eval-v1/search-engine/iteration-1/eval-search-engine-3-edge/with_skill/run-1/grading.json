@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Proposes a concrete small local corpus and stays in the workspace",
+   "passed": true,
+   "evidence": "Proposes concrete small corpora: 'CACM (3,204 abstracts) or Cranfield (1,400 docs) — small, plain text', '100–500 Project Gutenberg books', 'Generate synthetic keys (uuid4 or sequential ints) and random values', and 'keep it small enough to fit in memory: 10k–100k documents'; agent stayed in workspace (FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0), only glob/read of workspace files)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with a clarifying question, no runnable command or expected output: 'What are you building, and in which language? That decides which track I'd coach you through.' No command to run is given anywhere in the answer."
+  },
+  {
+   "text": "B3: Suggests a concrete corpus (e.g. local markdown/docs, Wikipedia abstracts, or a small generated set)",
+   "passed": true,
+   "evidence": "Concrete corpora suggested by project type: 'CACM (3,204 abstracts) or Cranfield (1,400 docs)', '100–500 Project Gutenberg books', 'One Stack Exchange dump (e.g., english.stackexchange.com)', 'arXiv abstracts (Kaggle, ~2M rows — sample 50k to start) or a Wikipedia subset', 'Your own notes, bookmarks, or PDFs', and a small generated set: 'Generate synthetic keys (uuid4 or sequential ints) and random values'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0) and FILES WRITTEN IN PROJECT (0); only tool calls are glob and read of workspace files ('.agents/skills/build-your-own-x/SKILL.md', 'AGENTS.md'); no install commands and no writes outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": true,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 77.4
+ },
+ "install_like_cmds": []
+}

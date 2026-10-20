@@ -1,0 +1,40 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged plan, one file (TASKS.md) with 11 milestones: 'T0–T5（from scratch 部分）… T6–T9（DDPM 对比部分）… T10'; no src/ implementation written; T6–T9 left for the learner: '代码标注为\"实现题\"，按讲义给出的伪代码自行补全'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Each task ends with a 验收 block; e.g. T0: python -c \"import torch, torchvision, diffusers, matplotlib; print('ok', torch.__version__)\" (expected 'ok'+version); T1: assert x.shape == (8, 1, 28, 28) plus test -f outputs/01_data.png"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-diffusion-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the actual notebook 02_diffusion_models_from_scratch.ipynb: MNIST loader, corrupt with 'noise = torch.rand_like(x) # uniform noise, NOT randn', '~309k 参数的 BasicUNet', MSE predicting clean images, 5/40-step sampling, then 'UNet2DModel（~1.7M，含 attention）', DDPMScheduler, noise-prediction + timestep conditioning, scheduler.step sampling — tutorial-specific, not boilerplate"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Agent wrote outside the project dir: 'curl -sL https://raw.githubusercontent.com/.../02_diffusion_models_from_scratch.ipynb -o /tmp/unit1_3.ipynb' then ran 'cd /tmp && python3 -c ...' repeatedly; no install commands were run and T0 asks the learner to install ('创建 venv 并安装依赖'), but the /tmp write violates the workspace constraint"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 296.1
+ },
+ "install_like_cmds": []
+}

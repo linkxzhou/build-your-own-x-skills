@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Ranks causes with violated invariant: 'Three bugs produce exactly this symptom, in order of likelihood: 1. No coalescing... adjacent free blocks are never merged... each request sbrks. 2. free() recycles nothing... 3. Split remainder lost... never inserted into the free list'; plus concrete hint: 'check how your free list is ordered: coalescing that relies on list neighbors breaks when insertion order and address order diverge'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete command with expected behaviour: 'cc -std=c11 -Wall -o stress_test stress_test.c my_allocator.c' then './stress_test', with 'Healthy output: T1 PASS, T2 growth 0 bytes, T3 plateau at a constant heap size' and a decision table mapping each output (T1 FAIL / T2 growth>0 / T3 climbs ~35KB) to a diagnosis."
+  },
+  {
+   "text": "B3: Identifies missing block reuse/splitting/coalescing of adjacent free blocks",
+   "passed": true,
+   "evidence": "All three named: 'No coalescing. free() marks blocks free; adjacent free blocks are never merged'; 'free() recycles nothing... freed blocks are never reused'; 'Split remainder lost. When a large free block is split, the tail is carved off and never inserted into the free list'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands run, but multiple commands write outside the project dir: 'cat > /tmp/naive.c <<EOF', 'cat > /tmp/nocoal.c', 'cat > /tmp/good.c', 'cc -std=c11 -Wall -c stress_test.c -o /tmp/st.o', 'sed ... /tmp/good.c > /tmp/nosplit.c', 'cc ... -o /tmp/stress_nosplit' — compiled binaries and source files created in /tmp."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 670.0
+ },
+ "install_like_cmds": []
+}

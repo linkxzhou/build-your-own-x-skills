@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Works within the constraint (terminal game, curses, or browser canvas) without installing",
+   "passed": true,
+   "evidence": "\"Three zero-install paths, all verified working on this machine: 1. **Terminal game with Python `curses`** — stdlib, confirmed importable here... 3. **HTML5 Canvas in the browser** — write a single `.html` file... Zero installation since the browser is the renderer.\" Works within the no-install constraint via curses/ANSI/Canvas."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with \"Tell me which direction you want — terminal or browser — and I'll build it.\" No concrete command to run nor expected output/behaviour is given for a checkpoint; the only commands shown were the agent's own verification (`python3 -c \"import curses; print('curses OK')\"`), not a learner-facing runnable checkpoint."
+  },
+  {
+   "text": "B3: Proposes a concrete no-install option such as a terminal roguelike/curses or an HTML canvas page",
+   "passed": true,
+   "evidence": "\"1. **Terminal game with Python `curses`** — stdlib... Good for Snake, Tetris, Rogue-likes, Pong\" and \"3. **HTML5 Canvas in the browser** — write a single `.html` file with embedded JS, open it in a browser.\" Concrete no-install options proposed."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0); commands run were only `which python3 node; python3 --version; node --version` and `python3 -c \"import curses...\"; python3 -c \"import tkinter...\"` — read-only checks, no brew/apt/pip/cargo/rustup/npm -g/go install, no writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 37.8
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses shadow acne as self-intersection: '黑色点状噪声是自遮挡（self-intersection）：阴影射线从表面点出发，浮点舍入让求交函数在 t≈0 处命中球体自身' and gives minimal fix '沿法线偏移阴影射线起点（最常用）：vec3 shadow_orig = hit_p + N * 1e-4;'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with '把求交/阴影代码贴出来（或放进工作区），我可以直接指出具体行。' — a request for code, with no concrete command to run and no expected output/behaviour anywhere in the answer."
+  },
+  {
+   "text": "B3: Explains self-intersection from floating-point error and fixes it with a small t_min/epsilon offset (e.g. 0.001)",
+   "passed": true,
+   "evidence": "Explains floating-point self-intersection ('浮点舍入让求交函数在 t≈0 处命中球体自身') and fixes with small epsilon/t_min: 'if (t > 1e-4 && t < dist_to_light) occluded = true;' plus 'shadow_orig = hit_p + N * 1e-4' and 'epsilon 取场景尺度的 1e-4 ~ 1e-3'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command is a read-only find within the project ('find . -maxdepth 3 -type f ... | head -50'); FILES WRITTEN IN PROJECT (0); no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) appear."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 58.7
+ },
+ "install_like_cmds": []
+}

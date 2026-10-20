@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds image output (PPM) or the first milestone with TODOs; no full ray tracer",
+   "passed": true,
+   "evidence": "Wrote only a 1213-char skeleton raytracer/main.cpp for milestone 1 (image output) with TODOs: \"TODO 1: write the three header lines\", \"TODO 2: nested loop over all pixels\", \"TODO 3: ... done message\", and told the learner \"Your job is the core: the pixel loop.\" No vec3, camera, spheres, or shading — no full ray tracer."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a checkpoint section: \"How to check it:\" giving concrete commands \"g++ -std=c++17 -O2 -o raytracer main.cpp && ./raytracer\" then \"open out.ppm\", and expected behaviour: \"Pass = a smooth gradient, green in the top-left corner fading toward red at bottom-right, with a bluish tint.\""
+  },
+  {
+   "text": "B3: Uses a simple image format such as PPM so no graphics library is needed, or justifies another choice",
+   "passed": true,
+   "evidence": "Uses PPM P3 and justifies it: \"PPM P3 is the simplest one in existence — a text header, then `r g b` numbers for every pixel... No library, no compression, every image viewer reads it.\" Skeleton targets out.ppm in P3 format."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "\"SHELL COMMANDS RUN (0)\"; only tool calls were read AGENTS.md, todo_write, and write raytracer/main.cpp (inside the project dir). No install commands run or written; the g++ build command is left for the learner to run themselves."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 186.6
+ },
+ "install_like_cmds": []
+}

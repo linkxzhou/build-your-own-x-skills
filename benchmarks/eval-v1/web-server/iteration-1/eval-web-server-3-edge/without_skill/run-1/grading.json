@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains the security issue and a minimal fix",
+   "passed": true,
+   "evidence": "'No — that's a path traversal vulnerability. A request like GET /../../../../etc/passwd ... would let a client read any file the server process can access' plus minimal fix: 'resolve the requested path to its canonical form and verify it stays inside the document root before opening anything' with a safe_path() code snippet."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with runnable checkpoint: 'I put the guard into a runnable demo, safe_path.py, and verified it:' followed by exact expected output block (ALLOW '/index.html' ... BLOCK '/../../etc/passwd'); shell log confirms 'python3 safe_path.py' was run and safe_path.py (complete, 1334 chars) exists in the project."
+  },
+  {
+   "text": "B3: Identifies path traversal (../) and recommends normalizing and restricting to a root directory",
+   "passed": true,
+   "evidence": "Identifies '../' traversal: 'GET /../../etc/passwd' and '%2e%2e%2f'; recommends normalizing ('Path.resolve() ... collapses .. segments and follows symlinks') and restricting to a root ('verify it stays inside the document root', DOCROOT = Path('./public').resolve(), is_relative_to check)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only commands run: 'python3 safe_path.py' (x2) — no install commands; files written are 'public/index.html' and 'safe_path.py', both inside the project dir; edit tool only modified safe_path.py."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 92.9
+ },
+ "install_like_cmds": []
+}

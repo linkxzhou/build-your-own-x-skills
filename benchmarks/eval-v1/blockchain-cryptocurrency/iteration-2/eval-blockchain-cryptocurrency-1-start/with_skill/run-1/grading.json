@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the block + hash milestone with TODOs; no full chain with PoW, transactions, P2P",
+   "passed": true,
+   "evidence": "blockchain.py is a milestone-1 scaffold only: compute_hash has 'TODO(你来写, 3 行以内)' and 'raise NotImplementedError(\"轮到你了: 实现 compute_hash\")'; no chain/PoW/transactions/P2P code exists, and PROGRESS.md lists milestones 2-5 as '未开始'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Answer ends with checkpoint: '检查（写完后跑两次）：python3 blockchain.py' plus expected output 'index: 0 / data: genesis / prev: 0 / hash: <64位十六进制>' and pass criteria '两次运行 hash 完全一致；hash 长度是 64；把 data=\"genesis\" 临时改成 \"genesis!\"…hash 应完全变样'"
+  },
+  {
+   "text": "B3: Block hash covers index/timestamp/data/previous hash via SHA-256",
+   "passed": true,
+   "evidence": "TODO specifies '把 index/timestamp/data/previous_hash 按固定顺序放进一个 dict … json.dumps(dict, sort_keys=True) … hashlib.sha256(字节).hexdigest() 返回 64 位十六进制字符串'; concept section explains 'SHA-256 是个单向函数'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run is 'ls -la && python3 --version' (no install); files written are PROGRESS.md and blockchain.py inside the project; docstring states '只用标准库, 无需安装任何东西'"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 218.3
+ },
+ "install_like_cmds": []
+}

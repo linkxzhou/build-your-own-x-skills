@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the integrator milestone with TODOs; no full engine",
+   "passed": false,
+   "evidence": "Agent wrote a complete multi-milestone engine, not an integrator scaffold with TODOs: README 'What's implemented' lists 'Narrowphase: circle–circle, circle–box, box–box', 'Impulse resolution + positional correction (slop + percent)', 'Fixed-timestep loop with accumulator', 'Canvas debug renderer'; world.js steps 'apply gravity → integrate → collide → resolve'; no TODO markers in any written file — collision, resolution, renderer and demo all fully implemented in v0.1."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Concrete command exists — README: 'python3 -m http.server 8000 / # then open http://localhost:8000' — but no expected output/behaviour is stated anywhere (README sections are Run / What's implemented / Architecture / Roadmap; nothing like 'you should see balls falling and bouncing'), so the runnable checkpoint lacks the expected-behaviour half."
+  },
+  {
+   "text": "B3: Mentions a fixed timestep and an integrator such as semi-implicit Euler",
+   "passed": true,
+   "evidence": "README: 'Semi-implicit Euler integration (`body.integrate`)' and 'Fixed-timestep loop with accumulator (`src/main.js`)'; body.js comment: 'Semi-implicit Euler: update velocity first, then position using the NEW velocity'; main.js: 'const DT = 1 / 120; // 120 Hz physics' with accumulator loop."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run was verification: 'for f in src/*.js; do node --check \"$f\" ...; node --input-type=module -e ...' — no install commands; all 10 files written inside the project (package.json, index.html, README.md, src/*.js); 'npx serve' appears only as a suggestion to the learner in README."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 407.7
+ },
+ "install_like_cmds": []
+}

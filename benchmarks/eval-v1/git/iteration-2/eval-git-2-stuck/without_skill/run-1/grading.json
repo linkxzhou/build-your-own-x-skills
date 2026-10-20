@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses the bug and gives a minimal fix or hint, not a rewrite of the project",
+   "passed": true,
+   "evidence": "Diagnoses the bug: 'git's hash-object doesn't hash the raw content — it hashes the object header `<type> <size>\\0` + content' and gives a minimal fix 'sha1(b\"blob %d\\0\" % len(data) + data).hexdigest()' plus a 3-line hash_object function — a hint-sized fix, not a project rewrite."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with explanatory bullets ('两点说明：- zlib 压缩与哈希值无关…- 同样的头部格式也适用于其他类型…'), not a checkpoint. The only commands ('echo -n \"hello\" | git hash-object --stdin…') are introduced as the agent's own demo ('Let me do a quick demo') and reported as already executed ('已在上方验证'), with no closing 'run this and expect X' instruction to the learner."
+  },
+  {
+   "text": "B3: Explains that the hash must be computed over the header `blob <size>\\0` + content (not the raw data), before compression",
+   "passed": true,
+   "evidence": "'it hashes the object header `<type> <size>\\0` + content. So the correct computation is `sha1(b\"blob %d\\0\" % len(data) + data).hexdigest()`' and 'zlib 压缩与哈希值无关——先进行哈希，然后 `zlib.compress(full)`' — header+content before compression, explicitly."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run: 'printf 'hello' | git hash-object --stdin; python3 -c …' — read-only verification, no install commands (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install), FILES WRITTEN IN PROJECT (0), nothing outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 20.1
+ },
+ "install_like_cmds": []
+}

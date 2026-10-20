@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": false,
+   "evidence": "No milestone plan or TODO scaffold was ever delivered: the final answer is unresolved deliberation about test.dart semantics ('Hmm, so how do the tests pass? Let me look at the test expectations again...') and ends mid-sentence; 'FILES WRITTEN IN PROJECT (0)' confirms no scaffold/plan file was produced."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with an incomplete command sketch and no expected output: 'run the relevant suite with a custom interpreter path: `dart tool/bin/test.dart chap21_global --interpreter ./b' — cut off mid-token, with no expected output/behaviour stated anywhere."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (programming-language-crafting-interpreters): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Content is verified and specific to this tutorial: 'Globs `test/**.lox`, skips `benchmark/` dir and files with `// nontest`'; 'Exit codes: 0 normal, 65 compile error, 70 runtime error'; suite skip lists 'jlox: chap04, 06, 07...; clox: chap17...30'; '`test/expressions/parse.lox` only for chap06 (AstPrinter output)'; 'test/scanning/* only for chap04_scanning' — matching the book's actual jlox/clox chapter stages, not generic boilerplate."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Commands wrote outside the project dir: 'cd /tmp && rm -rf ci-probe && git clone ... https://github.com/munificent/craftinginterpreters.git ci-probe', 'cd \"$HOME\" && rm -rf ci-probe && git clone ...', and 'echo test > /tmp/w.txt && echo test2 > ~/w2.txt'. No install commands were run, but out-of-workspace writes fail B4."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

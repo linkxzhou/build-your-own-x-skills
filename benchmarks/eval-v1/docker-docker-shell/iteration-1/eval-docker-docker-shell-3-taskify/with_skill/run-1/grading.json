@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged plan with TODOs, not a dump: file header states 「教学规则：Claude Code 只给概念讲解和函数骨架，核心逻辑由学习者自己写」; tasks are checkboxes (「- [ ] 0.1 创建 Linux VM 并进入」「- [ ] 1.4 `bocker_help`：…（提示：`sed -n \"s/^.*#HELP\\s//p\"`）」); agent ran an explicit leakage check 「成品代码泄漏检查（上游源码行是否被整行复制）」 and reports 「无成品代码泄漏（只给函数骨架提示，核心逻辑留给学习者写）」"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Every milestone ends in a runnable checkpoint with expected behaviour: 「每个里程碑以可运行命令验收，通过后再进入下一个」; M1 「`./bocker help` 打印用法」; M2 「`bocker run img_x cat /etc/alpine-release`」; M3 「容器内 `ps` 只见 PID 1」; M5 「容器内 `ping 10.0.0.1` 通」; final M7 「全流程回归 + 记录学习笔记」"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (docker-docker-shell): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Specific to bocker, verified against fetched source: 「源码全部拿到（119 行，函数齐全）」 and 「11 个上游函数名全部覆盖且与源码一致」; milestones mirror the tutorial's real mechanics — 「btrfs subvolume 镜像层」「`unshare -fmuip` + chroot 隔离」「cgcreate/cgset/cgexec、cpu.shares、memory limit」「veth + bridge + netns」「nsenter、日志 tee、快照回写镜像」; handles tutorial-specific quirks: 「`bocker pull` 已失效：上游走的是已下线的 Docker Registry v1 API」 and cgroup v1/v2 「`cpu.shares`/`memory.limit_in_bytes` 要换成 `cpu.weight`/`memory.max`」"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run by the agent (apt install only given to learner: 「安装命令自己跑，Claude Code 只提供命令」), but commands wrote outside the project dir: 「curl -sL https://raw.githubusercontent.com/p8952/bocker/master/bocker -o /tmp/bocker.sh」 and 「grep -o \"bocker_[a-z]*\" bocker-tasks.md | sort -u > /tmp/doc_fns.txt」 / 「> /tmp/src_fns.txt」; agent confirms 「用 curl 拉全量到临时文件读取」"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 676.1
+ },
+ "install_like_cmds": []
+}

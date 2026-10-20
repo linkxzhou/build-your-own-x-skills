@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnosed frame-rate-dependent movement: 'Your loop runs once per frame, and the gaming PC renders more frames per second. 5 px × 144 FPS ≈ 720 px/s ... vs 5 px × 60 FPS = 300 px/s' and gave a minimal fix: 'The fix is to scale movement by elapsed time (delta time) instead of moving a fixed amount per iteration' with short pygame/JS snippets (player.x += SPEED * dt)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The prose answer ends with a clarifying question: 'If you tell me the language/framework you're using, I can point at the exact call for getting delta time in it.' The only concrete command, 'Run it: python3 delta_time_demo.py', sits in the written file's docstring with no expected output; the 'Expected output:'/'Output would be:' blocks (720 px / 300 px / 300.0 px) were deliberation about superseded draft scripts, and the final file was never executed (SHELL COMMANDS RUN (0)), so command and expected output were never delivered together as a checkpoint."
+  },
+  {
+   "text": "B3: Recommends delta-time based movement or a fixed timestep",
+   "passed": true,
+   "evidence": "Explicitly recommends delta time: 'The fix is to scale movement by elapsed time (delta time): pixels per second × dt', code 'player.x += SPEED * dt' with 'dt = clock.tick(60) / 1000', and the demo script simulates 'delta time : x += 300 * dt every iteration (speed in pixels per second)'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## SHELL COMMANDS RUN (0)' — no commands at all, hence no install commands; OTHER TOOL CALLS are only two globs and one write, and '## FILES WRITTEN IN PROJECT (1): delta_time_demo.py' is inside the project dir; no install command appears anywhere in the transcript."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 125.5
+ },
+ "install_like_cmds": []
+}

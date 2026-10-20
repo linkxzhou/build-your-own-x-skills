@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the integrator milestone with TODOs; no full engine",
+   "passed": true,
+   "evidence": "Scaffolded only milestone 1/7 ('Where we are: milestone 1/7 — the integrator') with the physics left as learner TODOs: body.js has 'TODO 1' (invMass), 'TODO 2: accumulate into this.force', 'TODO 3' (integrate); world.js has 'TODO 4: implement the accumulator loop' and 'TODO 5'. Final answer: 'What to write next — five TODOs, all in src/' and 'Right now it's 2 pass / 3 fail. Done means 5 pass'. PROGRESS.md lists milestones 1–7 all 'pending'; no engine code beyond stubs (vec2.js is labeled 'Provided as plumbing — the physics is yours to write')."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete command and expected behaviour: 'How to check it: cd physics-engine && node --test' plus 'Right now it's 2 pass / 3 fail. Done means 5 pass — the tests pin the physics (free fall 1 s → 0.5·g within 1%), the step count (exactly 120 per simulated second), remainder carry-over, static bodies, and spike clamping.'"
+  },
+  {
+   "text": "B3: Mentions a fixed timestep and an integrator such as semi-implicit Euler",
+   "passed": true,
+   "evidence": "Explicitly covers both: '**Semi-implicit Euler** — update velocity first, then position with the *new* velocity... a = F/m + g, then v += a·dt, then x += v·dt' and '**Fixed timestep with an accumulator** — ...run as many fixed dt = 1/120 s steps as the bank covers, carrying the remainder to the next frame.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 4 shell commands are version checks/test runs ('node --version... ls -la', 'cd physics-engine && node --test ...'), no install commands; all writes/edits are inside physics-engine/ (package.json, README.md, PROGRESS.md, src/*, tests/m1.test.js). Agent states 'Node v25.8.0 is available and the workspace is empty — no installs needed, node:test runs the checkpoints natively' and 'no installs needed, Node 25 runs the tests natively'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 293.5
+ },
+ "install_like_cmds": []
+}

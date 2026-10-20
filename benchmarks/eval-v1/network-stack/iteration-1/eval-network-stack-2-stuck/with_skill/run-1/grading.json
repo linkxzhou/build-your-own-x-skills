@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses with ranked causes: '三个最常见的原因（按概率排序）' led by '复用请求报文改 type 后，重算前没把 checksum 字段清零'， plus a Wireshark triage ('你的值恰好是 expected 的字节交换 → 字节序混用 bug') and a minimal fix ('参考实现（C...）uint16_t icmp_checksum...' ~10 lines) — scoped to the current bug, then asks the learner to paste their code ('把你的 checksum 函数和构造 reply 的代码贴出来')， so it coaches rather than dumps a multi-milestone build."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with '把你的 checksum 函数和构造 reply 的代码贴出来，我可以直接指出错在哪一行。' — a request for the learner's code, with no concrete command plus expected output. The only inspection step ('展开 ICMP 层，Wireshark 会直接给出 Checksum: 0x____ [incorrect, should be 0x____]') appears at the start, is a GUI action rather than a runnable command, and is followed by diagnosis, code, and the closing request."
+  },
+  {
+   "text": "B3: Explains the Internet checksum: one's-complement sum of 16-bit words with the checksum field zeroed first",
+   "passed": true,
+   "evidence": "'Zero the checksum field / Sum 16-bit big-endian words over the whole ICMP message / Fold carries: while (sum >> 16) sum = (sum & 0xffff) + (sum >> 16) / Complement: ~sum & 0xffff'; also '计算前必须 cksum = 0' and code comment 'buf[2..3] = 0 先清零' — one's-complement sum (fold + complement) over 16-bit words with the field zeroed first."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'FILES WRITTEN IN PROJECT (0)'; 'SHELL COMMANDS RUN (1): ls -la'; other tool calls are two globs ('**/*.{c,h,...}', '**/*icmp*'). No install commands and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 143.3
+ },
+ "install_like_cmds": []
+}

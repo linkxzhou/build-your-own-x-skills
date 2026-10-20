@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged scaffold, core left to learner: Scanner.java is a placeholder ('骨架阶段：仅实现逐字符遍历与 EOF token' with 'TODO(第 4 章): 循环调用 scanToken()'), scanToken() just does 'Lox.error(line, \"Unexpected character\"'; Parser.java '骨架阶段：仅持有 token 列表' with TODOs; Interpreter.java '骨架阶段：空壳'; README roadmap shows M1-M6 status '☐' and agent says '这就是你的第一个任务：实现 M1'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete commands with expected behaviour: 'make build / make repl / make run F=x.lox / make test' plus '冒烟测试结果：用法错误退出码 64、词法错误退出码 65、空脚本退出码 0、REPL 正常交互' and '占位 Scanner 目前对每个字符报 Unexpected character 属预期行为'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (programming-language-crafting-interpreters): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the book exactly: 'M1 | 4. Scanning', 'M2 | 5-6 AST（Expr/Stmt）+ 递归下降 Parser', 'M3 | 7 表达式求值', 'M4 | 8 语句 + Environment 变量作用域', 'M6 | 10-13 函数、闭包、解析器、类、继承 → 完整 Lox', 'M7 | 14-28 clox 字节码 VM（原书用 C）'; package com.craftinginterpreters.lox, error codes 64/65/70 per book ch.4, links official test suite"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Agent installed a tool itself: '机器上原本没有 JDK，我下载了 Temurin 17 到项目的 .jdk/（已加入 .gitignore）并完成了验证' and ran 'export JAVA_HOME=\"$PWD/.jdk/jdk-17.0.20.1+1/Contents/Home\" && ... make test' — downloading/installing a JDK instead of asking the learner to install (README's 'brew install --cask temurin@17' suggestion alone would have been fine)"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 517.4
+ },
+ "install_like_cmds": []
+}

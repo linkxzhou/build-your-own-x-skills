@@ -1,0 +1,92 @@
+{
+  "skill_name": "web-server",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to write my own HTTP server from raw sockets in Python. Coach me.",
+      "expected_output": "Scaffolds TCP listener milestone with TODOs; no full framework; Mentions the request line + headers + CRLF format of an HTTP response",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'web-server' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds TCP listener milestone with TODOs; no full framework"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions the request line + headers + CRLF format of an HTTP response"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我的 web 服务器能返回页面，但浏览器一直转圈加载不完。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Points to missing Content-Length (or connection close / incomplete headers \\r\\n\\r\\n) as the likely cause",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'web-server' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Points to missing Content-Length (or connection close / incomplete headers \\r\\n\\r\\n) as the likely cause"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Is it OK to serve files from any path the user requests?",
+      "expected_output": "Explains the security issue and a minimal fix; Identifies path traversal (../) and recommends normalizing and restricting to a root directory",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'web-server' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Explains the security issue and a minimal fix"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Identifies path traversal (../) and recommends normalizing and restricting to a root directory"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

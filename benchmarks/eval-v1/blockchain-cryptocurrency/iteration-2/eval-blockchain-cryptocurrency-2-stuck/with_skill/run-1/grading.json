@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the bug: 'prev_hash == previous.hash only verifies the links between blocks... editing block 1's data leaves its stored hash untouched, so every link still matches and validation passes' and gives a minimal fix: '**The fix (minimal):** validation must recompute each block's hash from its own fields and compare it against the stored hash, in addition to the link check' with a short is_valid_chain snippet scoped to the current milestone (2/7), no multi-milestone dump (FILES WRITTEN: 0)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: 'save this in your project as scratch/tamper_test.py ... and run python scratch/tamper_test.py' plus 'Expected output: OK: tamper detected. If the first assert fires instead, your validation-time calculate_hash disagrees with the one used at block creation — compare the field lists.'"
+  },
+  {
+   "text": "B3: Explains you must recompute each block's hash and compare to its stored hash, not only compare stored links",
+   "passed": true,
+   "evidence": "'validation must recompute each block's hash from its own fields and compare it against the stored hash, in addition to the link check' and 'editing block 1's data changes what calculate_hash(block) returns, so check 1 fails at i == 1 immediately. The stored hash field is attacker-visible data; recomputation is what binds it to the contents.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command is read-only inside the workspace: 'ls -la; echo ---; find . -maxdepth 3 -type d ... | head -30'; other calls are two globs ('**/*.py', '**/*.js'). No install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and no writes outside the project (FILES WRITTEN IN PROJECT: 0)."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 312.1
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives a concrete approach for macOS without installing anything",
+   "passed": true,
+   "evidence": "Concrete macOS approach with no installs: 'use the __interpose mechanism: define an interpose section ... __attribute__((section(\"__DATA,__interpose\")))', build cmd 'clang -dynamiclib -o libmymalloc.dylib mymalloc.c', run with DYLD_INSERT_LIBRARIES on locally built binaries; only stock clang/dyld tools used."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends mid-sentence ('I'm not modifying code, just answering. A q') with no final command+expected output; runnable commands (e.g. 'DYLD_PRINT_INTERPOSING=1') appear only mid-discussion, and 'end every reply with a runnable check' is stated as intent, never delivered as an ending checkpoint."
+  },
+  {
+   "text": "B3: Mentions DYLD_INSERT_LIBRARIES on macOS (vs LD_PRELOAD on Linux) or calling the allocator directly in tests",
+   "passed": true,
+   "evidence": "'LD_PRELOAD is a Linux/glibc thing. On macOS, the equivalent is DYLD_INSERT_LIBRARIES' and '1. LD_PRELOAD doesn't exist on macOS; use DYLD_INSERT_LIBRARIES'; also 'Direct call harness: call my_malloc directly in test programs'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## FILES WRITTEN IN PROJECT (0)' and '## SHELL COMMANDS RUN (0)'; tool calls are only reads/globs of .agents/skills/*; no brew/apt/pip/etc. anywhere in the answer."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 214.5
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Picks a matching upstream entry and scaffolds the first milestone; no full server",
+   "passed": false,
+   "evidence": "Agent dumped a complete multi-milestone implementation instead of a first milestone: \"a DNS server in ~250 lines... parses the 12-byte header, decodes names byte-by-byte (including compression pointers with a loop guard), answers A/AAAA/CNAME records from a local zone, returns NXDOMAIN for unknown .test names, and forwards everything else to 1.1.1.1\" plus \"All six paths verified.\" No upstream entry was picked either — the agent notes \"Empty workspace\" and chose Python itself."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: \"python3 server.py  # terminal 1, listens on udp/5533\" and \"dig @127.0.0.1 -p 5533 myserver.test A +short    # -> 127.0.0.1\" / \"dig @127.0.0.1 -p 5533 alias.test CNAME +short   # -> myserver.test.\" — concrete commands with expected outputs."
+  },
+  {
+   "text": "B3: Mentions UDP port 53 (or a high test port) and the DNS message header/question format",
+   "passed": true,
+   "evidence": "Port and wire format both covered: \"Port 53 is reserved and needs root on macOS, so we use 5533\", \"listens on udp/5533\"; header/question format: \"Header — 12 bytes, six 16-bit fields\" with \"QR| Opcode |AA|TC|RD|RA| Z|RCODE\" and QDCOUNT, \"A DNS message is: Header | Question | Answer | Authority | Additional\", and names \"travel as 3www7example3com0\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands were run, but the agent wrote outside the project dir: \"python3 server.py > /tmp/dns_server.log 2>&1 &\" (repeated across several commands) and \"python3 -u server.py > /tmp/dns_final.log 2>&1 &\" — log files created in /tmp, outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 712.7
+ },
+ "install_like_cmds": []
+}

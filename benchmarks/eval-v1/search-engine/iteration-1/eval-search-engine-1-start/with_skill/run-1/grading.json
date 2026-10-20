@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds tokenizer/index milestone with TODOs; no full ranking system",
+   "passed": true,
+   "evidence": "Scaffolded only milestone 1: wrote search/tokenizer.py with TODOs intact ('# TODO 1: lowercase the input / text = ...' through 'return ...') and told the learner 'Your move: fill in the four TODOs. The `...` placeholders are the only spots to touch.' Ranking appears only as future plan row '| 4 | Ranking | TF-IDF or BM25 |' with no implementation — no full ranking system dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete runnable check: '**Check:** `python3 search/tokenizer.py` — done when all three lines print `ok` and the exit code is 0' plus 'Paste the output when you run it — pass or fail, we debug from the real result'; the harness prints e.g. \"ok  tokenize('Running dogs!') = ['run', 'dog']\"."
+  },
+  {
+   "text": "B3: Describes an inverted index mapping term → list of document ids (postings)",
+   "passed": false,
+   "evidence": "Only mention is the plan-table cell '| 2 | Inverted index | postings lists, doc ids |' and 'move to the inverted index' — it names topics but never describes the mapping of term → list of document ids (postings); a vague mention is insufficient for this technical assertion."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## SHELL COMMANDS RUN (0)'; tool calls were only a read-only glob and a write to search/tokenizer.py inside the project; guide choice notes 'Python 3, stdlib only' and the Redis option was rejected as 'needs Redis server, extra dependency'; the check command `python3 search/tokenizer.py` installs nothing."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 149.6
+ },
+ "install_like_cmds": []
+}

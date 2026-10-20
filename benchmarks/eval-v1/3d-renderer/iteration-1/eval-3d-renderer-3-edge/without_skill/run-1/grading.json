@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Accepts Python and adapts (smaller image sizes / numpy optional) without dumping a full renderer",
+   "passed": true,
+   "evidence": "\"Yes — Python is a perfectly good language to learn ray tracing in.\" Adapts with smaller sizes/optional numpy: \"A 400×225 test image... takes seconds to a couple of minutes in pure Python\" and \"write the first version in plain Python... then vectorize with NumPy once it works\". No renderer dumped: FILES WRITTEN IN PROJECT (0); only offers \"I can scaffold the minimal version... as the first checkpoint\"."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with an offer, no runnable checkpoint: \"if you want to start, I can scaffold the minimal version — a Vec3 class, a ray-sphere hit test, and a PPM writer\". No concrete command to run and no expected output/behaviour is given anywhere."
+  },
+  {
+   "text": "B3: Notes that pure Python is slow and suggests small resolutions or vectorization, while the math stays the same",
+   "passed": true,
+   "evidence": "\"naive per-pixel Python loops run ~100–1000x slower than C++\"; suggests small resolutions (\"A 400×225 test image\") and vectorization (\"NumPy vectorization gets you a big win... Typically 50–100x faster with the same math\"), explicitly noting the math stays the same."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0), FILES WRITTEN IN PROJECT (0); only tool call was glob {\"pattern\": \"**/*\"}. No install commands; Numba mentioned as an option without instructing any install."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 27.2
+ },
+ "install_like_cmds": []
+}

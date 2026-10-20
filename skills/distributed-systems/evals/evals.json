@@ -1,0 +1,92 @@
+{
+  "skill_name": "distributed-systems",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想自己实现一个类似 Kafka 的分布式日志，用 Go，第一步做什么？",
+      "expected_output": "Scaffolds the append-only log milestone with TODOs; no full broker; Describes an append-only log with offsets (segments/index)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'distributed-systems' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds the append-only log milestone with TODOs; no full broker"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Describes an append-only log with offsets (segments/index)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My consumer re-reads old messages every time it restarts.",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains committing consumer offsets and resuming from the committed offset",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'distributed-systems' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains committing consumer offsets and resuming from the committed offset"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I'm building my own Raft-replicated key-value store. Can I test replication and leader failover on one laptop?",
+      "expected_output": "Proposes running several nodes as local processes on different ports; Mentions killing the leader to test failover / follower takeover",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'distributed-systems' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Proposes running several nodes as local processes on different ports"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions killing the leader to test failover / follower takeover"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

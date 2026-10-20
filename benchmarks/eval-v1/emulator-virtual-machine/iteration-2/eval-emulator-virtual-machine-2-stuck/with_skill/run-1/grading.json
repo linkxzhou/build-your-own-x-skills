@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the cause: \"DXYN 用直接赋值，这正是 IBM logo 花屏的原因\" and gives a minimal fix: \"**最小修复（只改 DXYN 的内层循环）：**\" followed by a targeted code snippet changing assignment to `display[y][x] ^= 1; // 关键：XOR，不是赋值`"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: \"**验证：** 重新跑 IBM logo ROM：`./your_emulator roms/ibm-logo.ch8`\" plus expected behaviour: \"预期输出：清晰的 \"IBM\" 三个字母，每个字母中间有横向空隙（条纹）\""
+  },
+  {
+   "text": "B3: Explains DXYN XORs sprite pixels onto the screen and sets VF on collision",
+   "passed": true,
+   "evidence": "Explains XOR semantics: \"CHIP-8 的 sprite 是 XOR 绘制：sprite 位为 1 时翻转屏幕像素，为 0 时保持不变\" and VF collision: \"if (display[y][x]) vf = 1;   // 撞检：1 被翻成 0\" plus ordering note \"注意 `^= 1` 要在撞检判断之后做，顺序反了 VF 会永远为 0\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command is `ls -a; echo ---; find . -maxdepth 2 ...` (read-only, inside workspace); other calls are read/glob only; FILES WRITTEN IN PROJECT (0); no install commands and no writes outside the project dir"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 147.6
+ },
+ "install_like_cmds": []
+}

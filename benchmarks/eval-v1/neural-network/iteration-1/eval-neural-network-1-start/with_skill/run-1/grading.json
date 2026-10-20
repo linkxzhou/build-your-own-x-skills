@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds forward pass / neuron milestone with TODOs; no full training framework",
+   "passed": true,
+   "evidence": "neuron.py contains exactly two TODOs for the learner ('TODO 1: implement sigmoid' / 'TODO 2: implement forward', both `raise NotImplementedError`) and PROGRESS.md shows milestones 2-7 as 'pending' — only milestone 1 (neuron + forward pass) was scaffolded, no training loop, layers, or backprop code was written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a concrete command and expected behaviour: 'python3 check_m1.py' and 'Expected when done: three `PASS case …` lines, then `MILESTONE 1 PASSED`'; check_m1.py prints 'MILESTONE 1 PASSED' on success."
+  },
+  {
+   "text": "B3: Mentions weights, bias and an activation function in the forward pass",
+   "passed": true,
+   "evidence": "'multiplies each feature by a learned weight `w`, adds them up with a learned offset `b`, and squashes the result through an activation' plus the math block 'z = w·x + b' and 'y = sigmoid(z) = 1 / (1 + e^(-z))' — weights, bias, and sigmoid activation all named in the forward pass."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 3 shell commands are install-free and workspace-local: 'ls -la && python3 -c \"import numpy; ...\"', a python3 heredoc computing scalar reference values, and 'python3 check_m1.py'. Files written are only neuron.py, check_m1.py, PROGRESS.md and __pycache__/neuron.cpython-314.pyc inside the project; numpy 2.5.3 was already installed ('numpy 2.5.3 is already installed') and no install was requested or run."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 259.0
+ },
+ "install_like_cmds": []
+}

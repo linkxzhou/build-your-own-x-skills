@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged plan with only M0 done: README marks '### M0 ✅ 项目骨架（已完成）' while M1 is titled '你的第一个练习' leaving '实现 SET / GET / DEL / EXISTS / KEYS（新建 internal/command/kv.go）' to the learner; store.go says 'M1 (your first exercise) wires SET/GET/DEL commands to it; M2 adds per-key expiry; M3 adds persistence on top.' Only PING/ECHO are implemented; expiry/persistence/replication/streams are unimplemented exercises with 思考点 coaching questions."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README 快速开始 gives concrete commands and expected output: 'make run # 或 go run ./cmd/miniredis -port 6379' then 'redis-cli -p 6379 PING # +PONG' and fallback \"printf 'PING\\r\\n' | nc 127.0.0.1 6379\"; M0 验收: 'make test 全绿；redis-cli PING 返回 PONG'. Agent also smoke-tested live: \"printf 'PING\\r\\n' | nc 127.0.0.1 16379\"."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (database-redis-go): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the codecrafters Redis-in-Go stages the agent cited ('Bind to a port and respond to PING', RESP, echo, SET/GET, 'Expiration (PX)', RDB, replication, streams): M1 SET/GET on concurrent-safe map, M2 'SET key val EX s / PX ms…TTL 返回 -1 / -2 的语义', M3 AOF/RDB with fsync everysec, M4 '主从握手（PING → REPLCONF → PSYNC）…复制积压缓冲区…WAIT', M5 'XADD/XRANGE/XREAD（含 BLOCK）…entry ID 自动生成规则（seq 补齐/递增）'; RESP2 byte-level detail ('+simple\\r\\n, -Error, :123, $5\\r\\nhello\\r\\n, *2') — tutorial-specific, not generic."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but smoke-test commands wrote outside the project dir: './bin/miniredis -port 16379 >/tmp/miniredis.log 2>&1 &' (repeated with ports 16380 and 16379) creates/writes /tmp/miniredis.log outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 565.3
+ },
+ "install_like_cmds": []
+}

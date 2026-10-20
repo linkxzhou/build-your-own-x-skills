@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Works within the constraint (terminal game, curses, or browser canvas) without installing",
+   "passed": true,
+   "evidence": "All three proposed paths avoid installs: 'Render with plain stdout + ANSI escape codes, read keys with termios (Linux/macOS) or msvcrt (Windows) — both are stdlib'; 'the browser is already installed and canvas is built in'; 'curses is stdlib on Linux/macOS'; explicitly rejects the one install case: 'On Windows, curses would need a pip install, which is off the table'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Only a behaviour description, no concrete command to run: 'every milestone ends with a runnable check (e.g. milestone 1 is \"a fixed-timestep loop that prints its tick rate and exits cleanly on q\")' — no command (e.g. python snake.py) or its expected console output is given; the answer ends at 'Where we are: scope agreement, milestone 0. Once you pick, I'll give you the milestone-1 skeleton'."
+  },
+  {
+   "text": "B3: Proposes a concrete no-install option such as a terminal roguelike/curses or an HTML canvas page",
+   "passed": true,
+   "evidence": "'**1. Terminal game — the best fit here.** Render with plain stdout + ANSI escape codes' (terminal roguelike named: 'Snake, Tetris, Breakout, and roguelikes all work this way') and '**2. Browser game.** HTML + JS + <canvas>' with an upstream no-install tutorial link."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## FILES WRITTEN IN PROJECT (0)' and '## SHELL COMMANDS RUN (0)'; OTHER TOOL CALLS are only reads of .agents/skills/... files inside the project; no brew/apt/pip/cargo/rustup/npm -g/go install appears anywhere, and needed tools are framed as learner choices ('Which language do you want to work in?') rather than agent-run installs."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 117.1
+ },
+ "install_like_cmds": []
+}

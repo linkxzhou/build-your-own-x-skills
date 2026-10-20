@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds fetching a URL (sockets/HTTP) with TODOs; no full browser",
+   "passed": true,
+   "evidence": "Only milestone 1 is implemented (fetch URL + print visible text): 'request() — 用 socket 手写 GET ... HTTP/1.0' and 'visible_text() — ... 剥掉标签'; later work is deferred, not implemented: '已知限制（后续步骤解决）：不支持 gzip/chunked 编码、不解析相对链接、无缓存' and '下一步是第 2 章' — so a first-milestone deliverable, no full browser."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: 'python3 browser.py example.com' with expected behaviour stated ('请求 URL，打印网页可见文本', 80-col wrap via 'textwrap.fill(text, width=80)') and verified: 'https://example.com、无 scheme 的 example.com、http://example.com 重定向三条路径均输出正常'."
+  },
+  {
+   "text": "B3: Mentions sending an HTTP GET request and splitting headers/body at a blank line (\\r\\n\\r\\n)",
+   "passed": true,
+   "evidence": "Code sends 'req = f\"GET {path} HTTP/1.0\\r\\nHost: {host}\\r\\nConnection: close\\r\\n\\r\\n\"' and splits headers/body at the blank line: 'head, _, body = response.partition(b\"\\r\\n\\r\\n\")'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Shell commands are only 'python3 -m http.server 8123 --bind 127.0.0.1', 'python3 browser.py ...', 'kill $SERVER_PID' — no brew/apt/pip/cargo/rustup/npm/go/gem install anywhere; files written are browser.py and test.html, both inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 274.9
+ },
+ "install_like_cmds": []
+}

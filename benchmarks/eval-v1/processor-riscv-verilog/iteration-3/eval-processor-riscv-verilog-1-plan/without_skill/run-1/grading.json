@@ -1,0 +1,44 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only the first milestone's first step was implemented: files are rtl/step1_blinker.v, tb/tb_step1.v, Makefile, README.md, docs/MILESTONES.md; README progress shows '[x] M0 Step 1 — blinker' with all later items unchecked ('[ ] M0 Step 2', '[ ] M1 Step 3', ...), and MILESTONES.md is a staged plan M0–M6 with per-step 产出/验收 TODOs, not a full core implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a concrete checkpoint: '本机跑 `brew install icarus-verilog && make sim`，看到 `PASS: 3 toggles observed` 即骨架验证通过' — command plus expected output, matching tb_step1.v's '$display(\"PASS: %0d toggles observed...\"'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones are aligned to the actual tutorial the agent fetched (BrunoLevy/learn-fpga FemtoRV/TUTORIALS/FROM_BLINKER_TO_RISCV, '24 个 Step + Episode II 流水线 + Episode III 中断') with tutorial-specific stages: 'Step 4：指令译码器', 'Step 5：寄存器堆（2 读 1 写）', 'Step 6：ALU（ADD/SUB/SLT/移位/逻辑）', 'Step 8：Jumps（JAL/JALR）', 'Step 10：LUI/AUIPC', 'Step 17：Memory-mapped I/O', 'Step 19：Verilator 加速仿真', 'Step 23–24：程序从 SPI Flash 启动', 'Episode II（PIPELINE.md）', 'Episode III（INTERRUPTS.md）' — verified via curl of the tutorial README and GitHub API, plus a coverage check 'Step 1–24 + Episode II/III 全部映射完毕'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "SHELL COMMANDS RUN includes install commands: 'brew install icarus-verilog 2>&1 | tail -5' and 'pip3 install --quiet --user pyverilog 2>&1 | tail -2' — the agent ran them itself (though it reports 'brew 安装被环境拦截' / '安装类命令均被环境拦截', the commands were executed). Also wrote outside the project dir: 'curl ... -o /tmp/fbtr.json' and '-o /tmp/fbtr_readme.md'."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 500.4
+ },
+ "install_like_cmds": [
+  "brew install icarus-verilog 2>&1 | tail -5",
+  "pip3 install --quiet --user pyverilog 2>&1 | tail -2; python3 -c \"import pyverilog; print('pyverilog OK')\" 2>&1"
+ ]
+}

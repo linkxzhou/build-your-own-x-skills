@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Supports the compile approach and scaffolds that step only",
+   "passed": true,
+   "evidence": "Supports it: \"Yes — that's the standard design, and it's exactly milestone 5 of the template-engine track.\" Scaffolds only that step: skeleton has \"# emit(node) methods per node type: Text, Expr, If, For — you write these\" and \"Decisions to make while writing `emit`\"; milestones 1–4 front end is reused, not reimplemented (\"reuse milestones 1–4 unchanged\")."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Checkpoint describes a procedure and expected behaviour (\"render one nontrivial template 1000 times through your interpreter and through the compiled path, time both with `time.perf_counter`. Compiled should win by a clear margin — log the numbers in `PROGRESS.md`\") but gives no concrete command to run (no script name or invocation like `python bench.py`)."
+  },
+  {
+   "text": "B3: Describes generating Python source for a render function and caching it (500 Lines approach)",
+   "passed": true,
+   "evidence": "\"Add a back end that walks the tree once and emits Python source for a `render` function, then `compile()` + `exec` it into a real callable and cache it per template\"; skeleton shows `_cache = {}` / `get_template` with `_cache[source] = compile_template(source)`; cites the 500 Lines chapter (\"the 500 Lines chapter we follow ([A Template Engine](http://aosabook.org/en/500L/a-template-engine.html))\")."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "\"FILES WRITTEN IN PROJECT (0)\", \"SHELL COMMANDS RUN (0)\"; only tool calls are reads of skill files (.agents/skills/...); no install commands anywhere in the answer."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 160.2
+ },
+ "install_like_cmds": []
+}

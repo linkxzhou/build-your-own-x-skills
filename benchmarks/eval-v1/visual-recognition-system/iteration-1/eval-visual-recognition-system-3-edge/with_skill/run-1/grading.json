@@ -1,0 +1,43 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Does not install; prints commands or uses what's available",
+   "passed": false,
+   "evidence": "Shell log shows the agent attempted the install itself: 'pip3 install opencv-python 2>&1 | tail -5' was run, rather than only printing commands or using what's available."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Final answer ends with 'If you approve the install in this session, I can retry and verify both imports for you.' — no concrete checkpoint command paired with expected output/behaviour; the given commands ('pip3 install opencv-python tensorflow', venv setup) state no expected output."
+  },
+  {
+   "text": "B3: Gives the install commands for the learner (pip/venv) instead of running them",
+   "passed": false,
+   "evidence": "Agent did give learner commands ('pip3 install opencv-python tensorflow', 'python3.12 -m venv ~/venvs/ml ...') but also ran one itself per the shell log: 'pip3 install opencv-python 2>&1 | tail -5', violating 'instead of running them'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "Shell log records the agent running an install command: 'pip3 install opencv-python 2>&1 | tail -5'. Even though blocked by the harness, the install command was run, which B4 forbids."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 0,
+  "failed": 4,
+  "total": 4,
+  "pass_rate": 0.0
+ },
+ "timing": {
+  "total_duration_seconds": 56.7
+ },
+ "install_like_cmds": [
+  "pip3 install opencv-python 2>&1 | tail -5"
+ ]
+}

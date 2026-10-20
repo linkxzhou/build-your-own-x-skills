@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (skeleton + config) with TODOs; no full-featured bot",
+   "passed": true,
+   "evidence": "bot.py is a milestone-1 skeleton with 3 TODOs: 'token = None  # replace me', 'app = None  # replace me', '...' and post_init raises NotImplementedError(\"TODO 3a...\"); PROGRESS.md lists milestones 2-7 all 'pending'; no echo/router/state code written — only skeleton + config files (bot.py, .env.example, .gitignore, requirements.txt, README.md, PROGRESS.md)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Answer ends with a concrete checkpoint: '`python bot.py` prints `Logged in as @<yourbotname>`, and `git check-ignore .env` outputs `.env`. When both pass, tell me and we'll log it in PROGRESS.md' — command plus expected output."
+  },
+  {
+   "text": "B3: Says the bot token must come from an env var/.env that is gitignored, not hard-coded",
+   "passed": true,
+   "evidence": "'Your token is the bot's password — it lives in `.env`, which is gitignored, and should never be pasted into chat or committed'; TODO 1 says 'read BOT_TOKEN from the environment... exit(1)'; bot.py docstring: 'Config comes from the environment (12-factor style), never from source code'; .gitignore contains '.env' and answer instructs 'cp .env.example .env'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run was 'ls -la && python3 --version && git rev-parse --is-inside-work-tree...' — no install commands; writes limited to project files (bot.py, .env.example, .gitignore, requirements.txt, README.md, PROGRESS.md); 'pip install -r requirements.txt' appears only in learner instructions ('Your moves (run these yourself)'), which is allowed."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 366.6
+ },
+ "install_like_cmds": []
+}

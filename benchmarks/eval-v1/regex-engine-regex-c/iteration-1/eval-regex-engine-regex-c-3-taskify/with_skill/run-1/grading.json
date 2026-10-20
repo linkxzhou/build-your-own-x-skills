@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverables are planning docs only (TASKS.md/PROGRESS.md/README.md; no src/ implementation written). TASKS.md stages M0–M7 with '实现任务 (concrete tasks with file/function names, interfaces)' and a session protocol: '不倾倒成品：只给当前里程碑的完整代码，且仅在学习者要求或尝试之后；保留学习者已写的代码' and '学习者写核心'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Every milestone has a runnable checkpoint with command + expected result, e.g. M0: 'make test prints a per-case table and summary; every case shows FAIL (expected, engine is a stub)'; M2: re2post table 'a(bb)+a → abb.+.a.'; M5: 'make bench N=25: backtracker time grows ~2x per +1 n'; PROGRESS.md requires pasting 'make test / make bench N=25 / make bench-dfa' output."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the article exactly (backtracker → re2post → post2nfa Thompson → NFA simulation → a?^n a^n benchmark → DFA cache → real-world extensions) with tutorial-specific detail: 'State struct {c, out, out1, lastlist}... Frag {start, out}, Ptrlist, list1/append/patch', 'DState *next[256]... sorted-list binary tree lookup', 'awk's 32-cache discontinuity at n=28', 'PCRE aborts at n=23', plus line refs into regexp1.txt (e.g. 'M6 ... 895–1114')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands run, but a command wrote outside the project dir: 'curl -s https://swtch.com/~rsc/regexp/regexp1.html -o /tmp/regexp1.html && wc -c /tmp/regexp1.html' (also '/tmp/regexp1.txt' later copied via 'cp /tmp/regexp1.txt .learn/regexp1/')."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

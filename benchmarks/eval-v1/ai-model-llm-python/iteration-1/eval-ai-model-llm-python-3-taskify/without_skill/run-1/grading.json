@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged plan, not an implementation: '把每个任务（T0–T7）作为一条独立的 prompt 交给 Claude Code 执行。每个任务包含目标、交付物、验收标准（可被 pytest 断言）和参考实现位置', with progress tracking '在 LEARNING_TASKS.md 底部进度表勾选对应任务并填日期'; only 2 markdown files written, no src/ code."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "T0 gives a concrete command with expected behaviour: '`python scripts/env_check.py` 输出 `[OK]` 且正确报告设备（本机为 macOS，预期 `mps` 或 `cpu`）' and '`pytest` 可运行（允许 0 个测试）'; CLAUDE.md 验证命令: 'pytest tests/ -x -q'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-llm-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the tutorial's real stages and facts: 'T1 — 文本数据处理：BPE 分词与 DataLoader（对应 Ch 2）', '`the-verdict.txt` 共 20,479 字符；用 tiktoken gpt2 编码得 5,145 个 token', 'create_dataloader_v1(txt, batch_size, max_length, stride, shuffle, drop_last)', 'SimpleTokenizerV1/V2（词表 + <|unk|>）', refs to 'ch02/01_main-chapter-code/ch02.ipynb' and 'setup/02_installing-python-libraries'; shell log shows numbers verified from the repo notebooks (grep '20,479|5,145|124,412,160…')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands ran, but the agent's own commands wrote outside the project dir: 'curl -sL https://raw.githubusercontent.com/…/README.md -o /tmp/llmfs_readme.md', 'cd /tmp && for c in 03 04 05 06 07; do curl -sL … -o ch$c.ipynb', 'cd /tmp && curl -sL …/the-verdict.txt -o the-verdict.txt'."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

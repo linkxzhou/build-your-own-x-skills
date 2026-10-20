@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "programming-language-crafting-interpreters",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:53Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 621.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Only the M0 skeleton was implemented: Loxy.java's run() is a stub printing '[loxy] \u5c1a\u672a\u5b9e\u73b0\u8bcd\u6cd5\u626b\u63cf' with 'TODO(M1): Scanner scanner = new Scanner(source);' etc., and the agent removed the premature Interpreter field ('\u6309\u6700\u5c0f\u9aa8\u67b6\u539f\u5219\uff0c\u5148\u79fb\u9664\u8be5\u5b57\u6bb5\uff0c\u7559 TODO'). M1 is assigned to the learner: '**\u4f60\u6765\u505a**\uff08\u4e66 Ch 4...\uff09\uff1a1. TokenType.java ... 3. Scanner.java \u2014 scanTokens() \u4e3b\u5faa\u73af'; Token/Scanner/Parser files were never written by the agent (only 6 files: README, PROGRESS, run.sh, Loxy.java, smoke.lox, compiled .class)."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete checkpoints and expected output: 'printf 'var a = 1;\\n' | ./run.sh # \u671f\u671b\uff1aVAR var null 1 / IDENTIFIER a null 1 / NUMBER 1 1.0 1 ...' and 'printf 'var a = \"unterminated;\\n' | ./run.sh # \u671f\u671b\uff1a[line 1] Error: Unterminated string.', plus verified M0 results ('./run.sh a b` \u8f93\u51fa `Usage: jlox [script]` \u9000\u51fa\u7801 64') and '\u5199\u5b8c\u8d34\u51fa\u4f60\u7684 token \u8f93\u51fa\u6216\u5361\u4f4f\u7684\u4ee3\u7801'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (programming-language-crafting-interpreters): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones map to the book's real chapters: M1 Scanner Ch 4, M2 Parser\u2192AST Ch 5-6, M3 \u6c42\u503c Ch 7, M4 \u8bed\u53e5/\u4f5c\u7528\u57df Ch 8,11, M5 \u63a7\u5236\u6d41/\u51fd\u6570 Ch 9-10, stretch '\u5b57\u8282\u7801 VM\uff08clox\uff0cC\uff09Part II'. Concepts are book-specific: maximal munch ('`!`/`=` \u8fd9\u7c7b\u8981\u770b\u4e0b\u4e00\u4e2a\u5b57\u7b26\u51b3\u5b9a\u662f `!=` \u8fd8\u662f `!`\uff0c\u5373 maximal munch'), scanTokens() dispatch, '\u626b\u63cf\u5668\u81ea\u8eab\u53ea\u62a5\u9519\u4e0d\u4e2d\u65ad', AstPrinter S-expression '(+ 1 (* 2 3))', book exit codes 64/65/70, fib(20)=6765, closure counter; agent read the crafting-interpreters skill and tutorial-map.md."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "All 11 shell commands are read-only or in-project (ls, which, java -version, chmod +x jlox/run.sh, ./run.sh smoke tests, date, sed -i on jlox/PROGRESS.md); no brew/apt/pip/install command was executed \u2014 JDK was only detected at /opt/homebrew/opt/openjdk@21. All 6 written files are under jlox/ in the workspace; run.sh only tells the learner to install ('error: \u627e\u4e0d\u5230 JDK\u3002\u8bf7\u5148\u5b89\u88c5\uff0c\u4f8b\u5982\uff1abrew install openjdk@21')."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 1,
+        "failed": 3,
+        "total": 4,
+        "time_seconds": 900.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": false,
+          "evidence": "AGENT FINAL ANSWER section is empty and 'FILES WRITTEN IN PROJECT (0)' \u2014 no staged milestone plan or scaffold with TODOs was produced."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Final answer is empty; no concrete command to run nor expected output/behaviour appears anywhere in the evidence."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (programming-language-crafting-interpreters): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": false,
+          "evidence": "Final answer is empty; despite research calls (e.g. 'curl -s .../Makefile | grep -oE 'chap[0-9]+_[a-z_]+''), no milestones matching the tutorial's stages, language or key concepts were delivered."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "All 4 shell commands are read-only: 'ls -la .../project/', 'curl -s https://raw.githubusercontent.com/munificent/craftinginterpreters/master/README.md | sed -n ...', 'curl -s ... | grep ... | head -60' \u2014 no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and no writes outside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 517.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged scaffold, core left to learner: Scanner.java is a placeholder ('\u9aa8\u67b6\u9636\u6bb5\uff1a\u4ec5\u5b9e\u73b0\u9010\u5b57\u7b26\u904d\u5386\u4e0e EOF token' with 'TODO(\u7b2c 4 \u7ae0): \u5faa\u73af\u8c03\u7528 scanToken()'), scanToken() just does 'Lox.error(line, \"Unexpected character\"'; Parser.java '\u9aa8\u67b6\u9636\u6bb5\uff1a\u4ec5\u6301\u6709 token \u5217\u8868' with TODOs; Interpreter.java '\u9aa8\u67b6\u9636\u6bb5\uff1a\u7a7a\u58f3'; README roadmap shows M1-M6 status '\u2610' and agent says '\u8fd9\u5c31\u662f\u4f60\u7684\u7b2c\u4e00\u4e2a\u4efb\u52a1\uff1a\u5b9e\u73b0 M1'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete commands with expected behaviour: 'make build / make repl / make run F=x.lox / make test' plus '\u5192\u70df\u6d4b\u8bd5\u7ed3\u679c\uff1a\u7528\u6cd5\u9519\u8bef\u9000\u51fa\u7801 64\u3001\u8bcd\u6cd5\u9519\u8bef\u9000\u51fa\u7801 65\u3001\u7a7a\u811a\u672c\u9000\u51fa\u7801 0\u3001REPL \u6b63\u5e38\u4ea4\u4e92' and '\u5360\u4f4d Scanner \u76ee\u524d\u5bf9\u6bcf\u4e2a\u5b57\u7b26\u62a5 Unexpected character \u5c5e\u9884\u671f\u884c\u4e3a'"
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (programming-language-crafting-interpreters): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the book exactly: 'M1 | 4. Scanning', 'M2 | 5-6 AST\uff08Expr/Stmt\uff09+ \u9012\u5f52\u4e0b\u964d Parser', 'M3 | 7 \u8868\u8fbe\u5f0f\u6c42\u503c', 'M4 | 8 \u8bed\u53e5 + Environment \u53d8\u91cf\u4f5c\u7528\u57df', 'M6 | 10-13 \u51fd\u6570\u3001\u95ed\u5305\u3001\u89e3\u6790\u5668\u3001\u7c7b\u3001\u7ee7\u627f \u2192 \u5b8c\u6574 Lox', 'M7 | 14-28 clox \u5b57\u8282\u7801 VM\uff08\u539f\u4e66\u7528 C\uff09'; package com.craftinginterpreters.lox, error codes 64/65/70 per book ch.4, links official test suite"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "Agent installed a tool itself: '\u673a\u5668\u4e0a\u539f\u672c\u6ca1\u6709 JDK\uff0c\u6211\u4e0b\u8f7d\u4e86 Temurin 17 \u5230\u9879\u76ee\u7684 .jdk/\uff08\u5df2\u52a0\u5165 .gitignore\uff09\u5e76\u5b8c\u6210\u4e86\u9a8c\u8bc1' and ran 'export JAVA_HOME=\"$PWD/.jdk/jdk-17.0.20.1+1/Contents/Home\" && ... make test' \u2014 downloading/installing a JDK instead of asking the learner to install (README's 'brew install --cask temurin@17' suggestion alone would have been fine)"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 1,
+        "failed": 3,
+        "total": 4,
+        "time_seconds": 900.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": false,
+          "evidence": "No milestone plan or TODO scaffold was ever delivered: the final answer is unresolved deliberation about test.dart semantics ('Hmm, so how do the tests pass? Let me look at the test expectations again...') and ends mid-sentence; 'FILES WRITTEN IN PROJECT (0)' confirms no scaffold/plan file was produced."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer ends with an incomplete command sketch and no expected output: 'run the relevant suite with a custom interpreter path: `dart tool/bin/test.dart chap21_global --interpreter ./b' \u2014 cut off mid-token, with no expected output/behaviour stated anywhere."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (programming-language-crafting-interpreters): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Content is verified and specific to this tutorial: 'Globs `test/**.lox`, skips `benchmark/` dir and files with `// nontest`'; 'Exit codes: 0 normal, 65 compile error, 70 runtime error'; suite skip lists 'jlox: chap04, 06, 07...; clox: chap17...30'; '`test/expressions/parse.lox` only for chap06 (AstPrinter output)'; 'test/scanning/* only for chap04_scanning' \u2014 matching the book's actual jlox/clox chapter stages, not generic boilerplate."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "Commands wrote outside the project dir: 'cd /tmp && rm -rf ci-probe && git clone ... https://github.com/munificent/craftinginterpreters.git ci-probe', 'cd \"$HOME\" && rm -rf ci-probe && git clone ...', and 'echo test > /tmp/w.txt && echo test2 > ~/w2.txt'. No install commands were run, but out-of-workspace writes fail B4."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.625,
+        "stddev": 0.5303,
+        "min": 0.25,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 760.85,
+        "stddev": 196.7878,
+        "min": 621.7,
+        "max": 900.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.5,
+        "stddev": 0.3536,
+        "min": 0.25,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 708.7,
+        "stddev": 270.5391,
+        "min": 517.4,
+        "max": 900.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.12",
+      "time_seconds": "+52.1",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

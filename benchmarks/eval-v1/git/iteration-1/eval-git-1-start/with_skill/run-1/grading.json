@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds milestone 1 (init / repo layout) with TODOs for the learner and does not hand over the code for later milestones (objects, trees, commits)",
+   "passed": true,
+   "evidence": "mygit.py has cmd_init with 'TODO 1...TODO 5' and 'raise NotImplementedError(\"cmd_init: fill in TODOs 1-5\")'; no hash-object/write-tree/commit-tree code exists — only a dispatch table and a Repo/repo_find helper; PROGRESS.md marks milestones 2-7 'pending'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with '**Checkpoint** (run this when done): mkdir lab && cd lab; python3 ../mygit.py init; git status' and 'Expected: Initialized empty Git repository in .../lab/.git followed by real git printing On branch main and No commits yet'"
+  },
+  {
+   "text": "B3: States that a repository needs .git/objects, .git/refs (heads) and a HEAD file pointing at refs/heads/<branch>",
+   "passed": true,
+   "evidence": "'Real git needs only three things to accept a repo: .git/objects/ ... .git/refs/heads/ ... and .git/HEAD (a one-line pointer telling git which branch is checked out — the literal text ref: refs/heads/main)'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run: 'python3 mygit.py; echo \"---\"; python3 mygit.py init' — no install commands; only files written are mygit.py and PROGRESS.md inside the project"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 241.2
+ },
+ "install_like_cmds": []
+}

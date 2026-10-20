@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (skeleton + config) with TODOs; no full-featured bot",
+   "passed": false,
+   "evidence": "Agent dumped a complete multi-feature bot, not a first-milestone skeleton: 'bot.py — the whole bot in ~120 lines ... Includes /roll, /count (per-chat state demo), /echo, and an echo fallback'; code contains finished COMMANDS dispatch, handlers, polling loop and error handling with no TODO markers; future work (inline keyboards, SQLite, webhooks) is only listed as README 'Things to try next' exercises."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete checkpoint: 'pip install -r requirements.txt / BOT_TOKEN=123456789:AAE... python3 bot.py' plus expected behaviour: 'The bot prints its identity on startup (getMe sanity check), then blocks waiting for messages — open it in Telegram and send /start.'"
+  },
+  {
+   "text": "B3: Says the bot token must come from an env var/.env that is gitignored, not hard-coded",
+   "passed": true,
+   "evidence": "'1. Token from env' is a core design point; run command passes it as 'BOT_TOKEN=123456789:AAE... python3 bot.py'; 'the no-token path exits with a clear message' — token read from env var, never hard-coded (no .env file used, so gitignoring is inapplicable)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run: 'python3 -m py_compile bot.py && echo \"compile OK\" && python3 bot.py; echo \"exit=$?\"' — no install commands; writes confined to bot.py, README.md, requirements.txt (plus __pycache__ generated inside the project); installation is left to the learner: 'pip install -r requirements.txt'."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 131.4
+ },
+ "install_like_cmds": []
+}

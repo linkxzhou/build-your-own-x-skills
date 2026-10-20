@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": false,
+   "evidence": "Agent downloaded and compiled the complete reference editor into the learner's project: 'curl -fsSL https://raw.githubusercontent.com/antirez/kilo/master/kilo.c -o .scratch/kilo.c && cc -o kilo .scratch/kilo.c -Wall -Wextra -pedantic -std=c99'. FILES WRITTEN include 'kilo/kilo (70450 chars)' (Mach-O binary of the full-featured editor) and a complete 11-test harness (keycodes/quit/tildes/arrows/statusbar/open_file/scroll/type_save/dirty_quit/search/syntax_c) spanning milestones M1-M9, run in full against the finished binary — a complete multi-milestone implementation instead of a first-milestone scaffold with TODOs."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete runnable checkpoints with expected behaviour: harness usage 'python3 tests/pty_smoke.py ... # 跑全部测试 ... 退出码 = 失败用例数'; per-milestone acceptance e.g. M1 'assert output contains \"97 ('a')\" and \"3\"', M4 'assert cursor() == (24, 1) after 30 downs', M5 'assert \"No Name\" + \"lines\" in output'; agent verified by running 'python3 tests/pty_smoke.py quit tildes arrows statusbar open_file scroll type_save dirty_quit search syntax_c; echo \"EXIT=$?\"'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (text-editor-text-editor): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the tutorial's actual stages and C specifics: M1 ch2 termios raw mode/atexit/die()/EAGAIN; M2 'CTRL_KEY macro, editorReadKey, editorProcessKeypress'; M3 tildes/\\x1b[2J/window size; M4 arrows + 'rowoff/coloff' scrolling; M5 status bar 'No Name'/'%d/%d lines'; M6 ch4 rows/tabs; M7 ch5 insert/delete/dirty/Ctrl-S save; M8 ch6 incremental search; M9 ch7 highlight DB; M10 ch8 ASan/valgrind. Verified against fetched tutorial text ('printf(\"%d ('%c')\\r\\n\", c, c); — YES, confirmed from the actual tutorial text I just fetched') and corrected chapter placement ('Ctrl-Q is actually in chapter 3, not chapter 2!')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install), but a command wrote outside the project dir: 'tmp = tempfile.mkdtemp(); p = os.path.join(tmp, \"t.txt\"); open(p, \"w\").close()' creates files in the system temp dir, and the delivered harness itself does 'import tempfile' (same pattern for its file-based tests). All other writes (.scratch/kilo.c, kilo binary, tests/) stayed in-project."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

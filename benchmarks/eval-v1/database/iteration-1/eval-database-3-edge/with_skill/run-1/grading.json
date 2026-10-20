@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Accepts JavaScript and adapts the plan (files/pages via fs) instead of insisting on another language; scaffolds the first milestone only",
+   "passed": true,
+   "evidence": "\"Yes, JavaScript is fine... we sidestep with explicit `fs.read`/`fs.write` at page offsets\" and \"The canonical tutorial is in Go... so we port its concepts to JS and keep its milestone order.\" Scaffolded only milestone 1: 5 files (src/btree.js, test/btree.test.js, package.json, README.md, PROGRESS.md) with get/insert/scan as \"// TODO(you): implement\" stubs; PROGRESS.md shows M2–M5 \"pending\"."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "\"Run `npm test` after each function. The 10k-key test is the real gate: it verifies every get round-trips, the scan is fully sorted, and `tree.height > 1`... When all 7 pass, we move to M2\"; also states current expected state: \"`npm test` currently shows 1 pass / 6 fail because the three core functions are stubs\"."
+  },
+  {
+   "text": "B3: Describes fixed-size pages and node split as the core of a B+tree storage engine",
+   "passed": true,
+   "evidence": "Split: \"When a leaf overflows it splits at its middle key and pushes that key up into the parent; a root split creates a new root, which is how the tree grows\" (plus invariant I3 in src/btree.js). Fixed-size pages: \"M2: turning those JS objects into 4KB pages on disk\", \"M2: page layer (4KB pages, allocator, free list)\", \"explicit `fs.read`/`fs.write` at page offsets\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 6 shell commands are read-only checks or test runs: \"ls ...\", \"node --version\", \"npm test\" — no brew/apt/pip/cargo/rustup/npm -g/go install/gem install. All 5 writes and the package.json edit target project-relative paths (package.json, src/btree.js, test/btree.test.js, README.md, PROGRESS.md); Node v25 was already present, no tool installation requested or performed."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 440.5
+ },
+ "install_like_cmds": []
+}

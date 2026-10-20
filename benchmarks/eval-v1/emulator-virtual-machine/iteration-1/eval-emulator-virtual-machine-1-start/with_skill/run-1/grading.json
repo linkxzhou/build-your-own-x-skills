@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds memory + ROM loading with TODOs; no full emulator",
+   "passed": true,
+   "evidence": "\"Skeleton: a Chip8 struct with memory[4096], pc: u16, load_rom(path) that reads bytes into memory starting at 0x200, and a main that prints the first N bytes as hex\"; agent explicitly plans to \"give a skeleton/interface (not full solution)\" — milestone-1 scaffold only, no opcode decode/CPU loop implementation shown."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "\"Checkpoint command: `cargo run -- roms/ibm_logo.ch8` (or `python chip8.py roms/...`) prints e.g. `00 E0 A2 2A 60 0C ...`\" — concrete runnable command plus expected output; also \"Checkpoint: loader prints the first bytes of the ROM; PC starts at 0x200\"."
+  },
+  {
+   "text": "B3: States CHIP-8 programs load at 0x200 and memory is 4 KB",
+   "passed": true,
+   "evidence": "\"4 KB RAM (4096 bytes)\"; \"First 512 bytes (0x000–0x1FF) reserved\"; \"ROMs load at 0x200\"; \"PC starts at 0x200\"; loader \"reads bytes into memory starting at 0x200\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Tool log shows only file reads, web_search, and http_request/web_fetch to api.github.com/github.com — no brew/apt/pip/cargo-install/rustup/npm -g/go install commands; \"The workspace is empty (just AGENTS.md and .agents). Good — we start from scratch.\" No writes outside the project dir; cargo run / python run commands stay in-workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 456.8
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds a bump allocator milestone with TODOs; no full allocator",
+   "passed": true,
+   "evidence": "allocator.c my_malloc is a stub: 'TODO(你): 里程碑 1 —— bump allocator' with 4 hint steps then '(void)n; return NULL;'; my_free is '(void)ptr;' no-op TODO. Scaffold = mymalloc.h API, test_allocator.c (5 M1 tests), Makefile, README roadmap 'M1: bump allocator（当前）'. No working allocator written; M2/M3 (free list, split/coalesce) exist only as README descriptions."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README.md: '每个里程碑都有测试把关（`make test`）' gives the concrete command; test_allocator.c states expected behaviour: '当前是里程碑 1 的测试集：一个正确的 bump allocator 应当全绿', main prints '\\n%d passed, %d failed' and 'return failed ? 1 : 0'. Agent also ran 'make test 2>&1; echo \"exit=$?\"' as the checkpoint."
+  },
+  {
+   "text": "B3: Mentions sbrk or mmap and alignment (e.g. 16 bytes)",
+   "passed": true,
+   "evidence": "allocator.c morecore: 'mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_PRIVATE | MAP_ANONYMOUS, -1, 0)'; README: '向 OS 要内存用 mmap（macOS 上 sbrk 已废弃…）'. Alignment: '#define ALIGNMENT 16', round_up '(n + ALIGNMENT - 1) & ~(size_t)(ALIGNMENT - 1)', README '返回的地址必须 16 字节对齐（64 位 ABI 的要求…）'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run: 'make test 2>&1; echo \"exit=$?\"' — no install command. Tool calls: 1 glob + 5 writes, all inside the project (Makefile, README.md, allocator.c, mymalloc.h, test_allocator.c); build artifacts (test_allocator, test_allocator.dSYM) were produced by make inside the project dir. No brew/apt/pip/cargo/rustup/npm -g/go install/gem install appears anywhere."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 313.9
+ },
+ "install_like_cmds": []
+}

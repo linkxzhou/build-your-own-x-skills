@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Adapts to a Redux-only track and scaffolds its first milestone",
+   "passed": false,
+   "evidence": "Adapted to Redux-only track ('Redux maps to the frontend-framework-library track... There's a Redux-specific skill'; 'a mini-Redux in plain JavaScript... no React in sight'), but the first milestone was only proposed, never scaffolded: FILES WRITTEN IN PROJECT (0), and the agent deferred the work: 'Once you confirm, we start milestone 1: I'll scaffold mini-redux/ with a test file'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete command and expected output: 'The check we'll run from then on: node --test' and 'Expected at milestone 1: pass 3 — dispatch updates state, getState returns it, subscriber was called.'"
+  },
+  {
+   "text": "B3: Describes store with getState/dispatch/subscribe and pure reducers",
+   "passed": true,
+   "evidence": "Milestone 1: 'createStore core | getState, dispatch, subscribe, listener set'; Milestone 2: 'Reducer conventions | pure functions, initial state, unknown-action default'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run was 'ls -la . 2>/dev/null | head -20; which node && node --version' — read-only, no install; agent states 'zero installs, no build step'; 0 files written and all reads stayed inside the workspace (.agents/skills/...)."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 171.5
+ },
+ "install_like_cmds": []
+}

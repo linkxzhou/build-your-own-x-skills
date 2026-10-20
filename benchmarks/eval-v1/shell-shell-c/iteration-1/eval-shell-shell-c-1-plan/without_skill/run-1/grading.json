@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged scaffold, only current milestone implemented: README.md has milestone table M0–M7 with only 'M0 ✅' and 'M1 ✅'; src/main.c says '当前进度：M1（Exercise 1）— 提示符 + 读入 + 回显' and contains 'TODO(M2): 用 parse_command()…execvp() 执行 / TODO(M3): 先 fork()… / TODO(M4)…TODO(M6)' stubs; final answer ends '下一步打开 src/main.c:37，从 M2 开始实现'. No fork/exec/wait/builtin/pipe code exists; parse.c is framed as workshop-provided utility ('Rule 0：解析不是本课的重点，此文件视为 provided code'), matching the tutorial's own Rule 0."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer reports a verified runnable checkpoint: '骨架已就绪并验证通过（`make` 零警告、`make test` 绿、已提交 `c4a6f2e`）', and README.md gives concrete commands ('make # 构建 ./mysh / make run / make test # 冒烟测试') plus expected behaviour in the M1 acceptance criteria: '输入什么回显什么；Ctrl-D/EOF 退出' (tests/smoke.sh asserts the exact 'mysh> hello' echo output and 'EOF should exit with status 0')."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (shell-shell-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the actual tutorial stages, fetched from the real repo (ran 'curl -sL https://raw.githubusercontent.com/kamalmarhubi/shell-workshop/master/README.md'): M1 Ex1 getline echo → M2 Ex2 execvp → M3 Ex3 fork → M4 Ex4 wait → M5 Ex6 cd/exit (chdir) → M6 Ex7+Ex8 pipe/dup2 → M7 §7 redirects/$VAR. Tutorial-specific teaching point included: 'M2 直接 `execvp` 会让 shell 自己被替换退出——这是教程安排的顿悟时刻，M3 的 `fork` 就是为了解决它'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run (only curl/grep/sed/make/git), but a command wrote outside the project dir: 'curl -sL https://raw.githubusercontent.com/kamalmarhubi/shell-workshop/master/README.md -o /tmp/shell-workshop-README.md' creates /tmp/shell-workshop-README.md, then reads it twice ('sed -n 75,215p /tmp/shell-workshop-README.md', 'sed -n 146,240p /tmp/shell-workshop-README.md')."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 549.1
+ },
+ "install_like_cmds": []
+}

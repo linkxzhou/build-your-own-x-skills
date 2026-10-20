@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": false,
+   "evidence": "AGENT FINAL ANSWER section is empty; the only files written are scratch/article.html, scratch/article.txt, scratch/cj.txt — raw scraped article content with no milestone plan, scaffold, or TODOs anywhere."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No final answer was produced and no learner-facing command with expected output exists; the only shell commands are the agent's own fetch attempts (e.g. 'curl -sL ... -o scratch/article.html', 'python3 - <<EOF' print snippets)."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": false,
+   "evidence": "No milestones or task list were written at all; the agent only scraped the article ('Malloc is not magic — Implementing my own memory allocator') into scratch/ and read .agents/skills/build-your-own-x skill files, producing no tutorial-specific plan."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 21 shell commands are curl/python3/sleep/find/ls/'mkdir -p scratch'/sed/awk/grep; files written are scratch/article.html, scratch/article.txt, scratch/cj.txt inside the project; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install command appears."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

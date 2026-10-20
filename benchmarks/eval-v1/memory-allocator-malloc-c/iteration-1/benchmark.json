@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "memory-allocator-malloc-c",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:52Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 555.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Scaffold with stubs, not a full implementation: src/myalloc.c says '\u5f53\u524d\u72b6\u6001: \u6869\u5b9e\u73b0 \u2014\u2014 \u4e00\u5f8b\u8fd4\u56de NULL / \u65e0\u64cd\u4f5c\uff0cmake test \u5e94\u5f53\u4e3a\u7ea2' and my_malloc body is '/* TODO(M1)... */ return NULL;'. Final answer coaches the learner's next step: '\u4f60\u63a5\u4e0b\u6765\u5728 src/myalloc.c \u7684 my_malloc \u91cc\u5199\uff1a1. \u4e00\u4e2a\u9759\u6001\u6307\u9488\u8bb0\u5f55\u5806\u5f53\u524d\u4f4d\u7f6e\u20262. \u628a size \u5411\u4e0a\u5bf9\u9f50\u5230 16\u2026' with '\u5f53\u524d\uff1aM1 / 7' and '\u5361\u4f4f\u65f6\u8bf4\u4e00\u58f0\uff0c\u6211\u4e00\u6b21\u7ed9\u4e00\u6761\u63d0\u793a'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a concrete runnable checkpoint and expected output: '\u68c0\u67e5\u547d\u4ee4\uff1a`make test`\uff0c\u9884\u671f\u8f93\u51fa `OK: 1256 checks passed`' (the M1 pass condition; baseline red state 1256/1256 \u5931\u8d25 was verified beforehand via 'make test; echo \"exit=$?\"')."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Tutorial-specific milestones matching the track skill the agent read (memory-allocator-malloc-c/SKILL.md, tutorial-map.md, concepts.md): 'M1 Bump allocator / M2 \u5757\u5934 + free / M3 \u62c6\u5206 + \u5408\u5e76 / M4 calloc / realloc / M5 \u7ebf\u7a0b\u5b89\u5168 + \u63a5\u7ba1 / M6 \u5ea6\u91cf / M7 size classes / arenas', with C-specific and platform-specific detail: '\u5806\u589e\u957f\u7528 mmap\uff08macOS \u7684 sbrk \u5df2\u5e9f\u5f03\uff09\uff0cM5 \u7528 DYLD_INSERT_LIBRARIES\uff08LD_PRELOAD \u53d7 SIP \u9650\u5236\uff09', 16-byte alignment, 'realloc(NULL, n) == malloc(n)'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "Only 3 shell commands ran: 'ls -la && gcc --version | head -1 && uname -s', 'date +%Y-%m-%d', 'make test' \u2014 none install packages. All 10 written files are inside the project dir (README.md, PROGRESS.md, Makefile, .gitignore, src/myalloc.h, src/myalloc.c, tests/test_myalloc.c, build/ artifacts); no writes outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 900.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "File is a staged milestone plan (T0 skeleton \u2192 T1 data structures \u2192 later T2/T3/T8/T9 referenced) with explicit coaching rules: '\u6559\u7ec3\u6a21\u5f0f\uff1a\u7ed9\u51fa\u63a5\u53e3/\u9aa8\u67b6\u4ee3\u7801\uff0c\u6838\u5fc3\u903b\u8f91\u7531\u5b66\u4e60\u8005\u7f16\u5199\u3002\u5b66\u4e60\u8005\u4e3b\u52a8\u8981\u6c42\u6216\u5c1d\u8bd5\u5931\u8d25\u540e\uff0c\u624d\u7ed9\u5f53\u524d\u4efb\u52a1\u7684\u5b8c\u6574\u4ee3\u7801\uff1b\u6c38\u8fdc\u4e0d\u8981\u63d0\u524d\u503e\u5012\u540e\u7eed\u4efb\u52a1\u7684\u89e3\u6cd5' and per-task '\u5b66\u4e60\u8005\u5199' items (e.g. '\u5b66\u4e60\u8005\u5199\uff1a\u4e24\u4e2a\u7ed3\u6784\u4f53\u5b9a\u4e49\uff08\u5b57\u6bb5\u987a\u5e8f\u7167\u6284 L135\u2013148\uff09'). No complete implementation was written \u2014 only the task checklist file."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Each task ends with a concrete checkpoint command and expected output: T0 '\u68c0\u67e5\u70b9\uff1a`make -C malloc-lab && ./malloc-lab/main`\uff08\u6216\u4ea7\u7269\u540d\uff09\u2192 \u7f16\u8bd1\u96f6\u8b66\u544a\uff0c\u8f93\u51fa\u4e24\u884c\u5730\u5740\u4e14\u7b2c\u4e8c\u884c \u2265 \u7b2c\u4e00\u884c\uff0c\u672b\u5c3e `OK`'; T1 '\u68c0\u67e5\u70b9\uff1a`make && ./malloc-lab/main` \u2192 \u6253\u5370 `sizeof(area)==32`\u3001`sizeof(my_stats)==16`'; rule 3: '\u6bcf\u4e2a\u4efb\u52a1\u4ee5\u68c0\u67e5\u70b9\u6536\u5c3e\uff1a\u8fd0\u884c\"\u68c0\u67e5\u70b9\"\u4e2d\u7684\u547d\u4ee4\uff0c\u4ece\u771f\u5b9e\u8f93\u51fa\u8c03\u8bd5\uff0c\u76f4\u5230\u901a\u8fc7'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Highly tutorial-specific: exact signatures 'int *an_malloc(ssize_t size);' / 'bool an_free(void *ptr);' cited to L199/L502, constants 'MAGICAL_BYTES = 0x55'\u3001'BLOCK_MARKER = 0xDD'\u3001'PAGE_SIZE = 4096' (L175\u2013176, L648), structs my_stats/area with marker/prev/next/in_use/length, sbrk-based scope from 'What should your malloc and free implementation do?' (L86\u2013100), macOS adaptation (DYLD_INSERT_LIBRARIES vs LD_PRELOAD, -Wno-deprecated-declarations). Agent verified against the fetched article text: shell command '== \u7b7e\u540d/\u5e38\u91cf\u6838\u5bf9\uff08\u6e05\u5355 vs \u6587\u7ae0\uff09==' grep comparing checklist vs .scratch/malloc-article.txt."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run and the agent explicitly tells the learner '\u4e0d\u4ee3\u8dd1\u5b89\u88c5\u547d\u4ee4\uff08brew/apt/pip \u7b49\uff09'. However commands wrote outside the project dir: 'mkdir -p /tmp/malloc && curl -sL ... -o /tmp/malloc/article.html' and 'cd /tmp/malloc && python3 - <<EOF ...' (producing /tmp/malloc/article.txt, later copied in). Writing to /tmp violates the stay-inside-project-dir rule."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 504.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Only the first milestone is implemented; the rest are scaffolded TODOs: src/allocator.c states '\u5f53\u524d\u72b6\u6001: M1 \u78b0\u649e\u6307\u9488 (bump-the-pointer) \u5206\u914d\u5668' with my_free a no-op and comments '[M2] TODO: \u5f15\u5165\u5757\u5934 (size + \u662f\u5426\u7a7a\u95f2\u6807\u5fd7), \u628a\u5757\u6302\u56de free list' / '[M2] TODO: \u76f8\u90bb\u7a7a\u95f2\u5757\u5408\u5e76 (coalescing)' / '[M3] TODO: size \u8d85\u8fc7\u9608\u503c...\u5355\u72ec mmap'; README marks 'M2 \u2014\u2014 \u7a7a\u95f2\u94fe\u8868 (\u6838\u5fc3\u91cc\u7a0b\u7891)' through M5 as future work; final answer hands off: '\u4e0b\u4e00\u6b65\u4ece src/allocator.c \u91cc\u7684 [M2] \u6ce8\u91ca\u5f00\u59cb\uff1a\u5148\u5728 NOTES.md \u5199\u4e0b\u4f60\u7684\u5757\u5934\u8bbe\u8ba1\u548c\u5408\u5e76\u7b56\u7565\uff0c\u518d\u52a8\u624b\u6539\u4ee3\u7801'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete command plus expected behaviour: '\u9a8c\u8bc1\u7ed3\u679c\uff1a`make test` \u4e0e `make asan` \u5747\u9000\u51fa\u7801 0\uff0c\u4e25\u683c\u8b66\u544a\u7ea7\u522b\uff08-Wpedantic -Wshadow -Wconversion\uff09\u4e0b\u96f6\u8b66\u544a\u3002`bytes_in_use=277824` \u5bf9\u6bd4\u538b\u6d4b\u9884\u7b97 262144\uff0c\u5dee\u503c\u6b63\u662f 16 \u5b57\u8282\u5bf9\u9f50\u7684\u586b\u5145\u5f00\u9500'; NOTES.md gives the learner the checkpoint '\u8fd0\u884c `make test`, \u8bb0\u5f55 `test_stress` \u6253\u5370\u7684 `bytes_in_use`, \u5bf9\u7167\u538b\u6d4b\u9884\u7b97 256 KiB, \u89e3\u91ca\u5dee\u503c\u6765\u6e90'"
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match the allocator tutorial's actual stages, not boilerplate: 'M2 \u2014\u2014 \u7a7a\u95f2\u94fe\u8868: \u5757\u5934: {size, free, next, prev}, \u5206\u914d = \u4ece free list \u627e\u5757 (first-fit), \u5206\u88c2...\u5408\u5e76: free \u65f6\u5408\u5e76\u76f8\u90bb\u7a7a\u95f2\u5757'; 'M3 \u2014\u2014 \u8d85\u8fc7\u9608\u503c (\u5982 64 KiB) \u7684\u5206\u914d\u5355\u72ec mmap, free \u65f6 munmap; realloc \u5148\u5c1d\u8bd5\u539f\u5730\u6269\u5c55'; 'M4 \u2014\u2014 \u5206\u79bb\u7a7a\u95f2\u94fe\u8868 (segregated free lists) \u6309\u5927\u5c0f\u5206\u6876'; plus C/macOS specifics: 'macOS \u4e0a sbrk \u5df2\u5e9f\u5f03', 'macOS \u7684 malloc \u8d70 libmalloc \u7684 zone \u673a\u5236', '16 \u5b57\u8282\u5bf9\u9f50 (arm64)'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run, but a shell command wrote outside the project dir: 'curl -sL -o /tmp/freedium.html -w \"%{http_code}\" ... ' then read it back with 'wc -c < /tmp/freedium.html' \u2014 /tmp is outside the workspace"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "failed": 4,
+        "total": 4,
+        "time_seconds": 900.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": false,
+          "evidence": "AGENT FINAL ANSWER section is empty and 'FILES WRITTEN IN PROJECT (0)'; no milestone plan, scaffold or TODOs were produced at all."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Empty final answer: no concrete command to run nor expected output/behaviour appears anywhere ('## AGENT FINAL ANSWER' followed by blank)."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": false,
+          "evidence": "No content referencing the tutorial's stages, language or key concepts (malloc/allocator) in the answer; the 51 shell commands only attempted to fetch the article (e.g. curl to web.archive.org, freedium.cfd) and never yielded a task list."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run, but multiple commands wrote outside the project dir, e.g. 'curl ... -o /tmp/wb.html', '-o /tmp/freedium.html', '-o /tmp/bing.html', '-o /tmp/ddg.html', and read outside paths 'ls -la /Users/linkxzhou/skev/byox-eval/...'."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.875,
+        "stddev": 0.1768,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 727.5,
+        "stddev": 243.9518,
+        "min": 555.0,
+        "max": 900.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.375,
+        "stddev": 0.5303,
+        "min": 0.0,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 702.05,
+        "stddev": 279.9436,
+        "min": 504.1,
+        "max": 900.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.50",
+      "time_seconds": "+25.5",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

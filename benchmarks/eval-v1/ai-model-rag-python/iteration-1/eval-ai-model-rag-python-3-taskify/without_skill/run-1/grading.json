@@ -1,0 +1,43 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Agent wrote only TASKS.md (FILES WRITTEN: 1) — a staged plan: '19 个任务(Task 0–18)+ 5 条总验收 = 24 个复选框', 阶段 0–5, each task with 目标/参考/实现要求/验收标准 and unchecked '- [ ]' boxes; no src/partNN_*.py implementation was written, only specified as future work ('指定输出文件 src/partNN_*.py')."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete runnable checkpoints with expected output: Task 0 验收 'python -c \"import langchain, chromadb, tiktoken, bs4; print(\\'ok\\')\" 输出 ok', Task 1 'python -m src.part01_basic_rag \"What is Task Decomposition?\" 输出非空答案'; final answer ends with the concrete next action '在 Claude Code 里直接说「按 TASKS.md 从 Task 0 开始执行」即可开始。'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-rag-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the actual repo (structure verified via GitHub API tree and cloned notebooks): 'Task 5–9 | Part 5–9:Multi Query、RAG-Fusion、Decomposition、Step Back、HyDE', 'Task 16–18 | Part 16–18:CRAG、Self-RAG、长上下文对比实验'; references are tutorial-specific: '.ref_repo/rag_from_scratch_1_to_4.ipynb cells 6–7', hub prompt 'rlm/rag-prompt', corpus 'https://lilianweng.github.io/posts/2023-06-23-agent/', LCEL chain with WebBaseLoader/RecursiveCharacterTextSplitter/Chroma."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but two commands wrote outside the project dir: 'cd /tmp && rm -rf ragfs && git clone --depth 1 https://github.com/langchain-ai/rag-from-scratch.git ragfs' and 'cd $HOME && rm -rf .ragfs_tmp && git clone ... .ragfs_tmp' — both outside /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-ai-model-rag-python-3."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 406.8
+ },
+ "install_like_cmds": [
+  "cd /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-ai-model-rag-python-3/.ref_repo && grep -oh \"https://lilianweng.github.io[^\\\"']*\" *.ipynb | sort -u && echo \"---deps---\" && grep -oh \"pip install[^\\\"\\\\\\\\]*\" *.ipynb | sort -u"
+ ]
+}

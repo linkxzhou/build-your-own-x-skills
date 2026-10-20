@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the first milestone (run a command via re-exec) with TODOs, not the full runtime with cgroups/networking",
+   "passed": true,
+   "evidence": "main.go scaffolds only milestone 1: dispatch written, but parent()/child() are stubs with 'TODO(you): 1. Build an *exec.Cmd that runs THIS binary again...' and 'TODO(you): 1. args is the command to run...'; answer says 'milestone 1/6' and 'implement parent() and child() in main.go (the TODOs are the spec)'. cgroups/networking appear only as roadmap rows and an M2 preview comment ('Milestone 2 preview: ... Cloneflags: syscall.CLONE_NEWUTS | syscall.CLONE_NEWPID'), with no implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Answer ends with a checkpoint block: 'go run . run /bin/echo hi     # expect: hi' and 'go run . run /bin/false; echo $?   # expect: 1 — exit codes must propagate', plus 'If you're stuck, ask and you get one hint at a time. When hi prints, I'll check it off in PROGRESS.md'."
+  },
+  {
+   "text": "B3: Mentions that namespaces/cgroups are Linux-only so a Linux machine/VM with root is required for later milestones",
+   "passed": true,
+   "evidence": "'**OS limits:** milestone 1 is pure userspace — it runs on your Mac as-is. Milestones 2–6 need Linux + root, so line up a Linux VM (UTM/OrbStack/multipass all work) before milestone 2.'; PROGRESS.md repeats: 'Milestones 2–6 need Linux and root: run inside a Linux VM (or a Linux box).'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (2) are only 'go build ./... && go vet ./... && echo BUILD_OK' and 'go run . run /bin/echo hi; echo \"exit=$?\"' — no install commands; FILES WRITTEN IN PROJECT (4) are PROGRESS.md, go.mod, main.go, and the mydocker binary, all inside the project dir; no writes outside the workspace and no tool-install instructions needed."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 512.0
+ },
+ "install_like_cmds": []
+}

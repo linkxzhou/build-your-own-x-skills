@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Agent wrote scaffold + TODOs, left implementation to learner: src/mymalloc.c has `void *my_malloc(size_t size) { (void)size; /* TODO(m1): 删掉这行，实现 bump allocator */ return NULL; }`, my_free is a no-op with `/* TODO(m2) */`, calloc/realloc return NULL with `/* TODO(m4) */`, and header comment says 「每个里程碑只实现当前 TODO，别提前写后面的」. Agent reasoning: \"Per coaching rules: don't dump full solution... milestone 1 is the learner's job\". TASKS.md stages 7 milestones (M1 bump → M2 块头+free → M3 分裂+合并 → M4 calloc/realloc → M5 interpose+线程安全 → M6 bench → M7 arenas 选做) with PROGRESS.md all ⬜ 待完成."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "TASKS.md M1 gives concrete checkpoint with expected output: 「检查：`make test` → `== m1 bump allocator: PASS ==`（1000 次分配全部 16 字节对齐且整块可写）」; M5: 「`make demo-preload` → `ls -l` 正常输出」. Agent plan: \"Reply concise (<60 lines), end with checkpoint command + expected output... Every reply ends with the checkpoint\"; agent itself ran `cd mymalloc && make test` to confirm the checkpoint is runnable."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial's actual stages (agent: \"The tutorial covers: bump allocator via sbrk, block headers, free list, splitting/coalescing, calloc/realloc, thread safety, LD_PRELOAD\"): TASKS.md M1 「mmap 向 OS 成块要内存；16 字节对齐；bump 指针」, M2 「块头元数据；空闲链表；first-fit」, M3 「内部/外部碎片；就地分裂；前向合并」, M4 「realloc(NULL,n) / realloc(p,0) 边界」, M5 「符号插入；互斥锁；macOS 用 DYLD_INSERT_LIBRARIES（LD_PRELOAD 需要 Linux）」, M7 「segregated free list；per-thread cache」. C11/clang specifics: mmap vs deprecated sbrk on macOS, `-fsanitize=address,undefined` asan target."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 6 shell commands are read-only or in-project: `ls skills...`, `ls .agents/skills/...`, `gcc --version; uname -s; ls -a`, `cd mymalloc && make test`. No brew/apt/pip/cargo/rustup/npm/go/gem install anywhere. All 12 files written under workspace `mymalloc/` (Makefile, src/, tests/, *.md, build artifacts .o/test_basic/dSYM from make test) — nothing outside the project dir; no installation requested of the learner either."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 243.5
+ },
+ "install_like_cmds": []
+}

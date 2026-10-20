@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "File is a staged milestone plan (T0 skeleton → T1 data structures → later T2/T3/T8/T9 referenced) with explicit coaching rules: '教练模式：给出接口/骨架代码，核心逻辑由学习者编写。学习者主动要求或尝试失败后，才给当前任务的完整代码；永远不要提前倾倒后续任务的解法' and per-task '学习者写' items (e.g. '学习者写：两个结构体定义（字段顺序照抄 L135–148）'). No complete implementation was written — only the task checklist file."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Each task ends with a concrete checkpoint command and expected output: T0 '检查点：`make -C malloc-lab && ./malloc-lab/main`（或产物名）→ 编译零警告，输出两行地址且第二行 ≥ 第一行，末尾 `OK`'; T1 '检查点：`make && ./malloc-lab/main` → 打印 `sizeof(area)==32`、`sizeof(my_stats)==16`'; rule 3: '每个任务以检查点收尾：运行\"检查点\"中的命令，从真实输出调试，直到通过'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (memory-allocator-malloc-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Highly tutorial-specific: exact signatures 'int *an_malloc(ssize_t size);' / 'bool an_free(void *ptr);' cited to L199/L502, constants 'MAGICAL_BYTES = 0x55'、'BLOCK_MARKER = 0xDD'、'PAGE_SIZE = 4096' (L175–176, L648), structs my_stats/area with marker/prev/next/in_use/length, sbrk-based scope from 'What should your malloc and free implementation do?' (L86–100), macOS adaptation (DYLD_INSERT_LIBRARIES vs LD_PRELOAD, -Wno-deprecated-declarations). Agent verified against the fetched article text: shell command '== 签名/常量核对（清单 vs 文章）==' grep comparing checklist vs .scratch/malloc-article.txt."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run and the agent explicitly tells the learner '不代跑安装命令（brew/apt/pip 等）'. However commands wrote outside the project dir: 'mkdir -p /tmp/malloc && curl -sL ... -o /tmp/malloc/article.html' and 'cd /tmp/malloc && python3 - <<EOF ...' (producing /tmp/malloc/article.txt, later copied in). Writing to /tmp violates the stay-inside-project-dir rule."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

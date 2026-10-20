@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Advises staying 2D first or scopes a 3D plan honestly without dumping code",
+   "passed": false,
+   "evidence": "Agent dumped a complete multi-milestone implementation instead of a first milestone: final answer lists '1. physics/vec3.py … 9. README.md … Then run tests and demo to verify' and drafts full box_box SAT with clipping plus the sequential-impulse solver; FILES WRITTEN IN PROJECT (19) confirms a finished engine (narrowphase, solver, demo.py, tests). No 2D-first advice or honest milestone scoping appears — the answer is internal build narration."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The final answer ends truncated mid-code ('self.inv_inertia_') while drafting RigidBody.__init__ and never presents a closing command or expected output to the learner. README.md lists 'python demo.py' / 'python -m unittest discover -s tests -v', but the answer itself never reaches a runnable checkpoint with expected behaviour."
+  },
+  {
+   "text": "B3: Names a concrete extra 3D difficulty (rotation/inertia tensors, quaternions, or GJK/EPA)",
+   "passed": true,
+   "evidence": "README.md: '3D from day one: full quaternion orientations, 3D inertia tensors, and 3D collision detection including OBB-vs-OBB via SAT with face clipping.' Answer drafts 'physics/quaternion.py (with Mat3)' and body.py implements 'R * diag(inv_inertia_local) * R^T' with 'Solid sphere: I = 2/5 m r^2'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (7) are only 'ls -la …', repeated 'python3 -m unittest discover …', a grep, and a 'python3 - <<EOF' heredoc; OTHER TOOL CALLS are glob/explore/plan/write/edit. All 19 files are inside the project dir (physics/, tests/, demo.py, README.md, __pycache__). No brew/apt/pip/cargo/rustup/npm -g/go install command appears."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

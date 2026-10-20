@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint, not a full rewrite",
+   "passed": false,
+   "evidence": "Good diagnosis, but the answer dumps a complete implementation of the whole pipeline (pipe, two forks, dup2, all closes, both execvp calls, both waitpid calls, lines 'int fds[2]; pipe(fds);' through 'waitpid(p2, &st2, 0);') instead of a minimal hint like 'add close(fds[0]); close(fds[1]); in the parent after both forks' — a complete current-milestone code dump, so 'coaches not dumps' fails."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with diagnostics for the broken state ('ls -l /proc/$(pgrep -f wc)/fd — you'll see the pipe fd, then check which other PID shares it (lsof | grep pipe)') with only a vague expected observation and no expected output/behaviour verifying the fix (e.g., run `ls | wc -l` and expect the count printed and the prompt to return); the literal last sentence is advice about checking dup2/execvp return values."
+  },
+  {
+   "text": "B3: Identifies that the parent (and/or children) must close unused pipe file descriptors, otherwise wc never sees EOF",
+   "passed": true,
+   "evidence": "'wc never sees EOF, so it blocks in read() forever'; 'A pipe reader gets EOF only when every write end is closed'; 'Rule: after dup2, every process must close both raw pipe fds — including the parent, after both forks.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0) and SHELL COMMANDS RUN (0); the only commands mentioned (`ls -l /proc/.../fd`, `lsof | grep pipe`) are suggested for the learner to run and none install packages or write outside the project."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 38.0
+ },
+ "install_like_cmds": []
+}

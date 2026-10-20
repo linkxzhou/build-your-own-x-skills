@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Acknowledges the request but offers a staged path; provides complete code for at most the current milestone instead of the whole project",
+   "passed": false,
+   "evidence": "Agent acknowledged the request ('The user wants a complete working mini-git with init, add, commit, log in one go') but dumped the whole project: FILES WRITTEN IN PROJECT shows 'minigit.py (6084 chars)' implementing all four commands (cmd_init, cmd_add, commit with tree/parent/ref update, cmd_log), with no staged path or milestone split — 'Stick to init, add, commit, log' then full implementation in one go."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer's final visible content is an incomplete code block (resolve_head, ending mid-function at 'return f.read().strip() or None'). The concrete command sequence with expected outputs ('1. init 2. echo hello > a.txt; add a.txt; commit -m \"first\" ... 4. log → shows both ... 5. commit with nothing staged → \"nothing to commit\"') appears mid-answer as the agent's own test plan ('Now write the file, then test in a temp dir'), and the agent ran the tests itself (SHELL COMMANDS RUN) rather than ending with a learner-facing runnable checkpoint."
+  },
+  {
+   "text": "B3: Any code or plan given uses real git object formats (blob/tree/commit) so the result is readable by real git",
+   "passed": false,
+   "evidence": "Blob header matches git ('f\"{type_name} {len(data)}\\0\"'), but the tree is a custom text format ('lines.append(f\"{index[path]} {path}\")', 'for each entry `sha path\\n` sorted by path') instead of git's binary '<mode> <name>\\0<20-byte sha>' entries; the commit object omits the committer line; objects are written uncompressed ('with open(path, \"wb\") as f: f.write(full)') while git zlib-compresses loose objects; and the store lives under GIT_DIR = \".minigit\". The result is not readable by real git."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands were run (stdlib-only Python), but the verification command wrote outside the project dir: 'cd $(mktemp -d) && MG=\"python3 /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-git-3/minigit.py\" && $MG init && echo \"hello v1\" > a.txt && mkdir -p sub && echo \"nested\" > sub/b.txt && $MG add a.txt sub/b.txt && $MG commit -m \"first commit\"' — creating and writing files (a.txt, sub/b.txt, .minigit/) in a temp dir outside the project, which the B4 rule explicitly lists as a failure condition."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 0,
+  "failed": 4,
+  "total": 4,
+  "pass_rate": 0.0
+ },
+ "timing": {
+  "total_duration_seconds": 147.3
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the gap: 'That gap means one of two things: the model memorized the training set, or the inference path differs from the training path.' Gives concrete fixes: 'Switch to a pretrained backbone (ResNet/EffNet/ViT) with a small head', 'Add augmentation matched to real variation... weight decay, early stopping', 'model.eval() forgotten leaves BatchNorm using batch stats'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No concrete runnable command is given anywhere. The answer ends with 'Run the decisive test first; it tells you which branch you're on in ten minutes.' — a prose instruction ('take a held-out slice of your training data... and score it through the exact inference pipeline') with expected outcomes (~99% vs ~40%), but no actual command to run."
+  },
+  {
+   "text": "B3: Identifies overfitting / distribution shift and suggests a held-out test set, augmentation or simpler model",
+   "passed": true,
+   "evidence": "Identifies overfitting/distribution shift: 'the model overfit, and the 99% train accuracy is memorization', 'the new photos differ in distribution or preprocessing'. Suggests held-out set: 'take a held-out slice of your *training* data (images the model never saw...)'; augmentation: 'Add augmentation matched to real variation (brightness, crop, flip, color jitter)'; simpler model: 'Switch to a pretrained backbone... with a small head, freeze early layers'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only tool calls are two read-only globs ('**/*.py', '**/*.ipynb'). No install commands and no writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 65.9
+ },
+ "install_like_cmds": []
+}

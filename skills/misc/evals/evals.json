@@ -1,0 +1,92 @@
+{
+  "skill_name": "misc",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to build my own DNS server to learn the protocol. Help me start.",
+      "expected_output": "Picks a matching upstream entry and scaffolds the first milestone; no full server; Mentions UDP port 53 (or a high test port) and the DNS message header/question format",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'misc' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Picks a matching upstream entry and scaffolds the first milestone; no full server"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions UDP port 53 (or a high test port) and the DNS message header/question format"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我想自己写一个包管理器（类似 npm），从哪开始？",
+      "expected_output": "Maps to the tiny package manager entry and scaffolds a first milestone; Mentions dependency resolution / a lockfile or fetching package tarballs",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'misc' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Maps to the tiny package manager entry and scaffolds a first milestone"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions dependency resolution / a lockfile or fetching package tarballs"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Something not in your list: I want to build my own spreadsheet engine.",
+      "expected_output": "Handles an unlisted topic via the generic milestone method without dumping code; Mentions cell formula parsing and dependency graph / recalculation order",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'misc' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Handles an unlisted topic via the generic milestone method without dumping code"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions cell formula parsing and dependency graph / recalculation order"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

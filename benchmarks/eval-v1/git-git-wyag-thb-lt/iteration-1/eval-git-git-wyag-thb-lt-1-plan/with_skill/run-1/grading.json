@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged 7-milestone plan with only M1 marked ✅ ('| 1 ✅ | init |'), M2 listed as '### M2 hash-object / cat-file — 待开始' with a TODO list; mygit.py (4825 chars) implements only the init subcommand, matching the user's explicit '只完成第一阶段' — first milestone only, not a complete implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Verification section gives concrete commands with expected behaviour: 'git status → On branch master / No commits yet'；'git fsck 退出码 0'；real git 'add + commit（a4834a9）成功'；'对已有仓库重复 init 正确报错退出'. Each milestone row also carries a checkpoint, e.g. M2: 'mygit hash-object -w f 的 SHA 与 git hash-object f 一致'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (git-git-wyag-thb-lt): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror wyag's actual stages (init → hash-object/cat-file → write-tree/ls-tree → commit-tree/log → index add/status → checkout/branch → clone/push/packfile) with tutorial-specific concepts: '\"blob <len>\\0<data>\"'、SHA-1、zlib、'objects/xx/yyyy…'、'20 字节原始 SHA'、'二进制 index v2'、'pkt-line、packfile 解析、delta'. Agent fetched the tutorial to confirm init artifacts ('教程原文已确认：init 阶段创建 branches/ objects/ refs/tags/ refs/heads/…'), and code follows wyag §3.1–3.2 (GitRepository, repo_create writing 'ref: refs/heads/master', repositoryformatversion=0/filemode=false/bare=false, repo_find)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but the agent wrote outside the project dir: 'curl -sL https://wyag.thb.lt/ -o /tmp/wyag.html && wc -c /tmp/wyag.html' (plus converted /tmp/wyag.txt read via 'sed -n 560,780p /tmp/wyag.txt'), 'mkdir /tmp/t1', 'python3 mygit.py init /tmp/t1 && find /tmp/t1/.git', 'touch /tmp/probe' — all target /tmp, outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 575.0
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the framing issue: \"响应头里没有 Content-Length，发完 body 也没 close() socket —— 浏览器只能一直等更多字节，于是转圈到超时\" and gives a minimal fix: \"最小修复（推荐两个都做）：1. 响应头加 Content-Length: <body 的字节数>... 2. 加响应头 Connection: close，并且在 send() 完之后真正调用 conn.close()\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Gives concrete command \"curl -v --max-time 5 http://localhost:8080/\" with expected outcomes (\"curl 打印出页面后卡满 5 秒、最后报 Operation timed out\"), and ends with a checkpoint: \"修完后再跑一次上面的 curl：预期看到 Content-Length: N 且 curl 在 1 秒内正常退出，浏览器刷新后秒开\""
+  },
+  {
+   "text": "B3: Points to missing Content-Length (or connection close / incomplete headers \\r\\n\\r\\n) as the likely cause",
+   "passed": true,
+   "evidence": "\"手写服务器最典型的坑：响应头里没有 Content-Length，发完 body 也没 close() socket —— 浏览器只能一直等更多字节\"; also covers the alternative cause: \"转圈来自第二个请求：浏览器还会要 /favicon.ico，或在 keep-alive 连接上发下一个请求，而你的循环正阻塞在旧连接的 recv() 上\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); OTHER TOOL CALLS are read-only (read SKILL.md, glob for source files) inside the workspace; no install commands anywhere in the answer"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 90.0
+ },
+ "install_like_cmds": []
+}

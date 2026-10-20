@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses 'raw mode 没有在所有退出路径上恢复' and lists missed paths (错误提前退出, panic, 信号, Ctrl-D/EOF) plus minimal fixes: 'C：atexit(disableRawMode) + 捕获 SIGINT/SIGTERM 后 exit()'; 'Rust：Drop guard（RAII）'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with '把你的编辑器源码放进这个工作区（或告诉我路径），我帮你定位...' — no concrete command to run and no expected output/behaviour given"
+  },
+  {
+   "text": "B3: Explains original termios must be saved and restored on exit (atexit/disableRawMode)",
+   "passed": true,
+   "evidence": "'tcsetattr 恢复正常模式的代码只在正常退出时执行了' and '标准修法是把恢复挂在“必然执行”的位置：C：atexit(disableRawMode)' — explains restoring original terminal settings on exit via atexit/disableRawMode"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only command run was 'ls -la .../build-your-own-x-text-editor-2' (read-only, inside project dir); FILES WRITTEN IN PROJECT (0); no install commands (brew/apt/pip/cargo/rustup/npm -g/go install) present"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 36.0
+ },
+ "install_like_cmds": []
+}

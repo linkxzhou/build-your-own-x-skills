@@ -1,0 +1,139 @@
+{
+  "metadata": {
+    "skill_name": "distributed-systems-kafka-java",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:52Z",
+    "evals_run": [
+      0
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 246.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverables are planning docs (TASKS.md/PROGRESS.md), not implementation code; TASKS.md sets coach mode: '\u6559\u7ec3\u6a21\u5f0f\uff1aClaude \u5148\u7528 3\u20136 \u53e5\u8bb2\u6982\u5ff5\uff0c\u518d\u7ed9\u7c7b/\u63a5\u53e3\u9aa8\u67b6\uff0c\u6838\u5fc3\u903b\u8f91\u7531\u4f60\u5199\uff1b\u5361\u4f4f\u65f6\u7ed9\u6700\u5c0f\u4fee\u590d\uff0c\u4e0d\u6574\u6bb5\u91cd\u5199' and T1 prompt says '\u6838\u5fc3\u4ee3\u7801\u7559 TODO \u7531\u6211\u5199'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with concrete checkpoint: 'mvn clean package' + 'java -cp target/simple-kafka-1.0-SNAPSHOT.jar com.simplekafka.Main' and expected behaviour: '\u770b\u5230 BUILD SUCCESS \u4e14\u7b2c\u4e8c\u6761\u547d\u4ee4\u6253\u5370\u9aa8\u67b6\u542f\u52a8\u4fe1\u606f\uff0cT1 \u5373\u901a\u8fc7'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (distributed-systems-kafka-java): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the tutorial's 8 stages (T1\u9aa8\u67b6\u2192T8\u7aef\u5230\u7aef+\u6740leader/\u6740controller\u6f14\u7ec3) with tutorial-specific details: Java+Maven+ZooKeeper stack, 'simple-kafka-1.0-SNAPSHOT.jar', package 'com.simplekafka', zk 2181 / brokers 9091/9092/9093, concepts like '\u4e34\u65f6\u8282\u70b9\u3001watch\u3001controller \u9009\u4e3e', '\u65e5\u5fd7\u5206\u6bb5\u3001\u987a\u5e8f\u8ffd\u52a0\u3001offset \u7d22\u5f15', and exact test names ProtocolTest/LogTest/BrokerIntegrationTest/MetadataDiscoveryTest/ProducerConsumerTest \u2014 not generic boilerplate."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": true,
+          "evidence": "'SHELL COMMANDS RUN (0)'; only files written are TASKS.md and PROGRESS.md inside the project; installs are delegated to learner: 'Claude Code \u4e0d\u4ee3\u8dd1\u5b89\u88c5\u547d\u4ee4\uff08brew/apt/sdkman \u7b49\uff09\uff0c\u53ea\u6253\u5370\u547d\u4ee4\u7531\u4f60\u6267\u884c'."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 258.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is TASKS.md, a staged plan: tasks 0\u20138 each with \u300c\u63d0\u793a\u8bcd\u300d\u300c\u9a8c\u6536\u6807\u51c6\u300d\u300c\u5b66\u4e60\u70b9\u300d; no implementation code written by the agent. Learner rules: '\u5148\u81ea\u5df1\u5b9e\u73b0\uff0c\u5361\u4f4f\u65f6\u624d\u5141\u8bb8\u67e5\u770b reference/ \u5bf9\u5e94\u6587\u4ef6\u5bf9\u7167\uff1b\u7981\u6b62\u6574\u6587\u4ef6\u590d\u5236'. reference/ holds the tutorial's own cloned code as comparison only."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Every task ends with runnable checkpoints: '`mvn -q clean package` \u9000\u51fa\u7801 0\uff0c\u751f\u6210 target/simple-kafka-1.0-SNAPSHOT.jar'; '`java -cp target/classes com.simplekafka.broker.ProtocolTest` \u8f93\u51fa OK\uff0c\u9000\u51fa\u7801 0'; task 8 'scripts/e2e.sh \u2026 \u8981\u6c42\u8fde\u7eed\u8dd1\u4e24\u904d\u5e42\u7b49\u901a\u8fc7'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (distributed-systems-kafka-java): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Matches tutorial exactly: 8 README stages mapped to tasks 0\u20138; protocol constants PRODUCE=0x01\u2026ERROR_RESPONSE=0x1F, REPLICATE=0x21/TOPIC_NOTIFICATION=0x23 and byte layout '1B \u7c7b\u578b + 2B topicLen + topic + 4B partition + 4B msgLen + msg' match reference Protocol.java; ZK paths '/brokers\u3001/controller\u3001/topics' match ZookeeperClient.connect(); jar name and CLI 'java -cp \u2026SimpleKafkaBroker 1 localhost 9091 2181' match README test commands; pom details (zookeeper 3.8.1, shade 3.4.1, mainClass) match reference pom.xml."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "Ran commands writing outside the project dir: 'git clone --depth 1 https://github.com/buildthingsuseful/build-your-own-kafka.git /tmp/byokafka' and 'curl \u2026 -o /tmp/kafka_tree.json' (plus 'rm -rf /tmp/byokafka'). No install commands run; TASKS.md only asks the learner to install ('macOS \u53ef brew install zookeeper'), which is allowed."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 1.0,
+        "stddev": 0.0,
+        "min": 1.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 246.1,
+        "stddev": 0.0,
+        "min": 246.1,
+        "max": 246.1
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 258.9,
+        "stddev": 0.0,
+        "min": 258.9,
+        "max": 258.9
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.25",
+      "time_seconds": "-12.8",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged M0-M6 roadmap delivered (README.md: '### M0 · 骨架与 TCP 监听（已完成，随骨架交付）' through '### M6 · 收尾：keep-alive、HEAD 与压测'), and only the first milestone M0 is implemented; later milestones are left as learner TODOs: tcp.py 'TODO(M1): 先 conn.recv(4096) 读出请求，把收到的字节原样 sendall 回去，替换下面的硬编码响应' and 'TODO(M5): 这里是单线程串行处理…并发里程碑就是改造这个循环'. Final answer hands M1 to the learner: '现在就可以开始 M1：…把 handle_connection 改成 echo'. No http.py/router.py exist yet."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete runnable checkpoint: '运行 `python3 -m server`，然后把 `server/tcp.py:20` 的 `handle_connection` 改成 echo —— 用 `conn.recv(4096)` 读出请求字节并原样回显，改完跑 `python3 -m unittest discover -s tests -v` 验证'; README quick start gives 'curl -v http://127.0.0.1:8080/' with expected '返回 200 和 `Hello, World!`'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (web-server-http): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones are tutorial-specific, not generic: socket lifecycle 'socket → bind → listen → accept → recv/send → close', '\\r\\n\\r\n' header delimiting, 'recv(n) 的 n 是上限而非保证、TCP 粘包/拆包', parse_request → Request 对象 with 400, path traversal '(/../) 与防御', status codes 400/404/405/500, keep-alive/HEAD with acceptance 'Re-using existing connection', 'ab -n 1000 -c 10' load test — all in Python stdlib socket, matching the build-your-own HTTP server stages."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Only 2 shell commands ran: 'lsof -ti :8080 | xargs kill 2>/dev/null; …' and 'sleep 1; lsof -ti :8080 && echo …' — no install commands (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install). All 13 files written are inside the project dir (README.md, pyproject.toml, server/*, static/index.html, tests/test_smoke.py); no writes outside the workspace evidenced."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 359.1
+ },
+ "install_like_cmds": []
+}

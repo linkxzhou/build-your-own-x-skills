@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "distributed-systems",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:50Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 252.6,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the append-only log milestone with TODOs; no full broker",
+          "passed": true,
+          "evidence": "log.go is a scaffold: types Segment/Log + signatures with TODO bodies, e.g. Append: '// TODO: 1. off := l.nextOffset ... return 0, errors.New(\"not implemented\")'; same for NewLog/Read/Close. Only 3 milestone-1 files written (go.mod, log.go, log_test.go); no broker/TCP code \u2014 TCP is deferred ('TCP binary protocol in milestone 2'). Learner writes the core bodies."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Checkpoint test written: '// Checkpoint 1\uff1a\u8ffd\u52a0 10k \u6761\u6d88\u606f\uff0c\u8bfb offset 5000\uff0c\u5185\u5bb9\u5fc5\u987b\u6b63\u786e\u3002' with concrete expected behaviour ('Read(5000) = %q, want %q', want \"msg-5000\"; reopen test expects 'first offset after reopen = %d, want 500'); concrete command given/run: 'go vet ./... && go test ./... 2>&1 | tail -20'; planned per-turn format includes 'how to check it (command + expected output)'."
+        },
+        {
+          "text": "B3: Describes an append-only log with offsets (segments/index)",
+          "passed": true,
+          "evidence": "log.go doc: 'Package minilog \u5b9e\u73b0\u4e00\u4e2a Kafka \u98ce\u683c\u7684\u8ffd\u52a0\u5f0f\u65e5\u5fd7\uff1a\u6bcf\u6761\u6d88\u606f\u6309\u5230\u8fbe\u987a\u5e8f\u62ff\u5230\u5355\u8c03\u9012\u589e\u7684 offset\uff0c\u843d\u76d8\u4e3a\u591a\u4e2a\u6bb5\uff08segment\uff09\uff0c\u6bcf\u4e2a\u6bb5\u7531\u4e00\u4e2a .log \u6570\u636e\u6587\u4ef6\u548c\u4e00\u4e2a .index \u7d22\u5f15\u6587\u4ef6\u7ec4\u6210'; on-disk spec: '\u8bb0\u5f55 = [4B payload \u957f\u5ea6][4B crc32(payload)][payload]', '\u7d22\u5f15\u9879 = [8B offset][8B \u8be5\u8bb0\u5f55\u5728 .log \u4e2d\u7684\u7269\u7406\u4f4d\u7f6e]'; segment roll: '\u82e5 active.position >= l.maxSegBytes\uff1a\u5c01\u53e3\u5f53\u524d\u6bb5...\u5f00\u65b0\u6bb5'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only 2 shell commands, both clean: 'go version 2>&1; echo \"---\"; ls -a' and 'go vet ./... && go test ./... 2>&1 | tail -20' \u2014 no brew/apt/pip/cargo/rustup/npm -g/go install/gem install. Writes limited to project files go.mod, log.go, log_test.go; other calls are reads/glob/grep of .agents/skills plus todo_write. Go 1.26.1 already present ('Environment: Go 1.26.1 on macOS arm64'), so no install needed or requested."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 44.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses root cause: 'Your broker has no committed position for your consumer, so every restart looks like a brand-new consumer and it falls back to the \"start from\" default (earliest / queue head)' and gives per-broker minimal fixes, e.g. 'enable.auto.commit=false but you never call commitSync()/commitAsync() after processing', 'delete after processing or extend the visibility timeout'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "A runnable command with expected output exists mid-answer ('kafka-consumer-groups.sh --describe --group <gid>: if CURRENT-OFFSET is - or far behind LOG-END-OFFSET, commits aren't landing'), but the answer ends with 'Tell me which broker and I'll point at the exact config lines.' \u2014 a question, so it does not end with a runnable checkpoint."
+        },
+        {
+          "text": "B3: Explains committing consumer offsets and resuming from the committed offset",
+          "passed": true,
+          "evidence": "Explains commit/resume mechanics: 'a new group has no committed offset, so auto.offset.reset (often earliest) applies', 'Commits fail silently during rebalances; check the CommitFailedException path', and 'is the offset/ack actually being persisted after successful processing'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): 'ls -la'; OTHER TOOL CALLS: glob only; FILES WRITTEN IN PROJECT (0); no install commands and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 148.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Proposes running several nodes as local processes on different ports",
+          "passed": true,
+          "evidence": "\"A 3-node cluster is 3 processes on `127.0.0.1:7001-7003`, each with its own data dir.\""
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with a clarifying question (\"Which language is the store in?\"); no concrete runnable command is given \u2014 the only command-like text is `kill -9` inside a prose procedure, with no command to launch the cluster or run the test and no expected output."
+        },
+        {
+          "text": "B3: Mentions killing the leader to test failover / follower takeover",
+          "passed": true,
+          "evidence": "\"2. `kill -9` the leader \u2014 SIGKILL, deliberately.\" followed by \"3. Wait for the election, confirm a new leader exists.\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Shell commands were read-only in-workspace (`ls .agents/skills/...`, `ls -a; find . ...`); FILES WRITTEN (0); no install commands run; Toxiproxy only mentioned as an option (\"Toxiproxy, or ~50 lines of your own\") without instructing or executing an install."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 50.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the append-only log milestone with TODOs; no full broker",
+          "passed": false,
+          "evidence": "FILES WRITTEN IN PROJECT (0) \u2014 no scaffold files or TODOs were created; the answer is prose only (API sketch + disk layout). It does stay scoped to the first milestone ('\u7b2c\u4e00\u6b65\uff1a\u5148\u505a\u5355\u673a\u4e0a\u7684 append-only log\uff08WAL\uff09') with later milestones only named as a roadmap, but 'scaffolds ... with TODOs' is unmet."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Ends with a verification description, not a runnable checkpoint: '\u9a8c\u8bc1\u6807\u51c6\uff1a\u4e00\u4e2a\u6d4b\u8bd5\u91cc\u5e76\u53d1 Append 1 \u4e07\u6761\uff0c\u9010\u6761 Read \u6821\u9a8c\u5185\u5bb9\u548c\u987a\u5e8f\uff1b\u6740\u6389\u8fdb\u7a0b\u91cd\u542f\u540e\u2026' \u2014 no concrete command (e.g. go test/go run) and no expected output; nothing runnable exists since 0 files were written."
+        },
+        {
+          "text": "B3: Describes an append-only log with offsets (segments/index)",
+          "passed": true,
+          "evidence": "'\u6bcf\u4e2a segment \u4e24\u4e2a\u6587\u4ef6\uff1a`<baseOffset>.log`\uff08\u6570\u636e\uff09\u548c `<baseOffset>.index`\uff08\u7a00\u758f\u7d22\u5f15\uff09'; 'offset \u662f\u903b\u8f91\u9012\u589e\u7684\uff0c\u8de8 segment \u8fde\u7eed'; '\u7d22\u5f15\u6bcf N \u6761\u8bb0\u5f55\u6216 N \u5b57\u8282\u8bb0\u4e00\u6761 `offset \u2192 \u6587\u4ef6\u5185\u4f4d\u7f6e`'; record format '[len uint32][crc32][payload]'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (0), FILES WRITTEN IN PROJECT (0); only tool call was glob {\"pattern\": \"**/*\"}; no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) appear in the answer."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 41.6,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses 'This is a classic offset management / commit issue' and gives minimal fixes per cause: 'Fix: use a stable group id', 'Fix: commit manually after processing \u2014 commitSync() per batch', 'Persist the committed offset (fsync'd file or the broker itself) ... and load it on startup'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete checkpoint with expected behaviour: 'run `kafka-consumer-groups.sh --describe --group <your-group>` before and after a restart. If the group doesn't exist after restart \u2192 cause #1. If it exists but the OFFSET column lags behind LOG-END-OFFSET by the whole history \u2192 cause #2.' (appears before the closing request to paste code, but is a runnable command plus expected output)."
+        },
+        {
+          "text": "B3: Explains committing consumer offsets and resuming from the committed offset",
+          "passed": true,
+          "evidence": "Explains committing and resuming: 'enable.auto.commit=true commits on the poll loop, but if your consumer exits before the interval elapses ... nothing is persisted. Fix: commit manually after processing \u2014 commitSync() per batch, or commitAsync() with a final commitSync() on shutdown'; 'auto.offset.reset=earliest \u2014 this only matters when no committed offset exists for the group/partition'; custom queue: 'Persist the committed offset ... and load it on startup'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): only 'ls -la'; OTHER TOOL CALLS: glob {\"pattern\": \"**/*\"}; FILES WRITTEN IN PROJECT (0); no install commands and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 33.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Proposes running several nodes as local processes on different ports",
+          "passed": true,
+          "evidence": "\"3\u20135 nodes as separate processes on `127.0.0.1` with distinct ports works fine on one laptop\" and \"One process per node, each with its own data dir (`node1/`, `node2/`, `node3/`)\""
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer ends with \"The one thing a laptop can't simulate is real network behavior...\" \u2014 no concrete runnable command or expected output is given anywhere; it only describes scenarios (e.g. \"`kill -9` the leader mid-stream, watch an election complete\") without a command to run"
+        },
+        {
+          "text": "B3: Mentions killing the leader to test failover / follower takeover",
+          "passed": true,
+          "evidence": "\"**Leader failover**: `kill -9` the leader mid-stream, watch an election complete, verify the new leader has all committed entries and clients can resume writes.\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0), only tool call is glob {\"pattern\": \"**/*\"}; no install command appears in the answer \u2014 Toxiproxy/Maelstrom are only mentioned (\"Jepsen's Maelstrom runs on a laptop... worth wiring up once the basics work\") with no install instruction issued by the agent"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 148.4667,
+        "stddev": 104.1,
+        "min": 44.4,
+        "max": 252.6
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.25,
+        "min": 0.5,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 41.8333,
+        "stddev": 8.9523,
+        "min": 33.0,
+        "max": 50.9
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.08",
+      "time_seconds": "+106.6",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

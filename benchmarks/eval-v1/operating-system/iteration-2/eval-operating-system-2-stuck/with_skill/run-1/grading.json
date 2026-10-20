@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the fault precisely: 'With only vector 3 installed, the first hardware interrupt hits a not-present gate → #GP (vector 13) → also not present → #DF (vector 8) → also not present → triple fault' and 'an unremapped PIC delivers IRQ0 on vector 8'. Gives a minimal fix path: bisect by masking PIC ('out 0x21, 0xFF'), the ICW remap sequence, and an IRQ0 stub with EOI — scoped to the current bug, not a rewrite."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Reply ends with 'How to check it:': 'qemu-system-x86_64 -d int -no-reboot -drive format=raw,file=os.img 2> int.log' plus 'grep -E \"v=[0-9a-f]{2}\" int.log | tail' and expected behaviour: 'Expected before the fix: the last lines show v=08 ... then v=0d then v=08 — the fault cascade. After the fix: the kernel keeps running and your timer stub ticks.'"
+  },
+  {
+   "text": "B3: Explains the timer interrupt fires without a handler (or PIC not remapped) → double/triple fault; add handlers / remap PIC / double-fault handler",
+   "passed": true,
+   "evidence": "'`sti` sets IF, and the 8259 PIC has been holding IRQ0 (timer, ~18 Hz since boot) pending the whole time... the first hardware interrupt hits a not-present gate → #GP → #DF → triple fault'; fix given: 'Remap the PIC to vectors 0x20–0x2F (ICW sequence)' and 'Install a stub handler for vector 0x20 that sends EOI'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0); only tool calls are two read-only globs and one write to 'scratch/pic_remap.asm' inside the project. No install commands anywhere; the qemu-system-x86_64 command is offered to the learner to run, which is allowed."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 360.7
+ },
+ "install_like_cmds": []
+}

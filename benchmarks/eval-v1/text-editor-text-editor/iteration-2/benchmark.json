@@ -1,0 +1,139 @@
+{
+  "metadata": {
+    "skill_name": "text-editor-text-editor",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:53Z",
+    "evals_run": [
+      0
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 900.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": false,
+          "evidence": "Agent downloaded and compiled the complete reference editor into the learner's project: 'curl -fsSL https://raw.githubusercontent.com/antirez/kilo/master/kilo.c -o .scratch/kilo.c && cc -o kilo .scratch/kilo.c -Wall -Wextra -pedantic -std=c99'. FILES WRITTEN include 'kilo/kilo (70450 chars)' (Mach-O binary of the full-featured editor) and a complete 11-test harness (keycodes/quit/tildes/arrows/statusbar/open_file/scroll/type_save/dirty_quit/search/syntax_c) spanning milestones M1-M9, run in full against the finished binary \u2014 a complete multi-milestone implementation instead of a first-milestone scaffold with TODOs."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete runnable checkpoints with expected behaviour: harness usage 'python3 tests/pty_smoke.py ... # \u8dd1\u5168\u90e8\u6d4b\u8bd5 ... \u9000\u51fa\u7801 = \u5931\u8d25\u7528\u4f8b\u6570'; per-milestone acceptance e.g. M1 'assert output contains \"97 ('a')\" and \"3\"', M4 'assert cursor() == (24, 1) after 30 downs', M5 'assert \"No Name\" + \"lines\" in output'; agent verified by running 'python3 tests/pty_smoke.py quit tildes arrows statusbar open_file scroll type_save dirty_quit search syntax_c; echo \"EXIT=$?\"'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (text-editor-text-editor): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones match the tutorial's actual stages and C specifics: M1 ch2 termios raw mode/atexit/die()/EAGAIN; M2 'CTRL_KEY macro, editorReadKey, editorProcessKeypress'; M3 tildes/\\x1b[2J/window size; M4 arrows + 'rowoff/coloff' scrolling; M5 status bar 'No Name'/'%d/%d lines'; M6 ch4 rows/tabs; M7 ch5 insert/delete/dirty/Ctrl-S save; M8 ch6 incremental search; M9 ch7 highlight DB; M10 ch8 ASan/valgrind. Verified against fetched tutorial text ('printf(\"%d ('%c')\\r\\n\", c, c); \u2014 YES, confirmed from the actual tutorial text I just fetched') and corrected chapter placement ('Ctrl-Q is actually in chapter 3, not chapter 2!')."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install), but a command wrote outside the project dir: 'tmp = tempfile.mkdtemp(); p = os.path.join(tmp, \"t.txt\"); open(p, \"w\").close()' creates files in the system temp dir, and the delivered harness itself does 'import tempfile' (same pattern for its file-based tests). All other writes (.scratch/kilo.c, kilo binary, tests/) stayed in-project."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 580.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a staged plan, not an implementation: only TASKS.md (8883 chars) was written, no kilo.c. It contains '- [ ]' TODO checkboxes, '7 \u7ae0 \u00d7 \u91cc\u7a0b\u7891\u8868\uff1a\u6bcf\u4e2a\u91cc\u7a0b\u7891 3\u20139 \u4e2a step', a per-step '\u6267\u884c\u534f\u8bae\uff08\u6bcf\u4e2a step \u56fa\u5b9a\u6d41\u7a0b\uff09' and '\u6bcf\u7ae0\u9a8c\u6536 + \u6700\u7ec8\u9a8c\u6536\uff1a8 \u6761\u53ef\u6267\u884c\u68c0\u67e5\u9879' \u2014 a scaffold with TODOs for the learner to execute."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete commands with expected behaviour throughout: '\u89c2\u5bdf\u70b9\uff1a`make && ./kilo` \u7acb\u5373\u9000\u51fa\u4e14 `echo $?` \u4e3a 0'; pty checkpoint 'expect -c ... spawn ./kilo, send \"\\x11\" ... | cat -v | grep -c ~' to '\u786e\u8ba4\u80fd\u753b\u51fa ~ \u548c\u72b6\u6001\u680f'; and the plan ends with '\u6bcf\u7ae0\u9a8c\u6536 + \u6700\u7ec8\u9a8c\u6536\uff1a8 \u6761\u53ef\u6267\u884c\u68c0\u67e5\u9879' plus '\u65ad\u70b9\u7eed\u505a\uff1a`git log` \u5373\u8fdb\u5ea6\u8868'."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (text-editor-text-editor): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the tutorial's real stages and step names from the kilo-src tags: 'Ch1: 1\u20132 / Ch2: 3\u201319 / Ch3: 20\u201354 / Ch4: 55\u2013100 / Ch5: 101\u2013130 / Ch6: 131\u2013141 / Ch7: 142\u2013184'; steps 'main, make / read, press-q / echo, atexit, icanon / opost, vmin-vtime / basic-search / syntax-digits / propagate-highlight'; C-specific concepts (tcgetattr/tcsetattr, ECHO/ICANON/ISIG/IXON/ICRNL/OPOST, VMIN=0/VTIME=1, Ctrl-Q=\\x11). Verified against fetched chapter pages 01.setup.html\u201308.appendices.html."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run, but commands wrote outside the project dir: 'git clone --bare --filter=blob:none https://github.com/snaptoken/kilo-src /tmp/kilo-src-bare', then repeatedly 'cd /tmp/kilo-src-bare' and redirected outputs to '/tmp/kilo-steps.txt' and '/tmp/extra.txt'."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.5,
+        "stddev": 0.0,
+        "min": 0.5,
+        "max": 0.5
+      },
+      "time_seconds": {
+        "mean": 900.0,
+        "stddev": 0.0,
+        "min": 900.0,
+        "max": 900.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 580.4,
+        "stddev": 0.0,
+        "min": 580.4,
+        "max": 580.4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "-0.25",
+      "time_seconds": "+319.6",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

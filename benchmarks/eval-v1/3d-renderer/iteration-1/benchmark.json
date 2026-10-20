@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "3d-renderer",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:49Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 186.6,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds image output (PPM) or the first milestone with TODOs; no full ray tracer",
+          "passed": true,
+          "evidence": "Wrote only a 1213-char skeleton raytracer/main.cpp for milestone 1 (image output) with TODOs: \"TODO 1: write the three header lines\", \"TODO 2: nested loop over all pixels\", \"TODO 3: ... done message\", and told the learner \"Your job is the core: the pixel loop.\" No vec3, camera, spheres, or shading \u2014 no full ray tracer."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with a checkpoint section: \"How to check it:\" giving concrete commands \"g++ -std=c++17 -O2 -o raytracer main.cpp && ./raytracer\" then \"open out.ppm\", and expected behaviour: \"Pass = a smooth gradient, green in the top-left corner fading toward red at bottom-right, with a bluish tint.\""
+        },
+        {
+          "text": "B3: Uses a simple image format such as PPM so no graphics library is needed, or justifies another choice",
+          "passed": true,
+          "evidence": "Uses PPM P3 and justifies it: \"PPM P3 is the simplest one in existence \u2014 a text header, then `r g b` numbers for every pixel... No library, no compression, every image viewer reads it.\" Skeleton targets out.ppm in P3 format."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "\"SHELL COMMANDS RUN (0)\"; only tool calls were read AGENTS.md, todo_write, and write raytracer/main.cpp (inside the project dir). No install commands run or written; the g++ build command is left for the learner to run themselves."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 58.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses shadow acne as self-intersection: '\u9ed1\u8272\u70b9\u72b6\u566a\u58f0\u662f\u81ea\u906e\u6321\uff08self-intersection\uff09\uff1a\u9634\u5f71\u5c04\u7ebf\u4ece\u8868\u9762\u70b9\u51fa\u53d1\uff0c\u6d6e\u70b9\u820d\u5165\u8ba9\u6c42\u4ea4\u51fd\u6570\u5728 t\u22480 \u5904\u547d\u4e2d\u7403\u4f53\u81ea\u8eab' and gives minimal fix '\u6cbf\u6cd5\u7ebf\u504f\u79fb\u9634\u5f71\u5c04\u7ebf\u8d77\u70b9\uff08\u6700\u5e38\u7528\uff09\uff1avec3 shadow_orig = hit_p + N * 1e-4;'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with '\u628a\u6c42\u4ea4/\u9634\u5f71\u4ee3\u7801\u8d34\u51fa\u6765\uff08\u6216\u653e\u8fdb\u5de5\u4f5c\u533a\uff09\uff0c\u6211\u53ef\u4ee5\u76f4\u63a5\u6307\u51fa\u5177\u4f53\u884c\u3002' \u2014 a request for code, with no concrete command to run and no expected output/behaviour anywhere in the answer."
+        },
+        {
+          "text": "B3: Explains self-intersection from floating-point error and fixes it with a small t_min/epsilon offset (e.g. 0.001)",
+          "passed": true,
+          "evidence": "Explains floating-point self-intersection ('\u6d6e\u70b9\u820d\u5165\u8ba9\u6c42\u4ea4\u51fd\u6570\u5728 t\u22480 \u5904\u547d\u4e2d\u7403\u4f53\u81ea\u8eab') and fixes with small epsilon/t_min: 'if (t > 1e-4 && t < dist_to_light) occluded = true;' plus 'shadow_orig = hit_p + N * 1e-4' and 'epsilon \u53d6\u573a\u666f\u5c3a\u5ea6\u7684 1e-4 ~ 1e-3'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command is a read-only find within the project ('find . -maxdepth 3 -type f ... | head -50'); FILES WRITTEN IN PROJECT (0); no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) appear."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 197.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Accepts Python and adapts (smaller image sizes / numpy optional) without dumping a full renderer",
+          "passed": true,
+          "evidence": "\"Yes \u2014 Python works fine for a ray tracer... At 256\u00d7144 pixels, pure Python renders in seconds\"; numpy kept optional as milestone 7 \"Stretch: AA, BVH, numpy\"; no full renderer dumped \u2014 main.py is a skeleton (\"You write the three TODO bodies\") where pixel_color/render/write_ppm all `raise NotImplementedError`"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "PROGRESS.md milestone 1 checkpoint: \"`python3 main.py` writes `out.ppm`; opens in a viewer as a smooth gradient\"; planned checkpoint \"`python3 main.py` produces out.ppm; `head out.ppm` shows `P3 256 144 255`\"; main.py's __main__ runs write_ppm(\"out.ppm\", render()) and prints \"wrote out.ppm (256x144)\""
+        },
+        {
+          "text": "B3: Notes that pure Python is slow and suggests small resolutions or vectorization, while the math stays the same",
+          "passed": true,
+          "evidence": "\"Python is slower but fine at small image sizes. At 256\u00d7144 pixels, pure Python renders in seconds\"; \"HEIGHT = 144  # 16:9 \u2014 small on purpose, Python render time stays sane\"; vectorization deferred: \"avoid numpy at first (learn the math), then optionally numpy-vectorize later for speed\" / stretch milestone \"AA, BVH, numpy\"; math unchanged: \"the math ports to Python almost line by line\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command was read-only: \"ls ~/.local/bin ...; python3 --version; which python3\" \u2014 no install; writes limited to raytracer/main.py and raytracer/PROGRESS.md inside the project; \"No installs required \u2014 we'll write images as PPM files with the stdlib\""
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 146.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds image output (PPM) or the first milestone with TODOs; no full ray tracer",
+          "passed": true,
+          "evidence": "Agent built only the first milestone: main.cpp header says '// Step 1: produce an image file. No rays yet.' and the code is just a 256x256 gradient loop writing a P3 PPM \u2014 no rays, camera, vec3, or objects. Later milestones explicitly deferred: 'Step 2 preview: Replace the gradient with the first real rays... Say the word and we'll build it.'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with a runnable Workflow: 'clang++ -std=c++17 -O2 -Wall -o renderer main.cpp / ./renderer > image.ppm / python3 ppm2png.py image.ppm image.png && open image.png', plus verified expected output: '65539 lines = 3 header + 65536 pixels, corners match the intended gradient (top-left `0 0 0`, bottom-right `255 255 0`). Your first image is rendered \u2014 open `image.png`'."
+        },
+        {
+          "text": "B3: Uses a simple image format such as PPM so no graphics library is needed, or justifies another choice",
+          "passed": true,
+          "evidence": "Uses PPM P3 and justifies it: 'Why PPM: it's a 3-line header plus one `R G B` triple per pixel, in plain ASCII. No image library, no windowing system \u2014 pure \"from scratch\".' Code comment: 'We use the PPM format because it is plain text and needs zero libraries'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only 2 shell commands run: 'clang++ -std=c++17 -O2 -Wall -o renderer main.cpp && ./renderer > image.ppm && head -4 ... && wc -l ... && python3 ppm2png.py image.ppm image.png' and 'tail -1 image.ppm; sed -n 257p; sed -n 4p' \u2014 no install commands; all 5 files written (main.cpp, ppm2png.py, image.ppm, image.png, renderer) are inside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 47.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses shadow acne: \"\u6d6e\u70b9\u820d\u5165\u8ba9 P \u5b9e\u9645\u4e0a\u7565\u5fae\u843d\u5728\u7403\u9762\u5185\u4fa7...\u8fd9\u6761 shadow ray \u4f1a\u4ee5 t \u2248 0 \u518d\u6b21\u51fb\u4e2d\u7403\u4f53\u81ea\u5df1\uff0c\u4e8e\u662f\u7403\u4f53'\u906e\u6321\u4e86\u81ea\u5df1'\" and gives minimal fix: \"Vec3 shadowOrig = hitPos + N * 1e-3f\" plus \"if (t > 1e-4f) return t;\""
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "No concrete command to run is given; the ending is only \"\u6539\u5b8c\u540e\u9ed1\u70b9\u5e94\u5b8c\u5168\u6d88\u5931\uff0c\u9634\u5f71\u8fb9\u7f18\u5e72\u51c0\u3002\u5982\u679c\u8fd8\u6709\u6b8b\u7559\u566a\u58f0\uff0c\u628a\u6c42\u4ea4\u4ee3\u7801\u8d34\u51fa\u6765\" \u2014 expected behaviour without a runnable command/checkpoint"
+        },
+        {
+          "text": "B3: Explains self-intersection from floating-point error and fixes it with a small t_min/epsilon offset (e.g. 0.001)",
+          "passed": true,
+          "evidence": "Explains self-intersection from floating-point error: \"\u6d6e\u70b9\u820d\u5165\u8ba9 P \u5b9e\u9645\u4e0a\u7565\u5fae\u843d\u5728\u7403\u9762\u5185\u4fa7\uff08\u6216\u6b63\u597d\u5728\u7403\u9762\u4e0a\uff09\u3002\u8fd9\u6761 shadow ray \u4f1a\u4ee5 t \u2248 0 \u518d\u6b21\u51fb\u4e2d\u7403\u4f53\u81ea\u5df1\" and fixes with epsilon offsets: \"hitPos + N * 1e-3f\", \"\u5bf9 shadow ray \u4f20\u4e00\u4e2a t_min = 1e-4 \u7684\u4e0b\u754c\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0); SHELL COMMANDS RUN (1): only \"ls -la\"; no install commands and nothing written outside the workspace"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 27.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Accepts Python and adapts (smaller image sizes / numpy optional) without dumping a full renderer",
+          "passed": true,
+          "evidence": "\"Yes \u2014 Python is a perfectly good language to learn ray tracing in.\" Adapts with smaller sizes/optional numpy: \"A 400\u00d7225 test image... takes seconds to a couple of minutes in pure Python\" and \"write the first version in plain Python... then vectorize with NumPy once it works\". No renderer dumped: FILES WRITTEN IN PROJECT (0); only offers \"I can scaffold the minimal version... as the first checkpoint\"."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Ends with an offer, no runnable checkpoint: \"if you want to start, I can scaffold the minimal version \u2014 a Vec3 class, a ray-sphere hit test, and a PPM writer\". No concrete command to run and no expected output/behaviour is given anywhere."
+        },
+        {
+          "text": "B3: Notes that pure Python is slow and suggests small resolutions or vectorization, while the math stays the same",
+          "passed": true,
+          "evidence": "\"naive per-pixel Python loops run ~100\u20131000x slower than C++\"; suggests small resolutions (\"A 400\u00d7225 test image\") and vectorization (\"NumPy vectorization gets you a big win... Typically 50\u2013100x faster with the same math\"), explicitly noting the math stays the same."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (0), FILES WRITTEN IN PROJECT (0); only tool call was glob {\"pattern\": \"**/*\"}. No install commands; Numba mentioned as an option without instructing any install."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 147.4667,
+        "stddev": 77.0532,
+        "min": 58.7,
+        "max": 197.1
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 73.6333,
+        "stddev": 63.7365,
+        "min": 27.2,
+        "max": 146.3
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.08",
+      "time_seconds": "+73.8",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

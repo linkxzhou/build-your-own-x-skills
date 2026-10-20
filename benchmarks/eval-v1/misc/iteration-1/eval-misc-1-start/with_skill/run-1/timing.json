@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-094243-3125df",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/misc/iteration-1/eval-misc-1-start/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 82.2,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

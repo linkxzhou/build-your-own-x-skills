@@ -1,0 +1,42 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged roadmap M0–M5 in README ('### M0 · 项目骨架与环境（已完成）' through '### M5 · 进阶（可选）') with only the first milestone implemented: schedules.py is complete ('return torch.linspace(beta_start, beta_end, timesteps)', NoiseSchedule.q_sample) while later milestones are stubs — unet.py 'raise NotImplementedError(\"TODO(M2)\")', ddpm.py 'raise NotImplementedError(\"TODO(M2)\")', samplers.py 'raise NotImplementedError(\"TODO(M3)\")', viz.py 'TODO(M1)', train.py/sample.py 'TODO(M2)'. Agent reasoning: 'leave the rest as documented stubs with TODO(milestone) markers... without doing the learning for them.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README gives concrete commands with expected behaviour: 环境 section 'python3 -m venv .venv && source .venv/bin/activate / pip install -r requirements.txt / pytest -q'; M0 验收 '`pytest -q` 全绿'; M1 验收 '`python -m diffusion.viz` 输出 MNIST 从清晰到纯噪声的网格图'; M2 '`python sample.py --n 64` 生成可辨认的手写数字网格'. Agent verified the checkpoint itself by running '.venv/bin/pytest -q' (twice, after adding pyproject.toml pythonpath fix)."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-diffusion-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match diffusion-model stages with technical specifics: 'β schedule（linear / cosine）、α_t = 1−β_t、ᾱ_t = ∏ α_s、重参数化 x_t = √ᾱ_t·x_0 + √(1−ᾱ_t)·ε'; 'sinusoidal time embedding、ResBlock... 简化损失 L = ‖ε − ε_θ(x_t, t)‖²、EMA'; 'DDIM 确定性采样（τ 子序列跳步、η=0）'; 'ε = ε_u + w·(ε_c − ε_u)、guidance scale 的保真/多样性权衡'; paper list 'DDPM — Ho et al. 2020, DDIM — Song, Meng...', Python/torch/MNIST code throughout — tutorial-specific, not generic boilerplate."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Agent ran an install command itself: 'python3 -m venv .venv && .venv/bin/pip install --quiet --upgrade pip && .venv/bin/pip install --quiet torch torchvision numpy matplotlib tqdm pytest 2>&1 | tail -3' — a pip install executed by the agent rather than asking the learner to install. All file writes stayed inside the project dir, but the install command violates B4."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 584.2
+ },
+ "install_like_cmds": [
+  "python3 -m venv .venv && .venv/bin/pip install --quiet --upgrade pip && .venv/bin/pip install --quiet torch torchvision numpy matplotlib tqdm pytest 2>&1 | tail -3; echo \"install exit: $?\""
+ ]
+}

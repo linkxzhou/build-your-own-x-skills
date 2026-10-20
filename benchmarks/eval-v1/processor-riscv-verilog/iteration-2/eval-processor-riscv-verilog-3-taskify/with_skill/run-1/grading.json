@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged milestone plan TASKS.md with T0–T24 across 6 phases (P0 准备 → P6 真实工具链), each task with 目标/文件/概念/验证/自检; explicitly scaffolds learner work: '任务要求新建 my_stepN.v 而非直接抄官方 stepN.v' and 'Claude Code 的角色是教练…一次只做一个任务'. No complete CPU implementation was written — only the task list the prompt requested."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a runnable checkpoint: 'git clone https://github.com/BrunoLevy/learn-fpga.git … cd learn-fpga/FemtoRV/TUTORIALS/FROM_BLINKER_TO_RISCV; ./run.sh step1.v' plus expected behaviour: '预期输出：终端持续打印 LEDS = xxxxx，二进制值每拍递增'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (processor-riscv-verilog): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the tutorial's real 24 steps (blinky, Clockworks 分频, ROM 查表, 译码器, 寄存器堆+状态机, ALU, 内嵌汇编器, JAL/JALR, 分支, LUI/AUIPC, 存储器模块, '核心瘦身到 839 LUT', MMIO+UART, Mandelbrot, Verilator, GNU 工具链, SPI Flash); commands verified against repo: 'run.sh stepN.v（内部即 iverilog -DBENCH -DSIM -DPASSTHROUGH_PLL -DBOARD_FREQ=10 -DCPU_FREQ=10 bench_iverilog.v stepN.v && vvp a.out）' and toolchain prefix 'riscv-none-embed-*' checked via FIRMWARE/Makefile; line refs cross-checked ('行引用与 README 标题完全匹配')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install command was executed (only 'which iverilog verilator …' checks; brew/apt appear only as learner instructions), but the agent wrote outside the project dir: 'curl … -o /tmp/from_blinker_readme.md', 'mkdir -p ~/from_blinker_ref && cp /tmp/from_blinker_readme.md ~/from_blinker_ref/README.md', and later 'rm -f /tmp/from_blinker_readme.md ~/from_blinker_ref/README.md … rmdir ~/from_blinker_ref'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 867.3
+ },
+ "install_like_cmds": []
+}

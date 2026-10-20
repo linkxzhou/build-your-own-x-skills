@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds raw mode milestone with TODOs; no full editor",
+   "passed": true,
+   "evidence": "kilo.c header: \"Current milestone: the foundation... Everything editor-specific (files, editing, search, syntax highlighting) is still ahead — see README.md for the roadmap\"; code covers only raw mode/keys/rendering (~250 lines); README has \"Roadmap — build these next\" with 4 unsolved milestones (viewer, status bars, editing, save) as TODOs"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README \"## Build and run\": `make` / `./kilo` with expected behaviour \"Quit with Ctrl-Q. Move the cursor with the arrow keys; Home, End, Page Up, Page Down work too\"; agent also verified: \"make 2>&1 && echo --- build OK --- && ./kilo\" plus a pty smoke test"
+  },
+  {
+   "text": "B3: Mentions termios raw mode (disable ECHO/ICANON) and restoring the terminal on exit",
+   "passed": true,
+   "evidence": "kilo.c: `#include <termios.h>`, `raw.c_lflag &= ~(ECHO | ICANON | IEXTEN | ISIG);`, `atexit(disableRawMode);` and disableRawMode() restores via `tcsetattr(STDIN_FILENO, TCSAFLUSH, &E.orig_termios)`; README: \"The original settings are saved and restored via `atexit`\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands were run, but commands wrote outside the project dir: `printf '\\x11' | timeout 10 script -q /dev/null ./kilo > /tmp/kilo_out.txt 2>&1`, `cat > /tmp/kilo_pty_test.py`, `cat > /tmp/kilo_pty_test2.py`, and `rm -f /tmp/kilo_pty_test.py /tmp/kilo_pty_test2.py /tmp/kilo_out.txt`"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 467.0
+ },
+ "install_like_cmds": []
+}

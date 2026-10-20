@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives an honest constraint and a workable option (Linux VM, or utun with limits)",
+   "passed": true,
+   "evidence": "Honest constraint: 'native TAP on macOS is a dead end' — 'macOS ships only utun, which is L3-only... has no Ethernet layer' and tuntaposx 'last released in 2009... in practice it's unusable'. Workable options given: '1. utun, skip Ethernet/ARP (pure macOS, least friction)' and '2. Linux VM (closest to the tutorial). UTM, Lima, or OrbStack give you a real /dev/net/tun'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with 'Tell me which route you want and we'll set up the project skeleton and the utun (or VM) open/read/write loop as milestone 2.' — a question/offer with no command. The only concrete command, '`ping <your utun IP>` still works as the checkpoint', appears mid-answer and refers to a future state after milestones 4–7, not a runnable checkpoint at the end with expected output."
+  },
+  {
+   "text": "B3: States TAP/TUN as in the tutorial is Linux-specific and suggests a Linux VM/container",
+   "passed": true,
+   "evidence": "'wireguard-go implements tun_linux.go via /dev/net/tun (TUN+TAP) but tun_darwin.go via com.apple.net.utun_control, L3 only' and '2. Linux VM (closest to the tutorial). UTM, Lima, or OrbStack give you a real /dev/net/tun. You run the stack inside the VM, and the saminiir milestones — Ethernet frames, ARP, everything — work verbatim.'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 4 shell commands are read-only fetches piped to grep/head/sed (e.g. 'curl -s https://raw.githubusercontent.com/WireGuard/wireguard-go/master/tun/tun_darwin.go | grep -n ...'), no brew/apt/pip/cargo/rustup/npm -g/go install anywhere, and 'FILES WRITTEN IN PROJECT (0)'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 314.6
+ },
+ "install_like_cmds": []
+}

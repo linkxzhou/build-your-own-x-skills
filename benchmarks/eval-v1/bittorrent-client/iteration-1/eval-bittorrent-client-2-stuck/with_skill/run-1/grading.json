@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the bug: '问题就出在重新序列化这一步…任何\"解析成对象再重新编码\"的操作都会改变字节，hash 必然对不上' and gives a scoped fix: '正确做法是在解析 bencode 时记录 info 值的起止偏移，直接对原始切片做哈希' with a working decoder snippet; the written tool (tools/infohash.py) targets only the current info-hash milestone, not a multi-milestone dump"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The learner-facing answer ends with 'BitTorrent v2 的 info hash 是对 info 字典做 SHA-256 再截断前 20 字节，但原则相同——哈希原始字节' — no command plus expected output; the script docstring only says 'Usage: python3 infohash.py a.torrent [b.torrent ...]' with no expected output/behaviour, and the self-test ('self-test OK') was run internally with its output never given to the learner as a checkpoint"
+  },
+  {
+   "text": "B3: Explains the info hash is SHA-1 of the original bencoded bytes of the info dict (re-bencode exactly, not JSON)",
+   "passed": true,
+   "evidence": "'info hash 的定义是：对 .torrent 文件里 info 字典的原始 bencode 字节（一个字节都不能动）做 SHA-1'; 'data[start:end] 就是文件里 info 字典的原始字节，直接喂给 SHA-1'; also explains why JSON and even re-bencode break it ('不同实现可能改变 key 顺序…只要和原文件差一个字节，hash 就不同')"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Files written are all inside the project: sample.torrent, tools/infohash.py, tools/__pycache__/infohash.cpython-314.pyc; commands run are 'mkdir -p tools && cat > tools/infohash.py <<'PYEOF'' and 'python3 - <<'TESTEOF'' — no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere in the evidence"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 239.3
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Acknowledges the request but offers a staged path; provides complete code for at most the current milestone instead of the whole project",
+   "passed": false,
+   "evidence": "Agent explicitly dumped the whole project: \"I'll honor the user's request and give the complete source.\" FILES WRITTEN IN PROJECT (1): mygit.py (8429 chars) implementing all of init, add, commit, log (incl. nested trees) in one go — a complete multi-milestone implementation instead of the first/current milestone."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends mid-design/code snippets with no closing checkpoint; the only runnable commands given are the file docstring \"Usage: / python3 mygit.py init / python3 mygit.py add <file|dir>... / python3 mygit.py commit -m \\\"message\\\" / python3 mygit.py log\", which state no expected output or behaviour. Test runs (e.g. \"--- mygit log ---\") were the agent's own verification, not a learner-facing checkpoint."
+  },
+  {
+   "text": "B3: Any code or plan given uses real git object formats (blob/tree/commit) so the result is readable by real git",
+   "passed": true,
+   "evidence": "Docstring: \"On-disk formats are real Git's: objects are zlib-compressed \\\"<type> <size>\\\\0<payload>\\\" addressed by the SHA-1 of their uncompressed bytes, trees are sorted \\\"mode name\\\\0<20-byte-sha>\\\" entries, commits are tree/parent/author/committer headers... Real git can read a mygit repository: git log, git fsck and git cat-file all work on it.\" Verified with real git: \"git fsck && git log --oneline && git ls-tree -r HEAD\" and blob check \"REAL=$(git hash-object a.txt)\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands appear, but a shell block writes outside the project dir: \"rm -rf /tmp/mygit-test && mkdir /tmp/mygit-test && cd /tmp/mygit-test\" followed by \"python3 /workspace/mygit.py init\" (creating .git under /tmp)."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 494.5
+ },
+ "install_like_cmds": []
+}

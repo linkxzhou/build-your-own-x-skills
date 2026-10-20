@@ -1,0 +1,92 @@
+{
+  "skill_name": "processor",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to design a simple RISC-V CPU in Verilog and simulate it. First step?",
+      "expected_output": "Scaffolds the blinker/testbench milestone with TODOs; no full CPU; Mentions a simulator such as Icarus Verilog or Verilator and a testbench",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'processor' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds the blinker/testbench milestone with TODOs; no full CPU"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions a simulator such as Icarus Verilog or Verilator and a testbench"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我的单周期 RISC-V 核里，写 x0 寄存器之后读出来不是 0。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; States x0 is hardwired to zero: ignore writes to register 0 / always read 0",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'processor' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "States x0 is hardwired to zero: ignore writes to register 0 / always read 0"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to build my own RISC-V CPU in Verilog, but I don't have an FPGA board. Can I still do this?",
+      "expected_output": "Confirms simulation-only is fine and plans accordingly; Says the whole track can run in simulation (iverilog/verilator + waveform viewer)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'processor' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Confirms simulation-only is fine and plans accordingly"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Says the whole track can run in simulation (iverilog/verilator + waveform viewer)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

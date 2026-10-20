@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Engine left as stub: src/regex.c has 'TODO(milestone-1): replace this stub with the recursive matcher' and returns 0 ('stub: always \"no match\" until you implement milestone 1'). Reply gives staged M1-M7 plan (TASKS.md) and a learner TODO list: '你要写的（src/regex.c…）：1. static int match… 2. matchhere… 3. regex_search 里调用 match' — only the skeleton/CLI/harness were built, matching the requested '最小项目骨架'; no milestone implementation was dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Reply ends with concrete checkpoint: '检查命令（当前 stub 状态是 7/17…）：```sh make test```' plus expected behaviour 'M1 完成的标志：输出 17/17 passed' and offer '卡住时把你的 matchhere 贴出来，一次给一个提示'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (regex-engine-regex-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror regexp1.html's actual stages in C: 'M1 字面量 + . ^ $（Pike 递归匹配器）', 'M3 解析器：| 交替、() 分组、AST', 'M4 Thompson 构造 NFA + 状态集合模拟', 'M5 病理用例：回溯指数 vs NFA 线性（n=25 计时）' with the article's `a?^n a^n` benchmark ('./bench 25 两个时间对比'), 'M7 惰性 DFA 缓存 / 子匹配捕获' — tutorial-specific concepts (backtracking blowup vs linear NFA), not generic boilerplate."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 6 shell commands are workspace-local reads/builds: 'ls .agents/skills…', '(cc --version || gcc --version || clang --version)… make --version… python3 --version' (checks only), 'make && printf… | ./regex', 'python3 tests/gen_cases.py', 'make clean && make… make test'. No brew/apt/pip/cargo/rustup/npm -g/go install/gem install appears; all writes (Makefile, src/*, tests/*, TASKS.md, PROGRESS.md, README.md, ./regex binary) are inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 373.0
+ },
+ "install_like_cmds": []
+}

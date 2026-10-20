@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": false,
+   "evidence": "Diagnosis is present ('face culling (隐藏面剔除) — only emit faces where the neighbor is air/transparent') but the agent dumped a complete multi-milestone implementation instead of a minimal fix/hint: FILES WRITTEN IN PROJECT (3) — mesher.js (4999 chars: terrain gen + naive/culled meshers), index.html (5505 chars: 3 render modes + stats UI), test-mesher.mjs (3443 chars: brute-force verification suite), all complete and verified working, rather than coaching the learner through the current milestone on their own engine."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No runnable checkpoint with expected output/behaviour is evidenced; the final answer is cut off mid-sentence ('Note: newer three versions (r16'). Only internal reasoning mentions a command without expected output ('But to be safe, I can also mention running `python3 -m http.server`'), and the test file header 'node test-mesher.mjs' states no expected result."
+  },
+  {
+   "text": "B3: Recommends face culling between solid neighbours (only emit exposed faces) / chunk meshing",
+   "passed": true,
+   "evidence": "'only emit faces where the neighbor is air/transparent' (line 26); implemented in mesher.js with getBlock treating out-of-bounds as air, and verified: test asserts '剔除面数 = 暴力枚举暴露面数' (culled quadCount equals brute-force exposed-face count) and '全画模式每个方块恰好 6 个面'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands were run, but a command wrote outside the project dir: \"awk '...' index.html > /tmp/inline-main.mjs && node --check /tmp/inline-main.mjs\" writes /tmp/inline-main.mjs outside the project directory."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 494.4
+ },
+ "install_like_cmds": []
+}

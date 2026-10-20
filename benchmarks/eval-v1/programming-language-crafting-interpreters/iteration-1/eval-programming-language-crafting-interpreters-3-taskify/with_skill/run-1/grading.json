@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": false,
+   "evidence": "AGENT FINAL ANSWER section is empty and 'FILES WRITTEN IN PROJECT (0)' — no staged milestone plan or scaffold with TODOs was produced."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Final answer is empty; no concrete command to run nor expected output/behaviour appears anywhere in the evidence."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (programming-language-crafting-interpreters): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": false,
+   "evidence": "Final answer is empty; despite research calls (e.g. 'curl -s .../Makefile | grep -oE 'chap[0-9]+_[a-z_]+''), no milestones matching the tutorial's stages, language or key concepts were delivered."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 4 shell commands are read-only: 'ls -la .../project/', 'curl -s https://raw.githubusercontent.com/munificent/craftinginterpreters/master/README.md | sed -n ...', 'curl -s ... | grep ... | head -60' — no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and no writes outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

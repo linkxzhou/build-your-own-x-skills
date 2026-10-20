@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Agent diagnoses three likely causes ('Text buffered until a close tag', 'EOF teardown drops content', 'Missing implied-end-tag rule') and gives a minimal fix sketch: 'Fix: append text to the current open node immediately on handle_data' plus a short handle_starttag/handle_data/finish sketch, then asks learner to paste code to pinpoint the exact line."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with 'Paste the parser's tag-handling and EOF code and I'll point at the exact line that's dropping the text.' — no concrete command to run and no expected output/behaviour is given anywhere."
+  },
+  {
+   "text": "B3: Explains implicit tag closing / tree-building rules (e.g. a new <p> closes an open <p>)",
+   "passed": true,
+   "evidence": "'Browsers close a <p> implicitly when the next block-level start tag appears (<div>, <h1>–<h6>, <ul>, <table>, another <p>, …) or when the parent element ends' and 'Per the HTML5 \"in body\" insertion mode, a start tag in the block set must first close an open <p> (the \"close a p element\" step).'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0); SHELL COMMANDS RUN (1): 'ls -la'; other tool calls are glob and read of AGENTS.md — no install commands and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 114.1
+ },
+ "install_like_cmds": []
+}

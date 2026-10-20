@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds window + triangle (or chunk data) with TODOs; no full engine",
+   "passed": false,
+   "evidence": "No scaffold written: 'FILES WRITTEN IN PROJECT (0)'; answer only describes concepts ('Chunk = flat Uint8Array... index like x + z*16 + y*16*16') and defers code: 'Tell me your language choice and I'll scaffold that milestone.' No window+triangle stub or TODOs present."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No runnable command or expected output given; answer ends with 'First concrete step: one colored cube on screen with an orbit camera... Tell me your language choice and I'll scaffold that milestone.' — a description, not a command like 'npm run dev' with expected behaviour."
+  },
+  {
+   "text": "B3: Mentions OpenGL/WebGL setup and chunked block storage",
+   "passed": true,
+   "evidence": "Graphics API mentioned: 'C++ + OpenGL or Rust + wgpu' and Three.js 'runs in the browser'; chunked storage covered in detail: 'store the world as 3D arrays (\"chunks\")', 'Chunk = flat Uint8Array (e.g. 16×16×256), index like x + z*16 + y*16*16', 'World = hash map keyed by chunk coordinates'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)' and 'FILES WRITTEN IN PROJECT (0)'; only tool call was a read-only glob ('{\"pattern\": \"**/*\"}'). No install commands run or suggested."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 58.9
+ },
+ "install_like_cmds": []
+}

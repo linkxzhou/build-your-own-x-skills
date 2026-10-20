@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-110829-a6052d",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/misc/iteration-2/eval-misc-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 117.0,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

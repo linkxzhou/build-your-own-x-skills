@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds forward pass / neuron milestone with TODOs; no full training framework",
+   "passed": true,
+   "evidence": "Scoped to the requested current milestone only: 'Step one is done and verified: `step1_neuron.py`' — a single neuron with hand-derived gradients; explicitly defers the rest: 'No classes yet — that comes later when we have multiple layers' and 'Step two when you're ready: stack a second neuron in front'. No layers/batches/optimizer framework built."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer describes behaviour ('Gradient check passes (analytic = numeric to 8 decimals), and 50 gradient descent steps drive the output to the target'; 'Loss hits ~0 almost immediately') but never gives the learner a concrete command to run — no 'python3 step1_neuron.py' appears in the final answer; it ends with 'Step two when you're ready: stack a second neuron in front...'."
+  },
+  {
+   "text": "B3: Mentions weights, bias and an activation function in the forward pass",
+   "passed": true,
+   "evidence": "Forward pass named in full: 'x --(w, b)--> z = w*x + b --tanh--> y --MSE--> L = (y - t)²'; weight w, bias b, and activation tanh all appear ('dy/dz = 1 - tanh²(z)', code: 'y = np.tanh(z)')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command run: 'python3 step1_neuron.py'; single file written inside the project (step1_neuron.py); numpy already present ('Empty workspace, numpy 2.5.3 available') and no install command (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) appears anywhere."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 139.3
+ },
+ "install_like_cmds": []
+}

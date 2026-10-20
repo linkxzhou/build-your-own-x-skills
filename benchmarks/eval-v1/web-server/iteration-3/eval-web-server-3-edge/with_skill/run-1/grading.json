@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains the security issue and a minimal fix",
+   "passed": true,
+   "evidence": "Explains the issue: 'serving whatever path the request asks for is the classic path traversal (directory traversal) vulnerability' with examples (GET /../../etc/passwd, URL-encoded variants, .env secrets) and why blacklisting '..' is fragile. Minimal fix given: 'canonicalize, then verify' with a concrete safe_path() using (ROOT / url_path).resolve() and target.is_relative_to(ROOT), plus 'Return 403 or 404 when the check fails'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a 'Checkpoint' section: 'curl -s -o /dev/null -w \"%{http_code}\\n\" localhost:8080/index.html  # expect 200' and 'curl ... --path-as-is localhost:8080/../etc/passwd  # expect 403 or 404', with note that --path-as-is stops curl normalizing the '..'."
+  },
+  {
+   "text": "B3: Identifies path traversal (../) and recommends normalizing and restricting to a root directory",
+   "passed": true,
+   "evidence": "Identifies path traversal explicitly ('GET /../../etc/passwd', 'the classic path traversal (directory traversal) vulnerability') and recommends 'Decode the URL, join onto the root, resolve the real path (this collapses .. and follows symlinks), then confirm the result is still inside the root', restricting to ROOT = Path(\"./public\").resolve() with is_relative_to(ROOT) check."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Shell commands run: only 'ls -la'. Other tool calls: glob, read of skill files. No install commands (brew/apt/pip/cargo/rustup/npm -g/go install) and no writes outside the workspace; 'FILES WRITTEN IN PROJECT (0)'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 64.0
+ },
+ "install_like_cmds": []
+}

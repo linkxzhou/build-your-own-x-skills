@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the bug: '组件函数每次渲染都会重新执行。函数里的 `let state = initial` 是局部变量，每次执行都重新创建并赋回 `initial`' and gives a scoped minimal fix: '最小修复（一个提示）：把 `state` 提到组件函数外面（模块作用域或闭包），只在第一次初始化' with a short code block; learner's component kept as-is ('你的组件函数保持原样，只把 `let state = initial` 那行删掉'), multi-hook part deferred ('那是本里程碑的下一步') — current-milestone fix, not a full dump."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete runnable check and expected behaviour: '打开你的 `index.html`，点按钮 3 次，并在 `setState` 里临时加一行 `console.log(state)`。预期输出：1 2 3 … 页面上计数器显示 `3` 且继续递增。如果 console 输出对了但页面不变，问题在 `render()` 没被调用'."
+  },
+  {
+   "text": "B3: Explains state must be stored outside the function call (per-component hook array + index), not in a local variable",
+   "passed": true,
+   "evidence": "'状态必须存在组件函数之外、能跨渲染存活的地方——React 自己就是把 hook 状态挂在 fiber 节点上（在你的函数外面）'; also names the canonical mechanism: '多个 hook 时要换成「hooks 数组 + 游标 index」的存法'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0); FILES WRITTEN IN PROJECT (0); OTHER TOOL CALLS are only two reads of '.agents/skills/build-your-own-x/skills/frontend-framework-library/SKILL.md' and a workspace glob '**/*.{js,jsx,ts,tsx,html}' — no install commands, nothing written outside the project."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 123.5
+ },
+ "install_like_cmds": []
+}

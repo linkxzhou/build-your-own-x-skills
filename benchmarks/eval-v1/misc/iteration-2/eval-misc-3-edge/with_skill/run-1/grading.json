@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Handles an unlisted topic via the generic milestone method without dumping code",
+   "passed": true,
+   "evidence": "Agent notes 'No spreadsheet entry exists in the upstream catalog ... so the misc track's generic milestone frame applies', then proposes a 7-milestone plan (scope/skeleton → tokenizer → parser → evaluator → dependency graph → edge cases → parity) and asks scoping questions; FILES WRITTEN IN PROJECT (0) and SHELL COMMANDS RUN (0) confirm no code was dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The reply ends with 'Once you confirm, I'll scaffold the skeleton and give you the first TODO list' — the only 'check' offered is a future definition-of-done sentence ('editing any cell in a 10×10 sheet ... prints correct values ... and #CIRC!'), with no concrete command to run and no expected output/behaviour from running anything."
+  },
+  {
+   "text": "B3: Mentions cell formula parsing and dependency graph / recalculation order",
+   "passed": true,
+   "evidence": "'a formula interpreter (=SUM(A1:A3)*2 → value), and a dependency graph that figures out which cells must recompute when one changes, in the right order, detecting cycles'; milestones list '2. Cell model + formula tokenizer', '3. Parser → AST with correct precedence (1+2*3 parses as 1+(2*3))', '5. Dependency graph — topological recompute, cycle detection → #CIRC!'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0); OTHER TOOL CALLS are only reads inside the workspace ('.agents/skills/build-your-own-x/skills/misc/references/tutorials.md', '.agents/skills/build-your-own-x/skills/programming-language/SKILL.md'); no install command appears anywhere."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 249.3
+ },
+ "install_like_cmds": []
+}

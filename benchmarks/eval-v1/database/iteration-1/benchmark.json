@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "database",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:50Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 327.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the first milestone (TCP server / PING or RESP basics) with TODOs, without delivering the full server with expiry and persistence",
+          "passed": true,
+          "evidence": "server.py scaffolds only milestone 1: main() has bind/listen/accept loop, while handle_connection is left for the learner: '# TODO: \u5728\u8fd9\u91cc\u5199\u4f60\u7684\u4ee3\u7801' + 'raise NotImplementedError(\"\u91cc\u7a0b\u7891 1\uff1a\u5b9e\u73b0 handle_connection\")'. No expiry/persistence code exists; README/PROGRESS.md list milestones 2-5 (RESP GET/SET, \u5e76\u53d1, \u8fc7\u671f, \u6301\u4e45\u5316) all as '\u5f85\u5b8c\u6210'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with runnable checkpoint: 'cd mini-redis; python3 server.py  # \u7ec8\u7aef 1' and 'printf *1\\r\\n$4\\r\\nPING\\r\\n | nc localhost 6380  # \u7ec8\u7aef 2\uff0c\u671f\u671b\u8f93\u51fa +PONG', plus '\u5199\u5b8c\u628a\u4ee3\u7801\u8d34\u7ed9\u6211\uff08\u6216\u76f4\u63a5\u8bf4\"\u5199\u597d\u4e86\"\u8ba9\u6211\u8dd1\u68c0\u67e5\u70b9\uff09'."
+        },
+        {
+          "text": "B3: Mentions the RESP protocol framing (e.g. *<n>\\r\\n$<len>\\r\\n...) or an equivalent explicit wire format for commands",
+          "passed": true,
+          "evidence": "Explicit RESP framing: '\u5ba2\u6237\u7aef\u628a PING \u7f16\u7801\u6210 *1\\r\\n$4\\r\\nPING\\r\\n\uff08\u610f\u601d\u662f\"1 \u4e2a\u53c2\u6570\uff0c\u957f\u5ea6 4\uff0c\u5185\u5bb9 PING\"\uff09\uff0c\u670d\u52a1\u5668\u56de +PONG\\r\\n'; README adds '\u5ba2\u6237\u7aef \u2192 \u670d\u52a1\u5668\uff1a*<\u53c2\u6570\u4e2a\u6570>\\r\\n\uff0c\u540e\u8ddf\u6bcf\u4e2a\u53c2\u6570\u7684 $<\u5b57\u8282\u957f\u5ea6>\\r\\n<\u6570\u636e>\\r\\n\u3002\u4f8b\uff1aSET key value \u7f16\u7801\u4e3a *3\\r\\n$3\\r\\nSET\\r\\n$3\\r\\nkey\\r\\n$5\\r\\nvalue\\r\\n'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command: 'cd mini-redis && python3 -m py_compile server.py && echo COMPILE_OK' \u2014 no install command. Files written (server.py, README.md, PROGRESS.md, __pycache__/server.cpython-314.pyc) are all inside mini-redis/ in the project dir; no writes outside workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 33.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint rather than rewriting the server",
+          "passed": true,
+          "evidence": "Diagnoses the cause ('handle(conn) runs synchronously inside the accept loop, so the loop is stuck inside the first client's handler until that client disconnects') and gives a minimal fix: a small accept-loop snippet with 'go handle(conn)' plus 'defer conn.Close()' in handle \u2014 a hint-level patch, not a server rewrite."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer ends with 'Two things to keep in mind as you grow it:' followed by prose bullets about goroutines and sync.Mutex. No concrete command to run (e.g. redis-cli PING / two-terminal test) and no expected output/behaviour is given anywhere."
+        },
+        {
+          "text": "B3: Identifies that handle(conn) blocks the accept loop and must run concurrently (e.g. `go handle(conn)`) or use an event loop",
+          "passed": true,
+          "evidence": "'handle(conn) runs synchronously inside the accept loop, so the loop is stuck inside the first client's handler until that client disconnects' and 'Fix: serve each connection in its own goroutine' with code 'go handle(conn)'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only tool call is glob {\"pattern\": \"**/*.go\"}. No install commands and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 440.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Accepts JavaScript and adapts the plan (files/pages via fs) instead of insisting on another language; scaffolds the first milestone only",
+          "passed": true,
+          "evidence": "\"Yes, JavaScript is fine... we sidestep with explicit `fs.read`/`fs.write` at page offsets\" and \"The canonical tutorial is in Go... so we port its concepts to JS and keep its milestone order.\" Scaffolded only milestone 1: 5 files (src/btree.js, test/btree.test.js, package.json, README.md, PROGRESS.md) with get/insert/scan as \"// TODO(you): implement\" stubs; PROGRESS.md shows M2\u2013M5 \"pending\"."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "\"Run `npm test` after each function. The 10k-key test is the real gate: it verifies every get round-trips, the scan is fully sorted, and `tree.height > 1`... When all 7 pass, we move to M2\"; also states current expected state: \"`npm test` currently shows 1 pass / 6 fail because the three core functions are stubs\"."
+        },
+        {
+          "text": "B3: Describes fixed-size pages and node split as the core of a B+tree storage engine",
+          "passed": true,
+          "evidence": "Split: \"When a leaf overflows it splits at its middle key and pushes that key up into the parent; a root split creates a new root, which is how the tree grows\" (plus invariant I3 in src/btree.js). Fixed-size pages: \"M2: turning those JS objects into 4KB pages on disk\", \"M2: page layer (4KB pages, allocator, free list)\", \"explicit `fs.read`/`fs.write` at page offsets\"."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "All 6 shell commands are read-only checks or test runs: \"ls ...\", \"node --version\", \"npm test\" \u2014 no brew/apt/pip/cargo/rustup/npm -g/go install/gem install. All 5 writes and the package.json edit target project-relative paths (package.json, src/btree.js, test/btree.test.js, README.md, PROGRESS.md); Node v25 was already present, no tool installation requested or performed."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 1,
+        "failed": 3,
+        "total": 4,
+        "time_seconds": 528.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the first milestone (TCP server / PING or RESP basics) with TODOs, without delivering the full server with expiry and persistence",
+          "passed": false,
+          "evidence": "User asked '\u5e26\u6211\u5f00\u59cb' (help me get started) but agent dumped a complete implementation: FILES WRITTEN (11) include full 'mini_redis/resp.py (5305 chars)', 'mini_redis/server.py (3953 chars)' with GET/SET/PING dispatch, 'mini_redis/store.py', full suite 'tests/test_server.py (5298 chars)' and README; shell ran 'python3 -m unittest discover -s tests -v'. No TODOs scaffolded for the learner \u2014 a finished multi-milestone build (protocol+server+store+tests+docs), failing coaches-not-dumps."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Captured AGENT FINAL ANSWER ends mid-sentence ('Need a reply parser in tests \u2014 that') with no closing runnable command or expected output. README contains 'python3 -m mini_redis.server --port 6379' and 'python3 -m unittest discover -s tests', but no evidence the answer itself ended with a checkpoint plus expected output/behaviour."
+        },
+        {
+          "text": "B3: Mentions the RESP protocol framing (e.g. *<n>\\r\\n$<len>\\r\\n...) or an equivalent explicit wire format for commands",
+          "passed": true,
+          "evidence": "Explicit RESP framing in answer: 'Client \u2192 server: arrays of bulk strings: *2\\r\\n$3\\r\\nGET\\r\\n$3\\r\\nfoo\\r\\n' and reply types 'Simple string: +OK\\r\\n', 'Bulk string: $3\\r\\nbar\\r\\n or $-1\\r\\n for nil'; README also shows '*3\\r\\n$3\\r\\nSET\\r\\n$8\\r\\ngreeting\\r\\n$11\\r\\nhello world\\r\\n'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": false,
+          "evidence": "No install commands run, but shell commands wrote outside the project dir: 'echo $! > /tmp/mini_redis.pid', 'nohup python3 -m mini_redis.server --port 6398 >/tmp/mr.log 2>&1 & echo $! > /tmp/mr.pid', 'kill $(cat /tmp/mr.pid); rm -f /tmp/...', 'cat /tmp/mr.log' \u2014 /tmp is outside the project directory."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 20.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint rather than rewriting the server",
+          "passed": true,
+          "evidence": "Diagnoses the bug ('single-threaded accept loop calling handle(conn) synchronously') and gives a minimal fix \u2014 a 7-line accept-loop snippet with 'go handle(conn)' \u2014 plus two hints (sync.RWMutex, mutex for AOF writes); no full server rewrite."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "No runnable checkpoint with expected output/behaviour. Only 'Run with `go run -race .` to catch them' \u2014 a diagnostic suggestion with no expected output, and no command like 'connect two redis-cli clients and expect both to get replies'."
+        },
+        {
+          "text": "B3: Identifies that handle(conn) blocks the accept loop and must run concurrently (e.g. `go handle(conn)`) or use an event loop",
+          "passed": true,
+          "evidence": "'`handle(conn)` runs inline in the accept loop, so the loop stays inside `handle` until the first client disconnects. Only then does control return to `Accept()`' and fix 'go handle(conn)'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only tool call is glob {\"pattern\": \"**/*.go\"}. No install commands, nothing outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 69.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Accepts JavaScript and adapts the plan (files/pages via fs) instead of insisting on another language; scaffolds the first milestone only",
+          "passed": true,
+          "evidence": "\"Yes, JavaScript is fine for this... Node gives you the two primitives that matter: `Buffer`... and `fs` with positional reads/writes (`filehandle.read(buf, 0, pageSize, offset)`, `filehandle.sync()` for fsync)\"; scaffolds only milestone 1: \"Start with step 1 today \u2014 a single file, `class LeafNode`/`class InternalNode`, no persistence. Everything else hangs off that.\" No code for later milestones was written (FILES WRITTEN: 0)."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer ends with \"Start with step 1 today \u2014 a single file, `class LeafNode`/`class InternalNode`, no persistence.\" \u2014 no concrete command to run (e.g. `node btree.js`) and no expected output/behaviour anywhere in the answer; only generic advice like \"Test it against a `Map` as a reference model under thousands of random operations.\""
+        },
+        {
+          "text": "B3: Describes fixed-size pages and node split as the core of a B+tree storage engine",
+          "passed": true,
+          "evidence": "\"The file is just a sequence of fixed-size pages (4KB is a good default). The pager reads/writes page *N* at offset `N * pageSize`\" and \"Get node splitting and sibling pointers right before any I/O exists\"; also \"CMU 15-445's notes covers split/merge cases\"."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "\"## FILES WRITTEN IN PROJECT (0)\" and \"## SHELL COMMANDS RUN (0)\"; only tool call was a read-only glob (\"glob {\\\"pattern\\\": \\\"**/*\\\"}\"). No install commands and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 267.1667,
+        "stddev": 210.3108,
+        "min": 33.2,
+        "max": 440.5
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.5833,
+        "stddev": 0.2887,
+        "min": 0.25,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 205.9667,
+        "stddev": 280.3771,
+        "min": 20.4,
+        "max": 528.5
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.33",
+      "time_seconds": "+61.2",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

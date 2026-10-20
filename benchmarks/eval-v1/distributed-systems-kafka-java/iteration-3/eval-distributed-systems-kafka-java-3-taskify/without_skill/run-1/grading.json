@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is TASKS.md, a staged plan: tasks 0–8 each with 「提示词」「验收标准」「学习点」; no implementation code written by the agent. Learner rules: '先自己实现，卡住时才允许查看 reference/ 对应文件对照；禁止整文件复制'. reference/ holds the tutorial's own cloned code as comparison only."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Every task ends with runnable checkpoints: '`mvn -q clean package` 退出码 0，生成 target/simple-kafka-1.0-SNAPSHOT.jar'; '`java -cp target/classes com.simplekafka.broker.ProtocolTest` 输出 OK，退出码 0'; task 8 'scripts/e2e.sh … 要求连续跑两遍幂等通过'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (distributed-systems-kafka-java): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Matches tutorial exactly: 8 README stages mapped to tasks 0–8; protocol constants PRODUCE=0x01…ERROR_RESPONSE=0x1F, REPLICATE=0x21/TOPIC_NOTIFICATION=0x23 and byte layout '1B 类型 + 2B topicLen + topic + 4B partition + 4B msgLen + msg' match reference Protocol.java; ZK paths '/brokers、/controller、/topics' match ZookeeperClient.connect(); jar name and CLI 'java -cp …SimpleKafkaBroker 1 localhost 9091 2181' match README test commands; pom details (zookeeper 3.8.1, shade 3.4.1, mainClass) match reference pom.xml."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Ran commands writing outside the project dir: 'git clone --depth 1 https://github.com/buildthingsuseful/build-your-own-kafka.git /tmp/byokafka' and 'curl … -o /tmp/kafka_tree.json' (plus 'rm -rf /tmp/byokafka'). No install commands run; TASKS.md only asks the learner to install ('macOS 可 brew install zookeeper'), which is allowed."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 258.9
+ },
+ "install_like_cmds": []
+}

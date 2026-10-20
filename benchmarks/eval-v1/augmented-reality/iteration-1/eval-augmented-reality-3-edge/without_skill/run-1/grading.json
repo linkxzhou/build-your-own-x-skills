@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Offers a workable path with static images or a video file instead of a webcam",
+   "passed": true,
+   "evidence": "Offers video-file path: 'Pre-recorded video (easiest) — film the printed marker with a phone... cv2.VideoCapture('marker.mp4') works identically to a camera index' plus code 'cap = cv2.VideoCapture(\"marker.mp4\")' and 'Fully synthetic video — composite the marker image onto a background... Zero hardware'; also 'Image sequences / single images — even a static photo works'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Reply ends with 'If you want the \"live\" feel later, swap the file path for DroidCam's URL — the rest of the code is unchanged.' — no concrete run command with expected output at the end; the snippet itself is incomplete (K/dist undefined). Usage commands exist only inside ar_demo.py's docstring and the transcript shows no closing message delivering a checkpoint (it ends mid-planning: 'project cube, draw edges, draw axes maybe skip.')."
+  },
+  {
+   "text": "B3: Explains using a reference image plus scene images/video frames as input",
+   "passed": true,
+   "evidence": "Explains reference + scene inputs: 'Print the marker with cv2.aruco.generateImageMarker (OpenCV ≥ 4.7), detect, estimatePoseSingleMarkers, then cv2.projectPoints the cube's 8 corners and draw the 12 edges'; 'reads the video, detects the marker, estimates pose, draws a wireframe cube overlay, writes an output video'; synthetic path 'composite the marker image onto a background with slight perspective/rotation changes (OpenCV warpPerspective over frames)'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)'; only tool calls are glob and write of ar_demo.py under 'FILES WRITTEN IN PROJECT (1)'; no install executed — docstring asks the learner: 'Requires: pip install opencv-python numpy'."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 227.2
+ },
+ "install_like_cmds": []
+}

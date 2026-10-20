@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Handles an unlisted topic via the generic milestone method without dumping code",
+   "passed": true,
+   "evidence": "Agent confirmed topic is unlisted ('No spreadsheet entry in the misc tutorial list'; 'The misc track has 62 upstream entries and none is a spreadsheet engine, so I'll structure the milestones myself'), then built a generic 7-milestone plan with checkpoints and stopped at milestone 1/7 asking 'Confirm (or override) and I'll scaffold milestone 1' — FILES WRITTEN IN PROJECT (0), no code dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Milestone 1 checkpoint is concrete: '`set A1 5` / `get A1` → 5; `test` runs' — a command to run with expected output/behaviour, and 'each milestone ends with a runnable check'."
+  },
+  {
+   "text": "B3: Mentions cell formula parsing and dependency graph / recalculation order",
+   "passed": true,
+   "evidence": "Milestone 3: 'Tokenizer + parser for `=A1+B2*3` (precedence, refs, ranges)'; Milestone 5: 'Dependency graph + recalculation: extract refs, topo order, dirty propagation'; also 'an interpreter (formula language) fused with a live dependency graph'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 4 shell commands are read-only inside the workspace (ls, grep on .agents/skills/...); no install commands (brew/apt/pip/etc.) appear; FILES WRITTEN IN PROJECT (0); web_search/web_fetch only read remote pages."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 197.0
+ },
+ "install_like_cmds": []
+}

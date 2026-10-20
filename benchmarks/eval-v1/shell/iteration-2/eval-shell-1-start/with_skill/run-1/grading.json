@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the REPL milestone with TODOs and does not deliver pipes/redirection code yet",
+   "passed": true,
+   "evidence": "main.c is a milestone-1 skeleton with stubs: 'TODO 1: read one line from stdin' / 'TODO 2: split `line` on whitespace' / 'TODO 3: built-in dispatch', with read_line/split_line returning NULL ('TODO: implement, then delete this stub'); PROGRESS.md shows only '| 1 | REPL loop | ... | in progress |' and milestones 2-7 as '—'; no pipe/dup2/exec code present (pipes/redirection appear only as future milestone rows)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete checkpoint: 'make -C mysh && printf 'hi  world\\nexit\\n' | ./mysh/mysh' plus expected output '> argc=2: [hi] [world]' / '> ' and behaviour '交互模式下按 Ctrl-D 也应干净退出'."
+  },
+  {
+   "text": "B3: Mentions reading a line, tokenizing it and exiting cleanly on EOF (Ctrl-D) / `exit`",
+   "passed": true,
+   "evidence": "Mentions all three: '打印提示符、读一行、切分成词...今天只做前三步加 exit'; 'read_line() — 读一行，返回去掉 \\n 的堆上字符串；EOF 时返回 NULL'; 'split_line() — 用 strtok(line, \" \\t\\r\\n\") 切词'; 'exit' built-in and '按 Ctrl-D 也应干净退出'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only 2 shell commands run: 'ls -la && (cc --version ...)' and 'make -C mysh && printf 'x\\n' | ./mysh/mysh' — no install commands; all 4 files written (mysh/main.c, mysh/Makefile, mysh/PROGRESS.md, compiled mysh/mysh) are inside the project dir; agent noted 'Apple clang 已就绪，无需安装任何东西'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 370.8
+ },
+ "install_like_cmds": []
+}

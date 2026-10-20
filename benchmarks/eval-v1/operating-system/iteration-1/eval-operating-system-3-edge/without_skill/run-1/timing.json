@@ -1,0 +1,8 @@
+{
+  "session_id": null,
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-operating-system-3",
+  "returncode": -9,
+  "total_duration_seconds": 900.0,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

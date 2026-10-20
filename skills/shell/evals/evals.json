@@ -1,0 +1,92 @@
+{
+  "skill_name": "shell",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "帮我用 C 开始写一个自己的 shell，先做最基本的那一步。",
+      "expected_output": "Scaffolds the REPL milestone with TODOs and does not deliver pipes/redirection code yet; Mentions reading a line, tokenizing it and exiting cleanly on EOF (Ctrl-D) / `exit`",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'shell' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds the REPL milestone with TODOs and does not deliver pipes/redirection code yet"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions reading a line, tokenizing it and exiting cleanly on EOF (Ctrl-D) / `exit`"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My shell runs `ls | wc -l` but it hangs forever after printing nothing. I create a pipe, fork two children, dup2 the ends, then waitpid both. What's wrong?",
+      "expected_output": "Diagnoses and gives a minimal fix or hint, not a full rewrite; Identifies that the parent (and/or children) must close unused pipe file descriptors, otherwise wc never sees EOF",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'shell' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint, not a full rewrite"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Identifies that the parent (and/or children) must close unused pipe file descriptors, otherwise wc never sees EOF"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I'm on Windows without WSL. Can I still do the build-your-own-shell track?",
+      "expected_output": "Gives an honest constraint (fork/exec/pipes are POSIX) and offers a concrete workable option instead of pretending it works natively; States that fork() is not available on native Windows and suggests WSL, a Linux VM/container, or CreateProcess-based alternative with trade-offs",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'shell' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Gives an honest constraint (fork/exec/pipes are POSIX) and offers a concrete workable option instead of pretending it works natively"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "States that fork() is not available on native Windows and suggests WSL, a Linux VM/container, or CreateProcess-based alternative with trade-offs"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

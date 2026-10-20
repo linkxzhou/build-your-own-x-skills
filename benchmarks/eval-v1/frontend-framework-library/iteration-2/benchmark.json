@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "frontend-framework-library",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:50Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 607.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds createElement/render milestone with TODOs; not the full reconciler + hooks",
+          "passed": true,
+          "evidence": "Final answer: '**Where we are:** milestone 1/6 \u2014 `createElement`'; createElement.js contains 'TODO: implement createElement' with 'throw new Error(\"TODO: implement createElement\")' for the learner; PROGRESS.md shows milestones 2-6 'pending' with no render/reconciler/hooks code written \u2014 only the milestone-1 scaffold (createElement.js skeleton + tests) exists."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer gives concrete command 'cd tiny-react && node --test' with expected behaviour: 'Currently 0/3 pass (all fail with `TODO: implement createElement`). You're done when it prints `pass 3`'; agent verified it by running 'cd tiny-react && node --test 2>&1 | grep -E \"^\u2139 (tests|pass|fail)\"'."
+        },
+        {
+          "text": "B3: Explains that JSX compiles to createElement(type, props, ...children) calls / plain objects",
+          "passed": true,
+          "evidence": "'JSX is sugar. `<div id=\"a\">hi</div>` compiles to a function call `createElement(\"div\", { id: \"a\" }, \"hi\")`, and that call's whole job is to return a plain JS object describing the node \u2014 type, props, children.' plus TEXT_ELEMENT wrapping explanation."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "All 5 shell commands are read-only or in-project test runs ('ls -d .agents/...', 'node --version; npm --version; ls', 'cd tiny-react && node --test ...'); no brew/apt/pip/npm -g/install commands; all 4 files written under tiny-react/ (PROGRESS.md, index.html, src/createElement.js, src/createElement.test.js) inside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 123.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses the bug: '\u7ec4\u4ef6\u51fd\u6570\u6bcf\u6b21\u6e32\u67d3\u90fd\u4f1a\u91cd\u65b0\u6267\u884c\u3002\u51fd\u6570\u91cc\u7684 `let state = initial` \u662f\u5c40\u90e8\u53d8\u91cf\uff0c\u6bcf\u6b21\u6267\u884c\u90fd\u91cd\u65b0\u521b\u5efa\u5e76\u8d4b\u56de `initial`' and gives a scoped minimal fix: '\u6700\u5c0f\u4fee\u590d\uff08\u4e00\u4e2a\u63d0\u793a\uff09\uff1a\u628a `state` \u63d0\u5230\u7ec4\u4ef6\u51fd\u6570\u5916\u9762\uff08\u6a21\u5757\u4f5c\u7528\u57df\u6216\u95ed\u5305\uff09\uff0c\u53ea\u5728\u7b2c\u4e00\u6b21\u521d\u59cb\u5316' with a short code block; learner's component kept as-is ('\u4f60\u7684\u7ec4\u4ef6\u51fd\u6570\u4fdd\u6301\u539f\u6837\uff0c\u53ea\u628a `let state = initial` \u90a3\u884c\u5220\u6389'), multi-hook part deferred ('\u90a3\u662f\u672c\u91cc\u7a0b\u7891\u7684\u4e0b\u4e00\u6b65') \u2014 current-milestone fix, not a full dump."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a concrete runnable check and expected behaviour: '\u6253\u5f00\u4f60\u7684 `index.html`\uff0c\u70b9\u6309\u94ae 3 \u6b21\uff0c\u5e76\u5728 `setState` \u91cc\u4e34\u65f6\u52a0\u4e00\u884c `console.log(state)`\u3002\u9884\u671f\u8f93\u51fa\uff1a1 2 3 \u2026 \u9875\u9762\u4e0a\u8ba1\u6570\u5668\u663e\u793a `3` \u4e14\u7ee7\u7eed\u9012\u589e\u3002\u5982\u679c console \u8f93\u51fa\u5bf9\u4e86\u4f46\u9875\u9762\u4e0d\u53d8\uff0c\u95ee\u9898\u5728 `render()` \u6ca1\u88ab\u8c03\u7528'."
+        },
+        {
+          "text": "B3: Explains state must be stored outside the function call (per-component hook array + index), not in a local variable",
+          "passed": true,
+          "evidence": "'\u72b6\u6001\u5fc5\u987b\u5b58\u5728\u7ec4\u4ef6\u51fd\u6570\u4e4b\u5916\u3001\u80fd\u8de8\u6e32\u67d3\u5b58\u6d3b\u7684\u5730\u65b9\u2014\u2014React \u81ea\u5df1\u5c31\u662f\u628a hook \u72b6\u6001\u6302\u5728 fiber \u8282\u70b9\u4e0a\uff08\u5728\u4f60\u7684\u51fd\u6570\u5916\u9762\uff09'; also names the canonical mechanism: '\u591a\u4e2a hook \u65f6\u8981\u6362\u6210\u300chooks \u6570\u7ec4 + \u6e38\u6807 index\u300d\u7684\u5b58\u6cd5'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (0); FILES WRITTEN IN PROJECT (0); OTHER TOOL CALLS are only two reads of '.agents/skills/build-your-own-x/skills/frontend-framework-library/SKILL.md' and a workspace glob '**/*.{js,jsx,ts,tsx,html}' \u2014 no install commands, nothing written outside the project."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 171.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Adapts to a Redux-only track and scaffolds its first milestone",
+          "passed": false,
+          "evidence": "Adapted to Redux-only track ('Redux maps to the frontend-framework-library track... There's a Redux-specific skill'; 'a mini-Redux in plain JavaScript... no React in sight'), but the first milestone was only proposed, never scaffolded: FILES WRITTEN IN PROJECT (0), and the agent deferred the work: 'Once you confirm, we start milestone 1: I'll scaffold mini-redux/ with a test file'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a concrete command and expected output: 'The check we'll run from then on: node --test' and 'Expected at milestone 1: pass 3 \u2014 dispatch updates state, getState returns it, subscriber was called.'"
+        },
+        {
+          "text": "B3: Describes store with getState/dispatch/subscribe and pure reducers",
+          "passed": true,
+          "evidence": "Milestone 1: 'createStore core | getState, dispatch, subscribe, listener set'; Milestone 2: 'Reducer conventions | pure functions, initial state, unknown-action default'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only command run was 'ls -la . 2>/dev/null | head -20; which node && node --version' \u2014 read-only, no install; agent states 'zero installs, no build step'; 0 files written and all reads stayed inside the workspace (.agents/skills/...)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 1,
+        "failed": 3,
+        "total": 4,
+        "time_seconds": 748.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds createElement/render milestone with TODOs; not the full reconciler + hooks",
+          "passed": false,
+          "evidence": "Complete multi-milestone implementation, not a first-milestone scaffold with TODOs: FILES WRITTEN include src/mini-react/hooks.js (useState/useEffect), reconciler.js, and test/smoke.test.js covering 'mount \u2192 useState update \u2192 conditional render \u2192 useEffect'; README: 'A tiny React clone (~300 lines) built to understand how React actually works: JSX \u2192 virtual DOM \u2192 fibers \u2192 work loop \u2192 reconciliation \u2192 commit \u2192 hooks.' Final answer contains the full reconciler (performUnitOfWork/reconcileChildren/commitRoot) and useState code, with no TODOs."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "AGENT FINAL ANSWER ends mid-code-block at 'wipFiber.hooks.push(hook); hookIndex++;' with no closing checkpoint; no concrete 'run this command, expect this output' instruction appears at the end of the answer (run commands exist only inside README.md and the agent's own shell verification, not as an ending checkpoint to the learner)."
+        },
+        {
+          "text": "B3: Explains that JSX compiles to createElement(type, props, ...children) calls / plain objects",
+          "passed": true,
+          "evidence": "README: 'JSX compiles to `createElement(...)` calls, which return plain objects: the virtual DOM.' createElement.js comment: 'turns JSX into plain objects (\"virtual DOM\")... You never call this by hand; the JSX compiler does: <h1 className=\"title\">Count: {n}</h1>'; final answer: 'createElement \u2014 turns JSX into vdom objects { type, props }'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": false,
+          "evidence": "SHELL COMMANDS RUN includes 'npm install --save-dev esbuild 2>&1 | tail -2 && npm run build...' \u2014 the agent ran an install command itself (installed the esbuild package; node_modules/esbuild + @esbuild/darwin-arm64 10MB binary appear in FILES WRITTEN) instead of asking the learner to install it."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 68.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": false,
+          "evidence": "Diagnosis is present ('\u51fd\u6570\u4f53\u5185\u7684 `let state = initial` \u6bcf\u6b21\u6e32\u67d3\u90fd\u91cd\u65b0\u8d4b\u503c\u4e00\u904d\uff0c\u6240\u4ee5\u70b9\u51fb\u6309\u94ae\u89e6\u53d1\u91cd\u6e32\u67d3\u540e\uff0cstate \u6c38\u8fdc\u56de\u5230\u521d\u59cb\u503c'), but the 'fix' is a complete dump: two full working implementations (module-level _state/_initialized/setState/render/Counter, then a second complete multi-hook 'states[] + hookIndex' version with functional updates and the rules-of-hooks explanation) \u2014 a complete multi-milestone implementation instead of a minimal fix or hint for the current milestone."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with '\u8fd9\u4e5f\u89e3\u91ca\u4e86 React \u90a3\u6761\u201chook \u4e0d\u80fd\u653e\u5728 if/\u5faa\u73af\u91cc\u201d\u7684\u89c4\u5219\uff1astate \u7684\u5f52\u5c5e\u5b8c\u5168\u9760\u8c03\u7528\u987a\u5e8f\u5bf9\u53f7\u5165\u5ea7\u2026' \u2014 no concrete command to run and no expected output/behaviour anywhere in the answer."
+        },
+        {
+          "text": "B3: Explains state must be stored outside the function call (per-component hook array + index), not in a local variable",
+          "passed": true,
+          "evidence": "'\u7ec4\u4ef6\u51fd\u6570\u6bcf\u6b21\u6e32\u67d3\u90fd\u4f1a\u91cd\u65b0\u6267\u884c\uff0c\u51fd\u6570\u4f53\u5185\u7684 `let state = initial` \u6bcf\u6b21\u6e32\u67d3\u90fd\u91cd\u65b0\u8d4b\u503c\u4e00\u904d' (local variable re-initialized); '\u628a state \u79fb\u5230\u7ec4\u4ef6\u51fd\u6570\u5916\u9762\uff0c\u8ba9\u5b83\u5728\u6e32\u67d3\u4e4b\u95f4\u5b58\u6d3b'; '\u591a\u4e2a useState \u7528\u6570\u7ec4 + \u6e38\u6807' with 'states[i]' and 'hookIndex = 0; // \u6bcf\u6b21\u6e32\u67d3\u524d\u91cd\u7f6e\u6e38\u6807,\u6309\u8c03\u7528\u987a\u5e8f\u5bf9\u53f7\u5165\u5ea7' \u2014 state stored outside the function call via hook array + index."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): 'ls -la'; OTHER TOOL CALLS: glob and grep only; FILES WRITTEN IN PROJECT (0). No install commands and no writes outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 440.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Adapts to a Redux-only track and scaffolds its first milestone",
+          "passed": false,
+          "evidence": "Adapted to the Redux-only track ('Yes \u2014 Redux is a standalone state container with zero React dependency... We'll build the real thing: createStore, combineReducers, and applyMiddleware, with tests and a plain-JS demo') but dumped a complete multi-milestone implementation instead of scaffolding only the first milestone: 'Core library done. Now the tests \u2014 three files covering each module's contract... All 30 tests green... writing the demos... Done \u2014 a working Redux... 30/30 tests pass, both demos run' \u2014 12 files covering the entire core (createStore, combineReducers, applyMiddleware, compose), 30 tests and 2 demos in one pass."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete commands: 'Run it yourself: `npm test`, `node demo/counter.js`, `node demo/todos.js`' plus expected behaviour: '30/30 tests pass, both demos run' and 'the counter prints `count = 1` twice at the end \u2014 that's real Redux behavior: subscribers fire on *every* dispatch'."
+        },
+        {
+          "text": "B3: Describes store with getState/dispatch/subscribe and pure reducers",
+          "passed": true,
+          "evidence": "Layout: 'src/createStore.js \u2014 the store: getState / dispatch / subscribe / replaceReducer'; explains the core loop: 'currentState = currentReducer(currentState, action), then notify listeners' with the isDispatching guard and currentListeners/nextListeners snapshot; pure reducers stated in 'The reducer: pure function, (state, action) => nextState' (demo/counter.js) and 'currentReducer \u2014 the pure function that computes the next state' (src/createStore.js)."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'Node v25 with the built-in `node:test` runner \u2014 zero dependencies needed'; all 18 shell commands are version checks, npm test, node --test/--check, awk balance checks and demo runs \u2014 no install commands; all 12 files written are inside the project (package.json, src/, test/, demo/)."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 300.6667,
+        "stddev": 266.3758,
+        "min": 123.5,
+        "max": 607.0
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.5,
+        "stddev": 0.25,
+        "min": 0.25,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 418.8333,
+        "stddev": 340.6529,
+        "min": 68.0,
+        "max": 748.3
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.42",
+      "time_seconds": "-118.2",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

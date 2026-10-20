@@ -1,0 +1,92 @@
+{
+  "skill_name": "frontend-framework-library",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to build my own tiny React to understand it. Start me off.",
+      "expected_output": "Scaffolds createElement/render milestone with TODOs; not the full reconciler + hooks; Explains that JSX compiles to createElement(type, props, ...children) calls / plain objects",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'frontend-framework-library' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds createElement/render milestone with TODOs; not the full reconciler + hooks"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains that JSX compiles to createElement(type, props, ...children) calls / plain objects"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我自己写的 useState，每次点击按钮 state 都变回初始值。我在组件函数里 `let state = initial`。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains state must be stored outside the function call (per-component hook array + index), not in a local variable",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'frontend-framework-library' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains state must be stored outside the function call (per-component hook array + index), not in a local variable"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I only want to learn Redux, not React. Can we just build Redux?",
+      "expected_output": "Adapts to a Redux-only track and scaffolds its first milestone; Describes store with getState/dispatch/subscribe and pure reducers",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'frontend-framework-library' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Adapts to a Redux-only track and scaffolds its first milestone"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Describes store with getState/dispatch/subscribe and pure reducers"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

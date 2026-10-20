@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnosis given: '根因是全零初始化导致的对称性死锁…2 个隐藏单元等价于 1 个，2-2-1 实际退化成 2-1-1' plus minimal fix code 'W1 = np.random.randn(2, 2) * 0.5' / '修复：给权重加随机性，打破对称'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer's last user-facing line is troubleshooting advice ('改完后如果仍然卡住，再按顺序排查：有无偏置项、学习率是否过大…') with no command or expected output; the demo run 'python3 xor_symmetry_demo.py' has no recorded output and no closing message to the learner stating command + expected behaviour (expectations like 'loss < 1e-3' appear only in internal reasoning, e.g. 'Case B: random init… → loss < 1e-3')"
+  },
+  {
+   "text": "B3: Explains zero initialization causes symmetry (all hidden units learn the same) and recommends small random init",
+   "passed": true,
+   "evidence": "'symmetric weight initialization causes all hidden neurons to compute the same thing and receive identical gradients, so they stay identical forever'; '两个隐藏神经元的权重完全相同 → 前向输出永远相同；反向传播时它们收到的梯度也完全相同'; recommends small random init: 'np.random.randn(2, 2) * 0.5 或 N(0, 0.5²)'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only file written is xor_symmetry_demo.py in the project dir; only command run is 'python3 xor_symmetry_demo.py'; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere in the transcript"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 192.8
+ },
+ "install_like_cmds": []
+}

@@ -5,7 +5,29 @@
       "id": 1,
       "prompt": "我想用 Python 从零实现「给自己写一个 Git！」，请规划里程碑并只完成第一阶段。",
       "expected_output": "Staged plan plus first milestone guidance.",
-      "files": []
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the router SKILL.md, the track skill, and the 'git-git-wyag-thb-lt' per-tutorial skill"
+        },
+        {
+          "id": "B1",
+          "text": "Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Technically specific to this tutorial (git-git-wyag-thb-lt): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed"
+        }
+      ]
     },
     {
       "id": 2,
@@ -17,7 +39,29 @@
       "id": 3,
       "prompt": "请基于 https://wyag.thb.lt/ 转换成 Claude Code 学习任务清单。",
       "expected_output": "Milestone task list with deliverables and checks.",
-      "files": []
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the router SKILL.md, the track skill, and the 'git-git-wyag-thb-lt' per-tutorial skill"
+        },
+        {
+          "id": "B1",
+          "text": "Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Technically specific to this tutorial (git-git-wyag-thb-lt): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed"
+        }
+      ]
     }
   ]
 }

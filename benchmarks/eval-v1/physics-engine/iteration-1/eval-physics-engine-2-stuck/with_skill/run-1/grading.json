@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Lists ranked causes ('穿透只做比例修正','检测点用错','dt 过大 + 显式欧拉') and gives a minimal fix snippet: '标准修法（半隐式欧拉 + 硬投影 + 速度反射）' with 7-line code ending '把物理步进那段代码贴出来…我帮你定位到具体行' — a hint-level fix, not a full implementation dump."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with '把物理步进那段代码贴出来（或告诉我文件路径），我帮你定位到具体行。' — a request for the learner's code; no concrete command to run and no expected output/behaviour is given."
+  },
+  {
+   "text": "B3: Recommends positional correction (push out by penetration depth) and/or impulse response; mentions tunneling with large timesteps",
+   "passed": true,
+   "evidence": "Positional correction: '位置一步投影回表面' / 'y = r # 位置硬投影回表面'; impulse response: 'vy = -vy * e # 速度反射'; tunneling with large dt: 'dt 过大 + 显式欧拉：…直接跳过检测（隧穿）'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only read-only actions: 'ls -la; find . -maxdepth 2 -type d…' and glob calls; FILES WRITTEN IN PROJECT (0); no install commands (brew/apt/pip/etc.) and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 122.7
+ },
+ "install_like_cmds": []
+}

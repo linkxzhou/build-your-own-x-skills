@@ -1,0 +1,92 @@
+{
+  "skill_name": "physics-engine",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to build a 2D physics engine in JavaScript. Start me off.",
+      "expected_output": "Scaffolds the integrator milestone with TODOs; no full engine; Mentions a fixed timestep and an integrator such as semi-implicit Euler",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'physics-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds the integrator milestone with TODOs; no full engine"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions a fixed timestep and an integrator such as semi-implicit Euler"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我的小球掉到地面上会慢慢陷进去，最后穿过地面。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Recommends positional correction (push out by penetration depth) and/or impulse response; mentions tunneling with large timesteps",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'physics-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Recommends positional correction (push out by penetration depth) and/or impulse response; mentions tunneling with large timesteps"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to build my own physics engine. Can you make it 3D right away instead of 2D?",
+      "expected_output": "Advises staying 2D first or scopes a 3D plan honestly without dumping code; Names a concrete extra 3D difficulty (rotation/inertia tensors, quaternions, or GJK/EPA)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'physics-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Advises staying 2D first or scopes a 3D plan honestly without dumping code"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Names a concrete extra 3D difficulty (rotation/inertia tensors, quaternions, or GJK/EPA)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

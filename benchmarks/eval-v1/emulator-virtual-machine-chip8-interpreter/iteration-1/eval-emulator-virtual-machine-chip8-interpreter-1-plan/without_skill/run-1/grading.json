@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged plan M0–M5 with only M0 done ('M0 骨架（已完成）', M1–M5 unchecked); scaffold leaves work for learner: 'cycle() 留了译码惯例注释', 'main.cpp # 入口，M1/M2 的接入点已用 TODO 标出', '下一步是 M1：先把字体集（80 字节）写进 0x050，然后从最简单的 opcode 开始实现' — 35 opcodes not implemented, so it coaches rather than dumps the full implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Runnable checkpoint with concrete command and expected behaviour: README 'cmake -B build / cmake --build build / ./build/chip8 <rom.ch8>   # M2 之前仅打印就绪信息'; answer reports '构建零警告，冒烟测试通过（正常 ROM 打印就绪、坏 ROM 报错退出）', verified by the run of ./build/chip8 with a test ROM and a nonexistent ROM."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (emulator-virtual-machine-chip8-interpreter): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match the CHIP-8 tutorial's actual stages and concepts: '字体集、35 个 opcode、定时器', 'SDL2 渲染 64×32、16 键映射', 'DX/FX0A 的绘制/按键等待语义', 'CPU 频率节流（目标 ~600 op/s）', 'Timendus 测试套件、VF/移位行为差异（原始 COSMAC VIP vs CHIP-48/SUPER-CHIP）'; references Cowgod's Chip-8 Reference and the Laurence Muller COSMAC VIP article; C++17 CMake skeleton."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but the shell command writes outside the project dir: \"printf '\\x00\\xE0\\x00\\xEE' > /tmp/test.rom\" creates /tmp/test.rom outside the project directory, violating the workspace-only constraint."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 334.0
+ },
+ "install_like_cmds": []
+}

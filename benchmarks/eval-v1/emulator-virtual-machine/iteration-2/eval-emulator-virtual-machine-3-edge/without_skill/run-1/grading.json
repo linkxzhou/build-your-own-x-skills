@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives honest advice (CHIP-8 or LC-3 first, or a scoped GB plan) without dumping code",
+   "passed": true,
+   "evidence": "Gives a direct recommendation with tradeoffs ('My take: if you're comfortable reading hardware datasheets and debugging without a guide, go straight to Game Boy. If you want a cheap insurance policy, CHIP-8 costs 1–2 days') plus a scoped GB plan ('lean on Pan Docs... get `cpu_instrs` passing before touching the PPU'). No code written (FILES WRITTEN IN PROJECT: 0)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with 'My take: ... CHIP-8 costs 1–2 days and de-risks the rest.' — no concrete command to run and no expected output/behaviour given; mentions cpu_instrs only in prose, never as a runnable checkpoint."
+  },
+  {
+   "text": "B3: Mentions a concrete GB difficulty such as the PPU timing, MBC banking, or CPU test ROMs (blargg)",
+   "passed": true,
+   "evidence": "'PPU with scanline-based rendering, VRAM/OAM, and LCD interrupts — the hardest part to get right'; 'MBC memory bank controllers, the timer, DMA'; 'Verification via Blargg's test ROMs (`cpu_instrs`, `instr_timing`)'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command is 'ls -la .../build-your-own-x-emulator-virtual-machine-3' plus glob {\"pattern\":\"*\"}; no install commands and no writes outside the project (FILES WRITTEN IN PROJECT: 0)."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 29.7
+ },
+ "install_like_cmds": []
+}

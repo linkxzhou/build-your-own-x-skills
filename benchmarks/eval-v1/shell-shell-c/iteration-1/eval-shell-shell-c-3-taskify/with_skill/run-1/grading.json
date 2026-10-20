@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged milestone plan, not an implementation: '任务 0（环境）→ 任务 1–8（主线：REPL 回显 → 直接 exec … → 任意长度管道）→ 拓展 S1–S8 → 最终与参考答案对拍', each task with '概念（≤6 句）、步骤、可真实运行的验收命令、git commit 提交点'; learner writes the code themselves: '规则：不要先读它。自己把 shell.c 写到每个任务的验收通过'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final milestone is a runnable checkpoint with concrete command and expected behaviour: 'gcc -Wall -std=c11 shell_ref.c utils.c -o shell_ref … 同一组命令分别喂给 ./shell 和 ./shell_ref，对比输出'; earlier tasks too: 'printf 'hello\\nworld\\n' | ./shell # 期望：提示符、hello、提示符、world，然后干净退出'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (shell-shell-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the tutorial's actual stages and code: 'REPL 回显 → 直接 exec 亲眼看进程被替换 → fork/exec → wait → cd 内建 → 抽出 fork_and_exec_with_io → 两段管道 → 任意长度管道'; cites real repo artifacts (utils.h cmd_struct/pipeline_struct, parse_command '只按空白切分', prompt 'heeee>', 'Makefile 带 -Wall -Wextra -Werror', Exercise numbering skips 5, job control '上游就是 TODO')"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "Commands wrote outside the project dir: 'mkdir -p /tmp/shell-workshop && curl -sL … -o /tmp/shell-workshop/README.md' and 'curl … -o /tmp/shell-workshop/tree.json'; agent itself noted '/tmp (outside workspace)'. No install commands were run, but the out-of-project writes violate B4"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": true,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 545.9
+ },
+ "install_like_cmds": []
+}

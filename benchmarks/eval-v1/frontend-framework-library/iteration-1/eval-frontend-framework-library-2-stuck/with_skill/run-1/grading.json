@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses root cause: '组件函数每次渲染都会被重新调用。函数一执行，`let state = initial` 就重新声明并赋回初始值'. Gives a minimal fix skeleton with the core left to the learner: '修法骨架（核心留给你写）' with '// TODO 1: 读 hooks[hookIndex]...' — a hint, not a full dump."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a concrete checkpoint and expected behaviour: '检查点：点击 3 次，界面依次显示 1、2、3；`console.log(hooks)` 里只有对应槽位在变' plus follow-up checks (second useState, useState in an if branch)."
+  },
+  {
+   "text": "B3: Explains state must be stored outside the function call (per-component hook array + index), not in a local variable",
+   "passed": true,
+   "evidence": "'状态放到渲染闭包外面，用「hooks 数组 + 调用顺序索引」存取——这正是 React hooks 的模型'; 'hooks 的状态存在组件函数外面（fiber 节点上）'; code comment 'let hooks = []; // 跨渲染存活' and '组件里第 N 个 `useState` 永远对应槽位 N，靠的是调用顺序'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0); SHELL COMMANDS RUN (0); only read-only tool calls (grep, glob, read of a skill reference file). No install commands and no writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": true,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 153.9
+ },
+ "install_like_cmds": []
+}

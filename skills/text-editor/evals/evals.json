@@ -1,0 +1,92 @@
+{
+  "skill_name": "text-editor",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "I want to build a terminal text editor like kilo in C. Get me started.",
+      "expected_output": "Scaffolds raw mode milestone with TODOs; no full editor; Mentions termios raw mode (disable ECHO/ICANON) and restoring the terminal on exit",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'text-editor' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds raw mode milestone with TODOs; no full editor"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions termios raw mode (disable ECHO/ICANON) and restoring the terminal on exit"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "我的编辑器退出后终端不回显了，必须 reset 才能用。",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Explains original termios must be saved and restored on exit (atexit/disableRawMode)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'text-editor' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Explains original termios must be saved and restored on exit (atexit/disableRawMode)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "I want to build my own kilo-style terminal text editor in C, and run it inside the VS Code output pane, not a real terminal. OK?",
+      "expected_output": "Explains raw mode needs a real TTY and offers a workable option; States the output pane is not a TTY; use the integrated terminal or a real terminal",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'text-editor' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Explains raw mode needs a real TTY and offers a workable option"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "States the output pane is not a TTY; use the integrated terminal or a real terminal"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

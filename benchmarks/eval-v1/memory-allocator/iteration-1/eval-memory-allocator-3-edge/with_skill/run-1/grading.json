@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives a concrete approach for macOS without installing anything",
+   "passed": true,
+   "evidence": "Three concrete macOS routes with real commands/code and zero installs: 'Route 1 — compile-time redirect (always works, start here)' with 'clang -O1 -g -include mymalloc.h -o sqlite3-mm sqlite3.c shell.c mymalloc.c'; 'Route 2 — DYLD_INSERT_LIBRARIES' with 'clang -dynamiclib -O1 -g mymalloc.c -o libmymalloc.dylib'; Route 3 malloc_zone_t. Only preinstalled tools (clang/nm/codesign/cp); valgrind explicitly rejected ('no modern-macOS support') in favor of an atexit validator."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Closing checkpoint: 'How to check it: /tmp/ls -l /usr/lib prints the listing with your allocator active (add an atexit stats line so success is visible), and `sqlite3-mm` completes the 100k-row workload with the validator reporting 0 leaks and 0 corrupted blocks.' — concrete command plus expected output/behaviour."
+  },
+  {
+   "text": "B3: Mentions DYLD_INSERT_LIBRARIES on macOS (vs LD_PRELOAD on Linux) or calling the allocator directly in tests",
+   "passed": true,
+   "evidence": "'LD_PRELOAD's macOS equivalent is `DYLD_INSERT_LIBRARIES`' and 'The track's checkpoint (`LD_PRELOAD=./libmymalloc.so ls -l`...) is Linux-only'; Route 2 is built on 'DYLD_INSERT_LIBRARIES=$PWD/libmymalloc.dylib ./mytest' with DYLD_PRINT_LIBRARIES verification."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": false,
+   "evidence": "No install commands and SHELL COMMANDS RUN (0), but the answer instructs writing outside the project dir: 'cp /bin/ls /tmp/ls && codesign -f -s - /tmp/ls' then 'DYLD_INSERT_LIBRARIES=$PWD/libmymalloc.dylib /tmp/ls -l /usr/lib' — /tmp is outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 323.2
+ },
+ "install_like_cmds": []
+}

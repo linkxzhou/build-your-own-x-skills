@@ -1,0 +1,216 @@
+{
+  "metadata": {
+    "skill_name": "database-redis-go",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:52Z",
+    "evals_run": [
+      0,
+      1
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 720.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Scaffold with TODOs, only M0 implemented: `Dispatch(...) { return nil, ErrNotImplemented }`, `ParseCommand ... return nil, ErrNotImplemented`, `handleConn ... return errors.New(\"handleConn: TODO(M1)\")`, `Store.Set ... return ErrNotImplemented`; README states \u300c\u9aa8\u67b6\u53ea\u63d0\u4f9b\u7ed3\u6784\u4e0e TODO(M*) \u6807\u8bb0\uff0c\u6838\u5fc3\u903b\u8f91\u7531\u4f60\u9010\u91cc\u7a0b\u7891\u5b9e\u73b0\u300d; PROGRESS.md shows M0 \u2705, M1\u2013M6 \u2b1c left to learner."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with concrete checkpoint: \u300c**\u68c0\u67e5**\uff1a`go run ./cmd/miniredis -port 6380`\uff0c\u53e6\u5f00\u7ec8\u7aef `printf '*1\\r\\n$4\\r\\nPING\\r\\n' | nc 127.0.0.1 6380`\uff0c\u671f\u671b\u8f93\u51fa `+PONG`\u300d and \u300c\u5199\u5b8c\u8dd1\u68c0\u67e5\uff0c\u628a\u7ed3\u679c\uff08\u6216\u5361\u4f4f\u7684\u62a5\u9519\uff09\u8d34\u7ed9\u6211\u300d."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (database-redis-go): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the build-your-own.org/redis stages in Go: M1 TCP+PING with RESP framing `*1\\r\\n$4\\r\\nPING\\r\\n` \u2192 `+PONG`; M2 \u300cRESP2 \u4e94\u79cd\u7c7b\u578b\u3001\u547d\u4ee4\u5206\u53d1\u8868\u300d; M3 goroutine per conn + `go test -race`; M4 \u300c\u8fc7\u671f PX/EX/TTL | \u60f0\u6027 + \u5b9a\u671f\u5220\u9664\u3001\u53ef\u6ce8\u5165\u65f6\u95f4\u6e90\u300d; M5 \u300cAOF vs \u5feb\u7167\u3001\u91cd\u653e\u3001\u635f\u574f\u5c3e\u90e8\u300d; M6 DEL/INCR\u3001B+\u6811 \u2014 tutorial-specific concepts (RESP2 bulk string `$-1`, nil reply), not generic boilerplate."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands run, but multiple shell commands write outside the project dir: `go build -o /tmp/miniredis ./cmd/miniredis` (binary in /tmp) and `go run ./cmd/miniredis -port 6380 >/tmp/mr.log 2>&1` / `/tmp/miniredis -port 6380 >/tmp/mr.log 2>&1` (log in /tmp), repeated across 5 of the 14 commands."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 438.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "main.go is a skeleton, not a solution: 'TODO(M1.1): \u521b\u5efa TCP listener' with 'var l net.Listener // \u5360\u4f4d\uff0c\u66ff\u6362\u6210\u771f\u5b9e listener'; agent states 'I should NOT dump the full solution. Give the skeleton with TODOs and let the learner fill in'; only M1 is coached ('M1 \u73b0\u5728\u5f00\u59cb... TODO \u5c31\u662f\u4f60\u7684\u4f5c\u4e1a'); no resp.go/handler.go/aof.go written; LEARNING_TASKS.md sets rule '\u6838\u5fc3\u903b\u8f91\u7531\u5b66\u4e60\u8005\u7f16\u5199\uff1b\u53ea\u6709\u5f53\u524d\u91cc\u7a0b\u7891\u3001\u4e14\u5b66\u4e60\u8005\u5c1d\u8bd5\u8fc7\u540e\u624d\u63d0\u4f9b\u5b8c\u6574\u4ee3\u7801'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final message ends with runnable checkpoint: '\u5199\u5b8c\u8dd1\uff1ago run . & printf 'PING\\r\\n' | nc localhost 6379 # \u671f\u671b +OK' and '\u5361\u4f4f\u6216\u8dd1\u901a\u540e\u628a\u8f93\u51fa\u8d34\u7ed9\u6211\uff0c\u6211\u6309 PROGRESS.md \u8bb0\u5f55\u540e\u8fdb M2'"
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (database-redis-go): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Agent fetched all 8 real chapters ('introduction, first-steps, writing-server, resp-reader, resp-writer, implementing-commands, aof, next') and milestones map 1:1 (M1 Building Server, M2 Reading RESP, M3 Writing RESP, M4 Redis Commands, M6 AOF); tutorial-specific detail: '\u5ba2\u6237\u7aef\u547d\u4ee4\u662f\u6570\u7ec4: *3\\r\\n$3\\r\\nset\\r\\n$5\\r\\nadmin\\r\\n$5\\r\\nahmed\\r\\n', type bytes 'ARRAY='*', BULK='$'', Go stdlib-only, port 6379, PING/SET/GET/HSET/HGETALL, AOF restart check '\u91cd\u542f\u670d\u52a1\u5668\u540e GET name \u2192 ahmed'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands ran, but commands wrote outside the project dir: 'curl -sL ... -o /tmp/redis-intro.html' and 'cd /tmp && for p in introduction first-steps ...; do curl -sL ... -o \"redis-$p.html\" & done' plus python extraction writing redis-*.txt in /tmp"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 565.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Staged plan with only M0 done: README marks '### M0 \u2705 \u9879\u76ee\u9aa8\u67b6\uff08\u5df2\u5b8c\u6210\uff09' while M1 is titled '\u4f60\u7684\u7b2c\u4e00\u4e2a\u7ec3\u4e60' leaving '\u5b9e\u73b0 SET / GET / DEL / EXISTS / KEYS\uff08\u65b0\u5efa internal/command/kv.go\uff09' to the learner; store.go says 'M1 (your first exercise) wires SET/GET/DEL commands to it; M2 adds per-key expiry; M3 adds persistence on top.' Only PING/ECHO are implemented; expiry/persistence/replication/streams are unimplemented exercises with \u601d\u8003\u70b9 coaching questions."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "README \u5feb\u901f\u5f00\u59cb gives concrete commands and expected output: 'make run # \u6216 go run ./cmd/miniredis -port 6379' then 'redis-cli -p 6379 PING # +PONG' and fallback \"printf 'PING\\r\\n' | nc 127.0.0.1 6379\"; M0 \u9a8c\u6536: 'make test \u5168\u7eff\uff1bredis-cli PING \u8fd4\u56de PONG'. Agent also smoke-tested live: \"printf 'PING\\r\\n' | nc 127.0.0.1 16379\"."
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (database-redis-go): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the codecrafters Redis-in-Go stages the agent cited ('Bind to a port and respond to PING', RESP, echo, SET/GET, 'Expiration (PX)', RDB, replication, streams): M1 SET/GET on concurrent-safe map, M2 'SET key val EX s / PX ms\u2026TTL \u8fd4\u56de -1 / -2 \u7684\u8bed\u4e49', M3 AOF/RDB with fsync everysec, M4 '\u4e3b\u4ece\u63e1\u624b\uff08PING \u2192 REPLCONF \u2192 PSYNC\uff09\u2026\u590d\u5236\u79ef\u538b\u7f13\u51b2\u533a\u2026WAIT', M5 'XADD/XRANGE/XREAD\uff08\u542b BLOCK\uff09\u2026entry ID \u81ea\u52a8\u751f\u6210\u89c4\u5219\uff08seq \u8865\u9f50/\u9012\u589e\uff09'; RESP2 byte-level detail ('+simple\\r\\n, -Error, :123, $5\\r\\nhello\\r\\n, *2') \u2014 tutorial-specific, not generic."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run, but smoke-test commands wrote outside the project dir: './bin/miniredis -port 16379 >/tmp/miniredis.log 2>&1 &' (repeated with ports 16380 and 16379) creates/writes /tmp/miniredis.log outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 663.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+          "passed": true,
+          "evidence": "Deliverable is a staged plan, not code: '\u5df2\u751f\u6210 TASKS.md\uff0c\u628a\u6559\u7a0b\u5168\u90e8 8 \u4e2a\u7ae0\u8282\u8f6c\u6210\u4e86 8 \u4e2a\u987a\u5e8f\u6267\u884c\u7684 Claude Code \u4efb\u52a1\uff08Task 0\u20137\uff09\uff0c\u6bcf\u4e2a\u4efb\u52a1\u5305\u542b\uff1a\u53ef\u76f4\u63a5\u7c98\u8d34\u7684 Prompt\u3001\u53ef\u6267\u884c\u7684\u9a8c\u6536\u547d\u4ee4\u3001\u5b66\u4e60\u70b9'. FILES WRITTEN shows only TASKS.md (8984 chars); aof.go/handler.go/main.go/resp.go appear only as '\u6700\u7ec8\u6587\u4ef6\u7ed3\u6784\uff08\u4e0e\u6559\u7a0b\u4e00\u81f4\uff09' target layout, with per-task prompts like Task 0 '\u53ea\u5305\u542b\u6253\u5370 \"Hello World\" \u7684 main \u51fd\u6570' leaving the implementation to the learner."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Each task ends with runnable acceptance commands plus expected output, e.g. Task 0: 'go run main.go          # \u8f93\u51fa Hello World', 'redis-cli ping          # PONG\uff08\u786e\u8ba4 redis-cli \u53ef\u7528\uff0c\u968f\u540e\u505c\u6389 redis-server\uff09', 'lsof -i :6379           # \u65e0 redis-server \u8fdb\u7a0b\u5360\u7528\u7aef\u53e3'; Task 1: 'redis-cli ping          # \u5f97\u5230\u56de\u590d\uff08\u6b64\u65f6\u662f +OK\uff0c\u4e0d\u662f PONG\uff0c\u5c5e\u6b63\u5e38\uff09'. Final answer: '\u672b\u5c3e\u9644\u603b\u9a8c\u6536\u6e05\u5355\uff08\u7f16\u8bd1\u3001\u5168\u90e8\u547d\u4ee4\u884c\u4e3a\u3001\u6301\u4e45\u5316\u91cd\u542f\u3001\u5e76\u53d1\u4e92\u963b\uff09\uff0c\u5168\u90e8\u901a\u8fc7\u5373\u6559\u7a0b\u5b8c\u6210\u3002'"
+        },
+        {
+          "text": "B3: Technically specific to this tutorial (database-redis-go): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+          "passed": true,
+          "evidence": "Milestones mirror the tutorial's actual chapters (writing-server, resp-reader, resp-writer, implementing-commands, aof, next \u2014 agent curl-fetched all 8 /en/ pages) with tutorial-specific detail: '\u7c7b\u578b\u5e38\u91cf STRING='+' ERROR='-' INTEGER=':' BULK='$' ARRAY='*'', Value struct fields typ/str/num/bulk/array, readLine/readInteger/readArray recursion, '6 \u4e2a\u547d\u4ee4\uff1aPING/SET/GET/HSET/HGET/HGETALL', 'AOF \u6301\u4e45\u5316\uff08everysec \u5237\u76d8 + \u542f\u52a8\u91cd\u653e\uff09', Go stdlib-only on :6379 tested via redis-cli. Agent also cross-checked author repo ahmedash95/build-redis-from-scratch and fixed tutorial-specific bugs (AOF Read missing Seek(0,0), missing hgetall, single-Accept vs goroutine contradiction)."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+          "passed": false,
+          "evidence": "No install commands were run, but the agent wrote scraped files outside the project dir: 'curl -sL https://www.build-redis-from-scratch.dev/en/introduction -o /tmp/redis-intro.html' and 'for page in introduction first-steps writing-server resp-reader resp-writer implementing-commands aof next; do curl -sL \"https://www.build-redis-from-scratch.dev/en/$page\" -o \"/tmp/redis-$page.html\"; done', plus /tmp/redis-*.md extracts later read via 'cat /tmp/redis-resp-reader.md' etc. Project dir is /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-database-redis-go-3, so these /tmp writes violate the write-scope rule."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 579.5,
+        "stddev": 199.8284,
+        "min": 438.2,
+        "max": 720.8
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 614.6,
+        "stddev": 69.7207,
+        "min": 565.3,
+        "max": 663.9
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.00",
+      "time_seconds": "-35.1",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

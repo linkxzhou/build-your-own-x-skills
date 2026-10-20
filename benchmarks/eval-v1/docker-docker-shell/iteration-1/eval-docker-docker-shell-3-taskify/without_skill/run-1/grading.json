@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged milestone plan, not an implementation: TASKS.md has '任务总览' table of Task 0-8 each with 目标/实现要求/验收标准; CLAUDE.md instructs '一次只做当前 Task；实现范围以该 Task 的\"实现要求\"为准，不提前实现后续 Task' and '参考上游源码理解意图，但代码自己写'. No bocker script was written."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Every task ends with concrete verify commands plus expected output, e.g. Task 0: 'mount | grep /var/bocker # 输出包含 btrfs', 'stat -fc %T /sys/fs/cgroup/ # 输出 tmpfs（cgroups v1）', 'cat /proc/sys/net/ipv4/ip_forward # 1'; CLAUDE.md: '每个 Task 完成前必须逐条跑通\"验收标准\"'; plan includes final '毕业检验' running the full README example."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (docker-docker-shell): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror bocker's actual stages and code: functions bocker_check/init/images/rm/run/ps/logs/exec/commit/pull/help; concepts btrfs subvolume/CoW/reflink, chroot+unshare namespaces, veth/bridge/netns/NAT, cgroups v1 'cpu,cpuacct,memory'; tutorial-specific details: 'set -o errexit -o nounset -o pipefail; shopt -s nullglob', '#HELP' convention, BOCKER_CPU_SHARE/BOCKER_MEM_LIMIT, bridge0 10.0.0.1/24, Registry v1 dead→v2 adaptation, and the known bocker_init stray bocker_run bug."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (3) are only 'curl -sL .../bocker | tail -c 3000', 'ls -la ... && find ...', and greps on TASKS.md — no install commands. FILES WRITTEN IN PROJECT (2): CLAUDE.md, TASKS.md, both inside the project dir. Installs appear only as learner instructions ('安装 Lima（brew install lima）', apt-get in the VM provision script), which is allowed."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 576.4
+ },
+ "install_like_cmds": []
+}

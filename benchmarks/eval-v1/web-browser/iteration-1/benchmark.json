@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "web-browser",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:51Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 185.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds fetching a URL (sockets/HTTP) with TODOs; no full browser",
+          "passed": true,
+          "evidence": "browser.py is a skeleton: '\u4f60\u7684\u4efb\u52a1\uff1a\u586b\u6389\u4e0b\u9762\u4e24\u4e2a TODO' with '# TODO 1: \u89e3\u6790 URL\uff0c\u62c6\u51fa scheme / host / port / path' and '# TODO 2: \u5efa\u7acb TCP \u8fde\u63a5\uff0c\u53d1\u9001\u8bf7\u6c42\uff0c\u8bfb\u56de\u54cd\u5e94\u4f53' followed by '...' bodies; answer says '\u4f60\u6765\u5199\uff1a`browser.py` \u91cc\u7684\u4e24\u4e2a TODO' and '\u5f53\u524d\u8fdb\u5ea6\uff1a\u91cc\u7a0b\u7891 1/7' \u2014 no full browser implemented"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with checkpoint: 'python3 browser.py http://example.org' and '\u9884\u671f\u8f93\u51fa\u4e00\u6bb5\u4ee5 `<html>` \u5f00\u5934\u3001\u542b \"Example Domain\" \u7684 HTML'"
+        },
+        {
+          "text": "B3: Mentions sending an HTTP GET request and splitting headers/body at a blank line (\\r\\n\\r\\n)",
+          "passed": true,
+          "evidence": "Concept text: 'HTTP/1.1 \u8bf7\u6c42\u5c31\u662f\u4e00\u6bb5\u6309 \\r\\n \u5206\u884c\u7684\u7eaf\u6587\u672c\u2014\u2014\u8bf7\u6c42\u884c\u3001\u82e5\u5e72\u5934\u90e8\u3001\u7a7a\u884c\u2014\u2014\u2026\u5934\u90e8\u4e4b\u540e\u7684\u5269\u4f59\u5b57\u8282\u5c31\u662f body'; file comment '\u7528 socket \u53d1\u4e00\u4e2a HTTP/1.1 GET \u8bf7\u6c42' and TODO 2 '\u53d1\u9001\u8bf7\u6c42\u884c + \u5934\u90e8\uff0c\u6bcf\u884c\u4ee5 \\r\\n \u7ed3\u5c3e\uff0c\u5934\u90e8\u7ed3\u675f\u540e\u518d\u8865\u4e00\u4e2a \\r\\n' / '\u5faa\u73af\u8bfb\u54cd\u5e94\u5934\u76f4\u5230\u9047\u5230\u7a7a\u884c\uff1b\u7136\u540e\u8bfb\u51fa\u5269\u4f59\u7684 body'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Commands run were only 'ls -la && python3 --version && python3 -c \"import tkinter\u2026\"' and 'curl -s \u2026 http://example.org' \u2014 no installs; only file written is browser.py in project; Tk missing is delegated to learner: '\u5c4a\u65f6\u4f60\u9700\u8981\u81ea\u5df1\u8fd0\u884c\u5b89\u88c5\u547d\u4ee4\uff08macOS\uff1a`brew install python-tk@3.14`\uff09'"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 114.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Agent diagnoses three likely causes ('Text buffered until a close tag', 'EOF teardown drops content', 'Missing implied-end-tag rule') and gives a minimal fix sketch: 'Fix: append text to the current open node immediately on handle_data' plus a short handle_starttag/handle_data/finish sketch, then asks learner to paste code to pinpoint the exact line."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with 'Paste the parser's tag-handling and EOF code and I'll point at the exact line that's dropping the text.' \u2014 no concrete command to run and no expected output/behaviour is given anywhere."
+        },
+        {
+          "text": "B3: Explains implicit tag closing / tree-building rules (e.g. a new <p> closes an open <p>)",
+          "passed": true,
+          "evidence": "'Browsers close a <p> implicitly when the next block-level start tag appears (<div>, <h1>\u2013<h6>, <ul>, <table>, another <p>, \u2026) or when the parent element ends' and 'Per the HTML5 \"in body\" insertion mode, a start tag in the block set must first close an open <p> (the \"close a p element\" step).'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0); SHELL COMMANDS RUN (1): 'ls -la'; other tool calls are glob and read of AGENTS.md \u2014 no install commands and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 77.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Offers a no-GUI path (text output or render to image)",
+          "passed": true,
+          "evidence": "\"Both upstream tracks support a GUI-free build\" \u2014 robinson \"paints to an in-memory framebuffer and writes a PNG. Zero GUI dependencies\"; Python track: \"swap it for a Pillow PNG writer or an ANSI terminal renderer\"; milestone 2 is \"Render to terminal/PNG\"."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Milestone table gives runnable checkpoints, e.g. milestone 1: \"`browser http://example.org` prints the HTML body\"; milestone 6: \"type a link number \u2192 next page renders; `back` works\" \u2014 concrete command plus expected behaviour."
+        },
+        {
+          "text": "B3: Proposes a concrete option such as printing text layout or rendering to PNG/PPM",
+          "passed": true,
+          "evidence": "Concrete paint-target options proposed: \"PNG file, terminal, or raw framebuffer dump\"; \"Paint target: PNG images or ANSI terminal? (Default: PNG \u2014 easier to inspect...)\"; milestone 2 checkpoint \"example.org text appears in a PNG or ANSI output\"."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); OTHER TOOL CALLS are only reads of .agents/skills/... files. No install command run and nothing written outside the workspace; tool setup is deferred to the learner (\"Answer those and I'll set up milestone 1 in your workspace\")."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 274.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds fetching a URL (sockets/HTTP) with TODOs; no full browser",
+          "passed": true,
+          "evidence": "Only milestone 1 is implemented (fetch URL + print visible text): 'request() \u2014 \u7528 socket \u624b\u5199 GET ... HTTP/1.0' and 'visible_text() \u2014 ... \u5265\u6389\u6807\u7b7e'; later work is deferred, not implemented: '\u5df2\u77e5\u9650\u5236\uff08\u540e\u7eed\u6b65\u9aa4\u89e3\u51b3\uff09\uff1a\u4e0d\u652f\u6301 gzip/chunked \u7f16\u7801\u3001\u4e0d\u89e3\u6790\u76f8\u5bf9\u94fe\u63a5\u3001\u65e0\u7f13\u5b58' and '\u4e0b\u4e00\u6b65\u662f\u7b2c 2 \u7ae0' \u2014 so a first-milestone deliverable, no full browser."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a runnable checkpoint: 'python3 browser.py example.com' with expected behaviour stated ('\u8bf7\u6c42 URL\uff0c\u6253\u5370\u7f51\u9875\u53ef\u89c1\u6587\u672c', 80-col wrap via 'textwrap.fill(text, width=80)') and verified: 'https://example.com\u3001\u65e0 scheme \u7684 example.com\u3001http://example.com \u91cd\u5b9a\u5411\u4e09\u6761\u8def\u5f84\u5747\u8f93\u51fa\u6b63\u5e38'."
+        },
+        {
+          "text": "B3: Mentions sending an HTTP GET request and splitting headers/body at a blank line (\\r\\n\\r\\n)",
+          "passed": true,
+          "evidence": "Code sends 'req = f\"GET {path} HTTP/1.0\\r\\nHost: {host}\\r\\nConnection: close\\r\\n\\r\\n\"' and splits headers/body at the blank line: 'head, _, body = response.partition(b\"\\r\\n\\r\\n\")'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Shell commands are only 'python3 -m http.server 8123 --bind 127.0.0.1', 'python3 browser.py ...', 'kill $SERVER_PID' \u2014 no brew/apt/pip/cargo/rustup/npm/go/gem install anywhere; files written are browser.py and test.html, both inside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 37.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses 'missing implied end tags' and lists bug patterns ('Text nodes only attach on explicit close tags', 'Pop without parent fixup', 'EOF handling'), plus a minimal pseudocode fix: 'def close_implied_p(): if has_element_in_button_scope(\"p\"): generate_implied_end_tags()'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Ends with 'Share the parser file (and a failing HTML snippet) and I'll pinpoint the exact spot.' \u2014 a request for information; no concrete command to run and no expected output/behaviour is given"
+        },
+        {
+          "text": "B3: Explains implicit tag closing / tree-building rules (e.g. a new <p> closes an open <p>)",
+          "passed": true,
+          "evidence": "'Per the spec, a `<p>` element's end tag can be omitted: when the parser hits certain start tags (`<p>`, `<div>`, `<ul>`, `<h1>`\u2013`<h6>`, `<table>`, etc.) or EOF while a `<p>` is still open, it must close the `<p>` first.'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only command run is 'ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-web-browser-2' (read-only, inside the project dir) plus a read-only glob; no install commands and no files written (FILES WRITTEN IN PROJECT (0))"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 58.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Offers a no-GUI path (text output or render to image)",
+          "passed": true,
+          "evidence": "\"Render to image files \u2014 software-rasterize each page to a PNG/PPM and open it in any viewer\"; \"Terminal UI \u2014 paint to stdout with ANSI escape codes, read keys from stdin\"; \"Raw framebuffer \u2014 mmap /dev/fb0 and write pixels directly\""
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with \"Recommendation: start with option 1. It keeps the project focused on layout and paint...\" \u2014 no concrete command to run and no expected output/behaviour is given anywhere"
+        },
+        {
+          "text": "B3: Proposes a concrete option such as printing text layout or rendering to PNG/PPM",
+          "passed": true,
+          "evidence": "\"software-rasterize each page to a PNG/PPM\" plus \"Recommendation: start with option 1\" (render to image files)"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): \"ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-web-browser-3\" (read-only ls, no install command); FILES WRITTEN IN PROJECT (0); no writes outside the workspace"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 125.7333,
+        "stddev": 55.1776,
+        "min": 77.3,
+        "max": 185.8
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 123.6333,
+        "stddev": 131.3973,
+        "min": 37.8,
+        "max": 274.9
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.08",
+      "time_seconds": "+2.1",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives an honest constraint (fork/exec/pipes are POSIX) and offers a concrete workable option instead of pretending it works natively",
+   "passed": true,
+   "evidence": "Honest constraint given: 'Some challenges assume POSIX (fork/exec, pipes, signals, termios raw mode), which are the tricky parts on native Windows' and 'Signals: no real SIGSTOP/SIGTSTP... job control (fg/bg, Ctrl+Z) stages are hard to do faithfully'; concrete workable options offered: 'Run inside Git Bash rather than PowerShell/cmd', 'A Linux VM (VirtualBox or Hyper-V on Pro) or GitHub Codespaces as a heavier fallback'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with advice only: 'start the track natively in your chosen language and run tests through Git Bash. If you hit the job-control or raw-mode stages and they misbehave, move to a VM at that point' — no concrete command to run and no expected output/behaviour is given."
+  },
+  {
+   "text": "B3: States that fork() is not available on native Windows and suggests WSL, a Linux VM/container, or CreateProcess-based alternative with trade-offs",
+   "passed": true,
+   "evidence": "States fork/exec is POSIX-specific and unavailable natively: 'POSIX-specific features: fork/exec (Windows uses CreateProcess), signals (limited on Windows)'; CreateProcess-based alternative named ('C (`CreateProcess`) all handle this on Windows'); Linux VM suggested ('A Linux VM (VirtualBox or Hyper-V on Pro) or GitHub Codespaces as a heavier fallback') with trade-off ('move to a VM at that point rather than upfront'; 'Docker Desktop is awkward here since it now requires the WSL2 backend on Home editions')."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'FILES WRITTEN IN PROJECT (0)' and 'SHELL COMMANDS RUN (0)'; other tool calls are only glob and two web_search calls — no install commands and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 73.7
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Supports the compile approach and scaffolds that step only",
+   "passed": true,
+   "evidence": "Supports it: \"Yes — that's a standard design, and it's what Jinja2, Mako, and Tornado's template engine all do.\" Scaffolds only the current step, no files written (FILES WRITTEN IN PROJECT (0)); ends with a scoped next step: \"keep your AST and interpreter working, add a `Compiler` that visits the same AST, and make `Template.render()` dispatch to the compiled function\" — design-level coaching rather than a dumped multi-milestone implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No concrete command to run nor expected output/behaviour anywhere in the answer; it ends with prose advice (\"The cleanest migration path: keep your AST and interpreter working, add a `Compiler`...\"). The only code snippets are illustrative (`code = compile(src, ...)`) with no command to execute a checkpoint."
+  },
+  {
+   "text": "B3: Describes generating Python source for a render function and caching it (500 Lines approach)",
+   "passed": true,
+   "evidence": "\"**Codegen**: walk the AST once at load time and emit Python source for a `render` function\" plus a generated-code example `def render(context): _buf = [] ... return ''.join(_buf)`, and caching: \"cache the render function keyed by path (and mtime if you support reload)\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command was read-only: \"ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-template-engine-3\" plus a glob; no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and no writes outside the project (0 files written)."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 48.4
+ },
+ "install_like_cmds": []
+}

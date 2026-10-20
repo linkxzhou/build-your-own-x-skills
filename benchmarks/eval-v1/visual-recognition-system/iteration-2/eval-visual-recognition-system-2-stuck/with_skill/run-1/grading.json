@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses the gap: 'This is a classic overfitting / data leakage / distribution shift problem' and gives concrete fixes: 'Regularization: dropout, weight decay, augmentation, early stopping, smaller model' plus 'Check preprocessing consistency (resize, normalization, color channel order RGB/BGR)'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with 'If you share the training script and how you load the new photos, I can pinpoint which of these it is.' — a request for more input. No concrete runnable command with expected output/behaviour is given anywhere (diagnostics like 'perceptual hash them' and 'per-class accuracy' are described without a command)."
+  },
+  {
+   "text": "B3: Identifies overfitting / distribution shift and suggests a held-out test set, augmentation or simpler model",
+   "passed": true,
+   "evidence": "Identifies 'overfitting' and 'distribution shift — new photos differ from training photos (different camera, lighting, preprocessing)' and suggests 'Evaluate on a held-out validation set that was properly split (no leakage)', 'augmentation matched to the new photos' conditions', and 'a smaller model'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## FILES WRITTEN IN PROJECT (0)' and '## SHELL COMMANDS RUN (0)'; only tool calls are two read-only globs (glob {\"pattern\": \"**/*.py\"}, glob {\"pattern\": \"**/*.ipynb\"}). No install command and no writes outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 47.4
+ },
+ "install_like_cmds": []
+}

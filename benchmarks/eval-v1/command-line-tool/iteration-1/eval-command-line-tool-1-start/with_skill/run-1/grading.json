@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds hello CLI / arg parsing with TODOs; not the full tool",
+   "passed": true,
+   "evidence": "Wrote only a milestone-1 skeleton: main.rs has `// TODO(milestone 1): If args contains \"--version\" ... print cowsay {VERSION}` plus a placeholder `println!(\"moo (placeholder ...)\")`; agent says \"核心逻辑留给你\" and \"你的任务：打开 cowsay/src/main.rs，把 TODO 补上...约 5 行代码\" — no bubble/cow art/full tool implemented"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with checkpoint: \"检查命令（通过后我们进里程碑 2）：`cd cowsay && cargo run -- --version; echo $?` 期望输出两行：`cowsay 0.1.0` 和 `0`\""
+  },
+  {
+   "text": "B3: Mentions exit codes or stdout vs stderr, or argument parsing (e.g. clap or std::env::args)",
+   "passed": true,
+   "evidence": "\"CLI 的第一块基石是入口点与退出码。`main` 正常返回即退出码 0；`std::env::args()` 给出命令行参数，第一项是二进制自身路径，所以要 `skip(1)`\"; TODO says \"exit with code 0\"; checkpoint uses `echo $?`"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command: `cargo new cowsay >/dev/null && ls cowsay cowsay/src; which cowsay || echo 'real cowsay: not installed'` — no install commands; files written are cowsay/Cargo.toml and cowsay/src/main.rs inside the project; toolchain already present (\"cargo 1.95.0 / rustc 1.95.0 available; no installs needed\")"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 290.1
+ },
+ "install_like_cmds": []
+}

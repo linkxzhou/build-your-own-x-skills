@@ -24,6 +24,8 @@ Use this skill as a Claude Code project coach for converting the original build-
 - Use tests, executable examples, or observable outputs at every milestone.
 - If the user asks for a full implementation, first offer a staged path and provide complete code only for the current milestone.
 - For long tutorials, load only the relevant reference section for the current milestone.
+- Stay inside the project directory: every download, log, scratch file and smoke-test output goes under the project (for example `./scratch/`, `./logs/`), never `/tmp`, `$HOME` or another absolute path. Never install packages or create virtualenvs yourself (no `pip`, `brew`, `apt`, `cargo`, `npm -g`, `go install`, including via a venv's `bin/pip`); print the command for the user instead.
+- Keep the final reply concise (aim for under ~60 lines) and always finish it with the checkpoint: the exact command to run and the expected output.
 
 ## Workflow
 
@@ -63,6 +65,15 @@ When the user provides failing tests, logs, or code:
 3. Explain the invariant being violated.
 4. Apply a minimal fix.
 5. Add or update a regression test if appropriate.
+
+### 5. Converting the tutorial into a task list
+
+When the user asks to convert, summarize, or "taskify" the original tutorial:
+
+1. Build the list from `references/tutorial-map.md` and `references/concepts.md` first; they are the offline source of truth.
+2. Fetch the original resource at most once or twice (README / table of contents only) and only if the references lack a detail. Never crawl the whole tutorial, and never download into `/tmp` or anywhere outside the project directory.
+3. Deliver promptly: write the task list (e.g. `TASKS.md` in the project) with one entry per milestone — goal, files to touch, key concept, and a verification command with expected output.
+4. End the reply with the first runnable checkpoint (the exact command to run for milestone 1 and what the user should see).
 
 ## References
 

@@ -1,0 +1,92 @@
+{
+  "skill_name": "regex-engine",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想自己写一个正则引擎，用 Python，从最简单的开始。",
+      "expected_output": "Scaffolds literal/./^/$ matching with TODOs; not a full NFA engine; Mentions Rob Pike's recursive matcher or an equivalent recursive approach for the first features",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'regex-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds literal/./^/$ matching with TODOs; not a full NFA engine"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions Rob Pike's recursive matcher or an equivalent recursive approach for the first features"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My backtracking regex takes forever on `(a+)+b` against 30 'a's. Why?",
+      "expected_output": "Explains and suggests a direction without rewriting the engine; Identifies catastrophic/exponential backtracking and suggests Thompson NFA simulation (linear time)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'regex-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Explains and suggests a direction without rewriting the engine"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Identifies catastrophic/exponential backtracking and suggests Thompson NFA simulation (linear time)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "Can I just use Python's re module inside my engine?",
+      "expected_output": "Explains that wrapping re defeats the purpose and offers a test-oracle use of re instead; Suggests using re only as a reference to compare results in tests",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'regex-engine' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Explains that wrapping re defeats the purpose and offers a test-oracle use of re instead"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Suggests using re only as a reference to compare results in tests"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

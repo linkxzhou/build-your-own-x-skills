@@ -1,0 +1,92 @@
+{
+  "skill_name": "memory-allocator",
+  "evals": [
+    {
+      "id": 1,
+      "name": "start",
+      "prompt": "我想用 C 自己实现 malloc/free，带我开始。",
+      "expected_output": "Scaffolds a bump allocator milestone with TODOs; no full allocator; Mentions sbrk or mmap and alignment (e.g. 16 bytes)",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'memory-allocator' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Scaffolds a bump allocator milestone with TODOs; no full allocator"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions sbrk or mmap and alignment (e.g. 16 bytes)"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "stuck",
+      "prompt": "My allocator works for small tests but after many malloc/free calls the heap keeps growing.",
+      "expected_output": "Diagnoses and gives a minimal fix or hint; Identifies missing block reuse/splitting/coalescing of adjacent free blocks",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'memory-allocator' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Diagnoses and gives a minimal fix or hint"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Identifies missing block reuse/splitting/coalescing of adjacent free blocks"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "edge",
+      "prompt": "How do I test my malloc with real programs on macOS?",
+      "expected_output": "Gives a concrete approach for macOS without installing anything; Mentions DYLD_INSERT_LIBRARIES on macOS (vs LD_PRELOAD on Linux) or calling the allocator directly in tests",
+      "files": [],
+      "assertions": [
+        {
+          "id": "A1",
+          "text": "Routes correctly: reads the build-your-own-x router SKILL.md and the 'memory-allocator' track skill before answering"
+        },
+        {
+          "id": "B1",
+          "text": "Gives a concrete approach for macOS without installing anything"
+        },
+        {
+          "id": "B2",
+          "text": "Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour"
+        },
+        {
+          "id": "B3",
+          "text": "Mentions DYLD_INSERT_LIBRARIES on macOS (vs LD_PRELOAD on Linux) or calling the allocator directly in tests"
+        },
+        {
+          "id": "B4",
+          "text": "Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them"
+        }
+      ]
+    }
+  ]
+}

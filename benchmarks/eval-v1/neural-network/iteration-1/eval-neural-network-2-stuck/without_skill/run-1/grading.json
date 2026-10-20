@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses zero-init symmetry: \"问题出在**全零初始化导致的对称性**：两个隐藏神经元的权重完全相同...等效于只有 1 个隐藏单元。而 XOR 线性不可分...loss 卡在 ~0.25\" and gives minimal fix: \"修复：用小的随机数打破对称性\" with 4-line init snippet (W1/W2 = randn*0.5, biases zeros)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete command and expected behaviour: \"运行 `python xor_train.py` 验证，预期 loss 从 ~0.25 降到 0.001 以下，四个预测值接近 [0, 1, 1, 0]。如果某次随机种子陷入局部极小...换 seed 重跑即可\""
+  },
+  {
+   "text": "B3: Explains zero initialization causes symmetry (all hidden units learn the same) and recommends small random init",
+   "passed": true,
+   "evidence": "\"全零初始化导致的对称性：两个隐藏神经元的权重完全相同，前向传播算出相同的输出，反向传播得到相同的梯度，更新后依然相同——它们会永远保持一致\"; recommends \"W1 = np.random.randn(2, 2) * 0.5\" and \"偏置保持 0 没问题\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0); only file written is xor_train.py inside the project (FILES WRITTEN IN PROJECT); no install commands anywhere — learner is only asked to run \"python xor_train.py\""
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 90.0
+ },
+ "install_like_cmds": []
+}

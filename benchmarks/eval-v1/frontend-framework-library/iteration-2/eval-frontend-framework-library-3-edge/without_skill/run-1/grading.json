@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Adapts to a Redux-only track and scaffolds its first milestone",
+   "passed": false,
+   "evidence": "Adapted to the Redux-only track ('Yes — Redux is a standalone state container with zero React dependency... We'll build the real thing: createStore, combineReducers, and applyMiddleware, with tests and a plain-JS demo') but dumped a complete multi-milestone implementation instead of scaffolding only the first milestone: 'Core library done. Now the tests — three files covering each module's contract... All 30 tests green... writing the demos... Done — a working Redux... 30/30 tests pass, both demos run' — 12 files covering the entire core (createStore, combineReducers, applyMiddleware, compose), 30 tests and 2 demos in one pass."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete commands: 'Run it yourself: `npm test`, `node demo/counter.js`, `node demo/todos.js`' plus expected behaviour: '30/30 tests pass, both demos run' and 'the counter prints `count = 1` twice at the end — that's real Redux behavior: subscribers fire on *every* dispatch'."
+  },
+  {
+   "text": "B3: Describes store with getState/dispatch/subscribe and pure reducers",
+   "passed": true,
+   "evidence": "Layout: 'src/createStore.js — the store: getState / dispatch / subscribe / replaceReducer'; explains the core loop: 'currentState = currentReducer(currentState, action), then notify listeners' with the isDispatching guard and currentListeners/nextListeners snapshot; pure reducers stated in 'The reducer: pure function, (state, action) => nextState' (demo/counter.js) and 'currentReducer — the pure function that computes the next state' (src/createStore.js)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'Node v25 with the built-in `node:test` runner — zero dependencies needed'; all 18 shell commands are version checks, npm test, node --test/--check, awk balance checks and demo runs — no install commands; all 12 files written are inside the project (package.json, src/, test/, demo/)."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 440.2
+ },
+ "install_like_cmds": []
+}

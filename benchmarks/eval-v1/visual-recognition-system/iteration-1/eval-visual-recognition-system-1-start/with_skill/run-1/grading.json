@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds dataset/loading or preprocessing milestone with TODOs; no full pipeline",
+   "passed": true,
+   "evidence": "Scaffolded only milestone 1/7 (dataset + loading): 'plate_rec/dataset.py — 你的战场，3 个 TODO' with TODOs 'load_plate / load_dataset / train_test_split（每个 TODO 3-6 行）'; checkpoint currently fails with 'NotImplementedError: TODO 2' — milestones 2-7 appear only as roadmap rows in README/PROGRESS, no full pipeline implemented"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete command '**检查**：python3 scripts/check_m1.py' and expected behaviour '末行打印 MILESTONE 1 PASSED 即过（当前会报 NotImplementedError: TODO 2，正常）'"
+  },
+  {
+   "text": "B3: Describes the pipeline detection → segmentation → recognition",
+   "passed": true,
+   "evidence": "README milestone table: '| 5 | 完整流水线 | 检测 → 分割 → 识别 | `recognize img.jpg` 打印车牌文本 |', preceded by milestones 2-4 (阈值/边缘/形态学 → 定位 → 特征+分类器); PROGRESS.md row 5 'Pipeline | recognize img.jpg prints plate text'"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 5 shell commands are inspection-only (ls, python3 --version, py_compile, make_synth.py, PIL/numpy pixel checks) — no install command run; agent stated 'pip install command for them to run (I can't install)' and gave the learner 'python3 -m venv .venv ... pip install -r requirements.txt' to run themselves; all written files are under plate-rec/ inside the project"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 675.2
+ },
+ "install_like_cmds": []
+}

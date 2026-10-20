@@ -1,0 +1,40 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Staged M0–M7 plan plus scaffold with TODOs, only M0 implemented: tokenizer.py has 'TODO 2: 逐字符查表… raise NotImplementedError', data.py 'TODO 1… raise NotImplementedError', model.py/train.py/sample.py are stubs ('TODO(M2): class BigramLanguageModel —— 依赖 torch，装好后实现'); README states '核心算法由你亲手实现；骨架只给接口和 TODO' and final answer hands off M1 ('你写什么（骨架已留 TODO）'), so no complete multi-milestone implementation was dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete checkpoint and expected behaviour: '写完后跑 `python3 -m unittest discover -s tests -v`，我会先给你一个 round-trip 测试：`decode(encode(text)) == text` 对任意语料内文本成立，且词表大小符合预期'; M0 checkpoint already verified ('python3 -m minillm info → exit 0, prints env report; 3 tests OK') and learner-run install command given ('python3 -m venv .venv && source .venv/bin/activate; pip install -r requirements.txt')."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-llm-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror rasbt/LLMs-from-scratch stages and concepts: 'M1 数据+字符级分词器 encode→decode 完全还原', 'M2 bigram 基线…记录基线 val loss', 'M3 自注意力 + Transformer block…单 batch 过拟合到接近 0', 'M4 训练循环 + checkpoint', 'M5 采样（temperature / top-k）', 'M6 评估（perplexity）', 'M7 进阶（KV cache / BPE）'; README credits '跟随教程：[rasbt/LLMs-from-scratch](https://github.com/rasbt/LLMs-from-scratch)' and agent read the track/per-tutorial skills plus tutorial-map.md and concepts.md."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Only 3 shell commands run, none install anything: 'ls -la && … python3 --version && python3 -c \"import torch…\"', 'curl -s https://pypi.org/pypi/torch/json | python3 -c …' (read-only PyPI query), 'python3 -m minillm info && … python3 -m unittest discover -s tests -v'; agent states 'Per the skill: never install anything myself; print the exact command' and asks the learner to run 'pip install -r requirements.txt'; all 19 files written are inside the project dir (minillm/, tests/, README.md, PROGRESS.md, requirements.txt, .gitignore)."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 326.8
+ },
+ "install_like_cmds": []
+}

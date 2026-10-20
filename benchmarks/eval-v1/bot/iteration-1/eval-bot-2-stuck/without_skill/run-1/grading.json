@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnoses Message Content Intent as cause: 'message.content 属于 Message Content Intent，必须在开发者后台和代码里同时开启，缺一个内容就是空的' and gives minimal fix: code snippet with 'intents.message_content = True  # 关键行' plus portal toggle step."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with runnable checkpoint: 'DISCORD_TOKEN=xxx python bot.py' with expected behaviour '启动后日志会打印 message_content intent = True；在频道里发一条消息，bot 回显 echo: ... 即说明修复生效'."
+  },
+  {
+   "text": "B3: Identifies the Message Content privileged intent must be enabled in the developer portal and in the client intents",
+   "passed": true,
+   "evidence": "Explicitly covers both sides: '**1. 开发者后台开启** ... Privileged Gateway Intents → 打开 Message Content Intent → Save' and '**2. 代码里声明** intents.message_content = True'; bot.py comment repeats '必须在「开发者后台」和「这里」同时开启'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0); only tool calls are glob and a write of bot.py inside the project. The 'pip install -U \"discord.py>=2.0\"' line is a comment instructing the learner, which is allowed."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 86.3
+ },
+ "install_like_cmds": []
+}

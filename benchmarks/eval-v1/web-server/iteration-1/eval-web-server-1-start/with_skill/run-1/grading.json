@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds TCP listener milestone with TODOs; no full framework",
+   "passed": true,
+   "evidence": "Agent hands only Milestone 1/7 ('Milestone 1/7 — TCP listener') and scaffolds it: server.py contains '# TODO(m1): create a TCP socket, bind it to (HOST, PORT), listen, then loop' with 'def handle_connection(conn, addr): raise NotImplementedError' and 'def main(): raise NotImplementedError'; PROGRESS.md lists milestones 2-7 as 'pending' and none are implemented — no full framework dump."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with a runnable checkpoint: 'python3 httpserver/server.py # terminal 1 / curl -v http://127.0.0.1:8080/ # terminal 2' plus expected behaviour: \"Expected: `HTTP/1.1 200 OK`, `Content-Length: 13`, and `Hello, world!` in the body\" and 'Write it, run the check, and paste whatever `curl -v` prints'."
+  },
+  {
+   "text": "B3: Mentions the request line + headers + CRLF format of an HTTP response",
+   "passed": true,
+   "evidence": "Response wire format explained: 'The wire format is plain text with `\\r\\n` line endings and a blank line separating headers from body' and 'The response must be byte-exact: status line, one `Content-Length` header matching the body, blank line, body' — status/request line, headers, and CRLF all named."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## SHELL COMMANDS RUN (0)' — no commands executed, hence no install commands; the only writes are 'httpserver/PROGRESS.md' and 'httpserver/server.py', both inside the project dir, and no package/tool installation is requested of the learner either."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 242.8
+ },
+ "install_like_cmds": []
+}

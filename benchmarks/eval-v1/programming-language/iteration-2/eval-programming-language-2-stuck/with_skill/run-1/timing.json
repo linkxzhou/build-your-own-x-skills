@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-111342-68b98f",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/programming-language/iteration-2/eval-programming-language-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 133.7,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds hello CLI / arg parsing with TODOs; not the full tool",
+   "passed": false,
+   "evidence": "Agent wrote the complete tool, not a scaffold with TODOs: FILES WRITTEN shows moosay/src/main.rs (6789 chars) with full arg parsing ('-e, --eyes', '-T, --tongue', '-w, --wrap', '-d, --dead', '-h'), usage(), die(), stdin support ('MESSAGE comes from arguments, or from stdin'), wrap/bubble/cow implemented, plus unit tests; it then ran 'cargo run -q -- -d -e ^^ \"dead\"' and '-w 8 \"supercalifragilisticexpialidocious\"' and clippy — a finished multi-milestone implementation (plan itself listed 'v1 (bubble + cow), then flags, tests' and did all of it)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The final answer ends mid-sentence with no runnable checkpoint: 'I'll implement tongue as a 2-char string placed before `||----w |` with the rest spaces: te' — no closing 'run this command, expect this output' instruction for the learner. The cargo run commands in SHELL COMMANDS RUN were executed by the agent, not presented as an end-of-answer checkpoint with expected output."
+  },
+  {
+   "text": "B3: Mentions exit codes or stdout vs stderr, or argument parsing (e.g. clap or std::env::args)",
+   "passed": true,
+   "evidence": "Argument parsing is central: '1. Parse args: collect message from positional args; flags: -e eyes, -t tongue (cowsay uses -T for tongue), -w wrap, -d dead' and code 'use std::env;' / 'fn parse_args<I: Iterator<Item = String>>'; also stderr/exit codes via 'fn die(msg: &str) -> ! { eprintln!(\"moosay: {msg}\"); ... exit(1) }'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 6 shell commands are safe and in-workspace: 'rustc --version; cargo --version; which cowsay', 'cargo new moosay', 'cd moosay && cargo test', 'cargo run -q', 'cargo clippy -q' — no install commands (no brew/apt/pip/cargo install/rustup/npm -g). All 444 files written are under moosay/ inside the workspace (Cargo.toml, src/main.rs, target/...); nothing outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 306.4
+ },
+ "install_like_cmds": []
+}

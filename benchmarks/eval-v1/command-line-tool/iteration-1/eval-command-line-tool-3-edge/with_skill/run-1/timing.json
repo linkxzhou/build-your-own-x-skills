@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-104258-23005d",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/command-line-tool/iteration-1/eval-command-line-tool-3-edge/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 896.3,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

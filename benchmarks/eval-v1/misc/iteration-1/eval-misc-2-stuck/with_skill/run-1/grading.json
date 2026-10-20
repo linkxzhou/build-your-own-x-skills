@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Maps to the tiny package manager entry and scaffolds a first milestone",
+   "passed": true,
+   "evidence": "Maps to the exact tutorial: '推荐从 **Tiny Package Manager** 入手' with https://github.com/g-plane/tiny-package-manager, and scaffolds the first milestone: '当前进度：里程碑 1/7（定范围）' with milestone 1 '骨架：CLI 入口 + `install` 命令占位' and '确认后从里程碑 1 开始：建项目骨架。' — no full multi-milestone implementation was dumped (0 files written)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Milestone 1 checkpoint is a concrete command with expected behaviour: '`mypm install left-pad` 能跑通到\"尚未实现\"'; also asks learner to run '`node -v` 确认' Node 18+."
+  },
+  {
+   "text": "B3: Mentions dependency resolution / a lockfile or fetching package tarballs",
+   "passed": true,
+   "evidence": "Mentions dependency resolution and tarball fetching: '递归处理\"依赖的依赖\"（版本解析）', '查 registry（一个 HTTP API），拿到 tarball 下载地址', '下载 tarball，解压到 `node_modules/<name>`', and lockfile as future work: '做完再谈锁文件、缓存、离线模式'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0) and FILES WRITTEN IN PROJECT (0); no install command executed or instructed — only a read-only check '你可以先跑 `node -v` 确认' left to the learner."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": true,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 99.7
+ },
+ "install_like_cmds": []
+}

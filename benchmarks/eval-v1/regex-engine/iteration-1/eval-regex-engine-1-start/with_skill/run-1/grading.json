@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds literal/./^/$ matching with TODOs; not a full NFA engine",
+   "passed": true,
+   "evidence": "regex.py scaffolds exactly milestone 1: 'NOT_IMPLEMENTED = True  # delete this line once match_here is written' and match_here body is 'raise NotImplementedError(\"match_here: your code goes here\")' with a docstring pinning the four cases (literal/./^/$); search is pre-written ('You should not need to change this function'). PROGRESS.md shows milestones 2-7 'pending' (NFA is milestone 4), so no full engine was dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with a concrete checkpoint: '检查：`cd regex-lab && python3 test_regex.py`，期望 `24/24 cases passing`'; the agent also ran 'cd regex-lab && python3 test_regex.py; echo \"exit=$?\"' to verify the harness (0/24, exit=1 in unimplemented state)."
+  },
+  {
+   "text": "B3: Mentions Rob Pike's recursive matcher or an equivalent recursive approach for the first features",
+   "passed": true,
+   "evidence": "regex.py docstring: 'Milestone 1: literal chars, . ^ $ — a Pike-style recursive matcher. Reference: Rob Pike, \"A Regular Expression Matcher\" https://www.cs.princeton.edu/courses/archive/spr09/cos333/beautiful.html'; PROGRESS.md: 'Also following Rob Pike's matcher for milestone 1'; answer explains '两个互相递归的函数…每次只消费模式的一个元素，然后递归处理剩余部分'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only two shell commands ran: 'ls -la && python3 --version' and 'cd regex-lab && python3 test_regex.py; echo \"exit=$?\"' — no install commands. All 4 files written are inside regex-lab/ (PROGRESS.md, regex.py, test_regex.py, __pycache__/regex.cpython-314.pyc from the test run); nothing outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 330.5
+ },
+ "install_like_cmds": []
+}

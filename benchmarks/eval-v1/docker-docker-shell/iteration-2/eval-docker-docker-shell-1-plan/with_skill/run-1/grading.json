@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Scaffold with stubs, not a full implementation: bocker_run() body is 'echo \"TODO(m1): bocker_run $*\" >&2; return 1', _init() is 'TODO(m2)', M3-M6 are TODO comments; agent tells learner '你要写的：bocker/bocker 里的 bocker_run() ... 把 TODO 换成' — learner writes the code, only M1 is described."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete checkpoint: 'sudo ./bocker run alpine /bin/echo hi' with '# 期望输出：hi （当前 stub 会打印 TODO(m1) 并 exit 1）' and '写完 bocker_run 后跑上面这条命令，把实际输出贴给我——过了就进 M2'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (docker-docker-shell): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones match bocker's actual stages in bash: 'run 一条命令 — 父子 re-exec', 'UTS + PID namespace', 'mount ns + pivot_root + alpine rootfs', 'cgroups v2 — memory/pids', 'veth pair + bridge + NAT', 'overlayfs + ps/images/rm/log', aligned to upstream p8952/bocker; PROGRESS.md cites CLONE_NEWUTS/CLONE_NEWPID, memory.max/pids.max."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Agent commands were read-only or in-project: 'mkdir -p bocker/scratch && chmod +x bocker/bocker && bash -n bocker/bocker'; no install run. README asks learner to install: 'inside the VM: sudo apt-get install -y curl btrfs-progs iptables as needed' — learner-side, allowed."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": true,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 208.4
+ },
+ "install_like_cmds": []
+}

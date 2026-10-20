@@ -1,0 +1,40 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only M0 implemented; M1-M6 are TODO stubs: data.py 'M1：数据管线（TODO：你来写）', unet.py 'TODO：你来写', train.py/sample.py/evaluate.py likewise. README: '当前里程碑的代码我可以给完整实现；之后的里程碑先自己试，卡住了我再给提示（一次一个）'. Final answer: '当前位置：M0 / M6 完成' and hands M1 to the learner: '按里面的接口提示实现 get_dataloader'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete command + expected output: 'python3 -c \"from diffusion_lab.data import get_dataloader; b,_ = next(iter(get_dataloader(4))); print(b.shape, b.min().item(), b.max().item())\"' with '预期输出 torch.Size([4, 1, 28, 28]) 和约 -1.0 / 1.0'; M0 checkpoint already verified: 'python3 -m pytest tests/ -q' → '3 passed'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (ai-model-diffusion-python): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones M0-M6 match DDPM tutorial stages with specific concepts: 'beta/alpha/alpha_bar、后验方差', 'q(x_t|x_0) 加噪、q_sample', '时间嵌入、下采样/上采样、跳跃连接', 'MSE 噪声预测损失', 'DDPM 反向循环 p(x_{t-1}|x_t)', 'FID-lite、DDIM、classifier-free guidance'; tied to the actual tutorial: 'Hugging Face Diffusion Course — Unit 1' link, Ho et al. 2020 arXiv:2006.11239, MNIST [B,1,28,28], T=1000, beta∈[1e-4,0.02]"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 7 shell commands are read-only checks or test runs (ls, grep, python3 --version, import probes, pytest, find) — no install commands. Agent explicitly declined: '我按规则不代跑安装' and gave the learner the command: 'uv venv --python 3.12 .venv && source .venv/bin/activate && uv pip install -r requirements.txt'. All 15 files written are inside the project dir (diffusion_lab/, tests/, README.md, PROGRESS.md, requirements.txt)"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 415.7
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-095001-365635",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/network-stack/iteration-1/eval-network-stack-1-start/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 96.5,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

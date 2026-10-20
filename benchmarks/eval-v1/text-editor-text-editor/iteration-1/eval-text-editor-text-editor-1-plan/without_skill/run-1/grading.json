@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "kilo.c is a 599-char minimal skeleton: only TODO comments ('/* TODO(M1): enableRawMode() — 进入原始终端模式 */') and a printf; MILESTONES.md plans M1–M7 with all boxes unchecked ('- [ ] `enableRawMode()`...'), i.e. scaffold + roadmap, first/current milestone only, no complete implementation."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer states the checkpoint with commands and expected behaviour: '骨架已就绪并验证通过（`make` 零警告、`./kilo` 可运行、首次提交 `dfc4cf2`）'; MILESTONES.md M0 acceptance: '`kilo.c` 能编译出 `./kilo`，运行后打印版本并退出' and next-step M1 acceptance 'Ctrl-Q 退出且终端状态恢复正常'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (text-editor-text-editor): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the kilo/snaptoken tutorial stages with its exact concepts: M1 raw mode ('tcgetattr/tcsetattr 关闭 ECHO、ICANON... OPOST... IXON、ICRNL、BRKINT... VMIN = 0、VTIME = 1'), M2 'editorReadKey()... ESC[6n... ioctl(TIOCGWINSZ)', M3 'erow 结构', M4 'editorRowsToString() + editorSave()... ftruncate', M5 'editorFind() Ctrl-F', M6 'hl 位标志数组... 多行注释状态机', M7 'Ctrl-L 清屏重绘' — tutorial-specific, not generic."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Only shell command: 'make && ./kilo && make clean && make ... && git init -q && git add -A && git commit ...' — no install commands; files written are MILESTONES.md, Makefile, README.md, kilo.c, .gitignore, all inside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 287.7
+ },
+ "install_like_cmds": []
+}

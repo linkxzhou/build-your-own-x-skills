@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged T0–T7 milestone plan (TASKS.md), not a finished emulator; T0 prompt says 「不要替我写 chip8.cpp 的实现体，只留接口和 TODO」 and 「完整代码只在你尝试过之后、或你明确要求时，且只给当前任务的部分」"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Each task ends with a runnable checkpoint with expected behaviour: 「cmake -B build && cmake --build build; ./build/chip8 # 无参数时打印用法: usage: chip8 [--cycles N] [--step] [--dump] rom」; T1 「单测：字体集在 0x50、ROM 载入 0x200、pc==0x200」"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (emulator-virtual-machine-chip8-interpreter): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones map to the tutorial's actual sections (Before you start/Game Loop, CPU Specifications, Emulation cycle, Opcode examples, Handling graphics and input, Suggestions) with tutorial-specific detail: 「完整 35 条指令」, 「ANNN/00E0/00EE/1NNN/2NNN」, 「FX55/FX65 的 I 自增、8XY6/8XY7 移位源、DXYN 越界行为」, default C++ (教程原版栈), plus embedded errata (fontset 0x50, 60Hz)"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": false,
+   "evidence": "No install commands were run, but a shell command wrote outside the project dir: 「curl -sL --max-time 25 'https://multigesture.net/...' -o /tmp/chip8.html」 and python wrote /tmp/chip8.md (later referenced by 「grep -n ... /tmp/chip8.md」 and 「sed -n '39,120p' /tmp/chip8.md」)"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 552.4
+ },
+ "install_like_cmds": []
+}

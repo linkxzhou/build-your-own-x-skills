@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint rather than rewriting the server",
+   "passed": true,
+   "evidence": "Diagnoses the cause ('handle(conn) runs synchronously inside the accept loop, so the loop is stuck inside the first client's handler until that client disconnects') and gives a minimal fix: a small accept-loop snippet with 'go handle(conn)' plus 'defer conn.Close()' in handle — a hint-level patch, not a server rewrite."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with 'Two things to keep in mind as you grow it:' followed by prose bullets about goroutines and sync.Mutex. No concrete command to run (e.g. redis-cli PING / two-terminal test) and no expected output/behaviour is given anywhere."
+  },
+  {
+   "text": "B3: Identifies that handle(conn) blocks the accept loop and must run concurrently (e.g. `go handle(conn)`) or use an event loop",
+   "passed": true,
+   "evidence": "'handle(conn) runs synchronously inside the accept loop, so the loop is stuck inside the first client's handler until that client disconnects' and 'Fix: serve each connection in its own goroutine' with code 'go handle(conn)'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only tool call is glob {\"pattern\": \"**/*.go\"}. No install commands and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 33.2
+ },
+ "install_like_cmds": []
+}

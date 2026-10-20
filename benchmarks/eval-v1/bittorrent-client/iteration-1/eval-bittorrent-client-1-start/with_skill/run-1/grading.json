@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds bencode parsing (or the first milestone) with TODOs; no full client",
+   "passed": true,
+   "evidence": "Only milestone-1 scaffold written: bencode/bencode.go has every function as a stub — 'return nil, 0, ErrNotImplemented' with '// TODO: dispatch on the first byte', '// TODO: find the terminating 'e'', etc.; main.go says '// TODO(milestone 1): decode `raw` with bencode.Decode'. No tracker/handshake/download code exists; PROGRESS.md shows milestones 2-7 with empty Status cells. Final answer coaches ('What to write next — all TODOs live in bencode/bencode.go', 'Don't dump the solution') rather than implementing."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Ends with concrete checkpoint: '**How to check it:** go test ./bencode/ # all green, including round-trip and error cases; go run . ubuntu.torrent # prints announce, name, length' and 'milestone 1 is done when tests are green and `go run .` prints a real torrent's name and length.'"
+  },
+  {
+   "text": "B3: Describes bencode types: strings <len>:<data>, integers i<n>e, lists l...e, dicts d...e",
+   "passed": true,
+   "evidence": "'It has exactly four types: `i42e` (integers), `4:spam` (byte strings: length, colon, bytes), `l...e` (lists), and `d...e` (dicts whose keys are always byte strings, sorted when encoding).' All four types with concrete examples."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 4 shell commands are non-installing: 'go version 2>&1; echo \"---\"; ls' and three runs of 'go build ./... && go vet ./... && go test ./bencode/'. All writes (go.mod, main.go, PROGRESS.md, bencode/bencode.go, bencode/bencode_test.go) are inside the project dir; agent noted 'Go 1.26.1 is available' without installing anything."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 479.3
+ },
+ "install_like_cmds": []
+}

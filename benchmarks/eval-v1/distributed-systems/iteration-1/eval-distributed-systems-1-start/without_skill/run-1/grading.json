@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the append-only log milestone with TODOs; no full broker",
+   "passed": false,
+   "evidence": "FILES WRITTEN IN PROJECT (0) — no scaffold files or TODOs were created; the answer is prose only (API sketch + disk layout). It does stay scoped to the first milestone ('第一步：先做单机上的 append-only log（WAL）') with later milestones only named as a roadmap, but 'scaffolds ... with TODOs' is unmet."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Ends with a verification description, not a runnable checkpoint: '验证标准：一个测试里并发 Append 1 万条，逐条 Read 校验内容和顺序；杀掉进程重启后…' — no concrete command (e.g. go test/go run) and no expected output; nothing runnable exists since 0 files were written."
+  },
+  {
+   "text": "B3: Describes an append-only log with offsets (segments/index)",
+   "passed": true,
+   "evidence": "'每个 segment 两个文件：`<baseOffset>.log`（数据）和 `<baseOffset>.index`（稀疏索引）'; 'offset 是逻辑递增的，跨 segment 连续'; '索引每 N 条记录或 N 字节记一条 `offset → 文件内位置`'; record format '[len uint32][crc32][payload]'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (0), FILES WRITTEN IN PROJECT (0); only tool call was glob {\"pattern\": \"**/*\"}; no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) appear in the answer."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 50.9
+ },
+ "install_like_cmds": []
+}

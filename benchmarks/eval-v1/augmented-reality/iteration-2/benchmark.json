@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "augmented-reality",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:49Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 207.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the first milestone (camera/image input or feature detection) with TODOs; no full AR pipeline code",
+          "passed": true,
+          "evidence": "Wrote only a milestone-1 skeleton: '\u65b0\u5efa `ar_cube.py`\uff0c\u6838\u5fc3\u7559\u7ed9\u4f60\u5199' \u2014 file contains just load_images() with cv2.imread plus 'TODO 1: ...\u52a0\u65ad\u8a00', 'TODO 2: \u6253\u5370\u4e24\u5f20\u56fe\u7684 shape', 'TODO 3: cv2.imshow...' and '...'; no feature matching/homography/cube-rendering code, milestones 2-6 are only a text roadmap"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final reply ends: '**\u68c0\u67e5\u70b9**\uff1a`python ar_cube.py` \u2192 \u6253\u5370\u4e24\u4e2a\u5c3a\u5bf8\uff08\u5982 `(480, 640)`\uff09\uff0c\u5f39\u51fa\u4e24\u4e2a\u7070\u5ea6\u7a97\u53e3\u3002\u8dd1\u901a\u540e\u628a\u8f93\u51fa\u8d34\u7ed9\u6211\uff0c\u8fdb\u91cc\u7a0b\u7891 2' \u2014 concrete command plus expected output/behaviour"
+        },
+        {
+          "text": "B3: Mentions feature detection/matching and a homography or pose estimate as the core steps",
+          "passed": true,
+          "evidence": "Milestone list: '2. **\u7279\u5f81\u68c0\u6d4b** \u2014 ORB/SIFT \u5173\u952e\u70b9', '3. **\u7279\u5f81\u5339\u914d** \u2014 BFMatcher + Lowe ratio test', '4. **\u5355\u5e94\u77e9\u9635 / \u4f4d\u59ff** \u2014 RANSAC \u6c42 homography', '5. **\u6e32\u67d3\u7acb\u65b9\u4f53** \u2014 \u7528\u4f4d\u59ff\u628a 3D \u7acb\u65b9\u4f53\u6295\u5f71\u53e0\u52a0\u5230\u6807\u8bb0\u4e0a'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command run was read-only: 'ls -a; echo ---; python3 --version ... python3 -c \"import cv2, numpy; print(...)\"'; install left to learner: '\u5148\u505a\u4e24\u4ef6\u4e8b\uff08\u4f60\u81ea\u5df1\u8dd1\uff0c\u6211\u4e0d\u4ee3\u88c5\uff09\uff1apip install opencv-python numpy' printed in a fence; only file written is ar_cube.py inside the project"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 126.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": false,
+          "evidence": "Agent did diagnose ('Default method=0 is plain least squares: every bad match pulls the solution') and gave one-line fixes, but then wrote homography_tracker.py, 'a runnable reference implementation of the corrected pipeline' implementing every fix at once (NORM_HAMMING, knn ratio test, USAC_MAGSAC, inlier/convexity/area gates with fallback, corner smoothing) \u2014 a complete multi-milestone implementation instead of the current milestone it itself defined ('Fix 1 and 2 first')."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a concrete command: 'Run it against your target image and camera: python homography_tracker.py target.jpg' plus expected behaviour \u2014 'the two lines that most likely fix the jumping are cv.NORM_HAMMING (line 76) and cv.USAC_MAGSAC (line 92)', with gates that 'fall back to the last good H'."
+        },
+        {
+          "text": "B3: Recommends filtering matches (ratio test / cross-check) and using RANSAC in findHomography",
+          "passed": true,
+          "evidence": "'Use knnMatch with k=2 + Lowe's ratio test (0.7-0.75 for ORB)' / 'bf = cv.BFMatcher(cv.NORM_HAMMING); matches = bf.knnMatch(des1, des2, k=2)' and 'H, mask = cv.findHomography(src_pts, dst_pts, cv.USAC_MAGSAC, 4.0, maxIters=2000)'; 'Always run it through RANSAC'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'SHELL COMMANDS RUN (0)' \u2014 nothing executed, so no install commands; only glob/grep/write tool calls, and the single write is listed under 'FILES WRITTEN IN PROJECT (1): homography_tracker.py', inside the project dir."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 299.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Offers a workable path with static images or a video file instead of a webcam",
+          "passed": true,
+          "evidence": "\"Yes \u2014 a webcam is optional for this project. The Python + OpenCV track runs entirely on still images, and every milestone has a camera-free version\" \u2014 M1 loads images from disk, M2\u20135 are \"pure image processing, no camera involved\", M6 accepts \"a saved frame sequence\" via cv2.warpPerspective or phone photos; plus a \"Fully synthetic (zero hardware)\" route."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final reply ends: \"**How to check it:** `python ar-marker-demo/m1_input.py` \u2192 prints `reference: (200, 200, 3), scene: (...)` and opens two windows; any key closes them.\" Earlier: generate marker one-liner with \"(expected: `marker.png` exists, a black square with a white square inside)\"."
+        },
+        {
+          "text": "B3: Explains using a reference image plus scene images/video frames as input",
+          "passed": true,
+          "evidence": "\"Milestone 1 (input): load a reference marker image + a scene image from disk instead of grabbing frames\"; \"generate the marker yourself (draw it with OpenCV), then create 'scene' images by warping it onto photos\"; \"any phone photo of the printed marker + a few shots of it on a desk\"; \"Live video is just this pipeline run at 30 fps; the math is identical on one frame.\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "\"SHELL COMMANDS RUN (0)\"; only file written is ar-marker-demo/m1_input.py (inside project). Install left to learner: \"Then install what's missing (you run this, I don't): pip install opencv-python numpy\" and \"(you run installs, I don't)\"."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 131.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the first milestone (camera/image input or feature detection) with TODOs; no full AR pipeline code",
+          "passed": false,
+          "evidence": "Agent wrote the complete pipeline in one shot, not a first-milestone scaffold with TODOs: final answer says \u4e3b\u5faa\u73af\u9aa8\u67b6\uff08\u68c0\u6d4b + \u4f4d\u59ff + \u753b\u7acb\u65b9\u4f53\uff0c\u4e00\u6b65\u5230\u4f4d\uff09 and ar_cube.py contains the full chain cv2.aruco.detectMarkers \u2192 cv2.solvePnP \u2192 cv2.projectPoints \u2192 cv2.line for all 12 cube edges, with no TODOs anywhere."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete runnable commands with expected behaviour: 'python ar_cube.py --save-marker   # \u751f\u6210 marker.png\uff0c\u6253\u5370\u6216\u624b\u673a\u663e\u793a' and 'python ar_cube.py                 # Esc \u9000\u51fa', plus verification checkpoint '\u5148\u786e\u8ba4\u6807\u8bb0\u80fd\u88ab\u68c0\u6d4b\u5230\uff08\u753b\u9762\u4e0a\u51fa\u73b0\u7eff\u6846\uff09'."
+        },
+        {
+          "text": "B3: Mentions feature detection/matching and a homography or pose estimate as the core steps",
+          "passed": true,
+          "evidence": "Core steps explicitly listed: '1. \u6807\u8bb0\u68c0\u6d4b \u2014 \u7528 ArUco \u6807\u8bb0' and '3. \u4f4d\u59ff\u4f30\u8ba1 \u2014 cv2.solvePnP \u628a\u6807\u8bb0 4 \u4e2a\u89d2\u70b9\u7684 2D\u21943D \u5bf9\u5e94\u89e3\u6210 rvec/tvec'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (0); only tool calls were glob and a write of ar_cube.py inside the project. The 'pip install opencv-contrib-python numpy' line is an instruction to the learner, which is allowed."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 105.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint",
+          "passed": true,
+          "evidence": "Diagnoses ranked causes ('Wrong distance norm. cv2.BFMatcher() defaults to L2, which is meaningless for ORB's binary descriptors \u2014 matches come out near-random'; 'Feeding all matches to findHomography'; 'Swapped point sets') and gives a minimal 'Fixed core:' snippet (~15 lines: knnMatch + ratio test + findHomography RANSAC) for the current milestone only, no multi-milestone dump, 0 files written."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends with 'Two more things that help once the above is in: raise nfeatures... smooth the four projected corners with an exponential moving average' \u2014 no concrete command to run and no expected output/behaviour anywhere."
+        },
+        {
+          "text": "B3: Recommends filtering matches (ratio test / cross-check) and using RANSAC in findHomography",
+          "passed": true,
+          "evidence": "'Filter first (Lowe ratio test), then run RANSAC'; code: 'good = [m for m, n in matches if m.distance < 0.75 * n.distance]' and 'H, mask = cv2.findHomography(src, dst, cv2.RANSAC, 4.0)'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command is 'ls -la .../build-your-own-x-augmented-reality-2' (read-only, inside project); other calls are glob/grep; FILES WRITTEN (0); no install commands."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 227.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Offers a workable path with static images or a video file instead of a webcam",
+          "passed": true,
+          "evidence": "Offers video-file path: 'Pre-recorded video (easiest) \u2014 film the printed marker with a phone... cv2.VideoCapture('marker.mp4') works identically to a camera index' plus code 'cap = cv2.VideoCapture(\"marker.mp4\")' and 'Fully synthetic video \u2014 composite the marker image onto a background... Zero hardware'; also 'Image sequences / single images \u2014 even a static photo works'."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Reply ends with 'If you want the \"live\" feel later, swap the file path for DroidCam's URL \u2014 the rest of the code is unchanged.' \u2014 no concrete run command with expected output at the end; the snippet itself is incomplete (K/dist undefined). Usage commands exist only inside ar_demo.py's docstring and the transcript shows no closing message delivering a checkpoint (it ends mid-planning: 'project cube, draw edges, draw axes maybe skip.')."
+        },
+        {
+          "text": "B3: Explains using a reference image plus scene images/video frames as input",
+          "passed": true,
+          "evidence": "Explains reference + scene inputs: 'Print the marker with cv2.aruco.generateImageMarker (OpenCV \u2265 4.7), detect, estimatePoseSingleMarkers, then cv2.projectPoints the cube's 8 corners and draw the 12 edges'; 'reads the video, detects the marker, estimates pose, draws a wireframe cube overlay, writes an output video'; synthetic path 'composite the marker image onto a background with slight perspective/rotation changes (OpenCV warpPerspective over frames)'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'SHELL COMMANDS RUN (0)'; only tool calls are glob and write of ar_demo.py under 'FILES WRITTEN IN PROJECT (1)'; no install executed \u2014 docstring asks the learner: 'Requires: pip install opencv-python numpy'."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 210.8667,
+        "stddev": 86.652,
+        "min": 126.0,
+        "max": 299.2
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.0,
+        "min": 0.75,
+        "max": 0.75
+      },
+      "time_seconds": {
+        "mean": 154.9667,
+        "stddev": 63.9026,
+        "min": 105.8,
+        "max": 227.2
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.17",
+      "time_seconds": "+55.9",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

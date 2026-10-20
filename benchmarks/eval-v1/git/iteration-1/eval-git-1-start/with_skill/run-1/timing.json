@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-093629-60b3e1",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/git/iteration-1/eval-git-1-start/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 241.2,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

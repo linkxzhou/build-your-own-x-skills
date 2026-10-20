@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-101903-b863c5",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runspt/docker-docker-shell/iteration-1/eval-docker-docker-shell-1-plan/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 281.5,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

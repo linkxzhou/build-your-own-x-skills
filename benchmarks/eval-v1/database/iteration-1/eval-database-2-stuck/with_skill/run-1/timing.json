@@ -1,0 +1,8 @@
+{
+  "session_id": "20261020-092306-439ac9",
+  "project": "/Users/linkxzhou/skev/byox-eval/v1/runs/database/iteration-1/eval-database-2-stuck/with_skill/project",
+  "returncode": 0,
+  "total_duration_seconds": 33.2,
+  "timeout": 900,
+  "denied_dangerous_prompts": 0
+}

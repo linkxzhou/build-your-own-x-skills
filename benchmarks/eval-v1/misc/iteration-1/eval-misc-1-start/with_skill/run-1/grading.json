@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Picks a matching upstream entry and scaffolds the first milestone; no full server",
+   "passed": false,
+   "evidence": "Upstream entry picked: 'the canonical upstream tutorial is Building a DNS server in Rust (Emil Hernvall)'. But no first-milestone scaffold exists: 'FILES WRITTEN IN PROJECT (0)' and scaffolding is deferred — 'Tell me the language and I'll scaffold milestone 1.' No full server was written either, but the required milestone-1 scaffold is absent."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'Defined done as: `dig @127.0.0.1 -p 5353 example.test A` returns a valid answer'; milestones 'each ends with a runnable check', e.g. '`dig` gets a valid NXDOMAIN response', '`dig @127.0.0.1 -p 5353 example.test` returns your IP' — concrete command plus expected behaviour."
+  },
+  {
+   "text": "B3: Mentions UDP port 53 (or a high test port) and the DNS message header/question format",
+   "passed": true,
+   "evidence": "Port: 'a DNS server that listens on UDP `127.0.0.1:5353`' (high test port). Header/question format: 'Byte layout: ID, flags, counts; name compression pointers' and 'Header + question parser'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only shell command was a tool-version check plus ls ('command -v $t >/dev/null 2>&1 && echo \"$t: $($t --version ...)\" ...; ls') — no install commands; 0 files written; reads confined to .agents/skills/build-your-own-x/... inside the workspace; tools already present so no install request needed."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 82.2
+ },
+ "install_like_cmds": []
+}

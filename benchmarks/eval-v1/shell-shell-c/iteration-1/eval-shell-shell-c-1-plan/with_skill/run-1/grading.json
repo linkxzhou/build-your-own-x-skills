@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "README.md contains a staged 7-milestone roadmap table (REPL→外部程序→内建→引号/环境变量→重定向→管道→信号/作业); mysh.c leaves 'TODO(里程碑 2): fork + execvp + waitpid', 'TODO(里程碑 3): cd 内建', 'TODO(里程碑 5): 重定向', 'TODO(里程碑 6): 管道'; only milestone 1 (REPL echo loop) is implemented, matching the first-milestone scope; README 学习方式 states '你写核心 → 跑检查点 … 卡住时一次给一个提示，不直接给答案'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "README.md: 'make test # 跑 tests/smoke.sh（当前里程碑的检查点）'; tests/smoke.sh defines concrete checks with expected output 'PASS: 回显' and 'PASS: exit / EOF 干净退出'; PROGRESS.md records '| 1. REPL 循环 | `make test` | PASS（回显 + exit/EOF 干净退出） |'; command log shows 'chmod +x tests/smoke.sh && make … && make test' was actually run"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (shell-shell-c): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "README anchors to the actual upstream tutorial kamalmarhubi/shell-workshop and maps milestones to its exercises: Ex1 'getline、EOF', Ex2–4 'fork + execvp + waitpid', Ex5–6 '为什么 cd 必须在 shell 进程内执行（chdir）', Ex7–8 'pipe()、及时关闭 fd、等待每个子进程'; parse.h/parse.c mirror the workshop's Rule 0 parse scaffolding; agent curl-fetched the upstream README/parse.h/tree to align stages; C/POSIX-specific throughout (dup2, SIGINT, -std=c11 -Wall -Wextra -Werror)"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 12 commands are workspace-safe: ls/version probes, curl reads of githubusercontent piped to head/grep (no writes), chmod +x tests/smoke.sh, make/make test/make clean, git init/add/commit inside the project; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere; all 10 written files (Makefile, mysh.c, parse.c/.h, README.md, PROGRESS.md, .gitignore, tests/smoke.sh, build artifacts) are inside the project dir"
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": []
+}

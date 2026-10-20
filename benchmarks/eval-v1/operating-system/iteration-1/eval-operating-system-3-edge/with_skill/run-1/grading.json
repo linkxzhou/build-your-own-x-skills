@@ -1,0 +1,44 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Does not run installs itself; prints the commands and asks the learner to run them",
+   "passed": false,
+   "evidence": "AGENT FINAL ANSWER section is empty — no install commands printed to the learner and no request to run them (agent did also run none itself, but nothing was communicated)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Final answer is empty; transcript ends with internal edits (e.g. edit to blog_os/Cargo.toml adding bootimage dev-dependency) with no concrete run command or expected output/behaviour."
+  },
+  {
+   "text": "B3: Lists the needed tools (e.g. QEMU, nightly + rust-src, bootimage) as commands for the learner",
+   "passed": false,
+   "evidence": "No tools list for the learner anywhere: final answer empty; written files are only build config/sources (blog_os/Cargo.toml, blog_os/rust-toolchain.toml, blog_os/src/main.rs, target/ artifacts)."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "23 shell commands contain no install commands — only reads (ls/which/cat), 'rustup component list --toolchain nightly --installed', builds ('cargo build', 'cargo fetch', 'cargo bootimage'), 'llvm-objcopy -I elf64-x86-64 -O binary ... target/bootimage-blog_os.bin' and python3 verification; all write/edit calls target blog_os/ paths."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 1,
+  "failed": 3,
+  "total": 4,
+  "pass_rate": 0.25
+ },
+ "timing": {
+  "total_duration_seconds": 900.0
+ },
+ "install_like_cmds": [
+  "uname -a; cat /etc/os-release 2>/dev/null | head -3; which qemu-system-x86_64 qemu-system-i386 rustup cargo rustc 2>/dev/null; echo \"---\"; rustc --version 2>/dev/null; cargo --version 2>/dev/null; rustup toolchain list 2>/dev/null; echo \"---\"; ls",
+  "ls .agents/skills/build-your-own-x/skills/ | grep '^operating-system'; echo \"---components---\"; rustup component list --toolchain nightly --installed 2>/dev/null; echo \"---brew---\"; which brew && brew --version | head -1; echo \"---qemu---\"; ls /opt/homebrew/bin/qemu* 2>/dev/null; ls /usr/local/bin/qemu* 2>/dev/null; echo none-found"
+ ]
+}

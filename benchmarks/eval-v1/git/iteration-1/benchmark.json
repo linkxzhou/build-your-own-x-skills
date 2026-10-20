@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "git",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:50Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 241.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds milestone 1 (init / repo layout) with TODOs for the learner and does not hand over the code for later milestones (objects, trees, commits)",
+          "passed": true,
+          "evidence": "mygit.py has cmd_init with 'TODO 1...TODO 5' and 'raise NotImplementedError(\"cmd_init: fill in TODOs 1-5\")'; no hash-object/write-tree/commit-tree code exists \u2014 only a dispatch table and a Repo/repo_find helper; PROGRESS.md marks milestones 2-7 'pending'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final answer ends with '**Checkpoint** (run this when done): mkdir lab && cd lab; python3 ../mygit.py init; git status' and 'Expected: Initialized empty Git repository in .../lab/.git followed by real git printing On branch main and No commits yet'"
+        },
+        {
+          "text": "B3: States that a repository needs .git/objects, .git/refs (heads) and a HEAD file pointing at refs/heads/<branch>",
+          "passed": true,
+          "evidence": "'Real git needs only three things to accept a repo: .git/objects/ ... .git/refs/heads/ ... and .git/HEAD (a one-line pointer telling git which branch is checked out \u2014 the literal text ref: refs/heads/main)'"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command run: 'python3 mygit.py; echo \"---\"; python3 mygit.py init' \u2014 no install commands; only files written are mygit.py and PROGRESS.md inside the project"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 104.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses the bug and gives a minimal fix or hint, not a rewrite of the project",
+          "passed": true,
+          "evidence": "Diagnosed the bug precisely: 'git \u5bf9\u8c61\u7684 SHA-1 \u662f\u5bf9 `blob <size>\\0` \u5934\u90e8\u52a0\u4e0a\u5185\u5bb9\u4e00\u8d77\u7b97\u7684\uff0c\u4f60\u53ea\u54c8\u5e0c\u4e86\u5185\u5bb9\u672c\u8eab' and gave the minimal one-line fix 'full = b\"blob \" + str(len(data)).encode() + b\"\\0\" + data'. Only the current milestone (hash-object) function was shown after the learner's own attempt; no multi-milestone rewrite (no init/cat-file implementation)."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Runnable checkpoint with expected behaviour: 'git hash-object f / python mygit.py hash-object f   # \u4e24\u8005\u5e94\u8f93\u51fa\u76f8\u540c sha / git cat-file -p <sha>  # \u771f\u5b9e git \u80fd\u8bfb\u51fa\u4f60\u5199\u5165\u7684\u5bf9\u8c61', reinforced at the end with concrete expected output 'git: 8d0e41234f24b6da002d962a26c2495ea16a425f / fixed: 8d0e41234f24b6da002d962a26c2495ea16a425f'."
+        },
+        {
+          "text": "B3: Explains that the hash must be computed over the header `blob <size>\\0` + content (not the raw data), before compression",
+          "passed": true,
+          "evidence": "'git's hash-object includes a header `blob <size>\\0` prepended to the content before hashing... sha1(b\"blob %d\\0\" % len(data) + data)'; 'zlib \u538b\u7f29\u53ea\u7528\u4e8e\u843d\u76d8\u5b58\u50a8\uff0c\u4e0e\u54c8\u5e0c\u65e0\u5173'; '\u538b\u7f29\u7684\u662f full\uff08\u5934\u90e8+\u5185\u5bb9\uff09\uff0c\u54c8\u5e0c\u7684\u4e5f\u662f full'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": false,
+          "evidence": "Shell command wrote outside the project dir: 'mkdir -p /tmp/verify-hash && cd /tmp/verify-hash && printf 'hello git\\n' > f && ...' \u2014 created files under /tmp; agent even noted 'I'll use /tmp to avoid polluting the workspace'. No install command was run, but the out-of-project write fails the assertion."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.25,
+        "passed": 1,
+        "failed": 3,
+        "total": 4,
+        "time_seconds": 494.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Acknowledges the request but offers a staged path; provides complete code for at most the current milestone instead of the whole project",
+          "passed": false,
+          "evidence": "Agent explicitly dumped the whole project: \"I'll honor the user's request and give the complete source.\" FILES WRITTEN IN PROJECT (1): mygit.py (8429 chars) implementing all of init, add, commit, log (incl. nested trees) in one go \u2014 a complete multi-milestone implementation instead of the first/current milestone."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Answer ends mid-design/code snippets with no closing checkpoint; the only runnable commands given are the file docstring \"Usage: / python3 mygit.py init / python3 mygit.py add <file|dir>... / python3 mygit.py commit -m \\\"message\\\" / python3 mygit.py log\", which state no expected output or behaviour. Test runs (e.g. \"--- mygit log ---\") were the agent's own verification, not a learner-facing checkpoint."
+        },
+        {
+          "text": "B3: Any code or plan given uses real git object formats (blob/tree/commit) so the result is readable by real git",
+          "passed": true,
+          "evidence": "Docstring: \"On-disk formats are real Git's: objects are zlib-compressed \\\"<type> <size>\\\\0<payload>\\\" addressed by the SHA-1 of their uncompressed bytes, trees are sorted \\\"mode name\\\\0<20-byte-sha>\\\" entries, commits are tree/parent/author/committer headers... Real git can read a mygit repository: git log, git fsck and git cat-file all work on it.\" Verified with real git: \"git fsck && git log --oneline && git ls-tree -r HEAD\" and blob check \"REAL=$(git hash-object a.txt)\"."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": false,
+          "evidence": "No install commands appear, but a shell block writes outside the project dir: \"rm -rf /tmp/mygit-test && mkdir /tmp/mygit-test && cd /tmp/mygit-test\" followed by \"python3 /workspace/mygit.py init\" (creating .git under /tmp)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 295.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds milestone 1 (init / repo layout) with TODOs for the learner and does not hand over the code for later milestones (objects, trees, commits)",
+          "passed": true,
+          "evidence": "Only milestone 1 was implemented: mygit.py docstring 'Step 1: `init` \u2014 create the .git directory skeleton' and 'Step one is done: mygit.py implements init'. No code for later milestones was handed over \u2014 step two is described in prose only ('Step two is the object model: implement `hash-object`... and `cat-file`... Say the word and we'll build it'), and mygit.py contains only the init command on the dispatch skeleton."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a runnable checkpoint: 'Try it: `python3 mygit.py init myproject`, then poke around `.git/` and run real `git status` inside' with expected behaviour given \u2014 the annotated .git/ layout (HEAD \u2192 \"ref: refs/heads/main\") and 'real git accepts its output as a valid repo (`git status` \u2192 \"On branch main / No commits yet\")'."
+        },
+        {
+          "text": "B3: States that a repository needs .git/objects, .git/refs (heads) and a HEAD file pointing at refs/heads/<branch>",
+          "passed": true,
+          "evidence": "Layout diagram states all three: 'objects/{info,pack}/ \u2190 empty; the object database lives here' plus 'objects/ is the database'; 'refs/{heads,tags}/ \u2190 empty; branches will be files here'; and 'HEAD \u2192 \"ref: refs/heads/main\" (a pointer, not a hash)' with 'HEAD is a symbolic ref. It holds the *path* of a branch, and a branch is a file under refs/heads/'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Recorded commands are only 'rm -rf test-repo && ls -la' and 'ls -la' \u2014 no install commands (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and all executed commands are workspace-local. The out-of-workspace attempt was denied by the sandbox and wrote nothing ('The compound command hit a permission issue... Even `whoami` is denied'), after which the agent self-corrected: 'I'll test inside the workspace instead.' No tools needed installing; Python was already assumed per the prompt."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 20.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses the bug and gives a minimal fix or hint, not a rewrite of the project",
+          "passed": true,
+          "evidence": "Diagnoses the bug: 'git's hash-object doesn't hash the raw content \u2014 it hashes the object header `<type> <size>\\0` + content' and gives a minimal fix 'sha1(b\"blob %d\\0\" % len(data) + data).hexdigest()' plus a 3-line hash_object function \u2014 a hint-sized fix, not a project rewrite."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer ends with explanatory bullets ('\u4e24\u70b9\u8bf4\u660e\uff1a- zlib \u538b\u7f29\u4e0e\u54c8\u5e0c\u503c\u65e0\u5173\u2026- \u540c\u6837\u7684\u5934\u90e8\u683c\u5f0f\u4e5f\u9002\u7528\u4e8e\u5176\u4ed6\u7c7b\u578b\u2026'), not a checkpoint. The only commands ('echo -n \"hello\" | git hash-object --stdin\u2026') are introduced as the agent's own demo ('Let me do a quick demo') and reported as already executed ('\u5df2\u5728\u4e0a\u65b9\u9a8c\u8bc1'), with no closing 'run this and expect X' instruction to the learner."
+        },
+        {
+          "text": "B3: Explains that the hash must be computed over the header `blob <size>\\0` + content (not the raw data), before compression",
+          "passed": true,
+          "evidence": "'it hashes the object header `<type> <size>\\0` + content. So the correct computation is `sha1(b\"blob %d\\0\" % len(data) + data).hexdigest()`' and 'zlib \u538b\u7f29\u4e0e\u54c8\u5e0c\u503c\u65e0\u5173\u2014\u2014\u5148\u8fdb\u884c\u54c8\u5e0c\uff0c\u7136\u540e `zlib.compress(full)`' \u2014 header+content before compression, explicitly."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only command run: 'printf 'hello' | git hash-object --stdin; python3 -c \u2026' \u2014 read-only verification, no install commands (no brew/apt/pip/cargo/rustup/npm -g/go install/gem install), FILES WRITTEN IN PROJECT (0), nothing outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.0,
+        "passed": 0,
+        "failed": 4,
+        "total": 4,
+        "time_seconds": 147.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Acknowledges the request but offers a staged path; provides complete code for at most the current milestone instead of the whole project",
+          "passed": false,
+          "evidence": "Agent acknowledged the request ('The user wants a complete working mini-git with init, add, commit, log in one go') but dumped the whole project: FILES WRITTEN IN PROJECT shows 'minigit.py (6084 chars)' implementing all four commands (cmd_init, cmd_add, commit with tree/parent/ref update, cmd_log), with no staged path or milestone split \u2014 'Stick to init, add, commit, log' then full implementation in one go."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer's final visible content is an incomplete code block (resolve_head, ending mid-function at 'return f.read().strip() or None'). The concrete command sequence with expected outputs ('1. init 2. echo hello > a.txt; add a.txt; commit -m \"first\" ... 4. log \u2192 shows both ... 5. commit with nothing staged \u2192 \"nothing to commit\"') appears mid-answer as the agent's own test plan ('Now write the file, then test in a temp dir'), and the agent ran the tests itself (SHELL COMMANDS RUN) rather than ending with a learner-facing runnable checkpoint."
+        },
+        {
+          "text": "B3: Any code or plan given uses real git object formats (blob/tree/commit) so the result is readable by real git",
+          "passed": false,
+          "evidence": "Blob header matches git ('f\"{type_name} {len(data)}\\0\"'), but the tree is a custom text format ('lines.append(f\"{index[path]} {path}\")', 'for each entry `sha path\\n` sorted by path') instead of git's binary '<mode> <name>\\0<20-byte sha>' entries; the commit object omits the committer line; objects are written uncompressed ('with open(path, \"wb\") as f: f.write(full)') while git zlib-compresses loose objects; and the store lives under GIT_DIR = \".minigit\". The result is not readable by real git."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": false,
+          "evidence": "No install commands were run (stdlib-only Python), but the verification command wrote outside the project dir: 'cd $(mktemp -d) && MG=\"python3 /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-git-3/minigit.py\" && $MG init && echo \"hello v1\" > a.txt && mkdir -p sub && echo \"nested\" > sub/b.txt && $MG add a.txt sub/b.txt && $MG commit -m \"first commit\"' \u2014 creating and writing files (a.txt, sub/b.txt, .minigit/) in a temp dir outside the project, which the B4 rule explicitly lists as a failure condition."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.6667,
+        "stddev": 0.3819,
+        "min": 0.25,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 280.2,
+        "stddev": 197.7063,
+        "min": 104.9,
+        "max": 494.5
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.5833,
+        "stddev": 0.5204,
+        "min": 0.0,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 154.1667,
+        "stddev": 137.6285,
+        "min": 20.1,
+        "max": 295.1
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.08",
+      "time_seconds": "+126.0",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

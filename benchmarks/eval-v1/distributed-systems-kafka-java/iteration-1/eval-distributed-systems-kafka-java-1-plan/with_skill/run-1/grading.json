@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Only milestone 0 was implemented (Main.java just prints 'skeleton OK'); Log.java is a stub: 'Milestone 1: append-only log... Your job (in order): 1. append()... 2. read(offset)...' and the answer hands implementation to the learner: '下一步是里程碑 1（追加只读日志），按惯例由你来写核心代码：1. 新建 FileLog.java 实现 Log 接口'. Milestones 1-7 are a plan table only, no code."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Milestone table gives command + expected output: '| 0 | 项目骨架 ✅ | `verify.sh` 输出 `VERIFY PASS` |'; next-step check is concrete: '追加 1 万条后断言 `read(5000)` 等于第 5000 条 payload'; README: 'bash scripts/verify.sh # full skeleton check: build + run + assert' and verify.sh asserts output == 'skeleton OK' then echoes 'VERIFY PASS'."
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (distributed-systems-kafka-java): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones mirror the track skill exactly (explore note: 'Track skill distributed-systems/SKILL.md defines 7 milestones: append-only log → broker API → topics+partitions → consumer groups → replication → failure testing → stretch Raft'); Kafka-specific concepts used: 'segments/offset/index', 'key 哈希、分区内有序', 'offset 提交、rebalance', 'leader/follower、ISR、acks', Raft stretch; Java-specific: '零依赖、纯 javac 构建（Maven 兼容布局）', JDK stdlib only. Agent read distributed-systems-kafka-java/SKILL.md, tutorial-map.md, concepts.md."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "All 8 shell commands are read-only probes (ls, java -version, /usr/libexec/java_home -V) or 'chmod +x minikafka/scripts/*.sh && cd minikafka && source scripts/env.sh && bash scripts/verify.sh'; all 10 files written under minikafka/ (javac -d out stays in-project). No brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere. env.sh: 'Nothing is installed here; it only points at the existing keg'; agent: 'JDK 21 和 27 已通过 Homebrew 安装...无需安装，只需进行 PATH 导出'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 382.2
+ },
+ "install_like_cmds": []
+}

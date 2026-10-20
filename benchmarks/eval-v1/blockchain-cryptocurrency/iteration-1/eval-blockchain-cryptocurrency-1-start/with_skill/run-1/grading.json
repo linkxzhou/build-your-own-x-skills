@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the block + hash milestone with TODOs; no full chain with PoW, transactions, P2P",
+   "passed": true,
+   "evidence": "Scaffold only: blockchain.py has compute_hash with 'raise NotImplementedError(\"TODO 1-3: 在这里实现 compute_hash\")' and create_genesis_block with 'raise NotImplementedError(\"TODO 4: ...\")'; final answer says '打开 blockchain.py，填 4 个 TODO'. No PoW, transactions, or P2P code anywhere; Blockchain class only has __init__ + create_genesis_block."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer ends with concrete command 'python3 check_m1.py' plus exact expected output 'PASS  1. 创世区块哈希跨运行稳定 ... 3/3 通过' and notes current red baseline '当前是红基线（0/3，我刚跑过）'; shell log confirms 'python3 check_m1.py; echo \"exit=$?\"' was run."
+  },
+  {
+   "text": "B3: Block hash covers index/timestamp/data/previous hash via SHA-256",
+   "passed": true,
+   "evidence": "TODO 1: '构造一个 dict，包含 index / timestamp / data / previous_hash 四个字段'; TODO 3: '用 hashlib.sha256() 对该字符串（先 .encode() 成字节）求哈希，返回 .hexdigest()'; check_m1.py verifies 64-char lowercase hex and that changing data ('hello'→'hellp') or index changes the hash."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only 3 shell commands, all read-only or in-project: 'ls ...', 'ls -la && python3 --version', 'python3 check_m1.py'. Files written are blockchain.py, check_m1.py, and __pycache__/blockchain.cpython-314.pyc — all inside the project dir. No brew/apt/pip/cargo/rustup/npm/go/gem install commands; plan states '只用 Python 标准库（hashlib/json），不安装任何依赖'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 239.0
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Proposes a concrete small local corpus and stays in the workspace",
+   "passed": false,
+   "evidence": "All proposed corpora are remote or outside the workspace: 'Hacker News (Algolia API)', 'Wikipedia', 'Project Gutenberg', 'Stack Exchange data dumps (archive.org)', 'Your own machine — index your notes, code, or PDFs'. No small local corpus inside the workspace is proposed; recommendation is 'start with HN via Algolia'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with 'Recommendation: start with HN via Algolia for a fast end-to-end loop... One caveat: HN titles are short...' — no concrete command to run and no expected output/behaviour is given (only a bare API URL, no runnable command)."
+  },
+  {
+   "text": "B3: Suggests a concrete corpus (e.g. local markdown/docs, Wikipedia abstracts, or a small generated set)",
+   "passed": true,
+   "evidence": "'Hacker News (Algolia API) — easiest. No auth, returns JSON, one HTTP call per page: https://hn.algolia.com/api/v1/search_by_date?tags=story&hitsPerPage=1000' plus Wikipedia, Gutenberg, Stack Exchange dumps — concrete corpora suggested."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'FILES WRITTEN IN PROJECT (0)' and 'SHELL COMMANDS RUN (0)'; only tool call was glob {\"pattern\": \"**/*\"}. No install command run and nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 34.0
+ },
+ "install_like_cmds": []
+}

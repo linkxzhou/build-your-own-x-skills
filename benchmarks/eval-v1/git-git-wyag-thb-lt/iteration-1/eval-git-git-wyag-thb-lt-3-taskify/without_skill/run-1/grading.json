@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Coaches not dumps: gives a staged milestone plan / scaffold with TODOs, not a complete final implementation",
+   "passed": true,
+   "evidence": "Deliverable is a staged plan, not an implementation: '把 wyag 教程的 10 个章节转换成了 10 个可逐条粘贴给 Claude Code 执行的任务（任务 0–9）' in dependency order '骨架 → init/repo_find → 对象读写 → log/tree/checkout → refs/tag → index/status → add/commit → 端到端验收'; prompts scaffold with stubs '先注册但指向抛 NotImplementedError 的空函数' and anti-copy rule '禁止直接照抄教程源码压缩包；让 Claude Code 解释每段代码为什么这样写'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Every task ends with 验收标准 giving concrete commands and expected behavior, e.g. 'python3 wyag.py --help # 列出全部子命令', 'python3 wyag.py cat-file # 报 NotImplementedError 而非 NameError', 'git status # 真实 git 应能识别这是合法仓库（报 initial branch 提示而非 fatal）'; final answer instructs '跑通验收命令后进入下一个'"
+  },
+  {
+   "text": "B3: Technically specific to this tutorial (git-git-wyag-thb-lt): milestones match the tutorial's actual stages, language and key concepts, not generic boilerplate",
+   "passed": true,
+   "evidence": "Milestones map to wyag's real chapters and code: '对应章节：[3. Creating repositories: init](https://wyag.thb.lt/#init)', 'GitRepository 类：持有 worktree、gitdir，repo_dir(*path) 和 repo_file(*path)', 'repo_find(path, required=True)：从给定目录向上逐级查找 .git', tutorial-specific pitfalls 'tree 的 20 字节二进制 sha、index 的 8 字节对齐、kvlm 的 message 空行', and the tutorial's exact command set (init/hash-object/cat-file/log/ls-tree/checkout/show-ref/tag/rev-parse/ls-files/check-ignore/status/rm/add/commit) in Python"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); asks the learner to install if needed",
+   "passed": true,
+   "evidence": "Agent's only actions: two web_fetch of wyag.thb.lt, one write of WYAG_TASKS.md inside the project, and shell 'ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-git-git-wyag-thb-lt-3'; no install commands in any command run or in the file (commands are python3/git/find/mkdir/cd); /tmp/wyag-test appears only as learner-facing test isolation: '测试统一在 /tmp/wyag-test 下进行，避免污染工作区'"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 211.3
+ },
+ "install_like_cmds": []
+}

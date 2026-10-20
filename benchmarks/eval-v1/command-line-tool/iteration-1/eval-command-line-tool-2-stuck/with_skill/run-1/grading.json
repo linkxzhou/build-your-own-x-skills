@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "\"Your program emits ANSI codes unconditionally; the terminal interprets them, a file just stores them. The fix is to detect whether stdout is a TTY and disable color when it's not.\" plus minimal snippet `var useColor = term.IsTerminal(int(os.Stdout.Fd()))`"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with advice (\"respect NO_COLOR ... check os.Stderr.Fd(), since `mycli 2>err.log` has the same problem\"). No concrete checkpoint command with expected output/behaviour; `mycli --color=always | less -R` and `mycli | tee out.log` are illustrative of the flag pattern, not a run-this-and-expect-that checkpoint."
+  },
+  {
+   "text": "B3: Recommends detecting whether stdout is a TTY and disabling ANSI colors when it is not (or a --no-color flag / NO_COLOR)",
+   "passed": true,
+   "evidence": "\"The fix is to detect whether stdout is a TTY and disable color when it's not\" with `term.IsTerminal(int(os.Stdout.Fd()))`, a `--color` auto|always|never flag, and \"respect `NO_COLOR` (set `useColor = false` when it's present and non-empty)\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only read-only glob/grep tool calls; no install commands anywhere in the answer."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 41.8
+ },
+ "install_like_cmds": []
+}

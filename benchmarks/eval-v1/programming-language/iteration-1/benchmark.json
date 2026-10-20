@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "programming-language",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:51Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 490.5,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the tokenizer (or first) milestone with TODOs and does not hand over parser+evaluator code",
+          "passed": true,
+          "evidence": "Only milestone-1 skeleton written: tiny/lexer.py has data model but core loop left as '# TODO(\u4f60\u6765\u5b9e\u73b0): \u4e3b\u5faa\u73af while i < n\uff0c\u6bcf\u8f6e\u53d6 ch = source[i]\uff0c\u6309\u60c5\u51b5\u5206\u53d1' with 6 cases listed; final msg says '\u9aa8\u67b6\u5df2\u5c31\u7eea\uff0c\u6838\u5fc3\u5faa\u73af\u7559\u7ed9\u4f60\u5199' and '\u4f60\u5199\u4ec0\u4e48\uff1atiny/lexer.py:36 \u7684\u4e3b\u5faa\u73af'. Files: lexer.py, tests/test_lexer.py, PROGRESS.md, __init__.py \u2014 no parser/evaluator code handed over."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with '**\u600e\u4e48\u9a8c\u8bc1**\uff1a' giving concrete commands 'python3 tests/test_lexer.py        # \u76ee\u6807: 6/6 \u901a\u8fc7' and \"echo 'let x = 1 + 2;' | python3 -m tiny.lexer\" plus full expected output 'LET('let')@1:1 \u2026 NUMBER('2')@1:13 \u2026 EOF('')@1:15'."
+        },
+        {
+          "text": "B3: Lists the pipeline tokenizer \u2192 parser/AST \u2192 evaluator in that order",
+          "passed": true,
+          "evidence": "PROGRESS.md table orders '| 1 | Tokenizer |' \u2192 '| 2 | Parser \u2192 AST |' \u2192 '| 3 | \u6c42\u503c + REPL |'; final msg: '\u89e3\u91ca\u5668\u7684\u7b2c\u4e00\u7ad9\u662f\u8bcd\u6cd5\u5206\u6790\u2026\u2026\u4e4b\u540e\u7684\u89e3\u6790\u5668\u548c\u6c42\u503c\u5668\u53ea\u770b Token\uff0c\u6c38\u8fdc\u4e0d\u78b0\u539f\u59cb\u6587\u672c'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (3): 'python3 --version' and 'python3 tests/test_lexer.py; echo \"exit=$?\"' twice \u2014 no install commands; all writes inside project dir (tiny/, tests/, PROGRESS.md; __pycache__ generated in-project by running tests)."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 126.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint rather than rewriting the whole parser",
+          "passed": false,
+          "evidence": "Agent dumped a complete implementation instead of a minimal hint: 'Created precedence_demo.py \u2014 it contains your flat left-to-right parser (parse_buggy) next to a precedence-climbing parser (parse_fixed), sharing one tokenizer, with a comparison loop at the bottom' \u2014 a 2221-char file with full tokenizer, both parsers, and a self-test loop, plus complete expr/term/factor code in the reply."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Final message gives a concrete command and expected output: 'Run it: python precedence_demo.py' and 'Expected output (hand-traced against the code): 1 + 2 * 3 buggy=9 fixed=7 ... 2 * (3 + 4) buggy=error fixed=14'."
+        },
+        {
+          "text": "B3: Explains operator precedence and fixes it via precedence climbing/Pratt parsing or separate grammar levels (term/factor)",
+          "passed": true,
+          "evidence": "Explains precedence ('Your loop treats `+` and `*` as equal precedence, so it folds left: (1 + 2) * 3 = 9') and fixes it both ways: layered grammar 'expr := term ((\"+\"|\"-\") term)*, term := factor ((\"*\"|\"/\") factor)*' and precedence climbing 'right = expr(PRECEDENCE[op] + 1)'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'SHELL COMMANDS RUN (0)'; only tool calls are two globs and one write of precedence_demo.py inside the project ('FILES WRITTEN IN PROJECT (1)'); no install commands \u2014 learner is told to run 'python precedence_demo.py' themselves."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 2,
+        "failed": 2,
+        "total": 4,
+        "time_seconds": 142.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Adapts the plan to a compiler track in C without dumping a complete compiler",
+          "passed": true,
+          "evidence": "Agent stays at scope stage: 'Where we are: milestone 0/7 \u2014 scope agreement', proposes a 7-milestone compiler-in-C plan ('compiler-first, milestones adapted from the track plan', milestone 1 'Tokenizer in C') and ends 'Answer those and we start milestone 1: a tokenizer in C.' FILES WRITTEN IN PROJECT (0) \u2014 no implementation dumped."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer ends with scoping questions ('Two questions to lock scope... Answer those and we start milestone 1'), with no concrete command for the learner to run now. Milestone checkpoints are future descriptions (e.g. '`1 + 2 * 3` prints 7'), and the only executed command (exit=42 test) was run by the agent, not given as a learner checkpoint."
+        },
+        {
+          "text": "B3: Mentions the compiler stages (parse \u2192 code generation to assembly) and an assembler/linker or emitted assembly to check output",
+          "passed": true,
+          "evidence": "Stages named: 'Parser \u2192 AST' (milestone 2) and 'Codegen for expressions | emit x86-64 asm, assemble, run: `1 + 2 * 3` prints 7' (milestone 3); also 'your compiler turns the AST straight into assembly' and 'acwj emits Linux ELF/GAS syntax, and macOS wants Mach-O syntax'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": false,
+          "evidence": "No install command was run, but the second shell command writes outside the project dir: 'cd /tmp && printf 'int main(){return 42;}' > t.c && clang -arch x86_64 t.c -o t_x86' creates t.c and t_x86 in /tmp."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 453.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds the tokenizer (or first) milestone with TODOs and does not hand over parser+evaluator code",
+          "passed": false,
+          "evidence": "Agent handed over a complete multi-milestone implementation, not just the first milestone: FILES WRITTEN include parser.py (9382 chars, full AST + recursive-descent parser), interpreter.py (7714 chars, full evaluator with Environment chain/closures/ReturnSignal), main.py (REPL + file runner) and examples/demo.mini. Its own reasoning: 'I should probably build the complete thing in stages within this turn' and 'build it in stages (lexer \u2192 parser \u2192 evaluator \u2192 REPL), each in its own file'. No TODO-scaffold-only tokenizer milestone."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete runnable checkpoint verified by the agent: 'python3 main.py examples/demo.mini' (run in SHELL COMMANDS) plus REPL pipe test; expected behaviour documented in examples/demo.mini ('print fib(n);          // 55', 'print sum;             // 5050', 'print c();             // 1') and planned response step '5. Step 4: main/REPL \u2014 run demo, show output'."
+        },
+        {
+          "text": "B3: Lists the pipeline tokenizer \u2192 parser/AST \u2192 evaluator in that order",
+          "passed": true,
+          "evidence": "Pipeline listed in order: 'The classic approach...: 1. Lexer (tokenizer) 2. Parser \u2192 AST 3. Evaluator (tree-walking interpreter)' and 'Stage 1: Lexer (tokens) - Stage 2: Parser \u2192 AST - Stage 3: Interpreter (tree-walking evaluator) - Stage 4: REPL'; file docstrings reinforce it ('\u7b2c 1 \u6b65\uff1a\u8bcd\u6cd5\u5206\u6790\u5668', '\u7b2c 2 \u6b65\uff1a\u8bed\u6cd5\u5206\u6790\u5668', '\u7b2c 3 \u6b65\uff1a\u89e3\u91ca\u5668')."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "All 8 shell commands are read/run only (ls, python3 --version, python3 -c tests, python3 main.py ..., printf | python3 main.py) \u2014 no brew/apt/pip/cargo/rustup/npm/go/gem install. All writes are inside the project dir (lexer.py, parser.py, interpreter.py, main.py, examples/demo.mini, __pycache__/*.pyc); no writes outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 28.8,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Diagnoses and gives a minimal fix or hint rather than rewriting the whole parser",
+          "passed": true,
+          "evidence": "Diagnoses the bug ('Your loop treats all operators as equal precedence, so `1 + 2 * 3` groups as `(1 + 2) * 3`') and offers 'a small change to your existing loop' \u2014 a single parse_expr snippet \u2014 plus an alternative grammar, without rewriting the whole parser."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "The answer ends with 'Same result; precedence climbing scales better once you have many levels, since you add a table entry instead of a new function.' No concrete command to run and no expected output/behaviour is given anywhere."
+        },
+        {
+          "text": "B3: Explains operator precedence and fixes it via precedence climbing/Pratt parsing or separate grammar levels (term/factor)",
+          "passed": true,
+          "evidence": "Explains precedence and fixes via precedence climbing: \"PRECEDENCE = {'+': 1, '-': 1, '*': 2, '/': 2}\", \"rhs = self.parse_expr(PRECEDENCE[op] + 1)\", with a trace ('inner call parses `2`, sees `*` (prec 2 \u2265 2)... \u2192 `2 * 3`'), and also gives separate grammar levels: 'expr := term ((\\'|\\'|-\\') term)* / term := factor (...)* / factor := NUMBER | ( expr )'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "SHELL COMMANDS RUN (1): 'ls -la' only; OTHER TOOL CALLS: a glob; FILES WRITTEN IN PROJECT (0). No install commands and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 243.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Adapts the plan to a compiler track in C without dumping a complete compiler",
+          "passed": true,
+          "evidence": "Adapted to compiler track in C: 'Yes \u2014 that's the classic route, and knowing C is exactly the right background' with pipeline 'source \u2192 lexer \u2192 parser \u2192 AST \u2192 codegen (emit .s text) \u2192 as \u2192 ld'. Scope stayed at the first milestone: minic.c is labeled 'the \"chapter 1\" skeleton: extend it with variables (stack slots at -8(%rbp)), if/while (cmp + labels), then functions', and the 5-step build order leaves variables/control flow/functions as future work for the learner."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "'Build with `cc out.s -o out && ./out; echo $?` \u2192 prints 5.' and minic.c header: './minic \"1 + 2 * (3 - 1)\" > out.s' / 'cc out.s -o out && ./out; echo $?      # prints 5'; agent's own test commands annotate expected results '(want 5)', '(want 6)'."
+        },
+        {
+          "text": "B3: Mentions the compiler stages (parse \u2192 code generation to assembly) and an assembler/linker or emitted assembly to check output",
+          "passed": true,
+          "evidence": "'source \u2192 lexer \u2192 parser \u2192 AST \u2192 codegen (emit .s text) \u2192 as \u2192 ld \u2192 executable' names parse stages, codegen to assembly, and assembler/linker; emitted assembly is shown ('.globl _main ... movl $5, %eax ... ret') and out.s was actually produced with 'movq $7, %rax ... idivq %rcx'."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only commands run: 'uname -m; cc -arch x86_64 out.s -o out 2>&1 && ./out' and './minic \"1 + 2 * (3 - 1)\" > out.s && cc -arch x86_64 out.s -o out && ./out' \u2014 no install commands (cc already present); all written files (minic.c, minic, out.s, out) are inside the project dir."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.75,
+        "stddev": 0.25,
+        "min": 0.5,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 253.1333,
+        "stddev": 205.7351,
+        "min": 126.1,
+        "max": 490.5
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 242.2,
+        "stddev": 212.5551,
+        "min": 28.8,
+        "max": 453.9
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "-0.08",
+      "time_seconds": "+10.9",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

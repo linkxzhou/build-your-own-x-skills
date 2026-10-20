@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Maps to the tiny package manager entry and scaffolds a first milestone",
+   "passed": true,
+   "evidence": "Maps to the package-manager entry and scaffolds a first milestone: '从最小可用的「安装一条依赖」开始' with concrete v0: 'CLI 骨架：`mypm install <name>`', '注册表先用一个静态 JSON 文件…{ \"name\": { \"version\": \"tarball下载地址\" } }', '下载 tarball → 校验 SHA-256 → 解压到 `my_modules/<name>/`' — only v0 is detailed, later milestones are roadmap only, no complete implementation dumped."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No runnable checkpoint: the answer ends with '当前目录是空的，如果你告诉我打算用什么语言，我可以直接把 v0 的骨架搭出来。' — no concrete command to run nor expected output/behaviour is given anywhere."
+  },
+  {
+   "text": "B3: Mentions dependency resolution / a lockfile or fetching package tarballs",
+   "passed": true,
+   "evidence": "Mentions all three: 'v2：依赖解析（真正的难点）…构建依赖图…版本求解', 'v3：…lockfile：锁定整棵树的精确版本和哈希', and '下载 tarball → 校验 SHA-256'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'FILES WRITTEN IN PROJECT (0)' and 'SHELL COMMANDS RUN (0)'; only tool call is glob {\"pattern\": \"**/*\"}. No install commands run or suggested; the agent asks the learner for a language choice instead."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 41.8
+ },
+ "install_like_cmds": []
+}

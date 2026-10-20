@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds a first milestone (sockets echo or TAP device) with TODOs; no full stack",
+   "passed": false,
+   "evidence": "No scaffold or TODOs exist: '## FILES WRITTEN IN PROJECT (0)' and the answer is pure prose roadmap (e.g. '1. **TUN hello world** — open `/dev/net/tun`, `ioctl(TUNSETIFF)`...') with zero code blocks or TODO items; it also never dumps a full stack, but the required first-milestone scaffold with TODOs is absent."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The recorded answer ends mid-roadmap at '- Data: track sequence numbers, ACK received bytes, deliver them to a trivial app' with no closing checkpoint; concrete command+expected-output pairs exist only mid-answer ('Test: `ping <your-tun-ip>` gets replies', 'Test: `nc -u <ip> 7`'), and the final text contains no command to run or expected behaviour."
+  },
+  {
+   "text": "B3: Mentions TUN/TAP (user-space packets) and that it requires Linux + root, or starts with Beej-style sockets",
+   "passed": true,
+   "evidence": "'The standard approach uses a TUN/TAP device — a virtual interface your userspace program owns... every good tutorial targets Linux, so run your project in a Linux environment: Docker (`docker run --privileged -it -v \"$PWD\":/stack debian` — the privileged flag gives you `/dev/net/tun`)' — covers TUN/TAP user-space packets, the Linux requirement, and privileged/root access to the tun device."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## FILES WRITTEN IN PROJECT (0)' and '## SHELL COMMANDS RUN (0)'; only read-only web_search/web_fetch calls were made, and environment setup commands (docker run, ip addr) are addressed to the learner as suggestions, so no install command was run and nothing was written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 123.4
+ },
+ "install_like_cmds": []
+}

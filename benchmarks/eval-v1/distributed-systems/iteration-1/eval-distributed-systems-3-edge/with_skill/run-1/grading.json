@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Proposes running several nodes as local processes on different ports",
+   "passed": true,
+   "evidence": "\"A 3-node cluster is 3 processes on `127.0.0.1:7001-7003`, each with its own data dir.\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with a clarifying question (\"Which language is the store in?\"); no concrete runnable command is given — the only command-like text is `kill -9` inside a prose procedure, with no command to launch the cluster or run the test and no expected output."
+  },
+  {
+   "text": "B3: Mentions killing the leader to test failover / follower takeover",
+   "passed": true,
+   "evidence": "\"2. `kill -9` the leader — SIGKILL, deliberately.\" followed by \"3. Wait for the election, confirm a new leader exists.\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Shell commands were read-only in-workspace (`ls .agents/skills/...`, `ls -a; find . ...`); FILES WRITTEN (0); no install commands run; Toxiproxy only mentioned as an option (\"Toxiproxy, or ~50 lines of your own\") without instructing or executing an install."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 148.4
+ },
+ "install_like_cmds": []
+}

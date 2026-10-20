@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds the blinker/testbench milestone with TODOs; no full CPU",
+   "passed": true,
+   "evidence": "Only milestone '1/7 — blinker + testbench' is scaffolded: blinker.v is a stub with '// TODO: on posedge clk, increment; on rst, clear' and '// TODO: toggle led when count hits a threshold'; no CPU code ('Before any CPU, you prove the simulation loop works'); FILES WRITTEN IN PROJECT (0)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Concrete checkpoint given: 'iverilog -o blinker.vvp blinker.v tb.v && vvp blinker.vvp' with 'Expected: led = 1 ... and blinker.vcd opens in GTKWave showing count ramping and led as a square wave'; turn closes with 'run the check, and paste the output — we debug from there.'"
+  },
+  {
+   "text": "B3: Mentions a simulator such as Icarus Verilog or Verilator and a testbench",
+   "passed": true,
+   "evidence": "Names Icarus Verilog ('brew install icarus-verilog # iverilog + vvp simulator') and provides a testbench tb.v: 'a testbench that generates the clock, applies reset, and dumps a VCD waveform'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "No install executed: SHELL COMMANDS RUN is only a tool check ('for t in iverilog vvp ...; command -v $t'); agent explicitly says 'Run these yourself (I won't install)' before showing brew commands; FILES WRITTEN IN PROJECT (0), so nothing written outside the project."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 107.1
+ },
+ "install_like_cmds": []
+}

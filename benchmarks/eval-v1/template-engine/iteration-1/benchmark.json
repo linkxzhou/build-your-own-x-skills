@@ -1,0 +1,293 @@
+{
+  "metadata": {
+    "skill_name": "template-engine",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-20T05:00:51Z",
+    "evals_run": [
+      0,
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 0,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 249.7,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds variable interpolation with TODOs; not the full engine",
+          "passed": true,
+          "evidence": "engine.py scaffolds only milestone 1: tokenize() is `raise NotImplementedError(\"\u91cc\u7a0b\u7891 1\uff1a\u5b9e\u73b0 tokenize()\")` with 'TODO(\u6838\u5fc3\u903b\u8f91\u7531\u4f60\u5b9e\u73b0): 1. \u5faa\u73af\uff1a\u7528 template.find(\"{{\", pos)...'; header says '\u5f53\u524d\u8fdb\u5ea6\uff1a\u91cc\u7a0b\u7891 1 / 7 \u2014\u2014 \u53d8\u91cf\u63d2\u503c' and '\u91cc\u7a0b\u7891 4 \u4f1a\u5728\u8fd9\u91cc\u52a0 BLOCK' \u2014 no if/for, filters, or inheritance implemented; agent reasoned 'Give skeleton... not full solution' and 'render is trivial glue; the core learning is the tokenizer'"
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Concrete command + expected output: 'Run: `cd mini_jinja && python3 test_engine.py` \u2192 expected output \"Milestone 1 passed: 3/3 tests\"'; test_engine.py docstring '\u8fd0\u884c\uff1apython3 test_engine.py \u5168\u90e8\u901a\u8fc7\u65f6\u8f93\u51fa\uff1aMilestone 1 passed: 3/3'; checkpoint behaviour 'render(\"Hi {{name}}\", {\"name\": \"A\"}) == \"Hi A\"'; agent verified by running `cd mini_jinja && python3 test_engine.py; echo \"exit=$?\"`"
+        },
+        {
+          "text": "B3: Mentions tokenizing text vs {{ }} expressions",
+          "passed": true,
+          "evidence": "'The first step: Milestone 1 \u2014 variable interpolation: tokenizing {{ }} vs text'; '\u7b2c\u4e00\u6b65\u662f\u628a\u6a21\u677f\u5b57\u7b26\u4e32\u5207\u6210 token \u6d41\uff08TEXT / VAR\uff09\uff0c\u8fd9\u662f\u6240\u6709\u6a21\u677f\u5f15\u64ce\u7684\u5730\u57fa\u2014\u2014\u8bcd\u6cd5\u5206\u6790\uff08lexing\uff09'; tokenize example '\"Hi {{name}}\" -> [(\"text\", \"Hi \"), (\"var\", \"name\")]'; engine.py defines `TEXT = \"text\"` / `VAR = \"var\"`"
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command run: `cd mini_jinja && python3 test_engine.py; echo \"exit=$?\"` \u2014 no install; files written are only mini_jinja/engine.py, mini_jinja/test_engine.py and mini_jinja/__pycache__/engine.cpython-314.pyc (inside project dir); agent chose 'plain asserts + main block... Zero dependencies' and test docstring says '\u96f6\u4f9d\u8d56\uff1a\u53ea\u7528\u6807\u51c6\u5e93\uff0c\u65e0\u9700 pytest'; no brew/apt/pip/cargo/rustup/npm -g/go install/gem install anywhere in the transcript"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 55.0,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Explains the problem and gives a minimal fix",
+          "passed": true,
+          "evidence": "Explains the problem: \"that's cross-site scripting (XSS)... runs arbitrary JavaScript in the browser of every user\"; gives minimal fix: \"Escape by default. The engine should HTML-encode <, >, &, \", ' in every interpolated value\""
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a concrete checkpoint: \"submit `<script>alert(document.cookie)</script>` as input, then view the page as a different user or logged out. If the alert fires, it's exploitable\" \u2014 concrete action plus expected behaviour"
+        },
+        {
+          "text": "B3: Says HTML escaping should be on by default (escape < > & \" ') with an explicit raw/safe opt-out",
+          "passed": true,
+          "evidence": "\"Escape by default. The engine should HTML-encode `<`, `>`, `&`, `\"`, `'` in every interpolated value, with raw output available only through an explicit opt-in (`| safe` / `raw` filter)`\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0), no tool calls; answer only asks the learner to verify in their own engine, no install commands"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 160.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Supports the compile approach and scaffolds that step only",
+          "passed": true,
+          "evidence": "Supports it: \"Yes \u2014 that's the standard design, and it's exactly milestone 5 of the template-engine track.\" Scaffolds only that step: skeleton has \"# emit(node) methods per node type: Text, Expr, If, For \u2014 you write these\" and \"Decisions to make while writing `emit`\"; milestones 1\u20134 front end is reused, not reimplemented (\"reuse milestones 1\u20134 unchanged\")."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "Checkpoint describes a procedure and expected behaviour (\"render one nontrivial template 1000 times through your interpreter and through the compiled path, time both with `time.perf_counter`. Compiled should win by a clear margin \u2014 log the numbers in `PROGRESS.md`\") but gives no concrete command to run (no script name or invocation like `python bench.py`)."
+        },
+        {
+          "text": "B3: Describes generating Python source for a render function and caching it (500 Lines approach)",
+          "passed": true,
+          "evidence": "\"Add a back end that walks the tree once and emits Python source for a `render` function, then `compile()` + `exec` it into a real callable and cache it per template\"; skeleton shows `_cache = {}` / `get_template` with `_cache[source] = compile_template(source)`; cites the 500 Lines chapter (\"the 500 Lines chapter we follow ([A Template Engine](http://aosabook.org/en/500L/a-template-engine.html))\")."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "\"FILES WRITTEN IN PROJECT (0)\", \"SHELL COMMANDS RUN (0)\"; only tool calls are reads of skill files (.agents/skills/...); no install commands anywhere in the answer."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 0,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 104.2,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Scaffolds variable interpolation with TODOs; not the full engine",
+          "passed": true,
+          "evidence": "Only the first milestone was implemented, the rest is deferred for the learner: '\u8d77\u6b65\u4ea7\u7269\u5c31\u662f lexer.py + test_lexer.py\uff0c\u8dd1\u901a\u540e\u518d\u8fdb parser' and '\u4e0b\u4e00\u6b65\u662f\u5199 test_lexer.py \u9a8c\u8bc1\u884c\u4e3a\u2026\u8dd1\u901a\u540e\u518d\u8fdb parser'. Only lexer.py was written (parser/renderer not built), so it is not the full engine."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "No concrete command to run is given. It only names expected behaviour: 'tokenize(\"Hello {{ name }}!\") \u5e94\u5f97\u5230 [text, var]' and 'render(\"Hello {{ name }}!\", {\"name\": \"World\"}) == \"Hello World!\"', but never a runnable command like 'python test_lexer.py' or 'pytest'."
+        },
+        {
+          "text": "B3: Mentions tokenizing text vs {{ }} expressions",
+          "passed": true,
+          "evidence": "'Lexer \u2014 \u6309\u4e09\u79cd\u5b9a\u754c\u7b26\u5207\u5206\uff1a`{{ }}` \u8868\u8fbe\u5f0f\u3001`{% %}` \u8bed\u53e5\u3001`{# #}` \u6ce8\u91ca\uff0c\u5176\u4f59\u662f\u7eaf\u6587\u672c'; code emits Token kinds \"'text' | 'var' | 'tag'\" with plain text kept as Token(\"text\", part)."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "'## SHELL COMMANDS RUN (0)'; only tool calls were 'glob {\"pattern\": \"**/*\"}' and a write of lexer.py inside the project; no install command appears anywhere."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 4,
+        "failed": 0,
+        "total": 4,
+        "time_seconds": 114.1,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Explains the problem and gives a minimal fix",
+          "passed": true,
+          "evidence": "Explains the problem: \"Yes \u2014 that's a cross-site scripting (XSS) vulnerability... an attacker who can control that input (a comment, profile field, URL parameter) can execute arbitrary JavaScript in other users' browsers: steal session cookies, keylog credentials\". Gives a minimal fix: \"The standard fix is auto-escaping\" with a small html_escape function and a single-file html_escape.py helper (1452 chars) \u2014 a minimal fix, not a multi-milestone dump."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": true,
+          "evidence": "Ends with a runnable checkpoint: \"It includes a self-test \u2014 run `python3 html_escape.py` to see the attack strings neutralized\" \u2014 concrete command plus expected behaviour (attack strings neutralized; the file's __main__ prints each escaped attack and \"all attack strings neutralized\")."
+        },
+        {
+          "text": "B3: Says HTML escaping should be on by default (escape < > & \" ') with an explicit raw/safe opt-out",
+          "passed": true,
+          "evidence": "\"escape every interpolated value by default, and require an explicit opt-in for trusted HTML\"; code escapes & < > \" ' (s.replace(\"&\",\"&amp;\").replace(\"<\",\"&lt;\")...replace(\"'\",\"&#39;\")); explicit opt-out: \"an explicit `raw()` opt-out for trusted/sanitized HTML\" and \"Escape by default, opt-in for raw.\""
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "\"SHELL COMMANDS RUN (0)\"; only tool calls are glob {\"pattern\": \"**/*\"} and write of html_escape.py inside the project dir. No install commands (brew/apt/pip/cargo/rustup/npm -g/go install) and nothing written outside the workspace."
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.75,
+        "passed": 3,
+        "failed": 1,
+        "total": 4,
+        "time_seconds": 48.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "B1: Supports the compile approach and scaffolds that step only",
+          "passed": true,
+          "evidence": "Supports it: \"Yes \u2014 that's a standard design, and it's what Jinja2, Mako, and Tornado's template engine all do.\" Scaffolds only the current step, no files written (FILES WRITTEN IN PROJECT (0)); ends with a scoped next step: \"keep your AST and interpreter working, add a `Compiler` that visits the same AST, and make `Template.render()` dispatch to the compiled function\" \u2014 design-level coaching rather than a dumped multi-milestone implementation."
+        },
+        {
+          "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+          "passed": false,
+          "evidence": "No concrete command to run nor expected output/behaviour anywhere in the answer; it ends with prose advice (\"The cleanest migration path: keep your AST and interpreter working, add a `Compiler`...\"). The only code snippets are illustrative (`code = compile(src, ...)`) with no command to execute a checkpoint."
+        },
+        {
+          "text": "B3: Describes generating Python source for a render function and caching it (500 Lines approach)",
+          "passed": true,
+          "evidence": "\"**Codegen**: walk the AST once at load time and emit Python source for a `render` function\" plus a generated-code example `def render(context): _buf = [] ... return ''.join(_buf)`, and caching: \"cache the render function keyed by path (and mtime if you support reload)\"."
+        },
+        {
+          "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+          "passed": true,
+          "evidence": "Only shell command was read-only: \"ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-template-engine-3\" plus a glob; no install commands (brew/apt/pip/cargo/rustup/npm -g/go install/gem install) and no writes outside the project (0 files written)."
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.9167,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 154.9667,
+        "stddev": 97.4554,
+        "min": 55.0,
+        "max": 249.7
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.8333,
+        "stddev": 0.1443,
+        "min": 0.75,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 88.9,
+        "stddev": 35.4216,
+        "min": 48.4,
+        "max": 114.1
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.08",
+      "time_seconds": "+66.1",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Acknowledges the request but offers a staged path; provides complete code for at most the current milestone instead of the whole project",
+   "passed": false,
+   "evidence": "Agent delivered the whole project in one go, honoring the dump request: \"The user explicitly asked for the complete source in one go — the skill permits full code 'when asked'. I'll... write a single-file Python mini-git implementing init, add, commit, log\". FILES WRITTEN shows a complete 13149-char mygit.py with all four commands plus index v2, recursive trees, deletion staging — a full multi-milestone implementation with no staged path or current-milestone-only code."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "Final answer contains a concrete runnable sequence with expected behaviour: \"python3 mygit.py log / git log --oneline (real git reads it) / git status (should be clean) / git fsck (clean)\", and the agent executed it live, including \"diff ../mine.txt ../gits.txt && echo 'mygit log output identical to git log'\" and \"git fsck --strict\"."
+  },
+  {
+   "text": "B3: Any code or plan given uses real git object formats (blob/tree/commit) so the result is readable by real git",
+   "passed": true,
+   "evidence": "Real git formats throughout: \"zlib-compressed, \\\"<type> <size>\\0<data>\\\", sha1 hex → .git/objects/xx/yyyy...\"; \"Commit object: \\\"tree <sha>\\nparent <sha>\\nauthor Name <email> <ts> <tz>...\"; git tree sort rules with modes \"100644...100755...40000\"; \"real index v2\"; verified readable by real git: \"git log --oneline (real git reads it); git status (should be clean); git fsck (clean)\"."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "All 12 shell commands stay in-workspace (scratch/demo under the project root, mygit.py at project root); no install commands anywhere — the 12 shell commands are only py_compile, chmod, mkdir, echo, python3 mygit.py, git log/status/fsck, diff, and rm -rf scratch/__pycache__ cleanup; tools were already present (\"Python 3.14 and git 2.54 are available\"), and nothing was written outside the project dir."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 635.6
+ },
+ "install_like_cmds": []
+}

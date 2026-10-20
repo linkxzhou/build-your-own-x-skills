@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Gives an honest scoped plan for CPU (tiny model/data) without installing anything",
+   "passed": true,
+   "evidence": "\"Feasible on CPU: a char-level or small-BPE GPT with ~1–10M parameters (2–6 layers, 128–384 embedding dim) trained on a ~1MB corpus like TinyShakespeare. Training runs take minutes to tens of minutes\" and honestly scopes limits: \"Out of reach on CPU: pretraining anything GPT-2-sized (124M params on web-scale data). That's a GPU-cluster job.\" No installs run (SHELL COMMANDS RUN: 0)."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The answer ends with scoping questions (\"Language: Python + PyTorch... OK, or do you prefer something else?\") and a promise, not a runnable checkpoint: \"When we reach milestone 1 you'll run `pip install torch` yourself... and I'll give the exact command when it's needed.\" Milestone checks are named only abstractly (\"each ends with a runnable check\", e.g. \"encode/decode round-trips, vocab size reported\") with no concrete command to run now nor expected output/behaviour."
+  },
+  {
+   "text": "B3: States a tiny model on small text is trainable on CPU and suggests small context/embedding sizes",
+   "passed": true,
+   "evidence": "\"a char-level or small-BPE GPT with ~1–10M parameters (2–6 layers, 128–384 embedding dim) trained on a ~1MB corpus like TinyShakespeare\" — states tiny model on small text is trainable on CPU and suggests small embedding sizes (128–384 dim); \"CPU is enough for tiny models; a GPU is an optional accelerator.\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); agent explicitly defers installs to the learner: \"One ground rule from the coaching workflow: I never run install commands for you. When we reach milestone 1 you'll run `pip install torch` yourself (CPU build is the default on machines without CUDA).\""
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 102.4
+ },
+ "install_like_cmds": []
+}

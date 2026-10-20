@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Offers a no-GUI path (text output or render to image)",
+   "passed": true,
+   "evidence": "\"Render to image files — software-rasterize each page to a PNG/PPM and open it in any viewer\"; \"Terminal UI — paint to stdout with ANSI escape codes, read keys from stdin\"; \"Raw framebuffer — mmap /dev/fb0 and write pixels directly\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with \"Recommendation: start with option 1. It keeps the project focused on layout and paint...\" — no concrete command to run and no expected output/behaviour is given anywhere"
+  },
+  {
+   "text": "B3: Proposes a concrete option such as printing text layout or rendering to PNG/PPM",
+   "passed": true,
+   "evidence": "\"software-rasterize each page to a PNG/PPM\" plus \"Recommendation: start with option 1\" (render to image files)"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "SHELL COMMANDS RUN (1): \"ls -la /Users/linkxzhou/skev/byox-eval/v1/base/build-your-own-x-web-browser-3\" (read-only ls, no install command); FILES WRITTEN IN PROJECT (0); no writes outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 58.2
+ },
+ "install_like_cmds": []
+}

@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains and suggests a direction without rewriting the engine",
+   "passed": true,
+   "evidence": "Explains the blow-up ('the engine enumerates every possible split of the a-run into chunks... 2²⁹ ≈ 537 million ways') and suggests directions (atomic groups, pattern rewrite, memoization) without writing code: 'FILES WRITTEN IN PROJECT (0)' and 'happy to dig into your matcher code once there's something in the workspace'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "Answer ends with 'If this is for your own engine, fix #1 or #3 is the interesting one to implement — happy to dig into your matcher code once there's something in the workspace.' — no concrete command for the learner to run nor expected output/behaviour; the python timing scripts were run by the agent, not handed over as a checkpoint"
+  },
+  {
+   "text": "B3: Identifies catastrophic/exponential backtracking and suggests Thompson NFA simulation (linear time)",
+   "passed": false,
+   "evidence": "Identifies the problem ('Classic catastrophic backtracking', 'It's O(2ⁿ)') but never suggests Thompson NFA simulation; closest is 'Memoization — cache (node_id, position) pairs... caps the engine at O(n² × nodes)', which is polynomial-time memoized backtracking, not linear-time NFA simulation"
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "Only 2 shell commands, both stdlib-only python3 heredocs timing re.search (import re, time); no install commands (no brew/apt/pip/cargo/rustup/npm/go/gem), glob '**/*' is read-only, and 'FILES WRITTEN IN PROJECT (0)' — nothing written inside or outside the workspace"
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 2,
+  "failed": 2,
+  "total": 4,
+  "pass_rate": 0.5
+ },
+ "timing": {
+  "total_duration_seconds": 146.7
+ },
+ "install_like_cmds": []
+}

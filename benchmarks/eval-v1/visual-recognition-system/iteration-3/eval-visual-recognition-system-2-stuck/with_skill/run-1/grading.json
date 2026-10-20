@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Diagnoses and gives a minimal fix or hint",
+   "passed": true,
+   "evidence": "Diagnosis given: 'That gap means one of three things: the model memorized the training set, the inference path differs from training, or the new photos come from a different distribution', plus concrete hints: 'Check 1 — held-out validation from your own training data... Split 10–20% of the training photos into a val set' and 'Check 2 — diff training vs. inference... Preprocessing parity: push one training image through the inference pipeline'."
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "The recorded final answer ends mid-sentence at 'Usual culprits: RGB vs BGR, missing `/255` or normalization' with no closing command or expected output. The only runnable command ('python scratch/diagnose_gap.py') appears in the written file's docstring, requires the learner to first wire MODEL/TRAIN_DS/NEW_DS (all None) into CONFIG, and is never referenced in the visible answer; the Check 1 snippet calls undefined helpers (evaluate, val_loader)."
+  },
+  {
+   "text": "B3: Identifies overfitting / distribution shift and suggests a held-out test set, augmentation or simpler model",
+   "passed": true,
+   "evidence": "'This is a classic overfitting / distribution shift problem'; held-out set suggested: 'Split 10–20% of the training photos into a val set the model has never seen'; also 'Fix: regularization, more data, augmentation, smaller model, early stopping' and 'val ≈ 40% → plain overfitting'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'SHELL COMMANDS RUN (0)' — no commands, hence no installs. Only write is in-project relative path 'scratch/diagnose_gap.py'. Tool installs are delegated to the learner: 'Requires torch + numpy already installed. If missing, run yourself: pip install torch numpy'."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 197.2
+ },
+ "install_like_cmds": []
+}

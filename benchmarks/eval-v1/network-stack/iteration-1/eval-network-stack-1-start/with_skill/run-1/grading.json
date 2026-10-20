@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Scaffolds a first milestone (sockets echo or TAP device) with TODOs; no full stack",
+   "passed": true,
+   "evidence": "Roadmap lists 7 milestones but only milestone 1 is scaffolded: '**What to write** (`echo.c`): - `main()`: create socket (`AF_INET`, `SOCK_STREAM`), set `SO_REUSEADDR`, bind to `0.0.0.0:9000`, `listen(fd, 10)` - accept loop: on each connection, `read()` into a buffer, `write()` the same bytes back' — a TODO skeleton, no full code, and milestones 2–7 are one-line rows only; agent also states 'Give skeleton, not full solution.'"
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": true,
+   "evidence": "'**Check it:** ``` ./echo # terminal 1 nc localhost 9000 # terminal 2 — type a line, get it back ``` Expected: every line you type comes back verbatim; Ctrl-C on `nc` closes cleanly.' — concrete command plus expected behaviour."
+  },
+  {
+   "text": "B3: Mentions TUN/TAP (user-space packets) and that it requires Linux + root, or starts with Beej-style sockets",
+   "passed": true,
+   "evidence": "'Milestones 2+ need Linux with root (or a Linux VM) for `/dev/net/tun`' and roadmap milestone 2 'TAP device + Ethernet frame parsing'; also starts with Beej-style sockets: 'with [_Beej's Guide to Network Programming_](http://beej.us/guide/bgnet/) for the warm-up'."
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "'## FILES WRITTEN IN PROJECT (0)' and '## SHELL COMMANDS RUN (0)'; OTHER TOOL CALLS are only glob/read of skill files. No install commands anywhere; commands shown (`gcc -Wall -Wextra -o echo echo.c`, `./echo`, `nc localhost 9000`) are for the learner to run, and gcc is assumed present with no install step needed."
+  }
+ ],
+ "routing": {
+  "A1_passed": true,
+  "router_read": true,
+  "track_read": true,
+  "compacted": true,
+  "by_narration": true
+ },
+ "summary": {
+  "passed": 4,
+  "failed": 0,
+  "total": 4,
+  "pass_rate": 1.0
+ },
+ "timing": {
+  "total_duration_seconds": 96.5
+ },
+ "install_like_cmds": []
+}

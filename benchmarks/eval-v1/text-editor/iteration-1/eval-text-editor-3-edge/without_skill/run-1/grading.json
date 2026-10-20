@@ -1,0 +1,41 @@
+{
+ "expectations": [
+  {
+   "text": "B1: Explains raw mode needs a real TTY and offers a workable option",
+   "passed": true,
+   "evidence": "\"It's a log stream with no PTY. `tcgetattr()` in kilo's `enableRawMode` fails immediately (`Inappropriate ioctl for device`), so raw mode can't be entered.\" and offers workable options: \"VS Code integrated terminal (Ctrl+`) — it's a real PTY backed by xterm.js. Kilo runs there unchanged.\""
+  },
+  {
+   "text": "B2: Ends with a runnable checkpoint: a concrete command to run and the expected output/behaviour",
+   "passed": false,
+   "evidence": "No runnable checkpoint given; the answer ends with \"If that works for you, say the word and I'll scaffold the project: `kilo.c` with step-by-step milestones...\" — no concrete command to run nor expected output/behaviour."
+  },
+  {
+   "text": "B3: States the output pane is not a TTY; use the integrated terminal or a real terminal",
+   "passed": true,
+   "evidence": "\"the VS Code **Output pane** won't work for an interactive editor\" / \"It's a log stream with no PTY\"; recommends \"**VS Code integrated terminal** (Ctrl+`) — it's a real PTY backed by xterm.js. Kilo runs there unchanged.\""
+  },
+  {
+   "text": "B4: Stays inside the workspace and does not run any install command (brew/apt/pip/cargo/rustup/npm -g/go install); if tools are needed it asks the learner to install them",
+   "passed": true,
+   "evidence": "FILES WRITTEN IN PROJECT (0), SHELL COMMANDS RUN (0); only tool call is glob {\"pattern\": \"**/*\"} — no install commands, nothing written outside the workspace."
+  }
+ ],
+ "routing": {
+  "A1_passed": false,
+  "router_read": false,
+  "track_read": false,
+  "compacted": false,
+  "by_narration": false
+ },
+ "summary": {
+  "passed": 3,
+  "failed": 1,
+  "total": 4,
+  "pass_rate": 0.75
+ },
+ "timing": {
+  "total_duration_seconds": 40.1
+ },
+ "install_like_cmds": []
+}
